@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Anshid CK</title>
+  <meta name="description" content="Get in touch with Muhammed Anshid Chelekodan, top digital marketing strategist in Malappuram, to skyrocket your business online.">
+  <meta name="keywords" content="Contact Digital Marketing Strategist, Marketing Consultant in Malappuram">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  
+  <style>
+    .page-header {
+      padding: 150px 0 80px 0;
+      background: linear-gradient(180deg, rgba(11,15,25,1) 0%, rgba(21,27,41,1) 100%);
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .page-header h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 1rem;
+    }
+    
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 4rem;
+    }
+    
+    /* Contact Form */
+    .contact-form {
+      background: var(--card-bg);
+      padding: 3.5rem;
+      border-radius: 15px;
+      border: 1px solid rgba(255,255,255,0.05);
+      box-shadow: var(--shadow-soft);
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 1rem;
+      background: rgba(11,15,25,0.5);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+    
+    .form-control:focus {
+      outline: none;
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 3px rgba(255,107,53,0.1);
+    }
+    
+    textarea.form-control {
+      resize: vertical;
+      min-height: 150px;
+    }
+    
+    /* Contact Details */
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+    
+    .info-icon {
+      width: 50px;
+      height: 50px;
+      background: rgba(255,107,53,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-color);
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    
+    .info-text h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.2rem;
+    }
+    
+    .info-text a {
+      color: var(--text-secondary);
+    }
+    
+    .info-text a:hover {
+      color: var(--accent-color);
+    }
+    
+    .map-container {
+      width: 100%;
+      height: 300px;
+      border-radius: 15px;
+      overflow: hidden;
+      margin-top: 2rem;
+      border: 1px solid rgba(255,255,255,0.05);
+      background-color: var(--card-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    @media (max-width: 992px) {
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+      .contact-form {
+        padding: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">ANSHID<span class="text-accent">.</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <div class="header-socials"><a href="https://www.instagram.com/_anshee___" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://www.linkedin.com/in/mohammad-anshid-ck-9123462aa" target="_blank"><i class="fab fa-linkedin"></i></a><a href="https://www.facebook.com/share/16oyZso423" target="_blank"><i class="fab fa-facebook"></i></a><a href="https://x.com/AnshidCK727" target="_blank"><i class="fa-brands fa-x-twitter"></i></a><a href="https://wa.me/919778179727" target="_blank"><i class="fab fa-whatsapp"></i></a></div><button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container animate stagger-1">
+      <h1>Let's Connect</h1>
+      <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">Ready to take your online presence to the next level? Drop me a message.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-container">
+        
+        <!-- Form -->
+        <div class="animate stagger-1">
+          <form class="contact-form" action="#" method="POST" onsubmit="event.preventDefault(); alert('Form submitted!');">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 2rem; flex-wrap:wrap; gap:10px;">
+              <h2 style="margin:0;">Send a Message</h2>
+              <a href="https://wa.me/919778179727" target="_blank" class="btn btn-outline" style="padding: 0.5rem 1rem;"><i class="fab fa-whatsapp" style="margin-right:8px;"></i>Quick Chat</a>
+            </div>
+            
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" class="form-control" placeholder="John Doe" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" class="form-control" placeholder="john@example.com" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Your Message</label>
+              <textarea id="message" class="form-control" placeholder="How can I help your business grow?" required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+          </form>
+        </div>
+        
+        <!-- Details & Map -->
+        <div class="animate stagger-2">
+          <div class="contact-info">
+            
+            <div class="info-item">
+              <div class="info-icon"><i class="fas fa-envelope"></i></div>
+              <div class="info-text">
+                <h3>Email</h3>
+                <a href="mailto:anshidchelekodan@gmail.com">anshidchelekodan@gmail.com</a>
+              </div>
+            </div>
+            
+            <div class="info-item">
+              <div class="info-icon"><i class="fab fa-whatsapp"></i></div>
+              <div class="info-text">
+                <h3>WhatsApp/Phone</h3>
+                <a href="https://wa.me/919778179727" target="_blank">+91 9778179727</a>
+              </div>
+            </div>
+            
+            <div class="info-item">
+              <div class="info-icon"><i class="fab fa-linkedin-in"></i></div>
+              <div class="info-text">
+                <h3>LinkedIn</h3>
+                <a href="https://www.linkedin.com/in/mohammad-anshid-ck-9123462aa" target="_blank">linkedin.com/in/mohammad-anshid-ck-9123462aa</a>
+              </div>
+            </div>
+            
+            <div class="info-item">
+              <div class="info-icon"><i class="fab fa-instagram"></i></div>
+              <div class="info-text">
+                <h3>Instagram</h3>
+                <a href="https://www.instagram.com/_anshee___" target="_blank">@_anshee___</a>
+              </div>
+            </div>
+            
+          </div>
+          
+          <!-- Map Placeholder -->
+          <div class="map-container">
+            <div style="text-align: center; padding: 2rem;">
+              <i class="fas fa-map-marker-alt" style="font-size: 3rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+              <h3>Malappuram, Kerala</h3>
+              <p>Based in Malappuram, working with clients globally.</p>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="social-links">
+        <a href="https://www.instagram.com/_anshee___" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/mohammad-anshid-ck-9123462aa" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.facebook.com/share/16oyZso423" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://x.com/AnshidCK727" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://wa.me/919778179727" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/919778179727" class="float-wa" target="_blank"><i class="fab fa-whatsapp"></i></a><script src="main.js"></script>
+</body>
+</html>
+
+

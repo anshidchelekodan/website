@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Anshid CK Strategy</title>
+  <meta name="description" content="View the portfolio and case studies of Muhammed Anshid Chelekodan, highlighting SEO campaigns, Google Ads, and social media success stories.">
+  <meta name="keywords" content="Portfolio Website, Digital Marketing Case Studies, SEO Specialist in Malappuram">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  
+  <style>
+    .page-header {
+      padding: 150px 0 80px 0;
+      background: linear-gradient(180deg, rgba(11,15,25,1) 0%, rgba(21,27,41,1) 100%);
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .page-header h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 1rem;
+    }
+    
+    /* Portfolio Grid */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    
+    .portfolio-item {
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+    }
+    
+    .portfolio-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+      background-color: var(--card-bg);
+    }
+    
+    .portfolio-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(11,15,25,0.95), rgba(255,107,53,0.4));
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2.5rem;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    
+    .portfolio-item:hover .portfolio-img {
+      transform: scale(1.1);
+    }
+    
+    .portfolio-item:hover .portfolio-overlay {
+      opacity: 1;
+    }
+    
+    .portfolio-category {
+      color: var(--accent-color);
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+      transform: translateY(20px);
+      transition: transform 0.4s ease;
+    }
+    
+    .portfolio-title {
+      font-size: 1.5rem;
+      color: #fff;
+      transform: translateY(20px);
+      transition: transform 0.4s ease 0.1s;
+    }
+    
+    .portfolio-item:hover .portfolio-category,
+    .portfolio-item:hover .portfolio-title {
+      transform: translateY(0);
+    }
+    
+    @media (max-width: 768px) {
+      .portfolio-overlay {
+        opacity: 1;
+        background: linear-gradient(to top, rgba(11,15,25,0.9), transparent);
+      }
+      .portfolio-category, .portfolio-title {
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">ANSHID<span class="text-accent">.</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html" class="active">Portfolio</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="header-socials"><a href="https://www.instagram.com/_anshee___" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://www.linkedin.com/in/mohammad-anshid-ck-9123462aa" target="_blank"><i class="fab fa-linkedin"></i></a><a href="https://www.facebook.com/share/16oyZso423" target="_blank"><i class="fab fa-facebook"></i></a><a href="https://x.com/AnshidCK727" target="_blank"><i class="fa-brands fa-x-twitter"></i></a><a href="https://wa.me/919778179727" target="_blank"><i class="fab fa-whatsapp"></i></a></div><button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container animate stagger-1">
+      <h1>Selected Work</h1>
+      <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">A showcase of data-driven campaigns, SEO mastery, and creative strategies that move the needle.</p>
+    </div>
+  </section>
+
+  <!-- Portfolio Grid Section -->
+  <section class="section">
+    <div class="container">
+      <div class="portfolio-grid">
+        
+        <!-- Project 1 -->
+        <div class="portfolio-item animate stagger-1">
+          <img src="assets/port-1.jpg" alt="Local Search Optimization" class="portfolio-img" onerror="this.src='https://via.placeholder.com/800x600/151B29/FF6B35?text=SEO+Campaign'">
+          <div class="portfolio-overlay">
+            <span class="portfolio-category">SEO Campaign</span>
+            <h3 class="portfolio-title">+200% Organic Traffic for E-com Client</h3>
+          </div>
+        </div>
+        
+        <!-- Project 2 -->
+        <div class="portfolio-item animate stagger-2">
+          <img src="assets/port-2.jpg" alt="Social Media Engagement" class="portfolio-img" onerror="this.src='https://via.placeholder.com/800x600/151B29/ffffff?text=Social+Media'">
+          <div class="portfolio-overlay">
+            <span class="portfolio-category">Social Media Projects</span>
+            <h3 class="portfolio-title">Brand Building & Community Engagement</h3>
+          </div>
+        </div>
+        
+        <!-- Project 3 -->
+        <div class="portfolio-item animate stagger-3">
+          <img src="assets/port-3.jpg" alt="Google Ads ROI" class="portfolio-img" onerror="this.src='https://via.placeholder.com/800x600/151B29/FF6B35?text=Google+Ads'">
+          <div class="portfolio-overlay">
+            <span class="portfolio-category">Google Ads Optimization</span>
+            <h3 class="portfolio-title">Lowering CPA by 40% in 3 Months</h3>
+          </div>
+        </div>
+        
+        <!-- Project 4 -->
+        <div class="portfolio-item animate stagger-1">
+          <img src="assets/port-4.jpg" alt="Marketing Dashboards" class="portfolio-img" onerror="this.src='https://via.placeholder.com/800x600/151B29/ffffff?text=Analytics'">
+          <div class="portfolio-overlay">
+            <span class="portfolio-category">Analytics Dashboards</span>
+            <h3 class="portfolio-title">Data Visualization & Reporting Setup</h3>
+          </div>
+        </div>
+        
+        <!-- Project 5 -->
+        <div class="portfolio-item animate stagger-2">
+          <img src="assets/port-5.jpg" alt="SEO Content Strategy" class="portfolio-img" onerror="this.src='https://via.placeholder.com/800x600/151B29/FF6B35?text=Content+Strategy'">
+          <div class="portfolio-overlay">
+            <span class="portfolio-category">Content Strategies</span>
+            <h3 class="portfolio-title">B2B Content Pillar Creation</h3>
+          </div>
+        </div>
+        
+        <!-- Project 6 -->
+        <div class="portfolio-item animate stagger-3">
+          <img src="assets/port-6.jpg" alt="Meta Ads Scale" class="portfolio-img" onerror="this.src='https://via.placeholder.com/800x600/151B29/ffffff?text=Meta+Ads'">
+          <div class="portfolio-overlay">
+            <span class="portfolio-category">Performance Marketing</span>
+            <h3 class="portfolio-title">Scaling Meta Ads to Multiple Regions</h3>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="background-color: #0d121c; text-align: center;">
+    <div class="container animate stagger-1">
+      <h2 style="margin-bottom: 2rem;">Want to see similar results for your business?</h2>
+      <a href="contact.html" class="btn btn-primary">Let's Talk Numbers</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="social-links">
+        <a href="https://www.instagram.com/_anshee___" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/mohammad-anshid-ck-9123462aa" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.facebook.com/share/16oyZso423" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://x.com/AnshidCK727" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://wa.me/919778179727" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/919778179727" class="float-wa" target="_blank"><i class="fab fa-whatsapp"></i></a><script src="main.js"></script>
+</body>
+</html>
+
+

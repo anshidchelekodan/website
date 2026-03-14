@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Marketing Strategist in Malappuram | Muhammed Anshid</title>
+  <meta name="description" content="Muhammed Anshid Chelekodan is a digital marketing strategist in Malappuram helping businesses grow through SEO, Google Ads, Meta Ads, and performance marketing.">
+  <meta name="keywords" content="Digital Marketing Strategist in Malappuram, Digital Marketing Expert in Malappuram, Performance Marketer in Kerala, SEO Specialist in Malappuram">
+  
+  <!-- SEO JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "name": "Muhammed Anshid Chelekodan",
+        "jobTitle": "Digital Marketing Strategist",
+        "url": "https://anshidchelekodan.github.io/Portfolio/index.html",
+        "sameAs": [
+          "https://linkedin.com/in/anshidck"
+        ]
+      },
+      {
+        "@type": "LocalBusiness",
+        "name": "Anshid CK - Digital Marketing Strategist",
+        "image": "https://anshidchelekodan.github.io/Portfolio/anshid.jpg.jpeg",
+        "description": "Muhammed Anshid Chelekodan is a digital marketing strategist in Malappuram helping businesses grow through SEO, Google Ads, Meta Ads, and performance marketing.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Malappuram",
+          "addressRegion": "Kerala",
+          "addressCountry": "IN"
+        },
+        "priceRange": "$$"
+      }
+    ]
+  }
+  </script>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Inline styles for Home specific elements -->
+  <style>
+    body {
+      background-image: linear-gradient(rgba(11, 15, 25, 0.85), rgba(11, 15, 25, 0.95)), url('image.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding-top: 80px; /* navbar offset */
+      overflow: hidden;
+      background-color: transparent; /* Ensures body background shows through */
+    }
+    
+    .hero-content {
+      z-index: 10;
+    }
+    
+    .hero-subtitle {
+      color: var(--accent-color);
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+    
+    .hero h1 span {
+      background: linear-gradient(90deg, #fff, var(--text-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+    
+    .hero-image-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    
+    /* Modern Shape Behind Profile */
+    .hero-shape {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255,107,53,0.15) 0%, rgba(11,15,25,0) 70%);
+      border-radius: 50%;
+      z-index: 1;
+      filter: blur(40px);
+    }
+    
+    .profile-img {
+      width: 100%;
+      border-radius: 20px;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,107,53,0.3);
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      background-color: var(--card-bg); /* Placeholder background */
+      display: block;
+    }
+    
+    /* Floating Elements */
+    .floating-badge {
+      position: absolute;
+      background: rgba(21, 27, 41, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: var(--shadow-soft);
+      z-index: 5;
+      animation: float 4s ease-in-out infinite;
+    }
+    
+    .badge-1 { top: 10%; right: -20px; animation-delay: 0s; }
+    .badge-2 { bottom: 15%; left: -30px; animation-delay: 2s; }
+    
+    .floating-badge i {
+      color: var(--accent-color);
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .floating-badge p {
+      margin: 0;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    /* Skills */
+    .skill-bar-container {
+      margin-bottom: 1.5rem;
+    }
+    
+    .skill-info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background-color: var(--card-bg);
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .progress-line {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+    
+    .progress-line span {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent-color), #ff9770);
+      width: 0%; /* Start at 0 for animation */
+      border-radius: 4px;
+      transition: width 1.5s cubic-bezier(0.1, 0.8, 0.3, 1);
+    }
+    
+    /* Services Icons */
+    .service-icon {
+      font-size: 2.5rem;
+      color: var(--accent-color);
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      padding: 1rem;
+      background: rgba(255, 107, 53, 0.1);
+      border-radius: 12px;
+    }
+    
+    /* Approach Timeline */
+    .approach-steps {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .approach-steps::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 30px;
+      height: 100%;
+      width: 2px;
+      background: rgba(255, 107, 53, 0.3);
+    }
+    
+    .step {
+      position: relative;
+      padding-left: 80px;
+      margin-bottom: 3rem;
+    }
+    
+    .step-number {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 60px;
+      height: 60px;
+      background: var(--card-bg);
+      border: 2px solid var(--accent-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--accent-color);
+      z-index: 2;
+    }
+    
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 120px;
+      }
+      .hero-btns {
+        justify-content: center;
+      }
+      .hero-image-wrapper {
+        margin-top: 3rem;
+      }
+      .approach-steps::before {
+        left: 20px;
+      }
+      .step {
+        padding-left: 60px;
+      }
+      .step-number {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">ANSHID<span class="text-accent">.</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="header-socials"><a href="https://www.instagram.com/_anshee___" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://www.linkedin.com/in/mohammad-anshid-ck-9123462aa" target="_blank"><i class="fab fa-linkedin"></i></a><a href="https://www.facebook.com/share/16oyZso423" target="_blank"><i class="fab fa-facebook"></i></a><a href="https://x.com/AnshidCK727" target="_blank"><i class="fa-brands fa-x-twitter"></i></a><a href="https://wa.me/919778179727" target="_blank"><i class="fab fa-whatsapp"></i></a></div><button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero container grid-2">
+    <div class="hero-content animate stagger-1">
+      <span class="hero-subtitle">Muhammed Anshid Chelekodan</span>
+      <h1>Digital Marketing Strategist in Malappuram</h1>
+      <p>Helping businesses grow through SEO, paid advertising, and data-driven digital marketing strategies.</p>
+      
+      <div class="hero-btns animate stagger-2">
+        <a href="contact.html" class="btn btn-primary">Work With Me</a>
+        <a href="https://wa.me/919778179727" target="_blank" class="btn btn-outline"><i class="fab fa-whatsapp" style="margin-right:8px; font-size:1.1rem;"></i>Message on WhatsApp</a>
+      </div>
+    </div>
+    
+    <div class="hero-image-wrapper animate stagger-3">
+      <div class="hero-shape"></div>
+      
+      <!-- Uploaded portrait image -->
+      <img src="anshid.jpg.jpeg" alt="Anshid CK - SEO Specialist in Malappuram" class="profile-img" onerror="this.src='https://via.placeholder.com/400x500/151B29/FF6B35?text=Portrait+Image'">
+      
+      <div class="floating-badge badge-1">
+        <i class="fas fa-chart-line"></i>
+        <p>Performance<br>Marketer</p>
+      </div>
+      
+      <div class="floating-badge badge-2">
+        <i class="fab fa-google"></i>
+        <p>SEO<br>Specialist</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Preview Section -->
+  <section class="section" id="about" style="background-color: transparent;">
+    <div class="container grid-2">
+      <div class="about-img animate stagger-1">
+        <img src="assets/about-preview.jpg" alt="Digital Marketing Expert in Malappuram" style="width:100%; border-radius:15px; border:1px solid rgba(255,255,255,0.05);" onerror="this.src='https://via.placeholder.com/600x400/151B29/ffffff?text=About+Preview+Image'">
+      </div>
+      <div class="about-text animate stagger-2" style="display:flex; flex-direction:column; justify-content:center;">
+        <div class="section-title" style="text-align:left; margin-bottom:2rem;">
+          <h2>About Me</h2>
+        </div>
+        <p>I'm Muhammed Anshid Chelekodan, a digital marketing professional dedicated to helping brands improve their online visibility, generate quality leads, and scale their performance.</p>
+        <p>Whether you need to dominate local search as an SEO Specialist in Malappuram or you're looking for a Performance Marketer in Kerala to drive serious ROI from your ads, I build strategies rooted in how real people interact with your brand online.</p>
+        <div style="margin-top: 1.5rem; background: rgba(21, 27, 41, 0.8); padding: 1rem; border-radius: 10px; border: 1px solid rgba(255,107,53,0.2);">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom: 8px;">
+            <i class="fas fa-envelope text-accent"></i> <a href="mailto:anshidchelekodan@gmail.com" style="color:#fff;">anshidchelekodan@gmail.com</a>
+          </div>
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom: 8px;">
+            <i class="fab fa-whatsapp text-accent"></i> <a href="https://wa.me/919778179727" target="_blank" style="color:#fff;">+91 9778179727</a>
+          </div>
+          <div style="display:flex; align-items:center; gap:10px;">
+            <i class="fab fa-linkedin text-accent"></i> <a href="https://www.linkedin.com/in/mohammad-anshid-ck-9123462aa" target="_blank" style="color:#fff;">LinkedIn Profile</a>
+          </div>
+        </div>
+        <a href="about.html" class="text-accent" style="font-weight:600; margin-top:1.5rem; display:inline-block;">Read My Full Story <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="section" style="background-color: rgba(13, 18, 28, 0.6); backdrop-filter: blur(5px);">
+    <div class="container">
+      <div class="section-title animate stagger-1">
+        <h2>Core Expertise</h2>
+        <p>The tools and strategies I use to drive business growth</p>
+      </div>
+      
+      <div class="grid grid-2">
+        <div class="skills-col animate stagger-2">
+          
+          <div class="skill-bar-container">
+            <div class="skill-info">
+              <span>SEO</span>
+              <span>95%</span>
+            </div>
+            <div class="progress-bar">
+              <span class="progress-line"><span data-width="95%"></span></span>
+            </div>
+          </div>
+          
+          <div class="skill-bar-container">
+            <div class="skill-info">
+              <span>Keyword Research</span>
+              <span>96%</span>
+            </div>
+            <div class="progress-bar">
+              <span class="progress-line"><span data-width="96%"></span></span>
+            </div>
+          </div>
+          
+          <div class="skill-bar-container">
+            <div class="skill-info">
+              <span>Google Analytics</span>
+              <span>85%</span>
+            </div>
+            <div class="progress-bar">
+              <span class="progress-line"><span data-width="85%"></span></span>
+            </div>
+          </div>
+          
+          <div class="skill-bar-container">
+            <div class="skill-info">
+              <span>Social Media Marketing</span>
+              <span>88%</span>
+            </div>
+            <div class="progress-bar">
+              <span class="progress-line"><span data-width="88%"></span></span>
+            </div>
+          </div>
+          
+        </div>
+        
+        <div class="skills-col animate stagger-3">
+          
+          <div class="skill-bar-container">
+            <div class="skill-info">
+              <span>Meta Ads</span>
+              <span>92%</span>
+            </div>
+            <div class="progress-bar">
+              <span class="progress-line"><span data-width="92%"></span></span>
+            </div>
+          </div>
+          
+          <div class="skill-bar-container">
+            <div class="skill-info">
+              <span>Google Ads</span>
+              <span>90%</span>
+            </div>
+            <div class="progress-bar">
+              <span class="progress-line"><span data-width="90%"></span></span>
+            </div>
+          </div>
+          
+          <div class="skill-bar-container">
+            <div class="skill-info">
+              <span>Content Strategy</span>
+              <span>80%</span>
+            </div>
+            <div class="progress-bar">
+              <span class="progress-line"><span data-width="80%"></span></span>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="section" style="background-color: transparent;">
+    <div class="container">
+      <div class="section-title animate stagger-1">
+        <h2>My Services</h2>
+        <p>Comprehensive digital solutions tailored for your business</p>
+      </div>
+      
+      <div class="grid grid-3">
+        <div class="card animate stagger-2" style="background-color: rgba(21, 27, 41, 0.8); backdrop-filter: blur(10px);">
+          <i class="fas fa-search service-icon"></i>
+          <h3>SEO Optimization</h3>
+          <p>Boost your organic visibility with on-page, off-page, and technical SEO tailored for local and global reach in Malappuram and beyond.</p>
+        </div>
+        
+        <div class="card animate stagger-3" style="background-color: rgba(21, 27, 41, 0.8); backdrop-filter: blur(10px);">
+          <i class="fab fa-google service-icon"></i>
+          <h3>Google Ads Management</h3>
+          <p>Data-driven Search and Display campaigns that capture high-intent users directly at their moment of search.</p>
+        </div>
+        
+        <div class="card animate stagger-4" style="background-color: rgba(21, 27, 41, 0.8); backdrop-filter: blur(10px);">
+          <i class="fab fa-facebook service-icon"></i>
+          <h3>Meta Ads Campaigns</h3>
+          <p>Laser-focused advertising on Facebook and Instagram to build brand awareness, discoverability, and drive lead generation.</p>
+        </div>
+
+        <div class="card animate stagger-2" style="background-color: rgba(21, 27, 41, 0.8); backdrop-filter: blur(10px);">
+          <i class="fas fa-hashtag service-icon"></i>
+          <h3>Social Media Marketing</h3>
+          <p>Engage your audience and build brand loyalty through consistent, creative social media strategies and community management.</p>
+        </div>
+        
+        <div class="card animate stagger-3" style="background-color: rgba(21, 27, 41, 0.8); backdrop-filter: blur(10px);">
+          <i class="fas fa-laptop-code service-icon"></i>
+          <h3>Website Optimization</h3>
+          <p>Improving site speed, user experience, and conversion rate optimization to turn your visitors into active leads.</p>
+        </div>
+      </div>
+      
+      <div class="text-center animate stagger-4" style="text-align:center; margin-top:3rem;">
+        <a href="services.html" class="btn btn-outline">View All Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work Approach Section -->
+  <section class="section" style="background-color: rgba(13, 18, 28, 0.6); backdrop-filter: blur(5px);">
+    <div class="container">
+      <div class="section-title animate stagger-1">
+        <h2>My Work Approach</h2>
+        <p>A systematic framework for predictable growth</p>
+      </div>
+      
+      <div class="approach-steps">
+        <div class="step animate stagger-2">
+          <div class="step-number">1</div>
+          <h3>Understand the Brand</h3>
+          <p>Deep dive into your business model, target audience, and competitive landscape to establish a solid foundation before spending any budget.</p>
+        </div>
+        
+        <div class="step animate stagger-3">
+          <div class="step-number">2</div>
+          <h3>Plan Strategies</h3>
+          <p>Develop customized, actionable roadmaps combining SEO, content strategy, and paid channels specifically aligned with your unique goals.</p>
+        </div>
+        
+        <div class="step animate stagger-4">
+          <div class="step-number">3</div>
+          <h3>Execute Campaigns</h3>
+          <p>Implement the strategies with precision, leveraging high-quality creatives, optimized technical setups, and rigorous split testing.</p>
+        </div>
+        
+        <div class="step animate stagger-2">
+          <div class="step-number">4</div>
+          <h3>Analyze Performance</h3>
+          <p>Monitor key metrics rigorously in Google Analytics. The data tells us the story of what's working and what needs immediate adjustment.</p>
+        </div>
+        
+        <div class="step animate stagger-3">
+          <div class="step-number">5</div>
+          <h3>Optimize Continuously</h3>
+          <p>Refine and scale campaigns horizontally and vertically based on data insights to ensure maximum, sustainable, long-term growth.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Placeholder -->
+  <section class="section" style="background-color: transparent;">
+    <div class="container">
+      <div class="section-title animate stagger-1">
+        <h2>Client Testimonials</h2>
+        <p>What partners say about my work</p>
+      </div>
+      
+      <div class="grid grid-2">
+        <div class="card animate stagger-2">
+          <div style="color:var(--accent-color); font-size:1.5rem; margin-bottom:1rem;"><i class="fas fa-quote-left"></i></div>
+          <p>"Anshid completely transformed our online presence. Since he took over our SEO and Meta ads, our lead generation has increased by 150%. Highly recommended digital marketing strategist!"</p>
+          <div style="margin-top:1.5rem; display:flex; align-items:center; gap:1rem;">
+            <div style="width:50px; height:50px; background:#2a3143; border-radius:50%;"></div>
+            <div>
+              <h4 style="margin:0; font-size:1rem;">Client Name</h4>
+              <p style="margin:0; font-size:0.8rem;">Business Owner, Malappuram</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card animate stagger-3">
+          <div style="color:var(--accent-color); font-size:1.5rem; margin-bottom:1rem;"><i class="fas fa-quote-left"></i></div>
+          <p>"Finding a performance marketer in Kerala who truly understands data-driven ROI is rare. Anshid's structured approach brought us predictable and scalable growth within months."</p>
+          <div style="margin-top:1.5rem; display:flex; align-items:center; gap:1rem;">
+            <div style="width:50px; height:50px; background:#2a3143; border-radius:50%;"></div>
+            <div>
+              <h4 style="margin:0; font-size:1rem;">Client Name</h4>
+              <p style="margin:0; font-size:0.8rem;">E-commerce Founder</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section" style="background: linear-gradient(135deg, rgba(255,107,53,0.1) 0%, rgba(11,15,25,1) 100%); border-top: 1px solid rgba(255,107,53,0.2); border-bottom: 1px solid rgba(255,107,53,0.2);">
+    <div class="container" style="text-align:center;">
+      <h2 class="animate stagger-1" style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom:1.5rem;">Let's grow your business online.</h2>
+      <p class="animate stagger-2" style="font-size:1.2rem; max-width:600px; margin:0 auto 2.5rem auto;">Ready to dominate your market? Get in touch today for a free digital marketing consultation.</p>
+      <a href="contact.html" class="btn btn-primary animate stagger-3" style="font-size:1.1rem; padding: 1rem 3rem;">Start Your Project</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="social-links">
+        <a href="https://www.instagram.com/_anshee___" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/mohammad-anshid-ck-9123462aa" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.facebook.com/share/16oyZso423" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://x.com/AnshidCK727" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://wa.me/919778179727" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/919778179727" class="float-wa" target="_blank"><i class="fab fa-whatsapp"></i></a><script src="main.js"></script>
+</body>
+</html>
+

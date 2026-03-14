@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog & Insights | SEO Specialist in Malappuram</title>
+  <meta name="description" content="Read the latest insights on SEO, digital marketing trends in Kerala, and Google Ads strategies for small businesses.">
+  <meta name="keywords" content="Digital Marketing Trends in Kerala, Local SEO in Malappuram, Google Ads vs Meta Ads">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  
+  <style>
+    .page-header {
+      padding: 150px 0 80px 0;
+      background: linear-gradient(180deg, rgba(11,15,25,1) 0%, rgba(21,27,41,1) 100%);
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .page-header h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 1rem;
+    }
+    
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2.5rem;
+    }
+    
+    .blog-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .blog-card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-5px);
+      border-color: rgba(255, 107, 53, 0.2);
+    }
+    
+    .blog-img-wrapper {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+      background-color: #0d121c;
+    }
+    
+    .blog-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .blog-card:hover .blog-img {
+      transform: scale(1.05);
+    }
+    
+    .blog-content {
+      padding: 2rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .blog-meta {
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+    
+    .blog-category {
+      color: var(--accent-color);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .blog-title {
+      font-size: 1.3rem;
+      color: #fff;
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+    
+    .blog-excerpt {
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+      flex-grow: 1;
+    }
+    
+    .read-more {
+      color: var(--accent-color);
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: auto;
+    }
+    
+    .read-more i {
+      transition: transform 0.3s ease;
+    }
+    
+    .blog-card:hover .read-more i {
+      transform: translateX(5px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">ANSHID<span class="text-accent">.</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="blog.html" class="active">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="header-socials"><a href="https://www.instagram.com/_anshee___" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://www.linkedin.com/in/mohammad-anshid-ck-9123462aa" target="_blank"><i class="fab fa-linkedin"></i></a><a href="https://www.facebook.com/share/16oyZso423" target="_blank"><i class="fab fa-facebook"></i></a><a href="https://x.com/AnshidCK727" target="_blank"><i class="fa-brands fa-x-twitter"></i></a><a href="https://wa.me/919778179727" target="_blank"><i class="fab fa-whatsapp"></i></a></div><button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container animate stagger-1">
+      <h1>Latest Insights</h1>
+      <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">Thoughts on SEO, digital trends, and measurable marketing.</p>
+    </div>
+  </section>
+
+  <!-- Blog Grid Section -->
+  <section class="section">
+    <div class="container">
+      <div class="blog-grid">
+        
+        <!-- Post 1 -->
+        <article class="blog-card animate stagger-1">
+          <div class="blog-img-wrapper">
+            <img src="assets/blog-1.jpg" alt="SEO Future" class="blog-img" onerror="this.src='https://via.placeholder.com/600x400/151B29/FF6B35?text=SEO+2026'">
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span class="blog-category">SEO Strategy</span>
+              <span>Mar 12, 2026</span>
+            </div>
+            <h2 class="blog-title"><a href="#">Why Businesses Need SEO in 2026</a></h2>
+            <p class="blog-excerpt">The search landscape is changing with AI overviews. Discover why technical SEO and semantic content are more critical than ever.</p>
+            <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+        
+        <!-- Post 2 -->
+        <article class="blog-card animate stagger-2">
+          <div class="blog-img-wrapper">
+            <img src="assets/blog-2.jpg" alt="Kerala Marketing Trends" class="blog-img" onerror="this.src='https://via.placeholder.com/600x400/151B29/ffffff?text=Marketing+Trends'">
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span class="blog-category">Industry Trends</span>
+              <span>Feb 25, 2026</span>
+            </div>
+            <h2 class="blog-title"><a href="#">Digital Marketing Trends in Kerala</a></h2>
+            <p class="blog-excerpt">A deep dive into how e-commerce and local retail are shifting their spend towards performance marketing in Kerala.</p>
+            <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+        
+        <!-- Post 3 -->
+        <article class="blog-card animate stagger-3">
+          <div class="blog-img-wrapper">
+            <img src="assets/blog-3.jpg" alt="Local SEO Malappuram" class="blog-img" onerror="this.src='https://via.placeholder.com/600x400/151B29/FF6B35?text=Local+SEO'">
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span class="blog-category">Local SEO</span>
+              <span>Jan 18, 2026</span>
+            </div>
+            <h2 class="blog-title"><a href="#">How Local SEO Helps Businesses in Malappuram</a></h2>
+            <p class="blog-excerpt">Local search intent is at its peak. Here is an actionable guide to dominating the Google Map Pack in your specific region.</p>
+            <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+        
+        <!-- Post 4 -->
+        <article class="blog-card animate stagger-4">
+          <div class="blog-img-wrapper">
+            <img src="assets/blog-4.jpg" alt="Google Ads vs Meta Ads" class="blog-img" onerror="this.src='https://via.placeholder.com/600x400/151B29/ffffff?text=Ads+Comparison'">
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span class="blog-category">Paid Ads</span>
+              <span>Jan 05, 2026</span>
+            </div>
+            <h2 class="blog-title"><a href="#">Google Ads vs Meta Ads for Small Businesses</a></h2>
+            <p class="blog-excerpt">Which platform should you allocate your marketing budget to? A straightforward comparison of intent vs discovery.</p>
+            <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="social-links">
+        <a href="https://www.instagram.com/_anshee___" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/mohammad-anshid-ck-9123462aa" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.facebook.com/share/16oyZso423" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://x.com/AnshidCK727" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://wa.me/919778179727" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/919778179727" class="float-wa" target="_blank"><i class="fab fa-whatsapp"></i></a><script src="main.js"></script>
+</body>
+</html>
+
+
