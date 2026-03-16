@@ -10,7 +10,8 @@
   --accent-hover: #ff8559;
   --text-primary: #FFFFFF;
   --text-secondary: #94A3B8;
-  --font-main: 'Georgia', serif;
+  --font-main: 'Montserrat', sans-serif;
+  --font-heading: 'Nevis', 'Montserrat', sans-serif;
   --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.5);
   --shadow-hover: 0 15px 40px rgba(255, 107, 53, 0.15);
   --transition: all 0.3s ease;
@@ -36,14 +37,16 @@ body {
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 1rem;
+  letter-spacing: -0.02em;
 }
 
 h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
 h2 { font-size: clamp(2rem, 4vw, 3rem); }
-h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+h3 { font-size: clamp(1.5rem, 3vw, 2.2rem); }
 
 p {
   color: var(--text-secondary);
@@ -133,10 +136,16 @@ a:hover {
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.navbar .container {
+.navbar .container.container-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.logo-group {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
 }
 
 .logo {
@@ -284,13 +293,16 @@ footer {
 /* Header Socials */
 .header-socials {
   display: flex;
-  gap: 12px;
   align-items: center;
 }
 .header-socials a {
   color: var(--text-primary);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   transition: var(--transition);
+  margin-right: 12px;
+}
+.header-socials a:last-child {
+  margin-right: 0;
 }
 .header-socials a:hover {
   color: var(--accent-color);

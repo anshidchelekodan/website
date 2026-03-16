@@ -40,12 +40,12 @@ const observer = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
-      // Special case for progress bars
-      if (entry.target.classList.contains('skill-bar-container')) {
-        const progressLines = entry.target.querySelectorAll('.progress-line span');
-        progressLines.forEach(line => {
-          line.style.width = line.getAttribute('data-width');
-        });
+      // Updated animation for redesigned progress bars
+      if (entry.target.classList.contains('expertise-item')) {
+        const progressFill = entry.target.querySelector('.skill-progress-fill');
+        if (progressFill) {
+          progressFill.style.width = progressFill.getAttribute('data-width');
+        }
       }
       observer.unobserve(entry.target);
     }

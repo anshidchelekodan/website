@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Digital Marketing Services | SEO Specialist in Malappuram</title>
-  <meta name="description" content="Explore my digital marketing services including SEO Optimization, Google Ads Management, Meta Ads Campaigns, Social Media Marketing, and Website Optimization.">
+  <meta name="description" content="Explore my digital marketing services including SEO Optimization, Performance Marketing, Social Media Strategy, and Conversion Optimization.">
   <meta name="keywords" content="SEO Specialists in Malappuram, Performance Marketing Kerala, Digital Marketing Services, Google Ads Expert">
   
   <!-- SEO JSON-LD Schema -->
@@ -22,15 +22,44 @@
   }
   </script>
   
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Styles -->
   <link rel="stylesheet" href="style.css">
   
   <style>
+    /* Synchronization with Homepage Header */
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    
+    .header-socials {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header-socials a {
+      color: var(--text-primary);
+      font-size: 1.1rem;
+      transition: var(--transition);
+    }
+
+    .header-socials a:hover {
+      color: var(--accent-color);
+      transform: translateY(-2px);
+    }
+
     .page-header {
-      padding: 150px 0 80px 0;
+      padding: 160px 0 80px 0;
       background: linear-gradient(180deg, rgba(11,15,25,1) 0%, rgba(21,27,41,1) 100%);
       text-align: center;
       border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -40,63 +69,88 @@
       font-size: clamp(2.5rem, 5vw, 4rem);
       margin-bottom: 1rem;
     }
-    
+
+    /* Services Grid Model */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 2.5rem;
+      margin-top: 2rem;
+    }
+
     .service-detail-card {
       background: var(--card-bg);
-      border-radius: 15px;
+      border-radius: 20px;
       overflow: hidden;
-      margin-bottom: 4rem;
       border: 1px solid rgba(255,255,255,0.05);
-      transition: var(--transition);
+      transition: all 0.4s ease;
       display: flex;
+      flex-direction: column;
+      height: 100%;
     }
     
     .service-detail-card:hover {
-      box-shadow: var(--shadow-hover);
-      transform: translateY(-5px);
+      border-color: var(--accent-color);
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
     }
     
     .service-detail-icon {
-      background: linear-gradient(135deg, rgba(255,107,53,0.2) 0%, rgba(11,15,25,1) 100%);
-      width: 30%;
-      min-width: 250px;
+      background: linear-gradient(135deg, rgba(255,107,53,0.1) 0%, rgba(11,15,25,0.4) 100%);
+      padding: 3.5rem 2rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-right: 1px solid rgba(255,255,255,0.05);
+      position: relative;
     }
     
     .service-detail-icon i {
-      font-size: 5rem;
+      font-size: 4.5rem;
       color: var(--accent-color);
+      transition: all 0.4s ease;
+    }
+
+    .service-detail-card:hover .service-detail-icon i {
+      transform: scale(1.1) rotate(5deg);
     }
     
     .service-detail-content {
-      padding: 3rem;
-      width: 70%;
+      padding: 2.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
     }
     
     .service-detail-content h2 {
-      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
       color: #fff;
+    }
+
+    .service-detail-content p {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      font-size: 1.05rem;
     }
     
     .service-features {
       list-style: none;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-top: 1.5rem;
+      grid-template-columns: 1fr;
+      gap: 0.9rem;
+      margin-top: auto;
     }
     
     .service-features li {
       position: relative;
-      padding-left: 25px;
+      padding-left: 30px;
       color: var(--text-secondary);
+      font-size: 0.95rem;
     }
     
     .service-features li::before {
-      content: '\f00c';
+      content: '\f058';
       font-family: 'Font Awesome 6 Free';
       font-weight: 900;
       position: absolute;
@@ -104,22 +158,21 @@
       color: var(--accent-color);
     }
     
-    @media (max-width: 768px) {
-      .service-detail-card {
-        flex-direction: column;
+    @media (max-width: 992px) {
+      .services-grid {
+        grid-template-columns: 1fr;
       }
-      .service-detail-icon {
-        width: 100%;
-        padding: 3rem 0;
-        border-right: none;
-        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    @media (max-width: 768px) {
+      .page-header {
+        padding: 130px 0 60px 0;
       }
       .service-detail-content {
-        width: 100%;
         padding: 2rem;
       }
-      .service-features {
-        grid-template-columns: 1fr;
+      .services-grid {
+        gap: 1.5rem;
       }
     }
   </style>
@@ -128,8 +181,18 @@
 
   <!-- Navbar -->
   <nav class="navbar">
-    <div class="container">
-      <a href="index.html" class="logo">ANSHID<span class="text-accent">.</span></a>
+    <div class="container container-nav">
+      <div class="logo-group">
+        <a href="index.html" class="logo">ANSHID<span class="text-accent">.</span></a>
+        <div class="header-socials">
+          <a href="https://www.instagram.com/_anshee___" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/mohammad-anshid-ck-9123462aa" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.facebook.com/share/16oyZso423" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://x.com/AnshidCK727" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://wa.me/919778179727" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
@@ -138,7 +201,8 @@
         <li><a href="blog.html">Blog</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-      <div class="header-socials"><a href="https://www.instagram.com/_anshee___" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://www.linkedin.com/in/mohammad-anshid-ck-9123462aa" target="_blank"><i class="fab fa-linkedin"></i></a><a href="https://www.facebook.com/share/16oyZso423" target="_blank"><i class="fab fa-facebook"></i></a><a href="https://x.com/AnshidCK727" target="_blank"><i class="fa-brands fa-x-twitter"></i></a><a href="https://wa.me/919778179727" target="_blank"><i class="fab fa-whatsapp"></i></a></div><button class="mobile-menu-btn">
+      
+      <button class="mobile-menu-btn">
         <i class="fas fa-bars"></i>
       </button>
     </div>
@@ -155,92 +219,88 @@
   <!-- Detailed Services Section -->
   <section class="section">
     <div class="container">
-      
-      <!-- Service 1 -->
-      <div class="service-detail-card animate stagger-1">
-        <div class="service-detail-icon">
-          <i class="fas fa-search-dollar"></i>
+      <div class="services-grid">
+        <!-- Service 1 -->
+        <div class="service-detail-card animate stagger-1">
+          <div class="service-detail-icon">
+            <i class="fas fa-search-dollar"></i>
+          </div>
+          <div class="service-detail-content">
+            <h2>SEO Optimization</h2>
+            <p>Search Engine Optimization is the backbone of organic growth. I specialize in driving high-intent traffic by building authority and ensuring your brand stays on top of search results.</p>
+            <ul class="service-features">
+              <li>Comprehensive Technical SEO Audits</li>
+              <li>Local SEO & Google Business Optimization</li>
+              <li>Strategic Keyword Research & Mapping</li>
+              <li>High-Impact Content Strategy</li>
+              <li>Premium Quality Link Building</li>
+            </ul>
+          </div>
         </div>
-        <div class="service-detail-content">
-          <h2>SEO Optimization</h2>
-          <p>Search Engine Optimization is the backbone of organic growth. I specialize in driving high-intent traffic to your website by building authority and ensuring maximum visibility on Google search results.</p>
-          <ul class="service-features">
-            <li>On-page & off-page SEO</li>
-            <li>Technical SEO</li>
-            <li>Keyword research & mapping</li>
-            <li>Local SEO strategies</li>
-            <li>Content gap analysis</li>
-            <li>Backlink building</li>
-          </ul>
+        
+        <!-- Service 2 -->
+        <div class="service-detail-card animate stagger-2">
+          <div class="service-detail-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <div class="service-detail-content">
+            <h2>Performance Marketing</h2>
+            <p>Maximize your Return On Ad Spend (ROAS) with meticulously crafted paid campaigns. Through rigorous A/B testing and data analysis, I turn your ad budget into scalable revenue tracking every rupee.</p>
+            <ul class="service-features">
+              <li>Google Search, Display & Video Ads</li>
+              <li>Meta Lead Generation & Sales Ads</li>
+              <li>Advanced Conversion Tracking & API</li>
+              <li>Retargeting & LAL Audience Setup</li>
+              <li>Campaign Scaling & Budget Management</li>
+            </ul>
+          </div>
         </div>
-      </div>
-      
-      <!-- Service 2 -->
-      <div class="service-detail-card animate stagger-2">
-        <div class="service-detail-icon">
-          <i class="fas fa-chart-line"></i>
+        
+        <!-- Service 3 -->
+        <div class="service-detail-card animate stagger-3">
+          <div class="service-detail-icon">
+            <i class="fas fa-share-nodes"></i>
+          </div>
+          <div class="service-detail-content">
+            <h2>Social Media Strategy</h2>
+            <p>Building a brand is more than just posting. I help you connect with your audience authentically, creating structured content plans that drive loyalty and engagement across platforms.</p>
+            <ul class="service-features">
+              <li>Brand Identity & Positioning Strategy</li>
+              <li>Creative Content Direction & Planning</li>
+              <li>Community Engagement & Management</li>
+              <li>Influencer & Collaboration Strategy</li>
+              <li>In-depth Social Analytics & Reporting</li>
+            </ul>
+          </div>
         </div>
-        <div class="service-detail-content">
-          <h2>Google Ads Management</h2>
-          <p>Maximize your Return On Ad Spend (ROAS) with meticulously crafted paid campaigns. As a performance marketer, through rigorous A/B testing and continuous optimization, I turn ad spend into profitable revenue.</p>
-          <ul class="service-features">
-            <li>Google Ads (Search, Display, Shopping)</li>
-            <li>Meta Ads (Facebook & Instagram)</li>
-            <li>Advanced conversion tracking</li>
-            <li>Retargeting & Lookalike audiences</li>
-            <li>Campaign scaling methodologies</li>
-            <li>A/B split testing</li>
-          </ul>
-        </div>
-      </div>
-      
-      <!-- Service 3 -->
-      <div class="service-detail-card animate stagger-3">
-        <div class="service-detail-icon">
-          <i class="fas fa-hashtag"></i>
-        </div>
-        <div class="service-detail-content">
-          <h2>Social Media Marketing</h2>
-          <p>Your audience spends hours on social media. I help you connect with them authentically, building brand awareness, loyalty, and an engaged community across all major platforms.</p>
-          <ul class="service-features">
-            <li>Instagram growth & engagement</li>
-            <li>Facebook page management</li>
-            <li>LinkedIn B2B strategies</li>
-            <li>Content calendar creation</li>
-            <li>Community management</li>
-            <li>Social media analytics</li>
-          </ul>
-        </div>
-      </div>
-      
-      <!-- Service 4 -->
-      <div class="service-detail-card animate stagger-4">
-        <div class="service-detail-icon">
-          <i class="fab fa-wordpress"></i>
-        </div>
-        <div class="service-detail-content">
-          <h2>Website Optimization</h2>
-          <p>A fast, secure, and user-friendly website is crucial for conversion. I manage, update, and optimize your WordPress ecosystem to ensure a seamless experience for your visitors.</p>
-          <ul class="service-features">
-            <li>Speed optimization (Core Web Vitals)</li>
-            <li>UI/UX enhancements</li>
-            <li>Theme & plugin management</li>
-            <li>Security implementation</li>
-            <li>Landing page creation</li>
-            <li>Form & CRM integrations</li>
-          </ul>
+        
+        <!-- Service 4 -->
+        <div class="service-detail-card animate stagger-4">
+          <div class="service-detail-icon">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <div class="service-detail-content">
+            <h2>Conversion Optimization</h2>
+            <p>Traffic is useless if it doesn't convert. I optimize your digital ecosystem to ensure a seamless user journey, improving speed, UX, and technical infrastructure for maximum ROI.</p>
+            <ul class="service-features">
+              <li>Core Web Vitals & Speed Optimization</li>
+              <li>UI/UX Design Audits & Implementation</li>
+              <li>High-Conversion Landing Page Design</li>
+              <li>CRM & Marketing Tool Integrations</li>
+              <li>Technical Maintenance & Growth Audits</li>
+            </ul>
+          </div>
         </div>
       </div>
-      
     </div>
   </section>
 
   <!-- CTA -->
   <section class="section" style="background-color: #0d121c;">
     <div class="container" style="text-align: center;">
-      <h2 class="animate stagger-1">Not sure which service you need?</h2>
-      <p class="animate stagger-2" style="margin-bottom: 2rem;">Let's discuss your current business status and map out the exact strategy required for your next growth phase.</p>
-      <a href="https://wa.me/919778179727" target="_blank" class="btn btn-primary animate stagger-3"><i class="fab fa-whatsapp" style="margin-right:8px; font-size:1.1rem;"></i>Start a Conversation</a>
+      <h2 class="animate stagger-1">Not sure which strategy you need?</h2>
+      <p class="animate stagger-2" style="margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">Let's discuss your current business goals and map out the exact digital roadmap required for your next growth phase.</p>
+      <a href="https://wa.me/919778179727" target="_blank" class="btn btn-primary animate stagger-3"><i class="fab fa-whatsapp" style="margin-right:8px; font-size:1.1rem;"></i>Start Free Consultation</a>
     </div>
   </section>
 
@@ -257,8 +317,7 @@
     </div>
   </footer>
 
-  <a href="https://wa.me/919778179727" class="float-wa" target="_blank"><i class="fab fa-whatsapp"></i></a><script src="main.js"></script>
+  <a href="https://wa.me/919778179727" class="float-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  <script src="main.js"></script>
 </body>
 </html>
-
-
