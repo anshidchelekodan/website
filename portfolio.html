@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio | Anshid CK Strategy</title>
   <meta name="description" content="View the portfolio and case studies of Muhammed Anshid Chelekodan, highlighting SEO campaigns, Google Ads, and social media success stories.">
-  <meta name="keywords" content="Portfolio Website, Digital Marketing Case Studies, SEO Specialist in Malappuram">
+  <meta name="keywords" content="Portfolio Website, Digital Marketing Case Studies, SEO Specialist in Nilambur">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,93 +15,149 @@
   
   <style>
     .page-header {
-      padding: 150px 0 80px 0;
-      background: linear-gradient(180deg, rgba(11,15,25,1) 0%, rgba(21,27,41,1) 100%);
+      padding: 160px 0 80px 0;
+      background: linear-gradient(180deg, #0B0F19 0%, #111827 100%);
       text-align: center;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
     
     .page-header h1 {
       font-size: clamp(2.5rem, 5vw, 4rem);
       margin-bottom: 1rem;
     }
-    
-    /* Portfolio Grid */
+
+    /* Portfolio Grid System */
     .portfolio-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-top: 60px;
     }
     
-    .portfolio-item {
+    @property --angle {
+      syntax: "<angle>";
+      initial-value: 0deg;
+      inherits: false;
+    }
+
+    .portfolio-card {
       position: relative;
-      border-radius: 15px;
-      overflow: hidden;
-      aspect-ratio: 4/3;
-      cursor: pointer;
-    }
-    
-    .portfolio-img {
-      width: 100%;
+      background: #0B0F19;
+      border-radius: 16px;
+      padding: 3px; /* Border weight */
+      overflow: visible; /* Glow clarity */
+      transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s ease;
-      background-color: var(--card-bg);
     }
     
-    .portfolio-overlay {
+    .portfolio-card::after {
+      content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
+      inset: 0;
+      padding: 3px; /* Matches padding */
+      border-radius: 16px;
+      background: transparent;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .portfolio-card:hover::after {
+      background: conic-gradient(
+        from var(--angle),
+        rgba(255, 107, 53, 0.02) 0deg,
+        rgba(255, 107, 53, 0.05) 40deg,
+        rgba(255, 107, 53, 0.15) 80deg,
+        rgba(255, 107, 53, 0.4) 120deg,
+        rgba(255, 107, 53, 0.8) 150deg,
+        rgba(255, 107, 53, 1) 180deg,
+        rgba(255, 107, 53, 0.8) 210deg,
+        rgba(255, 107, 53, 0.4) 240deg,
+        rgba(255, 107, 53, 0.15) 280deg,
+        rgba(255, 107, 53, 0.05) 320deg,
+        rgba(255, 107, 53, 0.02) 360deg
+      );
+      animation: rotateSnakePortfolio 3s linear infinite;
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      border-radius: 16px;
+    }
+
+    @keyframes rotateSnakePortfolio {
+      to { --angle: 360deg; }
+    }
+
+    /* Fallback/Cleanup old pseudo-element */
+    .portfolio-card::before {
+      display: none !important;
+    }
+
+    /* Card Inner Layer (Important) */
+    .portfolio-card-inner {
+      position: relative;
+      background: #0B0F19;
+      border-radius: 14px;
       height: 100%;
-      background: linear-gradient(to top, rgba(11,15,25,0.95), rgba(255,107,53,0.4));
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
-      padding: 2.5rem;
-      opacity: 0;
-      transition: opacity 0.4s ease;
+      z-index: 1;
     }
     
-    .portfolio-item:hover .portfolio-img {
-      transform: scale(1.1);
+    .portfolio-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: 0.5s ease;
     }
     
-    .portfolio-item:hover .portfolio-overlay {
-      opacity: 1;
+    .portfolio-content {
+      padding: 25px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      background: #0B0F19;
     }
     
-    .portfolio-category {
-      color: var(--accent-color);
-      font-size: 0.9rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 0.5rem;
-      transform: translateY(20px);
-      transition: transform 0.4s ease;
-    }
-    
-    .portfolio-title {
-      font-size: 1.5rem;
+    .portfolio-content h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
       color: #fff;
-      transform: translateY(20px);
-      transition: transform 0.4s ease 0.1s;
     }
     
-    .portfolio-item:hover .portfolio-category,
-    .portfolio-item:hover .portfolio-title {
-      transform: translateY(0);
+    .portfolio-content p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+      flex-grow: 1;
+    }
+    
+    .portfolio-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    }
+    
+    .portfolio-card:hover img {
+      transform: scale(1.05);
+    }
+
+    @media (min-width: 1200px) {
+      .portfolio-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
     
     @media (max-width: 768px) {
-      .portfolio-overlay {
-        opacity: 1;
-        background: linear-gradient(to top, rgba(11,15,25,0.9), transparent);
-      }
-      .portfolio-category, .portfolio-title {
-        transform: translateY(0);
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
       }
     }
   </style>
@@ -148,59 +204,58 @@
   <!-- Portfolio Grid Section -->
   <section class="section">
     <div class="container">
+      <div class="section-title animate stagger-2" style="text-align: left; margin-bottom: 3rem;">
+        <h2 style="margin-bottom: 1rem;">Digital Marketing Strategist in Nilambur – Portfolio</h2>
+        <p style="max-width: 800px; margin: 0;">Here are some of the digital marketing projects and campaigns I have worked on as a Digital Marketing Strategist in Nilambur, focusing on SEO, Google Ads, and social media growth strategies that deliver measurable results.</p>
+      </div>
+
       <div class="portfolio-grid">
         
         <!-- Project 1 -->
-        <div class="portfolio-item animate stagger-1">
-          <img src="assets/port-1.jpg" alt="Local Search Optimization" class="portfolio-img" onerror="this.src='https://via.placeholder.com/800x600/151B29/FF6B35?text=SEO+Campaign'">
-          <div class="portfolio-overlay">
-            <span class="portfolio-category">SEO Campaign</span>
-            <h3 class="portfolio-title">+200% Organic Traffic for E-com Client</h3>
+        <div class="portfolio-card animate stagger-1">
+          <div class="portfolio-card-inner">
+            <img src="assets/seo-campaign.png" alt="SEO Campaign – Local Business" class="portfolio-img">
+            <div class="portfolio-content">
+              <h3>SEO Campaign – Local Business</h3>
+              <p>Comprehensive technical and on-page SEO strategy for a local brand in Nilambur, resulting in a 200% increase in organic reach within 6 months.</p>
+              <a href="contact.html" class="btn btn-primary" style="margin-top: auto; align-self: flex-start;">View Details</a>
+            </div>
           </div>
         </div>
         
         <!-- Project 2 -->
-        <div class="portfolio-item animate stagger-2">
-          <img src="assets/port-2.jpg" alt="Social Media Engagement" class="portfolio-img" onerror="this.src='https://via.placeholder.com/800x600/151B29/ffffff?text=Social+Media'">
-          <div class="portfolio-overlay">
-            <span class="portfolio-category">Social Media Projects</span>
-            <h3 class="portfolio-title">Brand Building & Community Engagement</h3>
+        <div class="portfolio-card animate stagger-2">
+          <div class="portfolio-card-inner">
+            <img src="assets/google-ads.png" alt="Google Ads Lead Generation" class="portfolio-img">
+            <div class="portfolio-content">
+              <h3>Google Ads Lead Generation Campaign</h3>
+              <p>Performance-driven PPC campaigns that reduced CPA by 40% while exceeding monthly lead targets for a high-growth startup.</p>
+              <a href="contact.html" class="btn btn-primary" style="margin-top: auto; align-self: flex-start;">View Details</a>
+            </div>
           </div>
         </div>
         
         <!-- Project 3 -->
-        <div class="portfolio-item animate stagger-3">
-          <img src="assets/port-3.jpg" alt="Google Ads ROI" class="portfolio-img" onerror="this.src='https://via.placeholder.com/800x600/151B29/FF6B35?text=Google+Ads'">
-          <div class="portfolio-overlay">
-            <span class="portfolio-category">Google Ads Optimization</span>
-            <h3 class="portfolio-title">Lowering CPA by 40% in 3 Months</h3>
+        <div class="portfolio-card animate stagger-3">
+          <div class="portfolio-card-inner">
+            <img src="assets/social-media.png" alt="Social Media Growth Strategy" class="portfolio-img">
+            <div class="portfolio-content">
+              <h3>Social Media Growth Strategy</h3>
+              <p>Targeted community building and engagement strategies that increased follower count by 10k+ and boosted active community participation.</p>
+              <a href="contact.html" class="btn btn-primary" style="margin-top: auto; align-self: flex-start;">View Details</a>
+            </div>
           </div>
         </div>
         
         <!-- Project 4 -->
-        <div class="portfolio-item animate stagger-1">
-          <img src="assets/port-4.jpg" alt="Marketing Dashboards" class="portfolio-img" onerror="this.src='https://via.placeholder.com/800x600/151B29/ffffff?text=Analytics'">
-          <div class="portfolio-overlay">
-            <span class="portfolio-category">Analytics Dashboards</span>
-            <h3 class="portfolio-title">Data Visualization & Reporting Setup</h3>
-          </div>
-        </div>
-        
-        <!-- Project 5 -->
-        <div class="portfolio-item animate stagger-2">
-          <img src="assets/port-5.jpg" alt="SEO Content Strategy" class="portfolio-img" onerror="this.src='https://via.placeholder.com/800x600/151B29/FF6B35?text=Content+Strategy'">
-          <div class="portfolio-overlay">
-            <span class="portfolio-category">Content Strategies</span>
-            <h3 class="portfolio-title">B2B Content Pillar Creation</h3>
-          </div>
-        </div>
-        
-        <!-- Project 6 -->
-        <div class="portfolio-item animate stagger-3">
-          <img src="assets/port-6.jpg" alt="Meta Ads Scale" class="portfolio-img" onerror="this.src='https://via.placeholder.com/800x600/151B29/ffffff?text=Meta+Ads'">
-          <div class="portfolio-overlay">
-            <span class="portfolio-category">Performance Marketing</span>
-            <h3 class="portfolio-title">Scaling Meta Ads to Multiple Regions</h3>
+        <div class="portfolio-card animate stagger-1">
+          <div class="portfolio-card-inner">
+            <img src="assets/website-optimization.png" alt="Website SEO Optimization" class="portfolio-img">
+            <div class="portfolio-content">
+              <h3>Website SEO Optimization</h3>
+              <p>Technical performance and user experience optimization to transform a passive website into an active, high-ranking lead generation machine.</p>
+              <a href="contact.html" class="btn btn-primary" style="margin-top: auto; align-self: flex-start;">View Details</a>
+            </div>
           </div>
         </div>
         

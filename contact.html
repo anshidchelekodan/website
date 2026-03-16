@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact | Anshid CK</title>
-  <meta name="description" content="Get in touch with Muhammed Anshid Chelekodan, top digital marketing strategist in Malappuram, to skyrocket your business online.">
-  <meta name="keywords" content="Contact Digital Marketing Strategist, Marketing Consultant in Malappuram">
+  <meta name="description" content="Get in touch with Muhammed Anshid Chelekodan, top digital marketing strategist in Nilambur, to skyrocket your business online.">
+  <meta name="keywords" content="Contact Digital Marketing Strategist, Marketing Consultant in Nilambur">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,103 +28,113 @@
     
     .contact-container {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 4rem;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: start;
     }
     
-    /* Contact Form */
-    .contact-form {
-      background: var(--card-bg);
-      padding: 3.5rem;
-      border-radius: 15px;
-      border: 1px solid rgba(255,255,255,0.05);
-      box-shadow: var(--shadow-soft);
+    @media (min-width: 992px) {
+      .contact-container {
+        grid-template-columns: 0.8fr 1.2fr;
+      }
     }
     
+    /* Minimalist Contact Info Row */
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: flex-start;
+      margin-bottom: 2rem;
+    }
+    
+    .social-icon-box {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+    
+    .info-icon {
+      width: 45px;
+      height: 45px;
+      background: rgba(255, 107, 53, 0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FF6B35;
+      font-size: 1.4rem;
+      transition: var(--transition);
+    }
+    
+    .moving-border-container:hover .info-icon {
+      background: #FF6B35;
+      color: #0b0f19;
+      transform: scale(1.1);
+    }
+    
+    /* Vertical Form Styles */
     .form-group {
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
     }
     
     .form-group label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 500;
-      color: var(--text-secondary);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 0;
     }
     
     .form-control {
       width: 100%;
-      padding: 1rem;
-      background: rgba(11,15,25,0.5);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 8px;
+      padding: 1.2rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
       color: #fff;
-      font-family: inherit;
       font-size: 1rem;
       transition: var(--transition);
     }
     
     .form-control:focus {
       outline: none;
-      border-color: var(--accent-color);
-      box-shadow: 0 0 0 3px rgba(255,107,53,0.1);
+      border-color: #FF6B35;
+      background: rgba(255, 107, 53, 0.05);
+      box-shadow: 0 0 15px rgba(255, 107, 53, 0.2);
     }
     
-    textarea.form-control {
-      resize: vertical;
-      min-height: 150px;
+    .btn-primary {
+      background: #FF6B35;
+      border: none;
+      color: #fff;
+      padding: 1.2rem;
+      border-radius: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: var(--transition);
     }
     
-    /* Contact Details */
-    .contact-info {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-    
-    .info-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 1.5rem;
-    }
-    
-    .info-icon {
-      width: 50px;
-      height: 50px;
-      background: rgba(255,107,53,0.1);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--accent-color);
-      font-size: 1.2rem;
-      flex-shrink: 0;
-    }
-    
-    .info-text h3 {
-      font-size: 1.2rem;
-      margin-bottom: 0.2rem;
-    }
-    
-    .info-text a {
-      color: var(--text-secondary);
-    }
-    
-    .info-text a:hover {
-      color: var(--accent-color);
+    .btn-primary:hover {
+      background: #ff8559;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(255, 107, 53, 0.3);
     }
     
     .map-container {
-      width: 100%;
-      height: 300px;
-      border-radius: 15px;
+      width: 100% !important;
+      height: 400px;
+      border-radius: 20px;
       overflow: hidden;
-      margin-top: 2rem;
       border: 1px solid rgba(255,255,255,0.05);
       background-color: var(--card-bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
     
     @media (max-width: 992px) {
@@ -181,78 +191,77 @@
     <div class="container">
       <div class="contact-container">
         
-        <!-- Form -->
+        <!-- Details & Map (LEFT) -->
         <div class="animate stagger-1">
-          <form class="contact-form" action="#" method="POST" onsubmit="event.preventDefault(); alert('Form submitted!');">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 2rem; flex-wrap:wrap; gap:10px;">
-              <h2 style="margin:0;">Send a Message</h2>
-              <a href="https://wa.me/919778179727" target="_blank" class="btn btn-outline" style="padding: 0.5rem 1rem;"><i class="fab fa-whatsapp" style="margin-right:8px;"></i>Quick Chat</a>
-            </div>
-            
-            <div class="form-group">
-              <label for="name">Your Name</label>
-              <input type="text" id="name" class="form-control" placeholder="John Doe" required>
-            </div>
-            
-            <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" class="form-control" placeholder="john@example.com" required>
-            </div>
-            
-            <div class="form-group">
-              <label for="message">Your Message</label>
-              <textarea id="message" class="form-control" placeholder="How can I help your business grow?" required></textarea>
-            </div>
-            
-            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
-          </form>
-        </div>
-        
-        <!-- Details & Map -->
-        <div class="animate stagger-2">
-          <div class="contact-info">
-            
-            <div class="info-item">
-              <div class="info-icon"><i class="fas fa-envelope"></i></div>
-              <div class="info-text">
-                <h3>Email</h3>
-                <a href="mailto:anshidchelekodan@gmail.com">anshidchelekodan@gmail.com</a>
-              </div>
-            </div>
-            
-            <div class="info-item">
-              <div class="info-icon"><i class="fab fa-whatsapp"></i></div>
-              <div class="info-text">
-                <h3>WhatsApp/Phone</h3>
-                <a href="https://wa.me/919778179727" target="_blank">+91 9778179727</a>
-              </div>
-            </div>
-            
-            <div class="info-item">
-              <div class="info-icon"><i class="fab fa-linkedin-in"></i></div>
-              <div class="info-text">
-                <h3>LinkedIn</h3>
-                <a href="https://www.linkedin.com/in/mohammad-anshid-ck-9123462aa" target="_blank">linkedin.com/in/mohammad-anshid-ck-9123462aa</a>
-              </div>
-            </div>
-            
-            <div class="info-item">
-              <div class="info-icon"><i class="fab fa-instagram"></i></div>
-              <div class="info-text">
-                <h3>Instagram</h3>
-                <a href="https://www.instagram.com/_anshee___" target="_blank">@_anshee___</a>
-              </div>
-            </div>
-            
-          </div>
+          <h2 style="margin-bottom: 2rem;">Get in Touch</h2>
           
-          <!-- Map Placeholder -->
+          <div class="contact-info">
+            <!-- Email -->
+            <a href="mailto:anshidchelekodan@gmail.com" class="moving-border-container" style="border-radius: 15px;" title="Email Me">
+              <div class="moving-border-inner social-icon-box" style="border-radius: 13px; background: rgba(21, 27, 41, 0.7);">
+                <div class="info-icon"><i class="fas fa-envelope"></i></div>
+              </div>
+            </a>
+            
+            <!-- WhatsApp -->
+            <a href="https://wa.me/919778179727" target="_blank" class="moving-border-container" style="border-radius: 15px;" title="WhatsApp Me">
+              <div class="moving-border-inner social-icon-box" style="border-radius: 13px; background: rgba(21, 27, 41, 0.7);">
+                <div class="info-icon"><i class="fab fa-whatsapp"></i></div>
+              </div>
+            </a>
+            
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/mohammad-anshid-ck-9123462aa" target="_blank" class="moving-border-container" style="border-radius: 15px;" title="LinkedIn Profile">
+              <div class="moving-border-inner social-icon-box" style="border-radius: 13px; background: rgba(21, 27, 41, 0.7);">
+                <div class="info-icon"><i class="fab fa-linkedin-in"></i></div>
+              </div>
+            </a>
+            
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/_anshee___" target="_blank" class="moving-border-container" style="border-radius: 15px;" title="Instagram Profile">
+              <div class="moving-border-inner social-icon-box" style="border-radius: 13px; background: rgba(21, 27, 41, 0.7);">
+                <div class="info-icon"><i class="fab fa-instagram"></i></div>
+              </div>
+            </a>
+          </div>
+
+          <p style="color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.6;">Based in Nilambur, Kerala. Available for freelance projects and consulting worldwide.</p>
+          
+          <!-- Real Google Map Embed -->
           <div class="map-container">
-            <div style="text-align: center; padding: 2rem;">
-              <i class="fas fa-map-marker-alt" style="font-size: 3rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
-              <h3>Malappuram, Kerala</h3>
-              <p>Based in Malappuram, working with clients globally.</p>
-            </div>
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31332.61058223405!2d76.20876118671874!3d11.274154834789837!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba638971f496157%3A0xe2f7c0a87693526c!2sNilambur%2C%20Kerala!5e0!3m2!1sen!2sin!4v1710580000000!5m2!1sen!2sin" 
+              width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+
+        <!-- Form (RIGHT) -->
+        <div class="moving-border-container animate stagger-2" style="border-radius: 20px;">
+          <div class="moving-border-inner" style="border-radius: 18px; background: rgba(21, 27, 41, 0.9); flex-direction: column; align-items: stretch; padding: 3rem;">
+            <form class="contact-form-inner" action="#" method="POST" onsubmit="event.preventDefault(); alert('Message sent!');">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 2.5rem; flex-wrap:wrap; gap:15px;">
+                <h2 style="margin:0; font-size: 2.2rem;">Send a Message</h2>
+                <a href="https://wa.me/919778179727" target="_blank" class="btn btn-outline" style="padding: 0.6rem 1.2rem; font-size: 0.9rem; border-color: #FF6B35; color: #FF6B35;"><i class="fab fa-whatsapp" style="margin-right:8px;"></i>WhatsApp Chat</a>
+              </div>
+              
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" class="form-control" placeholder="Enter your full name" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" class="form-control" placeholder="yourname@example.com" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="message">Your Message</label>
+                <textarea id="message" class="form-control" placeholder="How can I help you take your business to the next level?" required style="min-height: 150px; resize: vertical;"></textarea>
+              </div>
+              
+              <button type="submit" class="btn-primary">Send Message</button>
+            </form>
           </div>
         </div>
         

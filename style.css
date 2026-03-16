@@ -232,36 +232,202 @@ a:hover {
   transform: translateY(0);
 }
 
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* Global Snake Border Utility */
+.moving-border-container {
+  position: relative;
+  padding: 4px; /* Border thickness */
+  display: flex;
+  background: transparent;
+  overflow: visible; /* Allow the glow to be sharp */
+}
+
+/* Use pseudo-element for the animated border to avoid masking children */
+.moving-border-container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 4px; /* Matches container padding */
+  border-radius: inherit; /* Inherit radius from container */
+  background: transparent;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.moving-border-container:hover::after {
+  background: conic-gradient(
+    from var(--angle),
+    rgba(255, 107, 53, 0.02) 0deg,
+    rgba(255, 107, 53, 0.05) 40deg,
+    rgba(255, 107, 53, 0.15) 80deg,
+    rgba(255, 107, 53, 0.4) 120deg,
+    rgba(255, 107, 53, 0.8) 150deg,
+    rgba(255, 107, 53, 1) 180deg,
+    rgba(255, 107, 53, 0.8) 210deg,
+    rgba(255, 107, 53, 0.4) 240deg,
+    rgba(255, 107, 53, 0.15) 280deg,
+    rgba(255, 107, 53, 0.05) 320deg,
+    rgba(255, 107, 53, 0.02) 360deg
+  );
+  animation: rotateSnake 3s linear infinite;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  border-radius: inherit;
+}
+
+@keyframes rotateSnake {
+  to { --angle: 360deg; }
+}
+
+.moving-border-inner {
+  position: relative;
+  background: var(--bg-color);
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Stay above the pseudo-element border */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: inherit; /* Preserve radius */
+}
+
 .stagger-1 { transition-delay: 0.1s; }
 .stagger-2 { transition-delay: 0.2s; }
 .stagger-3 { transition-delay: 0.3s; }
 .stagger-4 { transition-delay: 0.4s; }
 
-/* Responsive */
+/* About Section Layout - Shared */
+.about-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 60px;
+}
+
+.about-text {
+  order: 1;
+}
+
+.about-image {
+  order: 2;
+  text-align: center;
+}
+
+.about-image img {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 20px;
+  object-fit: cover;
+  border: 2px solid rgba(255, 107, 53, 0.3);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
 @media (max-width: 768px) {
+  .about-container {
+    grid-template-columns: 1fr !important;
+    gap: 30px;
+    text-align: center;
+  }
+  
+  .about-text {
+    order: 1 !important;
+  }
+  
+  .about-image {
+    order: 2 !important;
+  }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .logo-group {
+    gap: 1.5rem;
+  }
+  .header-socials {
+    display: none; /* Hide in header on small tablets/mobile to save space */
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 0;
+  }
+
   .nav-links {
     position: fixed;
-    top: 70px;
-    left: -100%;
-    width: 100%;
-    height: calc(100vh - 70px);
-    background-color: var(--bg-color);
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background-color: var(--card-bg);
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding-top: 2rem;
-    transition: 0.4s ease;
+    padding: 4rem 2rem;
+    transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+    z-index: 1001;
   }
   
   .nav-links.active {
-    left: 0;
+    right: 0;
+  }
+
+  .nav-links li {
+    margin: 1.5rem 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-links a {
+    font-size: 1.2rem;
+    display: block;
+    padding: 0.8rem;
   }
   
   .mobile-menu-btn {
     display: block;
+    z-index: 1002;
+    position: relative;
   }
 
   .section {
-    padding: 4rem 0;
+    padding: 5rem 0;
+  }
+
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  .grid-2, .grid-3, .grid-4 {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  
+  /* Hero adjustments for mobile */
+  .hero-container {
+    grid-template-columns: 1fr !important;
+    text-align: center;
+    gap: 40px !important;
+  }
+
+  .hero-text {
+    order: 2;
+    max-width: 100% !important;
+  }
+
+  .hero-image {
+    order: 1;
+    display: flex;
+    justify-content: center;
   }
 }
 
