@@ -151,6 +151,20 @@
         padding: 2.5rem;
       }
     }
+
+    /* Custom Smooth Thank You Animation */
+    .thankyou-box {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: thankyouFade 0.6s ease-out forwards;
+    }
+
+    @keyframes thankyouFade {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
 </head>
 <body>
@@ -261,12 +275,12 @@
                 document.getElementById('successName').innerText = document.getElementById('email').value.trim();
                 var successMsg = document.getElementById('successMessage');
                 successMsg.style.display = 'block';
-                successMsg.classList.add('animate', 'reveal-up');
+                setTimeout(() => { successMsg.classList.add('animate', 'reveal-up', 'active'); }, 50);
               }
             "></iframe>
 
             <!-- The Contact Form -->
-            <form id="contactForm" class="contact-form-inner" action="https://formsubmit.co/anshidchelekodan@gmail.com" method="POST" target="hidden_iframe" onsubmit="
+            <form id="contactForm" class="contact-form-inner" action="https://formsubmit.co/eabd411178397ec66593aa8d7d91cf9c" method="POST" target="hidden_iframe" onsubmit="
               var name = document.getElementById('name').value.trim();
               var email = document.getElementById('email').value.trim();
               var phone = document.getElementById('phone').value.trim();
@@ -315,7 +329,7 @@
             </form>
 
             <!-- Thank You Panel (shown after submission) -->
-            <div id="successMessage" style="display: none; text-align: center; padding: 2rem;">
+            <div id="successMessage" class="thankyou-box" style="display: none; text-align: center; padding: 2rem;">
               <div style="font-size: 5rem; color: #25D366; margin-bottom: 1.5rem;"><i class="fas fa-check-circle"></i></div>
               <h2 style="margin-bottom: 1rem; color: #fff;">Thank You!</h2>
               <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 0.5rem;">Your message has been sent successfully.</p>
