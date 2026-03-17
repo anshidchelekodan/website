@@ -321,30 +321,26 @@
   
   <script src="main.js"></script>
   <script>
-    // ─── WhatsApp Redirect ───────────────────────────────────────────────────
     function sendToWhatsApp() {
       var name    = document.getElementById('name').value.trim();
       var email   = document.getElementById('email').value.trim();
       var phone   = document.getElementById('phone').value.trim();
       var message = document.getElementById('message').value.trim();
-
       if (!name || !email || !phone || !message) {
         alert('Please fill in all fields before sending to WhatsApp.');
         return;
       }
-
-      var text = 'Hello Anshid!\n\nName: ' + name
-               + '\nEmail: ' + email
-               + '\nPhone: ' + phone
-               + '\n\nMessage:\n' + message;
-
+      var text = 'Hello Anshid!\n\nName: ' + name + '\nEmail: ' + email + '\nPhone: ' + phone + '\n\nMessage:\n' + message;
       window.open('https://wa.me/919778179727?text=' + encodeURIComponent(text), '_blank');
     }
 
-    // ─── Email via Gmail (mailto) ─────────────────────────────────────────────
+    // ─── Seamless AJAX Email FormSubmit ──────────────────────────────────────
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
 
+      var submitBtn = document.getElementById('submitBtn');
+      var statusDiv = document.getElementById('formStatus');
+      
       var name    = document.getElementById('name').value.trim();
       var email   = document.getElementById('email').value.trim();
       var phone   = document.getElementById('phone').value.trim();
@@ -352,23 +348,47 @@
 
       if (!name || !email || !phone || !message) return;
 
-      var subject = 'New Lead from Portfolio – ' + name;
-      var body    = 'Name: ' + name
-                  + '\nEmail: ' + email
-                  + '\nPhone: ' + phone
-                  + '\n\nMessage:\n' + message;
+      submitBtn.disabled  = true;
+      submitBtn.innerText = 'Sending...';
+      statusDiv.style.display = 'none';
 
-      // Opens Gmail / default email app with fields pre-filled
-      window.location.href = 'mailto:anshidchelekodan@gmail.com'
-        + '?subject=' + encodeURIComponent(subject)
-        + '&body='    + encodeURIComponent(body);
-
-      // Show the Thank You screen immediately
-      setTimeout(function() {
-        document.getElementById('contactForm').style.display  = 'none';
-        document.getElementById('successName').innerText      = email;
-        document.getElementById('successMessage').style.display = 'block';
-      }, 500);
+      fetch('https://formsubmit.co/ajax/anshidchelekodan@gmail.com', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          phone: phone,
+          message: message,
+          _subject: 'New Lead from Anshid Portfolio – ' + name,
+          _template: 'table',
+          _captcha: 'false'
+        })
+      })
+      .then(function(response) { return response.json(); })
+      .then(function(data) {
+        if (data.success === "true" || data.success === true) {
+          // Hide form & show beautiful Thank You panel instantly!
+          document.getElementById('contactForm').style.display = 'none';
+          document.getElementById('successName').innerText = email;
+          var successMsg = document.getElementById('successMessage');
+          successMsg.style.display = 'block';
+          successMsg.classList.add('animate', 'reveal-up');
+        } else {
+          throw new Error(data.message || "Failed to send.");
+        }
+      })
+      .catch(function(error) {
+        console.error(error);
+        statusDiv.innerHTML = '&#9888; Network error. Try disabling adblock or use WhatsApp.';
+        statusDiv.style.color = '#ff4d4d';
+        statusDiv.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.innerText = 'Send via Email';
+      });
     });
   </script>
 </body>
