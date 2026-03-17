@@ -252,34 +252,51 @@
         <!-- Form (RIGHT) -->
         <div class="moving-border-container animate reveal-right glass-card" style="border-radius: 20px;">
           <div class="moving-border-inner" style="border-radius: 18px; background: transparent; flex-direction: column; align-items: stretch; padding: 3rem;">
-            <form class="contact-form-inner" action="#" method="POST" onsubmit="event.preventDefault(); alert('Message sent!');">
+            
+            <!-- The Contact Form -->
+            <form id="contactForm" class="contact-form-inner">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 2.5rem; flex-wrap:wrap; gap:15px;">
                 <h2 style="margin:0; font-size: 2.2rem;">Send a Message</h2>
-                <a href="https://wa.me/919778179727" target="_blank" class="btn btn-outline" style="padding: 0.6rem 1.2rem; font-size: 0.9rem; border-color: #FF6B35; color: #FF6B35;"><i class="fab fa-whatsapp" style="margin-right:8px;"></i>WhatsApp Chat</a>
+                <a href="https://wa.me/919778179727" target="_blank" class="btn btn-outline" style="padding: 0.6rem 1.2rem; font-size: 0.9rem; border-color: #FF6B35; color: #FF6B35;"><i class="fab fa-whatsapp" style="margin-right:8px;"></i>Quick Chat</a>
               </div>
-              
+
               <div class="form-group">
                 <label for="name">Your Name</label>
-                <input type="text" id="name" class="form-control" placeholder="Enter your full name" required>
+                <input type="text" name="name" id="name" class="form-control" placeholder="Enter your full name" required>
               </div>
-              
+
               <div class="form-group">
                 <label for="email">Email Address</label>
-                <input type="email" id="email" class="form-control" placeholder="yourname@example.com" required>
+                <input type="email" name="email" id="email" class="form-control" placeholder="yourname@example.com" required>
               </div>
 
               <div class="form-group">
                 <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" class="form-control" placeholder="+91 00000 00000" required>
+                <input type="tel" name="phone" id="phone" class="form-control" placeholder="+91 00000 00000" required>
               </div>
-              
+
               <div class="form-group">
                 <label for="message">Your Message</label>
-                <textarea id="message" class="form-control" placeholder="How can I help you take your business to the next level?" required style="min-height: 150px; resize: vertical;"></textarea>
+                <textarea name="message" id="message" class="form-control" placeholder="How can I help you take your business to the next level?" required style="min-height: 150px; resize: vertical;"></textarea>
               </div>
-              
-              <button type="submit" class="btn-primary">Send Message</button>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <button type="submit" id="submitBtn" class="btn-primary" style="width: 100%;">Send via Email</button>
+                <button type="button" onclick="sendToWhatsApp()" class="btn btn-outline" style="width: 100%; border-color: #25D366; color: #25D366;"><i class="fab fa-whatsapp" style="margin-right:8px;"></i>Send to WhatsApp</button>
+              </div>
+              <div id="formStatus" style="margin-top: 15px; text-align: center; font-weight: 600; display: none;"></div>
             </form>
+
+            <!-- Thank You Panel (shown after submission) -->
+            <div id="successMessage" style="display: none; text-align: center; padding: 2rem;">
+              <div style="font-size: 5rem; color: #25D366; margin-bottom: 1.5rem;"><i class="fas fa-check-circle"></i></div>
+              <h2 style="margin-bottom: 1rem; color: #fff;">Thank You!</h2>
+              <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 0.5rem;">Your message has been sent successfully.</p>
+              <p style="color: var(--text-secondary); margin-bottom: 2rem;">I'll get back to you at <strong id="successName" style="color: var(--accent-color);"></strong> within 24 hours.</p>
+              <a href="https://wa.me/919778179727" target="_blank" class="btn btn-outline" style="margin-right: 15px; border-color: #25D366; color: #25D366;"><i class="fab fa-whatsapp" style="margin-right: 8px;"></i>WhatsApp Me Now</a>
+              <button onclick="location.reload()" class="btn btn-outline">Send Another Message</button>
+            </div>
+
           </div>
         </div>
         
@@ -300,6 +317,59 @@
     </div>
   </footer>
 
-  <a href="https://wa.me/919778179727" class="float-wa" target="_blank"><i class="fab fa-whatsapp"></i></a><script src="main.js"></script>
+  <a href="https://wa.me/919778179727" class="float-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  
+  <script src="main.js"></script>
+  <script>
+    // ─── WhatsApp Redirect ───────────────────────────────────────────────────
+    function sendToWhatsApp() {
+      var name    = document.getElementById('name').value.trim();
+      var email   = document.getElementById('email').value.trim();
+      var phone   = document.getElementById('phone').value.trim();
+      var message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !phone || !message) {
+        alert('Please fill in all fields before sending to WhatsApp.');
+        return;
+      }
+
+      var text = 'Hello Anshid!\n\nName: ' + name
+               + '\nEmail: ' + email
+               + '\nPhone: ' + phone
+               + '\n\nMessage:\n' + message;
+
+      window.open('https://wa.me/919778179727?text=' + encodeURIComponent(text), '_blank');
+    }
+
+    // ─── Email via Gmail (mailto) ─────────────────────────────────────────────
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      var name    = document.getElementById('name').value.trim();
+      var email   = document.getElementById('email').value.trim();
+      var phone   = document.getElementById('phone').value.trim();
+      var message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !phone || !message) return;
+
+      var subject = 'New Lead from Portfolio – ' + name;
+      var body    = 'Name: ' + name
+                  + '\nEmail: ' + email
+                  + '\nPhone: ' + phone
+                  + '\n\nMessage:\n' + message;
+
+      // Opens Gmail / default email app with fields pre-filled
+      window.location.href = 'mailto:anshidchelekodan@gmail.com'
+        + '?subject=' + encodeURIComponent(subject)
+        + '&body='    + encodeURIComponent(body);
+
+      // Show the Thank You screen immediately
+      setTimeout(function() {
+        document.getElementById('contactForm').style.display  = 'none';
+        document.getElementById('successName').innerText      = email;
+        document.getElementById('successMessage').style.display = 'block';
+      }, 500);
+    });
+  </script>
 </body>
 </html>
