@@ -32,15 +32,16 @@ navItems.forEach(item => {
 // Scroll Animations (Intersection Observer)
 const observerOptions = {
   root: null,
-  rootMargin: '0px',
-  threshold: 0.15
+  rootMargin: '0px 0px -10% 0px',
+  threshold: 0.1
 };
 
-const observer = new IntersectionObserver((entries, observer) => {
+const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      // Updated animation for redesigned progress bars
+      entry.target.classList.add('reveal');
+      
+      // Skill bars animation
       if (entry.target.classList.contains('expertise-item')) {
         const progressFill = entry.target.querySelector('.skill-progress-fill');
         if (progressFill) {
@@ -52,29 +53,78 @@ const observer = new IntersectionObserver((entries, observer) => {
   });
 }, observerOptions);
 
+// Navbar & Header Logic
+const navbar = document.querySelector('.navbar');
+
+function handleScroll() {
+  if (window.scrollY > 50) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+}
+
+// Magnetic Button Effect
+function initMagneticButtons() {
+  const buttons = document.querySelectorAll('.btn-primary');
+  
+  buttons.forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      
+      btn.style.transform = `translate(${x * 0.3}px, ${y * 0.5}px)`;
+    });
+    
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = 'translate(0px, 0px)';
+    });
+  });
+}
+
+const initFAQ = () => {
+  const faqItems = document.querySelectorAll('.faq-item');
+  
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    const answer = item.querySelector('.faq-answer');
+    
+    question.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+      
+      // Close all other items
+      faqItems.forEach(otherItem => {
+        otherItem.classList.remove('active');
+        otherItem.querySelector('.faq-answer').style.maxHeight = null;
+      });
+      
+      // Toggle current item
+      if (!isActive) {
+        item.classList.add('active');
+        answer.style.maxHeight = answer.scrollHeight + "px";
+      }
+    });
+  });
+};
+
 document.addEventListener('DOMContentLoaded', () => {
   // Observe animated elements
   const animatedElements = document.querySelectorAll('.animate');
   animatedElements.forEach(el => observer.observe(el));
+  
+  // Init other features
+  handleScroll();
+  initMagneticButtons();
+  initFAQ();
 });
 
-// Navbar background change on scroll
-const navbar = document.querySelector('.navbar');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 50) {
-    navbar.style.boxShadow = '0 5px 20px rgba(0,0,0,0.5)';
-    navbar.style.padding = '1rem 0';
-  } else {
-    navbar.style.boxShadow = 'none';
-    navbar.style.padding = '1.5rem 0';
-  }
-});
+window.addEventListener('scroll', handleScroll);
 
-// Set active nav link based on current page completely matching or partially matching
+// Set active nav link
 const currentPath = window.location.pathname.split('/').pop() || 'index.html';
 navItems.forEach(link => {
-  const linkPath = link.getAttribute('href');
-  if (linkPath === currentPath) {
+  if (link.getAttribute('href') === currentPath) {
     link.classList.add('active');
   }
 });
