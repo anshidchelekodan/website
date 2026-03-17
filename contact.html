@@ -253,8 +253,36 @@
         <div class="moving-border-container animate reveal-right glass-card" style="border-radius: 20px;">
           <div class="moving-border-inner" style="border-radius: 18px; background: transparent; flex-direction: column; align-items: stretch; padding: 3rem;">
             
+            <!-- Hidden Iframe to catch the FormSubmit response without reloading the page -->
+            <script>var formSubmitted = false;</script>
+            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="
+              if(formSubmitted) {
+                document.getElementById('contactForm').style.display = 'none';
+                document.getElementById('successName').innerText = document.getElementById('email').value.trim();
+                var successMsg = document.getElementById('successMessage');
+                successMsg.style.display = 'block';
+                successMsg.classList.add('animate', 'reveal-up');
+              }
+            "></iframe>
+
             <!-- The Contact Form -->
-            <form id="contactForm" class="contact-form-inner">
+            <form id="contactForm" class="contact-form-inner" action="https://formsubmit.co/anshidchelekodan@gmail.com" method="POST" target="hidden_iframe" onsubmit="
+              var name = document.getElementById('name').value.trim();
+              var email = document.getElementById('email').value.trim();
+              var phone = document.getElementById('phone').value.trim();
+              var message = document.getElementById('message').value.trim();
+              if(!name || !email || !phone || !message) return false;
+              
+              document.getElementById('submitBtn').disabled = true;
+              document.getElementById('submitBtn').innerText = 'Sending...';
+              formSubmitted = true;
+            ">
+
+              <!-- Formsubmit hidden config -->
+              <input type="hidden" name="_subject" value="New Lead from Anshid Portfolio">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_template" value="table">
+
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 2.5rem; flex-wrap:wrap; gap:15px;">
                 <h2 style="margin:0; font-size: 2.2rem;">Send a Message</h2>
                 <a href="https://wa.me/919778179727" target="_blank" class="btn btn-outline" style="padding: 0.6rem 1.2rem; font-size: 0.9rem; border-color: #FF6B35; color: #FF6B35;"><i class="fab fa-whatsapp" style="margin-right:8px;"></i>Quick Chat</a>
@@ -284,7 +312,6 @@
                 <button type="submit" id="submitBtn" class="btn-primary" style="width: 100%;">Send via Email</button>
                 <button type="button" onclick="sendToWhatsApp()" class="btn btn-outline" style="width: 100%; border-color: #25D366; color: #25D366;"><i class="fab fa-whatsapp" style="margin-right:8px;"></i>Send to WhatsApp</button>
               </div>
-              <div id="formStatus" style="margin-top: 15px; text-align: center; font-weight: 600; display: none;"></div>
             </form>
 
             <!-- Thank You Panel (shown after submission) -->
@@ -333,63 +360,6 @@
       var text = 'Hello Anshid!\n\nName: ' + name + '\nEmail: ' + email + '\nPhone: ' + phone + '\n\nMessage:\n' + message;
       window.open('https://wa.me/919778179727?text=' + encodeURIComponent(text), '_blank');
     }
-
-    // ─── Seamless AJAX Email FormSubmit ──────────────────────────────────────
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      var submitBtn = document.getElementById('submitBtn');
-      var statusDiv = document.getElementById('formStatus');
-      
-      var name    = document.getElementById('name').value.trim();
-      var email   = document.getElementById('email').value.trim();
-      var phone   = document.getElementById('phone').value.trim();
-      var message = document.getElementById('message').value.trim();
-
-      if (!name || !email || !phone || !message) return;
-
-      submitBtn.disabled  = true;
-      submitBtn.innerText = 'Sending...';
-      statusDiv.style.display = 'none';
-
-      fetch('https://formsubmit.co/ajax/anshidchelekodan@gmail.com', {
-        method: 'POST',
-        headers: { 
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          name: name,
-          email: email,
-          phone: phone,
-          message: message,
-          _subject: 'New Lead from Anshid Portfolio – ' + name,
-          _template: 'table',
-          _captcha: 'false'
-        })
-      })
-      .then(function(response) { return response.json(); })
-      .then(function(data) {
-        if (data.success === "true" || data.success === true) {
-          // Hide form & show beautiful Thank You panel instantly!
-          document.getElementById('contactForm').style.display = 'none';
-          document.getElementById('successName').innerText = email;
-          var successMsg = document.getElementById('successMessage');
-          successMsg.style.display = 'block';
-          successMsg.classList.add('animate', 'reveal-up');
-        } else {
-          throw new Error(data.message || "Failed to send.");
-        }
-      })
-      .catch(function(error) {
-        console.error(error);
-        statusDiv.innerHTML = '&#9888; Network error. Try disabling adblock or use WhatsApp.';
-        statusDiv.style.color = '#ff4d4d';
-        statusDiv.style.display = 'block';
-        submitBtn.disabled = false;
-        submitBtn.innerText = 'Send via Email';
-      });
-    });
   </script>
 </body>
 </html>
