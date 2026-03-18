@@ -56,11 +56,18 @@ const observer = new IntersectionObserver((entries) => {
 // Navbar & Header Logic
 const navbar = document.querySelector('.navbar');
 
+let isScrolling = false;
 function handleScroll() {
-  if (window.scrollY > 50) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
+  if (!isScrolling) {
+    window.requestAnimationFrame(() => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+      isScrolling = false;
+    });
+    isScrolling = true;
   }
 }
 

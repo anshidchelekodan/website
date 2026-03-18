@@ -118,11 +118,10 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"></noscript>
 
   <!-- FontAwesome for Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 
   <!-- Styles -->
   <link rel="stylesheet" href="style.css">
@@ -531,7 +530,7 @@
     <div class="hero-container">
       <div class="hero-image animate reveal-left stagger-1">
         <div class="hero-shape"></div>
-        <img src="anshid.jpg.jpeg" alt="Digital Marketing Strategist in Malappuram - Muhammed Anshid" class="profile-img" loading="eager">
+        <img src="anshid-optimized.jpg" alt="Digital Marketing Strategist in Malappuram - Muhammed Anshid" class="profile-img" loading="eager" fetchpriority="high">
         
         <!-- Floating Badges -->
         <div class="moving-border-container floating-badge badge-performance">
@@ -550,13 +549,12 @@
       </div>
 
       <div class="hero-content animate reveal-right stagger-2">
-        <h2 class="text-accent" style="font-size: 1.2rem; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 1rem;">Scale Your Vision</h2>
-        <h1 class="hero-name" style="margin-bottom: 0.5rem;">Muhammed Anshid Chelakodan</h1>
-        <p class="hero-hook" style="font-size: 1.5rem; font-weight: 700; color: #fff; line-height: 1.3; margin-bottom: 2rem;">Transforming Clicks into Clients with <span class="text-accent">Data-First Marketing</span> Strategies.</p>
+        <h2 class="hero-subtitle">Scale Your Vision</h2>
+        <h1 class="hero-name">Muhammed Anshid Chelakodan</h1>
+        <p class="hero-description hero-desc">Helping businesses grow through SEO, Google Ads, and data-driven marketing strategies.</p>
         <span class="hero-keyword">Based in Malappuram, Kerala</span>
-        <p class="hero-description">Helping businesses grow through SEO, Google Ads, and data-driven marketing strategies. As a <a href="services.html#seo" class="text-accent">Digital Marketing Strategist in Malappuram</a>, I focus on delivering measurable growth and predictable ROI.</p>
 
-        <div class="hero-btns animate stagger-2">
+        <div class="hero-buttons animate stagger-2">
           <a href="contact.html" class="btn btn-primary">Start Your Project</a>
           <a href="https://wa.me/919778179727" target="_blank" class="btn btn-outline"><i class="fab fa-whatsapp"
               style="margin-right:8px;"></i>WhatsApp Me</a>
@@ -581,10 +579,8 @@
         <div class="section-title" style="text-align:left; margin-bottom:1.5rem;">
           <h2 style="margin-bottom:0.5rem;">About Me</h2>
         </div>
-        <p>I'm Muhammed Anshid, a <strong>Digital Marketing Strategist in Malappuram</strong> specializing in data-driven
-          growth. I merge technical <a href="services.html#seo">SEO</a> with high-performance <a href="services.html#ads">Google Ads</a> strategies to scale brands effectively across Kerala.</p>
-        <p>My focus is on measurable impact—turning passive visitors into loyal customers through optimized
-          campaigns and a strong <a href="blog.html">content strategy</a>. Whether you need an <a href="services.html#seo">SEO Specialist in Malappuram</a> or a performance marketer, I'm here to help.</p>
+        <p>I'm Muhammed Anshid, specializing in data-driven growth. I merge technical <a href="services.html#seo">SEO</a> with high-performance <a href="services.html#ads">Google Ads</a> strategies to scale brands effectively across Kerala.</p>
+        <p>My focus is on measurable impact—turning passive visitors into loyal customers through optimized campaigns and a strong <a href="blog.html">content strategy</a>.</p>
 
         <div class="hero-btns" style="margin-top: 2rem;">
           <a href="services.html" class="btn btn-primary">View Services</a>
@@ -1111,3 +1107,4 @@
         </body>
 
 </html>
+
