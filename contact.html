@@ -267,35 +267,8 @@
         <div class="moving-border-container animate reveal-right glass-card" style="border-radius: 20px;">
           <div class="moving-border-inner" style="border-radius: 18px; background: transparent; flex-direction: column; align-items: stretch; padding: 3rem;">
             
-            <!-- Hidden Iframe to catch the FormSubmit response without reloading the page -->
-            <script>var formSubmitted = false;</script>
-            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="
-              if(formSubmitted) {
-                document.getElementById('contactForm').style.display = 'none';
-                document.getElementById('successName').innerText = document.getElementById('email').value.trim();
-                var successMsg = document.getElementById('successMessage');
-                successMsg.style.display = 'block';
-                setTimeout(() => { successMsg.classList.add('animate', 'reveal-up', 'active'); }, 50);
-              }
-            "></iframe>
-
             <!-- The Contact Form -->
-            <form id="contactForm" class="contact-form-inner" action="https://formsubmit.co/eabd411178397ec66593aa8d7d91cf9c" method="POST" target="hidden_iframe" onsubmit="
-              var name = document.getElementById('name').value.trim();
-              var email = document.getElementById('email').value.trim();
-              var phone = document.getElementById('phone').value.trim();
-              var message = document.getElementById('message').value.trim();
-              if(!name || !email || !phone || !message) return false;
-              
-              document.getElementById('submitBtn').disabled = true;
-              document.getElementById('submitBtn').innerText = 'Sending...';
-              formSubmitted = true;
-            ">
-
-              <!-- Formsubmit hidden config -->
-              <input type="hidden" name="_subject" value="New Lead from Anshid Portfolio">
-              <input type="hidden" name="_captcha" value="false">
-              <input type="hidden" name="_template" value="table">
+            <form id="contactForm" class="contact-form-inner">
 
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 2.5rem; flex-wrap:wrap; gap:15px;">
                 <h2 style="margin:0; font-size: 2.2rem;">Send a Message</h2>
@@ -323,20 +296,10 @@
               </div>
 
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                <button type="submit" id="submitBtn" class="btn-primary" style="width: 100%;">Send via Email</button>
+                <button type="submit" class="btn-primary" style="width: 100%;">Send Message</button>
                 <button type="button" onclick="sendToWhatsApp()" class="btn btn-outline" style="width: 100%; border-color: #25D366; color: #25D366;"><i class="fab fa-whatsapp" style="margin-right:8px;"></i>Send to WhatsApp</button>
               </div>
             </form>
-
-            <!-- Thank You Panel (shown after submission) -->
-            <div id="successMessage" class="thankyou-box" style="display: none; text-align: center; padding: 2rem;">
-              <div style="font-size: 5rem; color: #25D366; margin-bottom: 1.5rem;"><i class="fas fa-check-circle"></i></div>
-              <h2 style="margin-bottom: 1rem; color: #fff;">Thank You!</h2>
-              <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 0.5rem;">Your message has been sent successfully.</p>
-              <p style="color: var(--text-secondary); margin-bottom: 2rem;">I'll get back to you at <strong id="successName" style="color: var(--accent-color);"></strong> within 24 hours.</p>
-              <a href="https://wa.me/919778179727" target="_blank" class="btn btn-outline" style="margin-right: 15px; border-color: #25D366; color: #25D366;"><i class="fab fa-whatsapp" style="margin-right: 8px;"></i>WhatsApp Me Now</a>
-              <button onclick="location.reload()" class="btn btn-outline">Send Another Message</button>
-            </div>
 
           </div>
         </div>
@@ -374,6 +337,60 @@
       var text = 'Hello Anshid!\n\nName: ' + name + '\nEmail: ' + email + '\nPhone: ' + phone + '\n\nMessage:\n' + message;
       window.open('https://wa.me/919778179727?text=' + encodeURIComponent(text), '_blank');
     }
+  </script>
+  <script>
+  const scriptURL = "PASTE_YOUR_GOOGLE_SCRIPT_WEB_APP_URL_HERE";
+  
+  const form = document.querySelector("form");
+  
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+  
+    const data = {
+      name: document.querySelector("#name").value,
+      phone: document.querySelector("#phone").value,
+      email: document.querySelector("#email").value,
+      message: document.querySelector("#message").value
+    };
+  
+    const submitBtn = form.querySelector("button");
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Sending...";
+  
+    fetch(scriptURL, {
+      method: "POST",
+      body: JSON.stringify(data)
+    })
+    .then(response => {
+      showSuccessMessage();
+      form.reset();
+      submitBtn.disabled = false;
+      submitBtn.innerText = "Send Message";
+    })
+    .catch(error => {
+      alert("Something went wrong. Please try again.");
+      submitBtn.disabled = false;
+      submitBtn.innerText = "Send Message";
+    });
+  });
+  
+  function showSuccessMessage(){
+    let msg = document.createElement("div");
+    msg.innerText = "Thank you! Your message has been received.";
+    msg.style.background = "#0f172a";
+    msg.style.color = "#fff";
+    msg.style.padding = "12px";
+    msg.style.marginTop = "15px";
+    msg.style.borderRadius = "8px";
+    msg.style.textAlign = "center";
+    msg.style.border = "1px solid #FF6B35";
+  
+    form.appendChild(msg);
+  
+    setTimeout(() => {
+      msg.remove();
+    }, 4000);
+  }
   </script>
 </body>
 </html>
