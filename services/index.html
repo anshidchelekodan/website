@@ -49,63 +49,103 @@
   <style>
 
     .page-header {
-      padding: 160px 0 80px 0;
-      background: linear-gradient(180deg, rgba(11,15,25,1) 0%, rgba(21,27,41,1) 100%);
+      padding: 180px 0 100px 0;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(circle at 70% 20%, rgba(255, 107, 53, 0.15), transparent 600px), 
+                  radial-gradient(circle at 10% 80%, rgba(74, 108, 247, 0.1), transparent 600px);
       text-align: center;
       border-bottom: 1px solid rgba(255,255,255,0.05);
     }
     
     .page-header h1 {
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      margin-bottom: 1rem;
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #fff 30%, var(--accent-color) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+    }
+
+    .header-tagline {
+      display: inline-block;
+      padding: 0.5rem 1.2rem;
+      background: rgba(255, 107, 53, 0.1);
+      color: var(--accent-color);
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(255, 107, 53, 0.2);
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
 
     /* Services Grid Model */
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
     }
 
     .service-detail-card {
-      background: var(--card-bg);
-      border-radius: 20px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-radius: 24px;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.05);
-      transition: all 0.4s ease;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
       display: flex;
       flex-direction: column;
       height: 100%;
     }
     
     .service-detail-card:hover {
-      border-color: var(--accent-color);
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      border-color: rgba(255, 107, 53, 0.4);
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 30px 60px -15px rgba(0,0,0,0.5), 0 0 30px -10px rgba(255, 107, 53, 0.15);
     }
     
     .service-detail-icon {
-      background: linear-gradient(135deg, rgba(255,107,53,0.1) 0%, rgba(11,15,25,0.4) 100%);
-      padding: 3.5rem 2rem;
+      padding: 4rem 2rem 1rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      position: relative;
+    }
+
+    .icon-circle {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, rgba(255,107,53,0.15) 0%, rgba(21,27,41,0.5) 100%);
+      border-radius: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
+      border: 1px solid rgba(255, 107, 53, 0.2);
     }
     
     .service-detail-icon i {
-      font-size: 4.5rem;
+      font-size: 2.5rem;
       color: var(--accent-color);
-      transition: all 0.4s ease;
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     .service-detail-card:hover .service-detail-icon i {
-      transform: scale(1.1) rotate(5deg);
+      transform: scale(1.2) rotate(10deg);
+      color: #fff;
+    }
+
+    .service-detail-card:hover .icon-circle {
+      background: var(--accent-color);
+      border-color: var(--accent-color);
     }
     
     .service-detail-content {
-      padding: 2.5rem;
+      padding: 1rem 2.5rem 3rem 2.5rem;
       flex-grow: 1;
       display: flex;
       flex-direction: column;
@@ -115,54 +155,118 @@
       font-size: 1.8rem;
       margin-bottom: 1.2rem;
       color: #fff;
+      font-weight: 700;
     }
 
     .service-detail-content p {
       color: var(--text-secondary);
-      line-height: 1.6;
+      line-height: 1.7;
       margin-bottom: 2rem;
-      font-size: 1.05rem;
+      font-size: 1rem;
     }
     
     .service-features {
       list-style: none;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
       margin-top: auto;
     }
     
     .service-features li {
       position: relative;
-      padding-left: 30px;
-      color: var(--text-secondary);
+      padding-left: 32px;
+      color: #e2e8f0;
       font-size: 0.95rem;
+      font-weight: 500;
     }
     
     .service-features li::before {
-      content: '\f058';
+      content: '\f00c';
       font-family: 'Font Awesome 6 Free';
       font-weight: 900;
       position: absolute;
       left: 0;
       color: var(--accent-color);
+      background: rgba(255, 107, 53, 0.1);
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 0.6rem;
+    }
+
+    .service-card-footer {
+      padding: 0 2.5rem 3rem 2.5rem;
+    }
+
+    /* Process Section */
+    .process-step {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 4rem;
+      position: relative;
+    }
+
+    .process-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 35px;
+      top: 80px;
+      bottom: -40px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--accent-color), transparent);
+    }
+
+    .step-number {
+      width: 70px;
+      height: 70px;
+      background: var(--accent-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 800;
+      flex-shrink: 0;
+      color: #fff;
+      box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+    }
+
+    .step-info h3 {
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
     }
     
     @media (max-width: 992px) {
       .services-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
       }
     }
 
     @media (max-width: 768px) {
       .page-header {
-        padding: 130px 0 60px 0;
+        padding: 140px 0 70px 0;
       }
-      .service-detail-content {
-        padding: 2rem;
+      .service-detail-content, .service-card-footer {
+        padding: 1rem 2rem 2.5rem 2rem;
       }
       .services-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .process-step {
+        flex-direction: column;
         gap: 1.5rem;
+        text-align: center;
+      }
+      .step-number {
+        margin: 0 auto;
+      }
+      .process-step:not(:last-child)::after {
+        display: none;
       }
     }
   </style>
@@ -200,105 +304,152 @@
 
   <!-- Page Header -->
   <section class="page-header">
+    <div class="glow-shape glow-1"></div>
     <div class="container animate stagger-1">
-      <h1>Digital Marketing Strategist in Malappuram</h1>
-      <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">High-performance digital solutions engineered to scale your Malappuram-based business.</p>
+      <span class="header-tagline">My Expertise</span>
+      <h1>Elite Digital Solutions</h1>
+      <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; color: var(--text-secondary);">High-performance digital strategies engineered to scale your Malappuram-based business with precision and ROI-focused execution.</p>
     </div>
   </section>
 
   <!-- Detailed Services Section -->
-  <section class="section">
+  <section class="section" style="position: relative; overflow: hidden;">
+    <div class="glow-shape glow-2"></div>
     <div class="container">
       <div class="services-grid">
         <!-- Service 1 -->
-        <div id="seo" class="moving-border-container service-detail-card animate reveal-left glass-card" style="border-radius: 20px;">
-          <div class="moving-border-inner" style="border-radius: 18px; background: transparent; flex-direction: column; align-items: stretch;">
-            <div class="service-detail-icon">
+        <div id="seo" class="service-detail-card animate reveal-left">
+          <div class="service-detail-icon">
+            <div class="icon-circle">
               <i class="fas fa-search-dollar"></i>
             </div>
-            <div class="service-detail-content">
-              <h2>SEO Optimization</h2>
-              <p>Search Engine Optimization is the backbone of organic growth. As an <strong>SEO Specialist in Malappuram</strong>, I focus on driving high-intent traffic by building authority, as demonstrated in my <a href="../portfolio/seo-campaign/" class="text-accent">Malappuram SEO Case Study</a>.</p>
-              <ul class="service-features">
-                <li>Comprehensive Technical SEO Audits</li>
-                <li><a href="../blog/seo-kerala/">Local SEO</a> & Google Business Optimization</li>
-                <li>Strategic Keyword Research & Mapping</li>
-                <li>High-Impact <a href="../blog/seo-strategies-2026/">Content Strategy</a></li>
-                <li>Premium Quality Link Building</li>
-              </ul>
-              <div style="margin-top: 2rem;">
-                <a href="seo-optimization/" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.9rem;">Learn More <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
-              </div>
-            </div>
+          </div>
+          <div class="service-detail-content">
+            <h2>SEO Optimization</h2>
+            <p>Search Engine Optimization is the backbone of organic growth. I focus on driving high-intent traffic by building authority and technical excellence.</p>
+            <ul class="service-features">
+              <li>Technical SEO Audits</li>
+              <li>Local SEO & GMB setup</li>
+              <li>Keyword Research & mapping</li>
+              <li>Content & Link Building</li>
+              <li>Strategy Planning</li>
+            </ul>
+          </div>
+          <div class="service-card-footer">
+            <a href="seo-search-engine-optimization/" class="btn btn-outline" style="width: 100%; text-align: center;">Explore SEO Solutions</a>
           </div>
         </div>
         
         <!-- Service 2 -->
-        <div id="ads" class="moving-border-container service-detail-card animate reveal-right glass-card" style="border-radius: 20px;">
-          <div class="moving-border-inner" style="border-radius: 18px; background: transparent; flex-direction: column; align-items: stretch;">
-            <div class="service-detail-icon">
+        <div id="ads" class="service-detail-card animate reveal-right">
+          <div class="service-detail-icon">
+            <div class="icon-circle">
               <i class="fas fa-chart-line"></i>
             </div>
-            <div class="service-detail-content">
-              <h2>Performance Marketing</h2>
-              <p>Maximize your Return On Ad Spend (ROAS) with meticulously crafted paid campaigns. I turn your ad budget into scalable revenue, specializing in <a href="../portfolio/google-ads/" class="text-accent">High-Performance Google Ads</a> for businesses across Kerala.</p>
-              <ul class="service-features">
-                <li>Google Search, Display & Video Ads</li>
-                <li>Meta Lead Generation & Sales Ads</li>
-                <li>Advanced <a href="../blog/google-ads-tips/">Conversion Tracking</a> & API</li>
-                <li>Retargeting & LAL Audience Setup</li>
-                <li>Campaign Scaling & Budget Management</li>
-              </ul>
-              <div style="margin-top: 2rem;">
-                <a href="performance-marketing/" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.9rem;">Learn More <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
-              </div>
-            </div>
+          </div>
+          <div class="service-detail-content">
+            <h2>Performance Marketing</h2>
+            <p>Maximize your Return On Ad Spend (ROAS) with meticulously crafted paid campaigns. I turn your ad budget into scalable revenue.</p>
+            <ul class="service-features">
+              <li>Google Search & Display</li>
+              <li>Meta Lead Gen Campaigns</li>
+              <li>Conversion API Setup</li>
+              <li>Retargeting Strategies</li>
+              <li>Budget Optimization</li>
+            </ul>
+          </div>
+          <div class="service-card-footer">
+            <a href="performance-marketing/" class="btn btn-outline" style="width: 100%; text-align: center;">View Ad Strategies</a>
           </div>
         </div>
         
         <!-- Service 3 -->
-        <div id="social" class="moving-border-container service-detail-card animate reveal-left glass-card" style="border-radius: 20px;">
-          <div class="moving-border-inner" style="border-radius: 18px; background: transparent; flex-direction: column; align-items: stretch;">
-            <div class="service-detail-icon">
+        <div id="social" class="service-detail-card animate reveal-left">
+          <div class="service-detail-icon">
+            <div class="icon-circle">
               <i class="fas fa-share-nodes"></i>
             </div>
-            <div class="service-detail-content">
-              <h2>Social Media Strategy</h2>
-              <p>Building a brand is more than just posting. I help you connect with your audience authentically through <a href="social-media-marketing/" class="text-accent">community-driven strategies</a> that drive long-term loyalty and engagement.</p>
-              <ul class="service-features">
-                <li>Brand Identity & Positioning Strategy</li>
-                <li>Creative Content Direction & Planning</li>
-                <li>Community Engagement & Management</li>
-                <li>Influencer & Collaboration Strategy</li>
-                <li>In-depth Social Analytics & Reporting</li>
-              </ul>
-              <div style="margin-top: 2rem;">
-                <a href="social-media-marketing/" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.9rem;">Learn More <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
-              </div>
-            </div>
+          </div>
+          <div class="service-detail-content">
+            <h2>Social Media Strategy</h2>
+            <p>Building a brand is more than just posting. I help you connect with your audience authentically through community-driven strategies.</p>
+            <ul class="service-features">
+              <li>Brand Identity Design</li>
+              <li>Creative Content Planning</li>
+              <li>Community Management</li>
+              <li>Influencer Marketing</li>
+              <li>Growth Analytics</li>
+            </ul>
+          </div>
+          <div class="service-card-footer">
+            <a href="social-media-marketing/" class="btn btn-outline" style="width: 100%; text-align: center;">Boost Your Brand</a>
           </div>
         </div>
         
         <!-- Service 4 -->
-        <div id="web" class="moving-border-container service-detail-card animate reveal-right glass-card" style="border-radius: 20px;">
-          <div class="moving-border-inner" style="border-radius: 18px; background: transparent; flex-direction: column; align-items: stretch;">
-            <div class="service-detail-icon">
+        <div id="web" class="service-detail-card animate reveal-right">
+          <div class="service-detail-icon">
+            <div class="icon-circle">
               <i class="fas fa-laptop-code"></i>
             </div>
-            <div class="service-detail-content">
-              <h2>Conversion Optimization</h2>
-              <p>Traffic is useless if it doesn't convert. I optimize your digital ecosystem—improving speed, UX, and <a href="../portfolio/website-optimization/" class="text-accent">conversion pipelines</a>—to ensure maximum ROI for every visitor.</p>
-              <ul class="service-features">
-                <li>Core Web Vitals & Speed Optimization</li>
-                <li>UI/UX Design Audits & Implementation</li>
-                <li>High-Conversion Landing Page Design</li>
-                <li>CRM & Marketing Tool Integrations</li>
-                <li>Technical Maintenance & Growth Audits</li>
-              </ul>
-              <div style="margin-top: 2rem;">
-                <a href="conversion-optimization/" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.9rem;">Learn More <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
-              </div>
-            </div>
+          </div>
+          <div class="service-detail-content">
+            <h2>Conversion (CRO)</h2>
+            <p>Traffic is useless if it doesn't convert. I optimize your digital ecosystem to ensure maximum ROI for every visitor.</p>
+            <ul class="service-features">
+              <li>Speed & Core Web Vitals</li>
+              <li>UI/UX Design Audits</li>
+              <li>Landing Page Design</li>
+              <li>Tool Integrations</li>
+              <li>Maintenance & Audits</li>
+            </ul>
+          </div>
+          <div class="service-card-footer">
+            <a href="web-design/" class="btn btn-outline" style="width: 100%; text-align: center;">Optimize For Sales</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section" style="background: rgba(255,255,255,0.02);">
+    <div class="container">
+      <div class="section-title">
+        <span class="header-tagline" style="margin-bottom: 1rem;">Work Process</span>
+        <h2>How I Deliver Results</h2>
+      </div>
+      
+      <div style="max-width: 900px; margin: 4rem auto 0 auto;">
+        <div class="process-step animate reveal-left">
+          <div class="step-number">01</div>
+          <div class="step-info">
+            <h3>Discovery & Audit</h3>
+            <p>I start by understanding your business goals, target audience, and current digital footprint. A comprehensive audit identifies opportunities and gaps.</p>
+          </div>
+        </div>
+
+        <div class="process-step animate reveal-right">
+          <div class="step-number" style="background: #4a6cf7;">02</div>
+          <div class="step-info">
+            <h3>Strategic Planning</h3>
+            <p>Based on data, I craft a customized roadmap. Whether it's SEO, Ads, or Social, every move is planned for maximum impact and ROI.</p>
+          </div>
+        </div>
+
+        <div class="process-step animate reveal-left">
+          <div class="step-number" style="background: #a855f7;">03</div>
+          <div class="step-info">
+            <h3>Execution & Launch</h3>
+            <p>The strategy comes to life. I implement technical changes, launch campaigns, and create content with meticulous attention to detail.</p>
+          </div>
+        </div>
+
+        <div class="process-step animate reveal-right">
+          <div class="step-number" style="background: #10b981;">04</div>
+          <div class="step-info">
+            <h3>Monitor & Optimize</h3>
+            <p>Digital marketing is never "done". I continuously monitor performance data, A/B test elements, and optimize for better results every day.</p>
           </div>
         </div>
       </div>
@@ -306,13 +457,15 @@
   </section>
 
   <!-- CTA -->
-  <section class="section" style="background-color: #0d121c;">
+  <section class="section">
     <div class="container" style="text-align: center;">
-      <h2 class="animate stagger-1">Not sure which strategy you need?</h2>
-      <p class="animate stagger-2" style="margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">As a leading <a href="../">Digital Marketing Strategist in Malappuram</a>, I'll discuss your current business goals and map out the exact digital roadmap required for your next growth phase.</p>
-      <div style="display: flex; gap: 1.5rem; justify-content: center; margin-top: 2rem;" class="animate stagger-3">
-        <a href="https://wa.me/919778179727" target="_blank" class="btn btn-outline"><i class="fab fa-whatsapp" style="margin-right:8px; font-size:1.1rem;"></i>WhatsApp Me</a>
-        <a href="../contact/" class="btn btn-primary">Let's Connect Directly</a>
+      <div class="glass-card" style="padding: 5rem 2rem; border-color: rgba(255, 107, 53, 0.2); background: radial-gradient(circle at top right, rgba(255, 107, 53, 0.1), transparent);">
+        <h2 class="animate stagger-1">Ready to scale your brand?</h2>
+        <p class="animate stagger-2" style="margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto; font-size: 1.2rem;">Let's build a digital roadmap that actually works for your business. No fluff, just results.</p>
+        <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;" class="animate stagger-3">
+          <a href="https://wa.me/919778179727" target="_blank" class="btn btn-primary" style="padding: 1rem 2.5rem;"><i class="fab fa-whatsapp" style="margin-right:10px; font-size:1.2rem;"></i>Message on WhatsApp</a>
+          <a href="../contact/" class="btn btn-outline" style="padding: 1rem 2.5rem;">Start Your Project</a>
+        </div>
       </div>
     </div>
   </section>

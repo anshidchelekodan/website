@@ -210,6 +210,26 @@ a:hover {
   border-radius: 1.5rem;
 }
 
+/* Premium Gradient Backgrounds */
+.bg-gradient-1 { background: radial-gradient(circle at top right, rgba(255, 107, 53, 0.15), transparent 400px), radial-gradient(circle at bottom left, rgba(74, 108, 247, 0.1), transparent 400px); }
+.bg-gradient-2 { background: radial-gradient(circle at top left, rgba(255, 107, 53, 0.1), transparent 400px), radial-gradient(circle at bottom right, rgba(168, 85, 247, 0.1), transparent 400px); }
+
+/* Blurred Glows */
+.glow-shape {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  filter: blur(120px);
+  opacity: 0.1;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.glow-1 { top: 10%; left: 5%; }
+.glow-2 { bottom: 10%; right: 5%; background: #4a6cf7; }
+
 .blog-cta {
   background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(21, 27, 41, 0.4) 100%);
   border: 1px solid var(--accent-color);
