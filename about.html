@@ -8,7 +8,7 @@
   <meta name="description"
     content="Learn about Muhammed Anshid Chelakodan, a leading digital marketing strategist in Malappuram. Expertise in SEO, SMM, and Google Ads strategies for business growth.">
   <meta name="keywords"
-    content="Digital Marketing Strategist in Malappuram, Performance Marketer in Kerala, SEO Specialist in Malappuram, Digital Marketing Expert in Malappuram">
+    content="Digital Marketing Strategist in Malappuram, Digital Marketing Strategist in Kerala, Performance Marketer in Kerala, SEO Specialist in Malappuram, Digital Marketing Expert in Kerala">
 
   <!-- OpenGraph / Twitter -->
   <meta property="og:title" content="About Muhammed Anshid | Digital Marketing Strategist in Malappuram">
@@ -62,121 +62,274 @@
       margin-bottom: 1rem;
     }
 
-    .timeline {
+    .journey-stream {
       position: relative;
-      max-width: 800px;
+      max-width: 900px;
       margin: 4rem auto 0 auto;
+      padding-left: 20px;
     }
 
-    .timeline::before {
+    .journey-stream::before {
       content: '';
       position: absolute;
-      width: 2px;
-      background-color: var(--accent-color);
+      left: 35px;
       top: 0;
       bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
+      width: 2px;
+      background: linear-gradient(180deg, var(--accent-color) 0%, rgba(255, 107, 53, 0.1) 100%);
       opacity: 0.3;
     }
 
-    .timeline-item {
-      padding: 10px 40px;
+    .stream-item {
       position: relative;
-      background-color: inherit;
-      width: 50%;
+      margin-bottom: 4rem;
+      padding-left: 80px;
+      display: block;
+    }
+
+    .stream-marker {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 70px;
+      height: 70px;
+      background: #0B0F19;
+      border: 2px solid var(--accent-color);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-color);
+      font-size: 1.5rem;
+      z-index: 2;
+      box-shadow: 0 0 20px rgba(255, 107, 53, 0.1);
+      transition: all 0.4s ease;
+    }
+
+    .stream-item:hover .stream-marker {
+      background: var(--accent-color);
+      color: #fff;
+      transform: scale(1.1);
+      box-shadow: 0 0 30px rgba(255, 107, 53, 0.3);
+    }
+
+    .stream-content {
+      background: rgba(21, 27, 41, 0.5);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 24px;
+      padding: 3rem;
+      transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .stream-item:hover .stream-content {
+      border-color: var(--accent-color);
+      background: rgba(255, 107, 53, 0.02);
+      transform: translateX(10px);
+    }
+
+    .stream-label {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--accent-color);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .stream-title {
+      font-size: 1.8rem;
+      color: #fff;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .stream-title span {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      font-weight: 400;
+    }
+
+    .stream-desc {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
       margin-bottom: 2rem;
     }
 
-    .timeline-item::after {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      right: -10px;
-      background-color: var(--card-bg);
-      border: 4px solid var(--accent-color);
-      top: 15px;
-      border-radius: 50%;
-      z-index: 1;
+    .stream-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    .left {
-      left: 0;
+    .stream-tag {
+      background: rgba(255, 107, 53, 0.1);
+      color: var(--accent-color);
+      padding: 6px 15px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
     }
 
-    .right {
-      left: 50%;
-    }
-
-    .right::after {
-      left: -10px;
-    }
-
-    .timeline-content {
-      padding: 20px 30px;
-      background-color: var(--card-bg);
+    /* Ultra-Pro Philosophy Section */
+    .pro-philosophy {
+      margin-top: 6rem;
+      padding: 6rem 3rem;
+      background: radial-gradient(circle at top left, rgba(255, 107, 53, 0.1), transparent),
+                  radial-gradient(circle at bottom right, rgba(13, 18, 28, 0.8), #0B0F19);
+      border-radius: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.03);
       position: relative;
-      border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      overflow: hidden;
+      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4);
+    }
+
+    .pro-philosophy::before {
+      content: 'GROWTH';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 15vw;
+      font-weight: 900;
+      color: rgba(255, 255, 255, 0.02);
+      letter-spacing: 20px;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .equation-grid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 3rem;
+      position: relative;
+      z-index: 1;
+      flex-wrap: wrap;
+    }
+
+    .eq-part {
+      text-align: center;
       transition: var(--transition);
     }
 
-    .timeline-content:hover {
-      box-shadow: var(--shadow-hover);
-      border-color: rgba(255, 107, 53, 0.2);
+    .eq-part:hover {
+      transform: translateY(-10px);
     }
 
-    .timeline-date {
+    .eq-icon {
+      width: 80px;
+      height: 80px;
+      background: rgba(255, 107, 53, 0.1);
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
       color: var(--accent-color);
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      display: inline-block;
-    }
-
-    .philosophy-box {
-      background: rgba(255, 107, 53, 0.05);
+      margin: 0 auto 1.5rem auto;
       border: 1px solid rgba(255, 107, 53, 0.2);
-      padding: 3rem;
-      text-align: center;
-      border-radius: 15px;
-      margin-top: 2rem;
+      box-shadow: 0 10px 30px rgba(255, 107, 53, 0.1);
     }
 
-    .philosophy-box p {
-      font-size: 1.5rem;
+    .eq-word {
+      font-size: 2rem;
+      font-weight: 800;
       color: #fff;
-      font-weight: 500;
-      margin: 0;
+      display: block;
     }
 
-    .philosophy-box span {
+    .eq-plus {
+      font-size: 2.5rem;
+      font-weight: 300;
       color: var(--accent-color);
-      font-weight: 700;
+      opacity: 0.5;
     }
 
-    @media screen and (max-width: 768px) {
-      .timeline::before {
-        left: 31px;
-      }
+    /* Pro Mission/Vision */
+    .pro-mv-container {
+      display: flex;
+      gap: 4rem;
+      margin-bottom: 4rem;
+    }
 
-      .timeline-item {
-        width: 100%;
-        padding-left: 70px;
-        padding-right: 25px;
-      }
+    .pro-mv-card {
+      flex: 1;
+      padding: 4rem;
+      background: rgba(21, 27, 41, 0.4);
+      backdrop-filter: blur(20px);
+      border-radius: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+      transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
 
-      .timeline-item::after {
-        left: 21px;
-      }
+    .pro-mv-card:hover {
+      background: rgba(21, 27, 41, 0.7);
+      border-color: var(--accent-color);
+      transform: scale(1.02);
+    }
 
-      .right {
-        left: 0;
-      }
+    .pro-mv-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 40px;
+      background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 107, 53, 0.15), transparent 80%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
 
-      .right::after {
-        left: -10px;
+    .pro-mv-card:hover::after { opacity: 1; }
+
+    .pro-mv-tag {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--accent-color);
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      display: block;
+    }
+
+    .pro-mv-title {
+      font-size: 2.5rem;
+      color: #fff;
+      margin-bottom: 1.5rem;
+      font-weight: 800;
+    }
+
+    .pro-mv-desc {
+      font-size: 1.1rem;
+      line-height: 1.9;
+      color: var(--text-secondary);
+    }
+
+    @media (max-width: 992px) {
+      .pro-mv-container { flex-direction: column; gap: 2rem; }
+      .equation-grid { gap: 1.5rem; }
+      .eq-plus { display: none; }
+    }
+
+    @media (max-width: 768px) {
+      .journey-stream::before { left: 25px; }
+      .stream-marker {
+        width: 50px;
+        height: 50px;
+        font-size: 1.1rem;
+        border-radius: 12px;
       }
+      .stream-item { padding-left: 65px; }
+      .stream-content { padding: 2rem; }
+      .stream-title { font-size: 1.4rem; flex-direction: column; align-items: flex-start; gap: 5px; }
     }
   </style>
 </head>
@@ -215,8 +368,8 @@
   <!-- Page Header -->
   <section class="page-header">
     <div class="container animate stagger-1">
-      <h1>Digital Marketing Strategist in Malappuram</h1>
-      <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">Muhammed Anshid Chelakodan: Helping Kerala's businesses thrive with data-driven marketing.</p>
+      <h1>Digital Marketing Strategist in Kerala</h1>
+      <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">Muhammed Anshid Chelakodan: A leading Digital Marketing Strategist in Malappuram helping Kerala's businesses thrive with data-driven marketing.</p>
     </div>
   </section>
 
@@ -227,7 +380,7 @@
         <h2 style="margin-bottom: 1.5rem;">Hi, I'm Muhammed Anshid Chelakodan</h2>
 
         <p style="font-size:1.1rem; color:#fff;">
-          I’m <strong>Anshid Chelakodan</strong>, a <strong>Digital Marketing Strategist in Malappuram</strong>
+          I’m <strong>Anshid Chelakodan</strong>, a <strong>Digital Marketing Strategist in Malappuram</strong> and <strong>Kerala</strong>
           passionate about helping businesses grow through smart and data-driven online strategies.
         </p>
 
@@ -272,32 +425,59 @@
     </div>
   </section>
 
-  <!-- Mission & Vision & Philosophy -->
-  <section class="section" style="background-color: #0d121c;">
+  <section class="section" style="background-color: #0d121c; padding: 100px 0;">
     <div class="container">
-      <div class="grid grid-2">
-        <div class="card glass-card animate reveal-left">
-          <i class="fas fa-rocket text-accent" style="font-size: 2.5rem; margin-bottom: 1rem;"></i>
-          <h3>My Mission</h3>
-          <p>To help brands grow ethically, creatively, and consistently by leveraging cutting-edge digital marketing
-            strategies that deliver real ROI.</p>
+      
+      <!-- Pro MV Section -->
+      <div class="pro-mv-container">
+        <div class="pro-mv-card animate reveal-left">
+          <span class="pro-mv-tag">Direction</span>
+          <h3 class="pro-mv-title">My Mission</h3>
+          <p class="pro-mv-desc">Transforming ambitious brands through ethical, data-backed, and creatively fearless digital strategies that don't just yield clicks, but capture market dominance.</p>
         </div>
 
-        <div class="card glass-card animate reveal-right">
-          <i class="fas fa-eye text-accent" style="font-size: 2.5rem; margin-bottom: 1rem;"></i>
-          <h3>My Vision</h3>
-          <p>To be the leading <a href="index.html">Digital Marketing Strategist in Malappuram</a> and Kerala, known for making high-level performance marketing
-            accessible and impactful for evolving businesses.</p>
+        <div class="pro-mv-card animate reveal-right">
+          <span class="pro-mv-tag">Horizon</span>
+          <h3 class="pro-mv-title">My Vision</h3>
+          <p class="pro-mv-desc">To redefine performance marketing for Kerala's landscape, setting the gold standard for how local businesses scale to global visibility through specialized expertise.</p>
         </div>
       </div>
 
-      <div class="philosophy-box animate stagger-3">
-        <p>My Work Philosophy:<br><span>Good marketing = creativity + data + discipline.</span></p>
+      <!-- Ultra-Pro Philosophy -->
+      <div class="pro-philosophy animate reveal-up stagger-2">
+        <div class="equation-grid">
+          <div class="eq-part">
+            <div class="eq-icon"><i class="fas fa-lightbulb"></i></div>
+            <span class="eq-word">Creativity</span>
+          </div>
+          
+          <div class="eq-plus"><i class="fas fa-plus"></i></div>
+
+          <div class="eq-part">
+            <div class="eq-icon"><i class="fas fa-chart-line"></i></div>
+            <span class="eq-word">Data</span>
+          </div>
+
+          <div class="eq-plus"><i class="fas fa-plus"></i></div>
+
+          <div class="eq-part">
+            <div class="eq-icon"><i class="fas fa-shield-halved"></i></div>
+            <span class="eq-word">Discipline</span>
+          </div>
+
+          <div class="eq-plus" style="opacity: 0.8;"><i class="fas fa-equals"></i></div>
+
+          <div class="eq-part">
+            <div class="eq-icon" style="background: var(--accent-color); color: #fff;"><i class="fas fa-trophy"></i></div>
+            <span class="eq-word" style="color: var(--accent-color);">Growth</span>
+          </div>
+        </div>
+        <p style="text-align: center; margin-top: 3rem; color: var(--text-secondary); font-size: 1.2rem; font-weight: 500; letter-spacing: 1px;">The Ultimate Marketing Equation</p>
       </div>
+
     </div>
   </section>
 
-  <!-- Experience Timeline -->
   <section class="section">
     <div class="container">
       <div class="section-title animate stagger-1">
@@ -305,38 +485,64 @@
         <p>My professional journey so far</p>
       </div>
 
-      <div class="timeline">
-        <div class="timeline-item left animate stagger-2">
-          <div class="timeline-content">
-            <span class="timeline-date">2022 - Present</span>
-            <h3>Freelance Digital Marketing Strategist</h3>
-            <p>Helping local and international clients optimize their digital footprint across SEO, Meta, and Google
-              Ads.</p>
+      <div class="journey-stream">
+        <!-- Item 1 -->
+        <div class="stream-item animate reveal-up stagger-1">
+          <div class="stream-marker">01</div>
+          <div class="stream-content">
+            <span class="stream-label">Education Journey</span>
+            <h3 class="stream-title">B.A. Afzal Ul Ulama <span>at University of Calicut (2022-2025)</span></h3>
+            <p class="stream-desc">An intensive undergraduate program specializing in Classical Arabic literature, linguistics, and deep cultural research. This academic foundation has provided me with exceptional interpretive skills and a disciplined approach to research—skills that are critical in digital strategy.</p>
+            <div class="stream-tags">
+              <span class="stream-tag">Classical Linguistics</span>
+              <span class="stream-tag">Cultural Analysis</span>
+              <span class="stream-tag">Strategic Communication</span>
+            </div>
           </div>
         </div>
 
-        <div class="timeline-item right animate stagger-3">
-          <div class="timeline-content">
-            <span class="timeline-date">2021 - 2022</span>
-            <h3>Performance Marketing Executive</h3>
-            <p>Managed large-scale ad budgets and executed robust conversion plans for e-commerce brands.</p>
+        <!-- Item 2 -->
+        <div class="stream-item animate reveal-up stagger-2">
+          <div class="stream-marker">02</div>
+          <div class="stream-content">
+            <span class="stream-label">Specialized Skillset</span>
+            <h3 class="stream-title">Digital Marketing Mastery <span>at <a href="https://dotinacademy.com/" target="_blank" style="color: inherit; text-decoration: underline;">Dotin Academy</a></span></h3>
+            <p class="stream-desc">Advanced training in the architecture of high-performance digital campaigns. Gained core practical knowledge in advanced SEO, performance-driven Google Ads (PPC), and Meta Lead Generation.</p>
+            <div class="stream-tags">
+              <span class="stream-tag">Advanced SEO</span>
+              <span class="stream-tag">PPC Strategy</span>
+              <span class="stream-tag">Lead Funnels</span>
+            </div>
           </div>
         </div>
 
-        <div class="timeline-item left animate stagger-4">
-          <div class="timeline-content">
-            <span class="timeline-date">2020 - 2021</span>
-            <h3>SEO Specialist</h3>
-            <p>Led technical SEO and content optimization, driving a 200% increase in organic traffic for B2B clients.
-            </p>
+        <!-- Item 3 -->
+        <div class="stream-item animate reveal-up stagger-3">
+          <div class="stream-marker">03</div>
+          <div class="stream-content">
+            <span class="stream-label">Professional Experience</span>
+            <h3 class="stream-title">Agency & Strategic Work <span>Internship & Beyond</span></h3>
+            <p class="stream-desc">Hands-on experience managing multi-channel social media platforms for diverse business sectors. Developed a data-driven understanding of consumer psychology, keyword mapping, and engagement cycles.</p>
+            <div class="stream-tags">
+              <span class="stream-tag">Consumer Psychology</span>
+              <span class="stream-tag">Keyword Research</span>
+              <span class="stream-tag">Social ROI</span>
+            </div>
           </div>
         </div>
 
-        <div class="timeline-item right animate stagger-2">
-          <div class="timeline-content">
-            <span class="timeline-date">Earlier</span>
-            <h3>Education & Certifications</h3>
-            <p>Continuous learning with advanced certifications in Google Ads, Meta Ads, and SEO fundamentals.</p>
+        <!-- Item 4 -->
+        <div class="stream-item animate reveal-up stagger-4">
+          <div class="stream-marker">04</div>
+          <div class="stream-content">
+            <span class="stream-label">Current Specialization</span>
+            <h3 class="stream-title">Brand Catalyst & Growth Strategist <span>Freelance Consulting</span></h3>
+            <p class="stream-desc">Providing independent growth consulting for Kerala-based businesses. I help local brands bridge the gap between traditional business and modern performance marketing via hyper-local SEO and custom digital roadmaps.</p>
+            <div class="stream-tags">
+              <span class="stream-tag">Local SEO</span>
+              <span class="stream-tag">Sales Funnels</span>
+              <span class="stream-tag">Growth Consulting</span>
+            </div>
           </div>
         </div>
       </div>
