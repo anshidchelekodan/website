@@ -3,150 +3,87 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog & Insights | Digital Marketing Strategist in Malappuram</title>
-  <meta name="description" content="Latest digital marketing trends, SEO tips, and growth strategies from a Digital Marketing Strategist in Malappuram, Kerala.">
-  <meta name="keywords" content="Digital Marketing Trends Kerala, Local SEO Malappuram, SEO Specialist in Malappuram">
+  <title>Digital Marketing Blog | Insights from Anshid CK</title>
+  <meta name="description" content="Expert insights on SEO, Google Ads, and Performance Marketing for businesses in Kerala. Stay updated with the latest digital marketing trends.">
+  <meta name="keywords" content="Digital Marketing Blog Kerala, SEO Tips Malappuram, Google Ads Strategy Blog, Kerala Business Growth">
 
   <!-- OpenGraph / Twitter -->
-  <meta property="og:title" content="Digital Marketing Blog & Insights | Muhammed Anshid">
-  <meta property="og:description" content="Expert insights on the future of SEO, performance marketing, and local business growth in Kerala.">
+  <meta property="og:title" content="Digital Marketing Blog | Anshid CK">
+  <meta property="og:description" content="Expert insights on SEO and Performance Marketing for Kerala businesses.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://anshidchelekodan.github.io/Portfolio/blog/">
-  <meta property="og:image" content="https://anshidchelekodan.github.io/Portfolio/anshid-optimized.jpg">
-  <link rel="canonical" href="https://anshidchelekodan.github.io/Portfolio/blog/">
+  <meta property="og:url" content="https://anshidck.com/blog/">
+  <meta property="og:image" content="https://anshidck.com/anshid-optimized.jpg">
+  <link rel="canonical" href="https://anshidck.com/blog/">
   <meta name="robots" content="index,follow">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://anshidchelekodan.github.io/Portfolio/anshid-optimized.jpg">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"></noscript>
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
   <link rel="stylesheet" href="../style.css">
-  
+
   <style>
-    .page-header {
+    .blog-hero {
       padding: 180px 0 100px 0;
-      background: radial-gradient(circle at top, rgba(255, 107, 53, 0.05) 0%, rgba(11, 15, 25, 1) 70%);
+      background: linear-gradient(180deg, #0B0F19 0%, #111827 100%);
       text-align: center;
-      position: relative;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
-    
-    .page-header h1 {
-      font-size: clamp(3rem, 7vw, 5rem);
-      margin-bottom: 1.5rem;
-      font-weight: 800;
-      letter-spacing: -1px;
-    }
-    
     .blog-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 3rem;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      padding: 80px 0;
     }
-    
     .blog-card {
-      background: rgba(21, 27, 41, 0.9);
-      border-radius: inherit;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
       overflow: hidden;
-      transition: var(--transition);
+      transition: all 0.3s ease;
       display: flex;
       flex-direction: column;
-      height: 100%;
     }
-    
-    .blog-img-wrapper {
-      position: relative;
-      height: 240px;
-      overflow: hidden;
-      background-color: #0d121c;
+    .blog-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--accent-color);
+      background: rgba(255, 107, 53, 0.02);
     }
-    
-    .blog-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-    }
-    
-    .moving-border-container:hover .blog-img {
-      transform: scale(1.1);
-    }
-    
-    .blog-content {
-      padding: 2.5rem;
+    .blog-card-content {
+      padding: 30px;
       flex-grow: 1;
-      display: flex;
-      flex-direction: column;
     }
-    
+    .blog-card-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: #fff;
+    }
+    .blog-card-content p {
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
     .blog-meta {
       display: flex;
-      align-items: center;
-      gap: 1.5rem;
+      justify-content: space-between;
       color: var(--text-secondary);
       font-size: 0.85rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 15px;
     }
-    
     .blog-category {
       color: var(--accent-color);
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 0.75rem;
-      background: rgba(255, 107, 53, 0.1);
-      padding: 4px 12px;
-      border-radius: 50px;
-    }
-    
-    .blog-title {
-      font-size: 1.5rem;
-      color: #fff;
-      margin-bottom: 1.2rem;
-      line-height: 1.3;
-      font-weight: 700;
-    }
-    
-    .blog-title a:hover {
-      color: var(--accent-color);
-    }
-    
-    .blog-excerpt {
-      margin-bottom: 2.5rem;
-      font-size: 1rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      flex-grow: 1;
-    }
-    
-    .read-more {
-      color: var(--accent-color);
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      text-transform: uppercase;
-      font-size: 0.9rem;
       letter-spacing: 1px;
-    }
-    
-    .read-more i {
-      transition: transform 0.3s ease;
-    }
-    
-    .moving-border-container:hover .read-more i {
-      transform: translateX(8px);
     }
   </style>
 </head>
 <body>
-
   <!-- Navbar -->
   <nav class="navbar">
     <div class="container container-nav">
       <div class="logo-group">
-        <a href="../index.html" class="logo">ANSHID CK<span class="text-accent">.</span></a>
+        <a href="../" class="logo">ANSHID CK<span class="text-accent">.</span></a>
         <div class="header-socials">
           <a href="https://www.instagram.com/_anshee___" target="_blank"><i class="fab fa-instagram"></i></a>
           <a href="https://www.linkedin.com/in/mohammad-anshid-ck-9123462aa" target="_blank"><i class="fab fa-linkedin"></i></a>
@@ -155,114 +92,85 @@
           <a href="https://wa.me/919778179727" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
       </div>
-      
       <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
+        <li><a href="../">Home</a></li>
         <li><a href="../about/">About</a></li>
         <li><a href="../services/">Services</a></li>
         <li><a href="../portfolio/">Portfolio</a></li>
         <li><a href="../blog/" class="active">Blog</a></li>
         <li><a href="../contact/">Contact</a></li>
       </ul>
-      
       <button class="mobile-menu-btn">
         <i class="fas fa-bars"></i>
       </button>
     </div>
   </nav>
 
-  <!-- Page Header -->
-  <section class="page-header">
+  <header class="blog-hero">
     <div class="container animate stagger-1">
-      <h1>Latest Insights</h1>
-      <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">Thoughts on SEO, digital trends, and measurable marketing from a <a href="../index.html">Digital Marketing Strategist in Kerala</a> and Malappuram.</p>
+      <h1>Digital Growth Blog</h1>
+      <p style="font-size: 1.25rem; color: var(--text-secondary); max-width: 800px; margin: 15px auto;">Deep dives into SEO, Paid Media, and the future of digital marketing in Kerala.</p>
     </div>
-  </section>
+  </header>
 
-  <!-- Blog Grid Section -->
-  <section class="section">
-    <div class="container">
-      <div class="blog-grid">
-        
-        <!-- Post 1 -->
-        <article class="moving-border-container animate reveal-left glass-card" style="border-radius: 20px;">
-          <div class="moving-border-inner blog-card" style="background: transparent;">
-            <div class="blog-img-wrapper">
-              <img src="../assets/blog-seo-2026.png" alt="SEO analytics dashboard 2026 - Digital Marketing Strategist in Malappuram" class="blog-img" onerror="this.src='../anshid-optimized.jpg'" style="max-width: 100%; height: auto;">
-            </div>
-            <div class="blog-content">
-              <div class="blog-meta">
-                <span class="blog-category">SEO Strategy</span>
-                <span>Mar 12, 2026</span>
-              </div>
-              <h2 class="blog-title"><a href="seo-strategies-2026/">SEO Importance for Businesses in 2026</a></h2>
-              <p class="blog-excerpt">The digital landscape is shifting with AI. Discover why technical SEO and semantic topic strategies are now the primary drivers of business growth.</p>
-              <a href="seo-strategies-2026/" class="read-more">Read Full Article <i class="fas fa-arrow-right"></i></a>
-            </div>
+  <main class="container">
+    <div class="blog-grid">
+      <!-- Article 1 -->
+      <article class="blog-card animate reveal-up">
+        <div class="blog-card-content">
+          <div class="blog-meta">
+            <span class="blog-category">SEO Guide</span>
+            <span>March 17, 2026</span>
           </div>
-        </article>
-        
-        <!-- Post 2 -->
-        <article class="moving-border-container animate reveal-right glass-card" style="border-radius: 20px;">
-          <div class="moving-border-inner blog-card" style="background: transparent;">
-            <div class="blog-img-wrapper">
-              <img src="../assets/blog-malappuram-growth.png" alt="Local business growth in Malappuram - Muhammed Anshid" class="blog-img" onerror="this.src='../anshid-optimized.jpg'" style="max-width: 100%; height: auto;">
-            </div>
-            <div class="blog-content">
-              <div class="blog-meta">
-                <span class="blog-category">Local Strategy</span>
-                <span>Mar 17, 2026</span>
-              </div>
-              <h2 class="blog-title"><a href="local-business-marketing/">How Digital Marketing Helps Local Businesses in Malappuram</a></h2>
-              <p class="blog-excerpt">The digital shift is here. Discover how a <a href="../services/">Digital Marketing Strategist in Malappuram</a> can help your local brand dominate the market.</p>
-              <a href="local-business-marketing/" class="read-more">Read Full Article <i class="fas fa-arrow-right"></i></a>
-            </div>
+          <h3>SEO Strategies for Small Businesses in Kerala</h3>
+          <p>Dominate your local market with these proven organic growth tactics tailored for the Kerala business landscape.</p>
+          <a href="seo-kerala/" class="btn btn-outline" style="padding: 10px 20px;">Read More</a>
+        </div>
+      </article>
+
+      <!-- Article 2 -->
+      <article class="blog-card animate reveal-up">
+        <div class="blog-card-content">
+          <div class="blog-meta">
+            <span class="blog-category">Industry Trends</span>
+            <span>March 12, 2026</span>
           </div>
-        </article>
-        
-        <!-- Post 3 -->
-        <article class="moving-border-container animate reveal-left glass-card" style="border-radius: 20px;">
-          <div class="moving-border-inner blog-card" style="background: transparent;">
-            <div class="blog-img-wrapper">
-              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600" alt="SEO strategies for Kerala businesses - Digital Marketing Specialist" class="blog-img" onerror="this.src='../anshid-optimized.jpg'" style="max-width: 100%; height: auto;">
-            </div>
-            <div class="blog-content">
-              <div class="blog-meta">
-                <span class="blog-category">SEO Strategy</span>
-                <span>Mar 17, 2026</span>
-              </div>
-              <h2 class="blog-title"><a href="seo-kerala/">SEO Strategies for Small Businesses in Kerala</a></h2>
-              <p class="blog-excerpt">Actionable SEO tips for small businesses in Kerala to compete with big brands and drive organic growth through local intent.</p>
-              <a href="seo-kerala/" class="read-more">Read Full Article <i class="fas fa-arrow-right"></i></a>
-            </div>
+          <h3>The Future of SEO: Strategies for 2026</h3>
+          <p>How AEO and Generative AI are changing the search landscape and what you need to do to stay ahead.</p>
+          <a href="seo-strategies-2026/" class="btn btn-outline" style="padding: 10px 20px;">Read More</a>
+        </div>
+      </article>
+
+      <!-- Article 3 -->
+      <article class="blog-card animate reveal-up">
+        <div class="blog-card-content">
+          <div class="blog-meta">
+            <span class="blog-category">PPC Strategy</span>
+            <span>March 05, 2026</span>
           </div>
-        </article>
-        
-        <!-- Post 4 -->
-        <article class="moving-border-container animate reveal-right glass-card" style="border-radius: 20px;">
-          <div class="moving-border-inner blog-card" style="background: transparent;">
-            <div class="blog-img-wrapper">
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600" alt="Google Ads performance tips - Performance Marketer in Kerala" class="blog-img" onerror="this.src='../anshid-optimized.jpg'" style="max-width: 100%; height: auto;">
-            </div>
-            <div class="blog-content">
-              <div class="blog-meta">
-                <span class="blog-category">Ads Strategy</span>
-                <span>Mar 17, 2026</span>
-              </div>
-              <h2 class="blog-title"><a href="google-ads-tips/">Google Ads Tips for Local Business Growth</a></h2>
-              <p class="blog-excerpt">Stop wasting budget! Master these 4 critical Google Ads tips to scale your Malappuram business effectively with performance marketing.</p>
-              <a href="google-ads-tips/" class="read-more">Read Full Article <i class="fas fa-arrow-right"></i></a>
-            </div>
+          <h3>Google Ads Tips for Better Lead Generation</h3>
+          <p>Stop wasting ad spend. Learn how to optimize your funnel for maximum conversions and quality leads.</p>
+          <a href="google-ads-tips/" class="btn btn-outline" style="padding: 10px 20px;">Read More</a>
+        </div>
+      </article>
+
+      <!-- Article 4 -->
+      <article class="blog-card animate reveal-up">
+        <div class="blog-card-content">
+          <div class="blog-meta">
+            <span class="blog-category">Local Marketing</span>
+            <span>Feb 28, 2026</span>
           </div>
-        </article>
-        
-      </div>
+          <h3>Dominating Local Business Marketing in Malappuram</h3>
+          <p>A step-by-step guide to becoming the go-to service provider in your local Malappuram community.</p>
+          <a href="local-business-marketing/" class="btn btn-outline" style="padding: 10px 20px;">Read More</a>
+        </div>
+      </article>
     </div>
-  </section>
+  </main>
 
-  <!-- Footer -->
   <footer>
-    <div class="container">
+    <div class="container" style="text-align: center;">
       <div class="social-links">
         <a href="https://www.instagram.com/_anshee___" target="_blank"><i class="fab fa-instagram"></i></a>
         <a href="https://www.linkedin.com/in/mohammad-anshid-ck-9123462aa" target="_blank"><i class="fab fa-linkedin"></i></a>
@@ -270,10 +178,11 @@
         <a href="https://x.com/AnshidCK727" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
         <a href="https://wa.me/919778179727" target="_blank"><i class="fab fa-whatsapp"></i></a>
       </div>
+      <p style="margin-top: 2rem; color: var(--text-secondary);">&copy; 2026 ANSHID CK. All rights reserved.</p>
     </div>
   </footer>
 
-  <a href="https://wa.me/919778179727" class="float-wa" target="_blank"><i class="fab fa-whatsapp"></i></a><script src="../main.js"></script>
+  <a href="https://wa.me/919778179727" class="float-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  <script src="../main.js"></script>
 </body>
 </html>
-

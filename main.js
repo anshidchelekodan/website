@@ -139,30 +139,45 @@ document.addEventListener('DOMContentLoaded', () => {
   initMagneticButtons();
   initMouseGlow();
   initFAQ();
+  
+  // Set active nav link
+  const currentPath = window.location.pathname;
+  
+  // Highlighting logic
+  navItems.forEach(link => {
+    link.classList.remove('active'); // Clear first
+    const href = link.getAttribute('href');
+    if (!href) return;
+    
+    // Resolve full path
+    const a = document.createElement('a');
+    a.href = href;
+    const linkPath = a.pathname;
+    
+    // Exact match
+    if (linkPath === currentPath) {
+      link.classList.add('active');
+    }
+    // Folder match (services, portfolio, blog)
+    else if (href !== 'index.html' && !href.endsWith('index.html') && href !== '' && href !== './') {
+      const folderSegment = href.replace(/^(\.\.\/)+/, '').replace(/\/$/, '');
+      if (folderSegment && currentPath.includes('/' + folderSegment + '/')) {
+        link.classList.add('active');
+      }
+    }
+    // Special case for home page (root or root index.html)
+    const isRoot = currentPath === '/' || currentPath.endsWith('/Portfolio/') || currentPath === '/Portfolio';
+    const isRootIndex = currentPath.endsWith('/Portfolio/index.html');
+    const isHomeLink = href === 'index.html' || href === './' || href === '../' || href === '../../' || href === '../index.html' || href === '../../index.html';
+
+    if (isHomeLink && (isRoot || isRootIndex)) {
+      link.classList.add('active');
+    }
+  });
 });
 
 window.addEventListener('scroll', handleScroll);
 
-// Set active nav link
-const currentPath = window.location.pathname;
-navItems.forEach(link => {
-  const href = link.getAttribute('href');
-  if (!href) return;
-  
-  // Remove relative path segments for comparison
-  const cleanHref = href.replace(/^(\.\.\/)+/, '');
-  
-  // Home page check
-  if (cleanHref === 'index.html' || cleanHref === './' || cleanHref === '') {
-    if (currentPath.endsWith('/') || currentPath.endsWith('index.html')) {
-      link.classList.add('active');
-    }
-  } 
-  // Folder check (e.g., about/, services/)
-  else if (currentPath.includes('/' + cleanHref.replace(/\/$/, ''))) {
-    link.classList.add('active');
-  }
-});
 
 // Blog Comment Form Handler
 const blogCommentForm = document.getElementById('blogCommentForm');
