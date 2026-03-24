@@ -1478,14 +1478,16 @@ footer p {
 }
 
 
-/* ROI Calculator */
+/* ROI Calculator - Clean Glassmorphism */
 .roi-calculator {
-  background: var(--glass-bg);
-  backdrop-filter: blur(15px);
-  border: 1px solid var(--glass-border);
-  border-radius: 24px;
-  padding: 3rem;
-  margin-top: 4rem;
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(30px) saturate(200%);
+  -webkit-backdrop-filter: blur(30px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 32px;
+  padding: 2.5rem;
+  margin-top: 3rem;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
 }
 
 .calc-grid {
@@ -1505,42 +1507,75 @@ footer p {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 1rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
 }
 
 .input-group label {
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #fff;
+  letter-spacing: 0.5px;
 }
 
 .range-slider {
   width: 100%;
   accent-color: var(--accent-color);
   height: 6px;
-  border-radius: 3px;
-  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.12);
   cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.range-slider:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .calc-result {
-  background: rgba(255,107,53,0.05);
-  border: 1px dashed var(--accent-color);
-  border-radius: 20px;
-  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  padding: 2.5rem 2rem;
   text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .result-value {
   display: block;
-  font-size: 3rem;
-  font-weight: 800;
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-weight: 900;
   color: var(--accent-color);
   margin-bottom: 0.5rem;
+  letter-spacing: -1px;
 }
 
 @media (max-width: 768px) {
+  .roi-calculator {
+    padding: 2rem;
+  }
+  
   .calc-grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .calc-inputs {
+    gap: 1.5rem;
+  }
+  
+  .input-group {
+    padding: 0.8rem;
+  }
+  
+  .calc-result {
+    padding: 2rem 1.5rem;
   }
 }
 
