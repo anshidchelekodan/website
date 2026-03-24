@@ -92,16 +92,12 @@
         rgba(255, 107, 53, 0.05) 320deg,
         rgba(255, 107, 53, 0.02) 360deg
       );
-      animation: rotateSnakePortfolio 3s linear infinite;
+      /* Animation removed for cleaner visual experience */
       -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
       mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
       border-radius: 16px;
-    }
-
-    @keyframes rotateSnakePortfolio {
-      to { --angle: 360deg; }
     }
 
     /* Fallback/Cleanup old pseudo-element */

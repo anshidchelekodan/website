@@ -114,12 +114,7 @@ a:hover {
   width: 100%;
   height: 100%;
   background: rgba(255, 255, 255, 0.2);
-  transition: left 0.5s ease;
   z-index: 0;
-}
-
-.btn:hover::before {
-  left: 100%;
 }
 
 .btn-primary {
@@ -136,18 +131,13 @@ a:hover {
   position: absolute;
   inset: 0;
   background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
-  transform: translateX(-100%);
-  transition: transform 0.6s;
   border-radius: 12px;
-}
-
-.btn-primary:hover::after {
-  transform: translateX(100%);
+  display: none;
 }
 
 .btn-primary:hover {
   background: linear-gradient(135deg, #ff8559 0%, var(--accent-color) 100%);
-  transform: translateY(-4px) scale(1.05);
+  transform: scale(1.02);
   box-shadow: 0 20px 50px rgba(255, 107, 53, 0.5),
               0 0 30px rgba(255, 107, 53, 0.3),
               inset 0 1px 0 rgba(255, 255, 255, 0.3);
@@ -155,7 +145,6 @@ a:hover {
 }
 
 .btn-primary:active {
-  transform: translateY(-2px) scale(1.02);
   box-shadow: 0 5px 20px rgba(255, 107, 53, 0.4);
 }
 
@@ -175,19 +164,14 @@ a:hover {
   background: var(--accent-color);
   border-radius: 10px;
   z-index: -1;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: none;
 }
 
 .btn-outline:hover {
   color: #fff;
   border-color: var(--accent-color);
-  transform: translateY(-3px) translateX(2px);
-}
-
-.btn-outline:hover::before {
-  transform: scaleX(1);
+  transform: scale(1.02);
+  box-shadow: 0 0 25px rgba(255, 107, 53, 0.4);
 }
 
 /* Large Button Variant */
@@ -208,19 +192,14 @@ a:hover {
 .btn-secondary:hover {
   background: rgba(255, 107, 53, 0.2);
   border-color: var(--accent-color);
-  transform: translateY(-3px);
+  transform: scale(1.02);
   box-shadow: 0 15px 30px rgba(255, 107, 53, 0.2);
 }
 
 /* Icon Button Support */
 .btn i {
   margin-right: 8px;
-  transition: transform 0.3s ease;
   display: inline-block;
-}
-
-.btn:hover i {
-  transform: translateX(3px);
 }
 
 /* Form Button Styling (Submit Buttons) */
@@ -246,14 +225,13 @@ button[type="submit"].btn-primary {
 button.btn-primary:hover,
 button[type="submit"].btn-primary:hover {
   background: linear-gradient(135deg, #ff8559 0%, var(--accent-color) 100%);
-  transform: translateY(-4px) scale(1.05);
+  transform: scale(1.02);
   box-shadow: 0 20px 50px rgba(255, 107, 53, 0.5),
               0 0 30px rgba(255, 107, 53, 0.3);
 }
 
 button.btn-primary:active,
 button[type="submit"].btn-primary:active {
-  transform: translateY(-2px) scale(1.02);
 }
 
 /* Disabled Button State */
@@ -725,16 +703,12 @@ textarea.form-control {
     rgba(255, 107, 53, 0.05) 320deg,
     rgba(255, 107, 53, 0.02) 360deg
   );
-  animation: rotateSnake 3s linear infinite;
+  /* Animation removed for cleaner visual experience */
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   border-radius: inherit;
-}
-
-@keyframes rotateSnake {
-  to { --angle: 360deg; }
 }
 
 .moving-border-inner {

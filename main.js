@@ -71,38 +71,35 @@ function handleScroll() {
   }
 }
 
-// Magnetic Button Effect
-function initMagneticButtons() {
-  const buttons = document.querySelectorAll('.btn-primary');
-  
-  buttons.forEach(btn => {
-    btn.addEventListener('mousemove', (e) => {
-      const rect = btn.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-      
-      btn.style.transform = `translate(${x * 0.3}px, ${y * 0.5}px)`;
-    });
-    
-    btn.addEventListener('mouseleave', () => {
-      btn.style.transform = 'translate(0px, 0px)';
-    });
-  });
-}
+// Magnetic Button Effect DISABLED for cleaner UI
+// function initMagneticButtons() {
+//   const buttons = document.querySelectorAll('.btn-primary');
+//   buttons.forEach(btn => {
+//     btn.addEventListener('mousemove', (e) => {
+//       const rect = btn.getBoundingClientRect();
+//       const x = e.clientX - rect.left - rect.width / 2;
+//       const y = e.clientY - rect.top - rect.height / 2;
+//       btn.style.transform = `translate(${x * 0.3}px, ${y * 0.5}px)`;
+//     });
+//     btn.addEventListener('mouseleave', () => {
+//       btn.style.transform = 'translate(0px, 0px)';
+//     });
+//   });
+// }
 
-// Pro Mouse Glow Mouse Effect
-function initMouseGlow() {
-  const cards = document.querySelectorAll('.pro-mv-card');
-  cards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-      card.style.setProperty('--mouse-x', `${x}%`);
-      card.style.setProperty('--mouse-y', `${y}%`);
-    });
-  });
-}
+// Pro Mouse Glow Mouse Effect DISABLED for cleaner UI
+// function initMouseGlow() {
+//   const cards = document.querySelectorAll('.pro-mv-card');
+//   cards.forEach(card => {
+//     card.addEventListener('mousemove', (e) => {
+//       const rect = card.getBoundingClientRect();
+//       const x = ((e.clientX - rect.left) / rect.width) * 100;
+//       const y = ((e.clientY - rect.top) / rect.height) * 100;
+//       card.style.setProperty('--mouse-x', `${x}%`);
+//       card.style.setProperty('--mouse-y', `${y}%`);
+//     });
+//   });
+// }
 
 const initFAQ = () => {
   const faqItems = document.querySelectorAll('.faq-item');
@@ -136,8 +133,8 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Init other features
   handleScroll();
-  initMagneticButtons();
-  initMouseGlow();
+  // initMagneticButtons(); // DISABLED
+  // initMouseGlow(); // DISABLED
   initFAQ();
   
   // Set active nav link

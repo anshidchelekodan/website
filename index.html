@@ -254,20 +254,9 @@
       bottom: 0;
       left: 0;
       background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      animation: shimmer 2s infinite;
     }
 
-    @keyframes shimmer {
-      0% {
-        transform: translateX(-100%);
-      }
-
-      100% {
-        transform: translateX(100%);
-      }
-    }
-
-    /* Work Approach Timeline */
+    /* Shine effect removed for cleaner UI */
     .timeline {
       position: relative;
       max-width: 900px;
@@ -428,32 +417,17 @@
       align-items: center;
       gap: 12px;
       width: max-content;
-    }
-
-    @keyframes floatBadge {
-      0% {
-        transform: translateY(0) rotate(0deg);
-      }
-
-      50% {
-        transform: translateY(-10px) rotate(2deg);
-      }
-
-      100% {
-        transform: translateY(0) rotate(0deg);
-      }
+      /* Floating animation removed for better visual stability */
     }
 
     .badge-seo {
       top: 50px;
       left: -20px;
-      animation: floatBadge 4s ease-in-out infinite;
     }
 
     .badge-performance {
       bottom: 50px;
       right: -20px;
-      animation: floatBadge 5s ease-in-out infinite 0.5s;
     }
 
     .floating-badge i {
