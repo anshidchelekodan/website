@@ -216,5 +216,41 @@
 
   <a href="https://wa.me/919778179727" class="float-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
   <script src="../main.js"></script>
+
+  <!-- Service Poster Popup -->
+  <div id="service-popup" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(11,15,25,0.85);backdrop-filter:blur(4px);align-items:center;justify-content:center;">
+    <div style="position:relative;max-width:420px;width:90vw;background:var(--card-bg);border-radius:24px;box-shadow:0 10px 40px rgba(0,0,0,0.7);padding:2.5rem 2rem 2rem 2rem;text-align:center;animation:popup-fade-in 0.7s cubic-bezier(.4,0,.2,1);">
+      <button id="close-popup" aria-label="Close" style="position:absolute;top:18px;right:18px;background:none;border:none;font-size:1.7rem;color:var(--text-secondary);cursor:pointer;transition:color .2s;z-index:2;">&times;</button>
+      <h2 style="color:var(--accent-color);margin-bottom:1rem;">Grow Your Business with Me!</h2>
+      <p style="color:var(--text-secondary);margin-bottom:1.5rem;">Unlock ROI-driven SEO, Google Ads, and Performance Marketing. Book a free consultation now and start scaling your brand in Kerala.</p>
+      <a href="../services/" class="btn btn-primary" style="margin-bottom:0.5rem;display:inline-block;">Explore Services</a>
+      <br>
+      <a href="../contact/" class="btn btn-outline" style="display:inline-block;">Contact Me</a>
+    </div>
+  </div>
+
+  <style>
+    @keyframes popup-fade-in {
+      from { opacity:0; transform:scale(0.95); }
+      to { opacity:1; transform:scale(1); }
+    }
+  </style>
+
+  <script>
+    // Service Poster Popup Logic
+    function showServicePopup() {
+      if (!localStorage.getItem('servicePopupShown')) {
+        document.getElementById('service-popup').style.display = 'flex';
+        localStorage.setItem('servicePopupShown', 'yes');
+      }
+    }
+    function closeServicePopup() {
+      document.getElementById('service-popup').style.display = 'none';
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(showServicePopup, 1200); // Show after 1.2s
+      document.getElementById('close-popup').onclick = closeServicePopup;
+    });
+  </script>
 </body>
 </html>

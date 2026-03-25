@@ -667,6 +667,11 @@ textarea.form-control {
   inherits: false;
 }
 
+@keyframes border-rotate {
+  from { --angle: 0deg; }
+  to { --angle: 360deg; }
+}
+
 /* Global Snake Border Utility */
 .moving-border-container {
   position: relative;
@@ -683,33 +688,50 @@ textarea.form-control {
   inset: 0;
   padding: 4px; /* Matches container padding */
   border-radius: inherit; /* Inherit radius from container */
-  background: transparent;
+  background: conic-gradient(
+    from var(--angle),
+    rgba(255, 255, 255, 0.04) 0deg,
+    rgba(255, 255, 255, 0.08) 40deg,
+    rgba(255, 255, 255, 0.14) 80deg,
+    rgba(255, 255, 255, 0.2) 120deg,
+    rgba(255, 255, 255, 0.25) 150deg,
+    rgba(255, 255, 255, 0.4) 180deg,
+    rgba(255, 255, 255, 0.25) 210deg,
+    rgba(255, 255, 255, 0.2) 240deg,
+    rgba(255, 255, 255, 0.14) 280deg,
+    rgba(255, 255, 255, 0.08) 320deg,
+    rgba(255, 255, 255, 0.04) 360deg
+  );
   pointer-events: none;
   z-index: 0;
+  opacity: 0;
+  transition: opacity 0.35s ease;
 }
 
 .moving-border-container:hover::after {
+  opacity: 1;
+  animation: border-rotate 2.8s linear infinite;
   background: conic-gradient(
     from var(--angle),
-    rgba(255, 107, 53, 0.02) 0deg,
-    rgba(255, 107, 53, 0.05) 40deg,
-    rgba(255, 107, 53, 0.15) 80deg,
-    rgba(255, 107, 53, 0.4) 120deg,
-    rgba(255, 107, 53, 0.8) 150deg,
+    rgba(255, 107, 53, 0.1) 0deg,
+    rgba(255, 107, 53, 0.2) 40deg,
+    rgba(255, 107, 53, 0.35) 80deg,
+    rgba(255, 107, 53, 0.55) 120deg,
+    rgba(255, 107, 53, 0.75) 150deg,
     rgba(255, 107, 53, 1) 180deg,
-    rgba(255, 107, 53, 0.8) 210deg,
-    rgba(255, 107, 53, 0.4) 240deg,
-    rgba(255, 107, 53, 0.15) 280deg,
-    rgba(255, 107, 53, 0.05) 320deg,
-    rgba(255, 107, 53, 0.02) 360deg
+    rgba(255, 107, 53, 0.75) 210deg,
+    rgba(255, 107, 53, 0.55) 240deg,
+    rgba(255, 107, 53, 0.35) 280deg,
+    rgba(255, 107, 53, 0.2) 320deg,
+    rgba(255, 107, 53, 0.1) 360deg
   );
-  /* Animation removed for cleaner visual experience */
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   border-radius: inherit;
 }
+
 
 .moving-border-inner {
   position: relative;
@@ -911,7 +933,8 @@ textarea.form-control {
   }
   
   .expertise-item .moving-border-inner {
-    padding: clamp(1rem, 2vw, 1.5rem) !important;
+    padding: clamp(0.65rem, 1.5vw, 1.1rem) !important;
+    min-height: 110px;
   }
   
   .expertise-item {
