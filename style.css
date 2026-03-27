@@ -711,12 +711,13 @@ textarea.form-control {
   z-index: 0;
   opacity: 0;
   transition: opacity 0.35s ease;
-  will-change: opacity;
+  transform-origin: center;
+  will-change: opacity, transform;
 }
 
 .moving-border-container:hover::after {
   opacity: 1;
-  animation: border-rotate 2.8s linear infinite;
+  animation: border-spin 2.8s linear infinite;
   background: conic-gradient(
     from var(--angle),
     rgba(255, 107, 53, 0.1) 0deg,
@@ -730,30 +731,6 @@ textarea.form-control {
     rgba(255, 107, 53, 0.35) 280deg,
     rgba(255, 107, 53, 0.2) 320deg,
     rgba(255, 107, 53, 0.1) 360deg
-  );
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  border-radius: inherit;
-}
-
-.moving-border-container.always-animate::after {
-  opacity: 1;
-  animation: border-rotate 2.8s linear infinite;
-  background: conic-gradient(
-    from var(--angle),
-    rgba(255, 107, 53, 0.02) 0deg,
-    rgba(255, 107, 53, 0.05) 40deg,
-    rgba(255, 107, 53, 0.15) 80deg,
-    rgba(255, 107, 53, 0.4) 120deg,
-    rgba(255, 107, 53, 0.8) 150deg,
-    rgba(255, 107, 53, 1) 180deg,
-    rgba(255, 107, 53, 0.8) 210deg,
-    rgba(255, 107, 53, 0.4) 240deg,
-    rgba(255, 107, 53, 0.15) 280deg,
-    rgba(255, 107, 53, 0.05) 320deg,
-    rgba(255, 107, 53, 0.02) 360deg
   );
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
