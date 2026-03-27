@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"></noscript>
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
-  <link rel="stylesheet" href="../style.css?v=20260327-2">
+  <link rel="stylesheet" href="../style.css?v=20260327-4">
 
   <style>
     .blog-hero {
@@ -228,7 +228,7 @@
   </footer>
 
   <a href="https://wa.me/919778179727" class="float-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
-<script src="../main.js?v=20260327-3"></script>
+<script src="../main.js?v=20260327-4"></script>
 
   <!-- Service Poster Popup -->
   <div id="service-popup" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(11,15,25,0.85);backdrop-filter:blur(4px);align-items:center;justify-content:center;">
@@ -252,17 +252,43 @@
   <script>
     // Service Poster Popup Logic
     function showServicePopup() {
-      if (!localStorage.getItem('servicePopupShown')) {
-        document.getElementById('service-popup').style.display = 'flex';
-        localStorage.setItem('servicePopupShown', 'yes');
+      const popup = document.getElementById('service-popup');
+      if (!popup) {
+        return;
       }
+
+      try {
+        if (localStorage.getItem('servicePopupShown')) {
+          return;
+        }
+        localStorage.setItem('servicePopupShown', 'yes');
+      } catch (error) {
+        // Ignore storage access issues and still show the popup.
+      }
+
+      popup.style.display = 'flex';
     }
     function closeServicePopup() {
-      document.getElementById('service-popup').style.display = 'none';
+      const popup = document.getElementById('service-popup');
+      if (popup) {
+        popup.style.display = 'none';
+      }
     }
     document.addEventListener('DOMContentLoaded', function() {
+      const popup = document.getElementById('service-popup');
+      const closePopupBtn = document.getElementById('close-popup');
+
+      if (!popup || !closePopupBtn) {
+        return;
+      }
+
       setTimeout(showServicePopup, 1200); // Show after 1.2s
-      document.getElementById('close-popup').onclick = closeServicePopup;
+      closePopupBtn.onclick = closeServicePopup;
+      popup.addEventListener('click', function(event) {
+        if (event.target === popup) {
+          closeServicePopup();
+        }
+      });
     });
   </script>
 </body>

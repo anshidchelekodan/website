@@ -672,14 +672,10 @@ textarea.form-control {
   to { --angle: 360deg; }
 }
 
-@keyframes border-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 /* Global Snake Border Utility */
 .moving-border-container {
   position: relative;
+  --angle: 0deg;
   padding: 4px; /* Border thickness */
   display: flex;
   background: transparent;
@@ -711,26 +707,43 @@ textarea.form-control {
   z-index: 0;
   opacity: 0;
   transition: opacity 0.35s ease;
-  transform-origin: center;
-  will-change: opacity, transform;
+  will-change: opacity, background;
 }
 
 .moving-border-container:hover::after {
   opacity: 1;
-  animation: border-spin 2.8s linear infinite;
+  animation: border-rotate 1.8s linear infinite;
   background: conic-gradient(
     from var(--angle),
-    rgba(255, 107, 53, 0.1) 0deg,
-    rgba(255, 107, 53, 0.2) 40deg,
-    rgba(255, 107, 53, 0.35) 80deg,
-    rgba(255, 107, 53, 0.55) 120deg,
-    rgba(255, 107, 53, 0.75) 150deg,
-    rgba(255, 107, 53, 1) 180deg,
-    rgba(255, 107, 53, 0.75) 210deg,
-    rgba(255, 107, 53, 0.55) 240deg,
-    rgba(255, 107, 53, 0.35) 280deg,
-    rgba(255, 107, 53, 0.2) 320deg,
-    rgba(255, 107, 53, 0.1) 360deg
+    rgba(255, 107, 53, 0) 0deg,
+    rgba(255, 107, 53, 0) 255deg,
+    rgba(255, 107, 53, 0.12) 285deg,
+    rgba(255, 107, 53, 0.45) 312deg,
+    rgba(255, 107, 53, 0.95) 332deg,
+    rgba(255, 157, 125, 1) 346deg,
+    rgba(255, 107, 53, 0.2) 356deg,
+    rgba(255, 107, 53, 0) 360deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  border-radius: inherit;
+}
+
+.moving-border-container.always-animate::after {
+  opacity: 1;
+  animation: border-rotate 1.8s linear infinite;
+  background: conic-gradient(
+    from var(--angle),
+    rgba(255, 107, 53, 0) 0deg,
+    rgba(255, 107, 53, 0) 255deg,
+    rgba(255, 107, 53, 0.12) 285deg,
+    rgba(255, 107, 53, 0.45) 312deg,
+    rgba(255, 107, 53, 0.95) 332deg,
+    rgba(255, 157, 125, 1) 346deg,
+    rgba(255, 107, 53, 0.2) 356deg,
+    rgba(255, 107, 53, 0) 360deg
   );
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);

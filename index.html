@@ -132,7 +132,7 @@
   </noscript>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="style.css?v=20260327-2">
+  <link rel="stylesheet" href="style.css?v=20260327-4">
 
   <!-- Inline styles for Home specific elements -->
   <style>
@@ -1263,7 +1263,7 @@
   </footer>
 
   <a href="https://wa.me/919778179727" class="float-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
-  <script src="main.js?v=20260327-3"></script>
+  <script src="main.js?v=20260327-4"></script>
   <script>
     // ROI Calculator Logic
     const trafficRange = document.getElementById('trafficRange');
@@ -1290,9 +1290,12 @@
       roiTotal.innerText = '₹' + Math.round(uplift).toLocaleString();
     }
 
-    trafficRange.addEventListener('input', calculateROI);
-    convRange.addEventListener('input', calculateROI);
-    valueRange.addEventListener('input', calculateROI);
+    if (trafficRange && convRange && valueRange && trafficValue && convValue && valueValue && roiTotal) {
+      calculateROI();
+      trafficRange.addEventListener('input', calculateROI);
+      convRange.addEventListener('input', calculateROI);
+      valueRange.addEventListener('input', calculateROI);
+    }
   </script>
 
   <!-- Service Poster Popup -->
@@ -1317,14 +1320,32 @@
   <script>
     // Service Poster Popup Logic
     function showServicePopup() {
-      document.getElementById('service-popup').style.display = 'flex';
+      const popup = document.getElementById('service-popup');
+      if (popup) {
+        popup.style.display = 'flex';
+      }
     }
     function closeServicePopup() {
-      document.getElementById('service-popup').style.display = 'none';
+      const popup = document.getElementById('service-popup');
+      if (popup) {
+        popup.style.display = 'none';
+      }
     }
     document.addEventListener('DOMContentLoaded', function() {
+      const popup = document.getElementById('service-popup');
+      const closePopupBtn = document.getElementById('close-popup');
+
+      if (!popup || !closePopupBtn) {
+        return;
+      }
+
       setTimeout(showServicePopup, 1200); // Show after 1.2s
-      document.getElementById('close-popup').onclick = closeServicePopup;
+      closePopupBtn.onclick = closeServicePopup;
+      popup.addEventListener('click', function(event) {
+        if (event.target === popup) {
+          closeServicePopup();
+        }
+      });
     });
   </script>
 </body>

@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"></noscript>
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
-  <link rel="stylesheet" href="../style.css?v=20260327-2">
+  <link rel="stylesheet" href="../style.css?v=20260327-4">
   
   <style>
     .page-header {
@@ -328,7 +328,7 @@
 
   <a href="https://wa.me/919778179727" class="float-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
   
-  <script src="../main.js?v=20260327-3"></script>
+  <script src="../main.js?v=20260327-4"></script>
   <script>
     function sendToWhatsApp() {
       var name    = document.getElementById('name').value.trim();
@@ -348,57 +348,59 @@
   
   const form = document.getElementById("contactForm");
   
-  form.addEventListener("submit", function(e){
-    e.preventDefault();
+  if (form) {
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
   
-    const data = {
-      name: document.querySelector("#name").value,
-      phone: document.querySelector("#phone").value,
-      email: document.querySelector("#email").value,
-      message: document.querySelector("#message").value
-    };
+      const data = {
+        name: document.querySelector("#name").value,
+        phone: document.querySelector("#phone").value,
+        email: document.querySelector("#email").value,
+        message: document.querySelector("#message").value
+      };
   
-    const submitBtn = form.querySelector("button");
-    submitBtn.disabled = true;
-    submitBtn.innerText = "Sending...";
+      const submitBtn = form.querySelector("button");
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Sending...";
   
-    fetch(scriptURL, {
-      method: "POST",
-      mode: "no-cors",
-      headers: {
-        "Content-Type": "text/plain;charset=utf-8"
-      },
-      body: JSON.stringify(data)
-    })
-    .then(response => {
-      showSuccessMessage();
-      form.reset();
-      submitBtn.disabled = false;
-      submitBtn.innerText = "Send Message";
-    })
-    .catch(error => {
-      alert("Something went wrong. Please try again.");
-      submitBtn.disabled = false;
-      submitBtn.innerText = "Send Message";
+      fetch(scriptURL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8"
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => {
+        showSuccessMessage();
+        form.reset();
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Send Message";
+      })
+      .catch(error => {
+        alert("Something went wrong. Please try again.");
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Send Message";
+      });
     });
-  });
   
-  function showSuccessMessage(){
-    let msg = document.createElement("div");
-    msg.innerText = "Thank you! Your message has been received.";
-    msg.style.background = "#0f172a";
-    msg.style.color = "#fff";
-    msg.style.padding = "12px";
-    msg.style.marginTop = "15px";
-    msg.style.borderRadius = "8px";
-    msg.style.textAlign = "center";
-    msg.style.border = "1px solid #FF6B35";
+    function showSuccessMessage(){
+      let msg = document.createElement("div");
+      msg.innerText = "Thank you! Your message has been received.";
+      msg.style.background = "#0f172a";
+      msg.style.color = "#fff";
+      msg.style.padding = "12px";
+      msg.style.marginTop = "15px";
+      msg.style.borderRadius = "8px";
+      msg.style.textAlign = "center";
+      msg.style.border = "1px solid #FF6B35";
   
-    form.appendChild(msg);
+      form.appendChild(msg);
   
-    setTimeout(() => {
-      msg.remove();
-    }, 4000);
+      setTimeout(() => {
+        msg.remove();
+      }, 4000);
+    }
   }
   </script>
 
@@ -423,17 +425,43 @@
 
   <script>
     function showServicePopup() {
-      if (!localStorage.getItem('servicePopupShown')) {
-        document.getElementById('service-popup').style.display = 'flex';
-        localStorage.setItem('servicePopupShown', 'yes');
+      const popup = document.getElementById('service-popup');
+      if (!popup) {
+        return;
       }
+
+      try {
+        if (localStorage.getItem('servicePopupShown')) {
+          return;
+        }
+        localStorage.setItem('servicePopupShown', 'yes');
+      } catch (error) {
+        // Ignore storage access issues and still show the popup.
+      }
+
+      popup.style.display = 'flex';
     }
     function closeServicePopup() {
-      document.getElementById('service-popup').style.display = 'none';
+      const popup = document.getElementById('service-popup');
+      if (popup) {
+        popup.style.display = 'none';
+      }
     }
     document.addEventListener('DOMContentLoaded', function() {
+      const popup = document.getElementById('service-popup');
+      const closePopupBtn = document.getElementById('close-popup');
+
+      if (!popup || !closePopupBtn) {
+        return;
+      }
+
       setTimeout(showServicePopup, 1200);
-      document.getElementById('close-popup').onclick = closeServicePopup;
+      closePopupBtn.onclick = closeServicePopup;
+      popup.addEventListener('click', function(event) {
+        if (event.target === popup) {
+          closeServicePopup();
+        }
+      });
     });
   </script>
 </body>

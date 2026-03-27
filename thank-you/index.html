@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"></noscript>
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
-  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../style.css?v=20260327-4">
   <style>
     body { display: flex; align-items: center; justify-content: center; min-height: 100vh; text-align: center; }
     .ty-card { max-width: 520px; padding: 4rem 3rem; }
@@ -55,17 +55,43 @@
   <script>
     // Service Poster Popup Logic
     function showServicePopup() {
-      if (!localStorage.getItem('servicePopupShown')) {
-        document.getElementById('service-popup').style.display = 'flex';
-        localStorage.setItem('servicePopupShown', 'yes');
+      const popup = document.getElementById('service-popup');
+      if (!popup) {
+        return;
       }
+
+      try {
+        if (localStorage.getItem('servicePopupShown')) {
+          return;
+        }
+        localStorage.setItem('servicePopupShown', 'yes');
+      } catch (error) {
+        // Ignore storage access issues and still show the popup.
+      }
+
+      popup.style.display = 'flex';
     }
     function closeServicePopup() {
-      document.getElementById('service-popup').style.display = 'none';
+      const popup = document.getElementById('service-popup');
+      if (popup) {
+        popup.style.display = 'none';
+      }
     }
     document.addEventListener('DOMContentLoaded', function() {
+      const popup = document.getElementById('service-popup');
+      const closePopupBtn = document.getElementById('close-popup');
+
+      if (!popup || !closePopupBtn) {
+        return;
+      }
+
       setTimeout(showServicePopup, 1200); // Show after 1.2s
-      document.getElementById('close-popup').onclick = closeServicePopup;
+      closePopupBtn.onclick = closeServicePopup;
+      popup.addEventListener('click', function(event) {
+        if (event.target === popup) {
+          closeServicePopup();
+        }
+      });
     });
   </script>
 </body>
