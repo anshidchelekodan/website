@@ -328,7 +328,7 @@
 
   <a href="https://wa.me/919778179727" class="float-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
   
-  <script src="../main.js?v=20260327-2"></script>
+  <script src="../main.js?v=20260327-3"></script>
   <script>
     function sendToWhatsApp() {
       var name    = document.getElementById('name').value.trim();
@@ -346,7 +346,7 @@
   <script>
   const scriptURL = "https://script.google.com/macros/s/AKfycbwHQNCp53r_-9lnEKM6pXrVuyqtxuqq-5C3tCm8tHJYJYEhJJYN1dryN_PTSZLbo1tA/exec";
   
-  const form = document.querySelector("form");
+  const form = document.getElementById("contactForm");
   
   form.addEventListener("submit", function(e){
     e.preventDefault();
@@ -364,6 +364,10 @@
   
     fetch(scriptURL, {
       method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+      },
       body: JSON.stringify(data)
     })
     .then(response => {

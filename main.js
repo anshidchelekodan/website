@@ -163,8 +163,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     // Special case for home page (root or root index.html)
-    const isRoot = currentPath === '/' || currentPath.endsWith('/Portfolio/') || currentPath === '/Portfolio';
-    const isRootIndex = currentPath.endsWith('/Portfolio/index.html');
+    const normalizedPath = currentPath.endsWith('/index.html')
+      ? currentPath.slice(0, -'index.html'.length)
+      : currentPath;
+    const isRoot = normalizedPath === '/' || normalizedPath === '';
+    const isRootIndex = currentPath === '/index.html';
     const isHomeLink = href === 'index.html' || href === './' || href === '../' || href === '../../' || href === '../index.html' || href === '../../index.html';
 
     if (isHomeLink && (isRoot || isRootIndex)) {
