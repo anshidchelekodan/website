@@ -672,6 +672,11 @@ textarea.form-control {
   to { --angle: 360deg; }
 }
 
+@keyframes border-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 /* Global Snake Border Utility */
 .moving-border-container {
   position: relative;
@@ -706,11 +711,13 @@ textarea.form-control {
   z-index: 0;
   opacity: 0;
   transition: opacity 0.35s ease;
+  transform-origin: center;
+  will-change: opacity, transform;
 }
 
 .moving-border-container:hover::after {
   opacity: 1;
-  animation: border-rotate 2.8s linear infinite;
+  animation: border-spin 2.8s linear infinite;
   background: conic-gradient(
     from var(--angle),
     rgba(255, 107, 53, 0.1) 0deg,
