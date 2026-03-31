@@ -894,57 +894,107 @@
     </div>
   </section>
 
-  <!-- Interactive ROI Calculator -->
+
+  <!-- Interactive Business Calculators -->
   <section class="section" id="growth-calc">
-    <div class="container">
+    <div class="container text-center">
       <div class="section-title animate reveal-up">
-        <h2>ROI <span class="text-accent">Growth Estimator</span></h2>
-        <p>See the potential impact of a data-driven marketing strategy on your business.</p>
+        <span>Strategic Planning</span>
+        <h2>Business <span class="text-accent">Growth Calculators</span></h2>
+        <p>Project your potential growth and lead generation with our interactive tools.</p>
       </div>
 
-      <div class="roi-calculator animate reveal-up">
-        <div class="calc-grid">
-          <div class="calc-inputs">
-            <div class="input-group">
-              <label>Monthly Traffic (Current)</label>
-              <input type="range" min="1000" max="50000" value="5000" step="500" class="range-slider" id="trafficRange">
-              <div
-                style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-secondary);">
-                <span id="trafficValue">5,000</span>
-                <span>Visitors</span>
+      <div class="calc-tabs animate reveal-up">
+        <div class="calc-tab active" onclick="switchCalc('roi')">ROI Estimator</div>
+        <div class="calc-tab" onclick="switchCalc('lead')">Lead Projection</div>
+      </div>
+
+      <div class="calc-container animate reveal-up">
+        <!-- ROI Calculator -->
+        <div id="roi-calc" class="calc-card active">
+          <div class="calc-grid">
+            <div class="calc-inputs">
+              <div class="calc-input-group">
+                <label>Monthly Website Traffic</label>
+                <input type="range" min="500" max="100000" value="5000" step="500" class="range-slider" id="roi-traffic">
+                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-secondary);">
+                  <span id="roi-traffic-val">5,000</span>
+                  <span>Visitors</span>
+                </div>
+              </div>
+              <div class="calc-input-group">
+                <label>Current Conversion Rate (%)</label>
+                <input type="range" min="0.1" max="15" value="2" step="0.1" class="range-slider" id="roi-conv">
+                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-secondary);">
+                  <span id="roi-conv-val">2.0%</span>
+                  <span>Conversion</span>
+                </div>
+              </div>
+              <div class="calc-input-group">
+                <label>Avg. Customer Value (₹)</label>
+                <input type="range" min="500" max="100000" value="10000" step="500" class="range-slider" id="roi-value">
+                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-secondary);">
+                  <span id="roi-value-val">₹10,000</span>
+                  <span>Per Deal</span>
+                </div>
               </div>
             </div>
-
-            <div class="input-group">
-              <label>Current Conversion Rate (%)</label>
-              <input type="range" min="0.5" max="10" value="2" step="0.1" class="range-slider" id="convRange">
-              <div
-                style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-secondary);">
-                <span id="convValue">2%</span>
-                <span>Conversion</span>
-              </div>
-            </div>
-
-            <div class="input-group">
-              <label>Avg. Customer Value (₹)</label>
-              <input type="range" min="500" max="50000" value="5000" step="500" class="range-slider" id="valueRange">
-              <div
-                style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-secondary);">
-                <span id="valueValue">₹5,000</span>
-                <span>Per Client</span>
+            <div class="calc-result">
+              <div class="calc-result-box">
+                <span class="result-label">Est. Revenue Growth</span>
+                <span class="result-value result-highlight" id="roi-result">₹5,00,000</span>
+                <p class="calc-note">Estimated monthly revenue increase based on a 50% improvement in conversion strategy.</p>
+                <div style="margin-top: 2rem;">
+                  <a href="contact/" class="btn btn-primary" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                    <i class="fas fa-chart-line"></i> Get This Result
+                  </a>
+                </div>
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="calc-result">
-            <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 1rem;">Potential
-              Monthly Revenue Uplift</p>
-            <span class="result-value" id="roiTotal">₹2,50,000</span>
-            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 2.5rem;">*Estimated based on a 50%
-              improvement in conversion efficiency.</p>
-            <a href="contact/" class="btn btn-primary" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 0.8rem; padding: 1rem 2rem;">
-              <i class="fas fa-rocket"></i> Start Your Strategy
-            </a>
+        <!-- Lead Gen Calculator -->
+        <div id="lead-calc" class="calc-card">
+          <div class="calc-grid">
+            <div class="calc-inputs">
+              <div class="calc-input-group">
+                <label>Monthly Ad Budget (₹)</label>
+                <input type="range" min="5000" max="500000" value="50000" step="5000" class="range-slider" id="lead-budget">
+                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-secondary);">
+                  <span id="lead-budget-val">₹50,000</span>
+                  <span>Investment</span>
+                </div>
+              </div>
+              <div class="calc-input-group">
+                <label>Average CPC (₹)</label>
+                <input type="range" min="5" max="200" value="40" step="1" class="range-slider" id="lead-cpc">
+                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-secondary);">
+                  <span id="lead-cpc-val">₹40</span>
+                  <span>Cost Per Click</span>
+                </div>
+              </div>
+              <div class="calc-input-group">
+                <label>Landing Page Conv. (%)</label>
+                <input type="range" min="1" max="25" value="5" step="0.5" class="range-slider" id="lead-conv">
+                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-secondary);">
+                  <span id="lead-conv-val">5.0%</span>
+                  <span>Leads Ratio</span>
+                </div>
+              </div>
+            </div>
+            <div class="calc-result">
+              <div class="calc-result-box">
+                <span class="result-label">Projected Monthly Leads</span>
+                <span class="result-value result-highlight" id="lead-result">62</span>
+                <p class="calc-note">Estimated quantity of high-intent leads generated through optimized ad campaigns.</p>
+                <div style="margin-top: 2rem;">
+                  <a href="contact/" class="btn btn-primary" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                    <i class="fas fa-bullseye"></i> Start Generating Leads
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1308,38 +1358,72 @@
 
   <a href="https://wa.me/919778179727" class="float-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
   <script src="main.js?v=20260327-4"></script>
+
   <script>
-    // ROI Calculator Logic
-    const trafficRange = document.getElementById('trafficRange');
-    const convRange = document.getElementById('convRange');
-    const valueRange = document.getElementById('valueRange');
+    // Business Calculators Logic
+    function switchCalc(type) {
+      document.querySelectorAll('.calc-tab').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.calc-card').forEach(card => card.classList.remove('active'));
+      
+      if (type === 'roi') {
+        document.querySelector('.calc-tab:nth-child(1)').classList.add('active');
+        document.getElementById('roi-calc').classList.add('active');
+      } else {
+        document.querySelector('.calc-tab:nth-child(2)').classList.add('active');
+        document.getElementById('lead-calc').classList.add('active');
+      }
+    }
 
-    const trafficValue = document.getElementById('trafficValue');
-    const convValue = document.getElementById('convValue');
-    const valueValue = document.getElementById('valueValue');
-    const roiTotal = document.getElementById('roiTotal');
+    // ROI Calculator
+    const roiTraffic = document.getElementById('roi-traffic');
+    const roiConv = document.getElementById('roi-conv');
+    const roiValue = document.getElementById('roi-value');
+    const roiResult = document.getElementById('roi-result');
 
-    function calculateROI() {
-      const traffic = parseInt(trafficRange.value);
-      const conv = parseFloat(convRange.value) / 100;
-      const value = parseInt(valueRange.value);
+    function updateROI() {
+      const traffic = parseInt(roiTraffic.value);
+      const conv = parseFloat(roiConv.value) / 100;
+      const value = parseInt(roiValue.value);
+      
+      document.getElementById('roi-traffic-val').innerText = traffic.toLocaleString();
+      document.getElementById('roi-conv-val').innerText = (conv * 100).toFixed(1) + '%';
+      document.getElementById('roi-value-val').innerText = '₹' + value.toLocaleString();
 
       // Estimate 50% improvement in conversion efficiency
       const improvement = 1.5;
       const uplift = (traffic * (conv * improvement) * value) - (traffic * conv * value);
-
-      trafficValue.innerText = traffic.toLocaleString();
-      convValue.innerText = (conv * 100).toFixed(1) + '%';
-      valueValue.innerText = '₹' + value.toLocaleString();
-      roiTotal.innerText = '₹' + Math.round(uplift).toLocaleString();
+      
+      roiResult.innerText = '₹' + Math.round(uplift).toLocaleString();
     }
 
-    if (trafficRange && convRange && valueRange && trafficValue && convValue && valueValue && roiTotal) {
-      calculateROI();
-      trafficRange.addEventListener('input', calculateROI);
-      convRange.addEventListener('input', calculateROI);
-      valueRange.addEventListener('input', calculateROI);
+    // Lead Gen Calculator
+    const leadBudget = document.getElementById('lead-budget');
+    const leadCpc = document.getElementById('lead-cpc');
+    const leadConv = document.getElementById('lead-conv');
+    const leadResult = document.getElementById('lead-result');
+
+    function updateLead() {
+      const budget = parseInt(leadBudget.value);
+      const cpc = parseInt(leadCpc.value);
+      const conv = parseFloat(leadConv.value) / 100;
+
+      document.getElementById('lead-budget-val').innerText = '₹' + budget.toLocaleString();
+      document.getElementById('lead-cpc-val').innerText = '₹' + cpc.toLocaleString();
+      document.getElementById('lead-conv-val').innerText = (conv * 100).toFixed(1) + '%';
+
+      const leads = (budget / cpc) * conv;
+      leadResult.innerText = Math.round(leads).toLocaleString();
     }
+
+    // Event Listeners
+    [roiTraffic, roiConv, roiValue].forEach(el => el.addEventListener('input', updateROI));
+    [leadBudget, leadCpc, leadConv].forEach(el => el.addEventListener('input', updateLead));
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      updateROI();
+      updateLead();
+    });
   </script>
 
   <!-- Service Poster Popup -->
