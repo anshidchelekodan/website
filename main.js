@@ -126,6 +126,20 @@ const initFAQ = () => {
   });
 };
 
+
+// Back to Top Logic
+const backToTopBtn = document.createElement('div');
+backToTopBtn.className = 'back-to-top';
+backToTopBtn.innerHTML = '<i class="fas fa-chevron-up"></i>';
+document.body.appendChild(backToTopBtn);
+
+backToTopBtn.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   // Observe animated elements
   const animatedElements = document.querySelectorAll('.animate');
@@ -133,9 +147,30 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Init other features
   handleScroll();
-  // initMagneticButtons(); // DISABLED
-  // initMouseGlow(); // DISABLED
   initFAQ();
+  
+  // Back to top visibility
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+      backToTopBtn.classList.add('active');
+    } else {
+      backToTopBtn.classList.remove('active');
+    }
+  });
+
+  // Smooth scroll for all internal links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href').slice(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
   
   // Set active nav link
   const currentPath = window.location.pathname;
