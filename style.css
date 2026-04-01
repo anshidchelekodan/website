@@ -731,12 +731,12 @@ textarea.form-control {
   background: conic-gradient(
     from var(--angle),
     rgba(255, 107, 53, 0) 0deg,
-    rgba(255, 107, 53, 0) 255deg,
-    rgba(255, 107, 53, 0.12) 285deg,
-    rgba(255, 107, 53, 0.45) 312deg,
-    rgba(255, 107, 53, 0.95) 332deg,
-    rgba(255, 157, 125, 1) 346deg,
-    rgba(255, 107, 53, 0.2) 356deg,
+    rgba(255, 107, 53, 0) 180deg,
+    rgba(255, 107, 53, 0.1) 220deg,
+    rgba(255, 107, 53, 0.4) 270deg,
+    rgba(255, 107, 53, 0.8) 320deg,
+    #ff9d7d 340deg,
+    rgba(255, 107, 53, 0.4) 350deg,
     rgba(255, 107, 53, 0) 360deg
   );
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
@@ -752,12 +752,12 @@ textarea.form-control {
   background: conic-gradient(
     from var(--angle),
     rgba(255, 107, 53, 0) 0deg,
-    rgba(255, 107, 53, 0) 255deg,
-    rgba(255, 107, 53, 0.12) 285deg,
-    rgba(255, 107, 53, 0.45) 312deg,
-    rgba(255, 107, 53, 0.95) 332deg,
-    rgba(255, 157, 125, 1) 346deg,
-    rgba(255, 107, 53, 0.2) 356deg,
+    rgba(255, 107, 53, 0) 180deg,
+    rgba(255, 107, 53, 0.1) 220deg,
+    rgba(255, 107, 53, 0.4) 270deg,
+    rgba(255, 107, 53, 0.8) 320deg,
+    #ff9d7d 340deg,
+    rgba(255, 107, 53, 0.4) 350deg,
     rgba(255, 107, 53, 0) 360deg
   );
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);

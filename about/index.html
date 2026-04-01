@@ -100,120 +100,150 @@
       margin-bottom: 1rem;
     }
 
-    .journey-stream {
+    /* Refined Side-Stream Timeline */
+    .focal-timeline {
       position: relative;
-      max-width: 900px;
+      max-width: 1000px;
       margin: 4rem auto 0 auto;
-      padding-left: 20px;
+      padding-left: 80px;
     }
 
-    .journey-stream::before {
+    .focal-timeline::before {
       content: '';
       position: absolute;
-      left: 35px;
+      left: 20px;
       top: 0;
       bottom: 0;
       width: 2px;
-      background: linear-gradient(180deg, var(--accent-color) 0%, rgba(255, 107, 53, 0.1) 100%);
-      opacity: 0.3;
+      background: linear-gradient(to bottom, transparent, var(--accent-color), var(--accent-color), transparent);
+      opacity: 0.2;
     }
 
-    .stream-item {
+    .focal-item {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 5rem;
       position: relative;
-      margin-bottom: 4rem;
-      padding-left: 80px;
-      display: block;
+      width: 100%;
     }
 
-    .stream-marker {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 70px;
-      height: 70px;
-      background: #0B0F19;
-      border: 2px solid var(--accent-color);
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--accent-color);
-      font-size: 1.5rem;
-      z-index: 2;
-      box-shadow: 0 0 20px rgba(255, 107, 53, 0.1);
-      transition: all 0.4s ease;
-    }
-
-    .stream-item:hover .stream-marker {
-      background: var(--accent-color);
-      color: #fff;
-      transform: scale(1.1);
-      box-shadow: 0 0 30px rgba(255, 107, 53, 0.3);
-    }
-
-    .stream-content {
-      background: rgba(21, 27, 41, 0.5);
-      backdrop-filter: blur(15px);
+    .focal-content {
+      width: 100%;
+      background: rgba(21, 27, 41, 0.4);
+      backdrop-filter: blur(20px);
       border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 24px;
+      border-radius: 32px;
       padding: 3rem;
-      transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+      transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+      position: relative;
     }
 
-    .stream-item:hover .stream-content {
+    .focal-item:hover .focal-content {
       border-color: var(--accent-color);
-      background: rgba(255, 107, 53, 0.02);
       transform: translateX(10px);
+      background: rgba(255, 107, 53, 0.02);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
     }
 
-    .stream-label {
-      font-size: 0.8rem;
-      font-weight: 800;
+    .focal-dot {
+      position: absolute;
+      left: -59px;
+      top: 45px;
+      transform: translateX(-50%);
+      width: 16px;
+      height: 16px;
+      background: var(--accent-color);
+      border: 4px solid var(--bg-color);
+      border-radius: 50%;
+      z-index: 5;
+      box-shadow: 0 0 15px var(--accent-color);
+      transition: all 0.3s ease;
+    }
+
+    .focal-item:hover .focal-dot {
+      width: 22px;
+      height: 22px;
+      box-shadow: 0 0 25px var(--accent-color);
+    }
+
+    .focal-year {
+      position: absolute;
+      top: -15px;
+      left: -15px;
+      font-size: 6rem;
+      font-weight: 900;
+      -webkit-text-stroke: 1px rgba(255, 255, 255, 0.04);
+      color: transparent;
+      line-height: 1;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .focal-label {
+      background: rgba(255, 107, 53, 0.1);
       color: var(--accent-color);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 3px;
-      margin-bottom: 1rem;
-      display: block;
-    }
-
-    .stream-title {
-      font-size: 1.8rem;
-      color: #fff;
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .stream-title span {
-      font-size: 1rem;
-      color: var(--text-secondary);
-      font-weight: 400;
-    }
-
-    .stream-desc {
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: var(--text-secondary);
+      letter-spacing: 2.5px;
+      display: inline-block;
       margin-bottom: 2rem;
     }
 
-    .stream-tags {
+    .focal-title {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      color: #fff;
+      margin-bottom: 1.5rem;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    .focal-title span {
+      display: block;
+      font-size: 1rem;
+      color: var(--text-secondary);
+      font-weight: 400;
+      margin-top: 8px;
+    }
+
+    .focal-desc {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .focal-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.8rem;
+      gap: 12px;
+      margin-top: 2.5rem;
       padding-top: 2rem;
       border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    .stream-tag {
-      background: rgba(255, 107, 53, 0.1);
-      color: var(--accent-color);
-      padding: 6px 15px;
-      border-radius: 50px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 1px;
+    .focal-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      background: rgba(255, 255, 255, 0.04);
+      padding: 6px 16px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .focal-item:hover .focal-tag {
+      border-color: rgba(255, 107, 53, 0.4);
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      .focal-timeline { padding-left: 50px; }
+      .focal-timeline::before { left: 10px; }
+      .focal-dot { left: -39px; }
+      .focal-content { padding: 2rem; }
     }
 
     /* Ultra-Pro Philosophy Section */
@@ -520,78 +550,83 @@
         <p>My professional journey so far</p>
       </div>
 
-      <div class="journey-stream">
-        <!-- Item 1 -->
-        <div class="stream-item animate reveal-up stagger-1">
-          <div class="stream-marker">01</div>
-          <div class="stream-content">
-            <span class="stream-label">Education Journey</span>
-            <h3 class="stream-title">B.A. Afzal Ul Ulama <span>at University of Calicut (2022-2025)</span></h3>
-            <p class="stream-desc">An intensive undergraduate program specializing in Classical Arabic literature, linguistics, and deep cultural research. This academic foundation has provided me with exceptional interpretive skills and a disciplined approach to research—skills that are critical in digital strategy.</p>
-            <div class="stream-tags">
-              <span class="stream-tag">Classical Linguistics</span>
-              <span class="stream-tag">Cultural Analysis</span>
-              <span class="stream-tag">Strategic Communication</span>
+      <div class="focal-timeline">
+        <!-- Step 1 -->
+        <div class="focal-item animate reveal-up">
+          <div class="focal-dot"></div>
+          <div class="focal-content">
+            <div class="focal-year">01</div>
+            <div class="focal-label">Foundation</div>
+            <h3 class="focal-title">B.A. Afzal Ul Ulama <span>University of Calicut (2022-2025)</span></h3>
+            <p class="focal-desc">Specializing in Classical Arabic linguistics and research methods. Providing a disciplined foundation for complex strategy interpretation and deep-dive market research.</p>
+            <div class="focal-tags">
+              <span class="focal-tag">Strategic Analysis</span>
+              <span class="focal-tag">Research Ethics</span>
+              <span class="focal-tag">Interpretive Skills</span>
             </div>
           </div>
         </div>
 
-        <!-- Item 2 -->
-        <div class="stream-item animate reveal-up stagger-2">
-          <div class="stream-marker">02</div>
-          <div class="stream-content">
-            <span class="stream-label">Specialized Skillset</span>
-            <h3 class="stream-title">Digital Marketing Mastery <span>at <a href="https://dotinacademy.com/" target="_blank" style="color: inherit; text-decoration: underline;">Dotin Academy</a></span></h3>
-            <p class="stream-desc">Advanced training in the architecture of high-performance digital campaigns. Gained core practical knowledge in advanced SEO, performance-driven Google Ads (PPC), and Meta Lead Generation.</p>
-            <div class="stream-tags">
-              <span class="stream-tag">Advanced SEO</span>
-              <span class="stream-tag">PPC Strategy</span>
-              <span class="stream-tag">Lead Funnels</span>
+        <!-- Step 2 -->
+        <div class="focal-item animate reveal-up">
+          <div class="focal-dot"></div>
+          <div class="focal-content">
+            <div class="focal-year">02</div>
+            <div class="focal-label">Specialization</div>
+            <h3 class="focal-title">Digital Marketing Mastery <span>at <a href="https://dotinacademy.com/" target="_blank" style="color: inherit; text-decoration: underline;">Dotin Academy</a></span></h3>
+            <p class="focal-desc">Advanced architectural training in high-performance digital ecosystems. Mastery over SEO algorithms, PPC bidding strategies, and high-conversion lead funnel design through rigorous practical application.</p>
+            <div class="focal-tags">
+              <span class="focal-tag">Advanced SEO</span>
+              <span class="focal-tag">Google Ads Specialist</span>
+              <span class="focal-tag">Funnel Optimization</span>
             </div>
           </div>
         </div>
 
-        <!-- Item 3 -->
-        <div class="stream-item animate reveal-up stagger-3">
-          <div class="stream-marker">03</div>
-          <div class="stream-content">
-            <span class="stream-label">Digital Marketing Internship</span>
-            <h3 class="stream-title">Digital Marketing Trainee <span>at <a href="https://dotcomcreativez.in/" target="_blank" style="color: inherit; text-decoration: underline;">Dotcom Creativez</a></span></h3>
-            <p class="stream-desc">Immersive agency experience at Dotcom Creativez, focusing on creative digital strategies and performance marketing. Contributed to real-world campaigns, gaining deep insights into market research and client-centric growth models.</p>
-            <div class="stream-tags">
-              <span class="stream-tag">Agency Operations</span>
-              <span class="stream-tag">Campaign Optimization</span>
-              <span class="stream-tag">Content Strategy</span>
+        <!-- Step 3 -->
+        <div class="focal-item animate reveal-up">
+          <div class="focal-dot"></div>
+          <div class="focal-content">
+            <div class="focal-year">03</div>
+            <div class="focal-label">Agency Pulse</div>
+            <h3 class="focal-title">Performance Trainee <span>at <a href="https://dotcomcreativez.in/" target="_blank" style="color: inherit; text-decoration: underline;">Dotcom Creativez</a></span></h3>
+            <p class="focal-desc">Managing live client campaigns at Dotcom Creativez, executing negative keyword scrubs, and optimizing ad creatives for better CTR and conversion performance across regional markets.</p>
+            <div class="focal-tags">
+              <span class="focal-tag">PPC Bidding</span>
+              <span class="focal-tag">Campaign Scrubbing</span>
+              <span class="focal-tag">Client ROI</span>
             </div>
           </div>
         </div>
 
-        <!-- Item 4 -->
-        <div class="stream-item animate reveal-up stagger-4">
-          <div class="stream-marker">04</div>
-          <div class="stream-content">
-            <span class="stream-label">Strategic Experience</span>
-            <h3 class="stream-title">Multi-Channel Social Strategy <span>Internship & Beyond</span></h3>
-            <p class="stream-desc">Hands-on experience managing diverse business sectors. Developed a data-driven understanding of consumer psychology, keyword mapping, and cross-platform engagement cycles.</p>
-            <div class="stream-tags">
-              <span class="stream-tag">Consumer Psychology</span>
-              <span class="stream-tag">Keyword Research</span>
-              <span class="stream-tag">Social ROI</span>
+        <!-- Step 4 -->
+        <div class="focal-item animate reveal-up">
+          <div class="focal-dot"></div>
+          <div class="focal-content">
+            <div class="focal-year">04</div>
+            <div class="focal-label">Strategic Growth</div>
+            <h3 class="focal-title">Multi-Channel Strategy<span>Engagement & Growth</span></h3>
+            <p class="focal-desc">Building cross-platform presence for diverse local brands. Mapping keyword intent to content pillars to drive sustainable organic reach and brand authority in the Kerala market.</p>
+            <div class="focal-tags">
+               <span class="focal-tag">Intent Mapping</span>
+               <span class="focal-tag">Social Growth</span>
+               <span class="focal-tag">Market Insights</span>
             </div>
           </div>
         </div>
 
-        <!-- Item 5 -->
-        <div class="stream-item animate reveal-up stagger-5">
-          <div class="stream-marker">05</div>
-          <div class="stream-content">
-            <span class="stream-label">Current Specialization</span>
-            <h3 class="stream-title">Brand Catalyst & Growth Strategist <span>Freelance Consulting</span></h3>
-            <p class="stream-desc">Providing independent growth consulting for Kerala-based businesses. I help local brands bridge the gap between traditional business and modern performance marketing via hyper-local SEO and custom digital roadmaps.</p>
-            <div class="stream-tags">
-              <span class="stream-tag">Local SEO</span>
-              <span class="stream-tag">Sales Funnels</span>
-              <span class="stream-tag">Growth Consulting</span>
+        <!-- Step 5 -->
+        <div class="focal-item animate reveal-up">
+          <div class="focal-dot"></div>
+          <div class="focal-content">
+            <div class="focal-year">05</div>
+            <div class="focal-label">Independent Mastery</div>
+            <h3 class="focal-title">Growth Strategist & Consultant <span>Freelance Consulting</span></h3>
+            <p class="focal-desc">Currently scaling local businesses in Malappuram through ROI-focused SEO and custom performance roadmaps. bridging the gap between vision and digital dominance.</p>
+            <div class="focal-tags">
+               <span class="focal-tag">Local SEO Scaling</span>
+               <span class="focal-tag">AEO Strategy</span>
+               <span class="focal-tag">Conversion Focused</span>
             </div>
           </div>
         </div>
