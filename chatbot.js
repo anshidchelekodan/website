@@ -17,6 +17,7 @@
     let state = {
         isOpen: false,
         isGreetingSent: false,
+        isAuditOfferSent: false,
         inactivityTimer: null,
         interactionCount: 0,
         currentStep: 'initial', // initial, asking_name, asking_phone, asking_message, finished
@@ -275,11 +276,12 @@
     function resetInactivityTimer() {
         if (state.inactivityTimer) clearTimeout(state.inactivityTimer);
         state.inactivityTimer = setTimeout(() => {
-            if (state.isOpen && state.currentStep === 'initial') {
+            if (state.isOpen && state.currentStep === 'initial' && !state.isAuditOfferSent) {
                 sendBotMessage("Want a free website audit? I can help 🚀");
                 showQuickReplies(["Yes, Help Me", "Maybe Later"]);
+                state.isAuditOfferSent = true;
             }
-        }, 10000); // 10 seconds of inactivity
+        }, 30000); // Increased to 30 seconds for better experience
     }
 
     function saveLead() {
