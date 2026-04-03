@@ -267,7 +267,6 @@ if (blogCommentForm) {
       container.insertBefore(successMsg, blogCommentForm.nextSibling);
     })
     .catch(error => {
-      console.error('Error!', error.message);
       btn.disabled = false;
       btn.textContent = originalText;
       alert("Something went wrong. Please try again or contact me directly via WhatsApp.");

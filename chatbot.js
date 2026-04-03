@@ -296,9 +296,7 @@
             method: 'POST',
             mode: 'no-cors',
             body: JSON.stringify(formData)
-        })
-        .then(() => console.log('Lead saved successfully'))
-        .catch(err => console.error('Error saving lead:', err));
+        });
     }
 
     // Lazy load logic: Run after page is fully loaded
