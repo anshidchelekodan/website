@@ -60,8 +60,14 @@
         const container = document.createElement('div');
         container.className = 'chatbot-container';
         container.innerHTML = `
+            <div class="chatbot-bubble" id="chatbotBubble">
+                <span>Hey! 👋 Need help with SEO?</span>
+            </div>
             <button class="chatbot-toggle" id="chatbotToggle">
-                <i class="fas fa-comment-dots"></i>
+                <div class="toggle-icon">
+                    <i class="fas fa-comment-dots"></i>
+                </div>
+                <span class="toggle-label">Chat with AI</span>
             </button>
             <div class="chatbot-window" id="chatbotWindow">
                 <div class="chatbot-header">
@@ -89,6 +95,7 @@
 
         elements = {
             toggle: document.getElementById('chatbotToggle'),
+            bubble: document.getElementById('chatbotBubble'),
             window: document.getElementById('chatbotWindow'),
             messages: document.getElementById('chatbotMessages'),
             replies: document.getElementById('chatbotReplies'),
@@ -125,14 +132,16 @@
         state.isOpen = true;
         elements.window.classList.add('active');
         elements.toggle.classList.add('active');
-        elements.toggle.innerHTML = '<i class="fas fa-times"></i>';
+        elements.bubble.classList.add('hidden');
+        elements.toggle.querySelector('.toggle-icon').innerHTML = '<i class="fas fa-times"></i>';
     }
 
     function closeChat() {
         state.isOpen = false;
         elements.window.classList.remove('active');
         elements.toggle.classList.remove('active');
-        elements.toggle.innerHTML = '<i class="fas fa-comment-dots"></i>';
+        elements.bubble.classList.remove('hidden');
+        elements.toggle.querySelector('.toggle-icon').innerHTML = '<i class="fas fa-comment-dots"></i>';
     }
 
     function sendBotMessage(text, delay = 0) {
