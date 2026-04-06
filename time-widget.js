@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span class="aw-timezone">Kerala (IST)</span>
                     </div>
                     <div class="aw-status" id="aw-status-text"></div>
-                    <div class="aw-message">Best time to contact: 10 AM – 6 PM</div>
+                    <div class="aw-message">Working Hours: 10:00 AM – 5:00 PM</div>
                     <div class="aw-calendar" id="aw-calendar-display"></div>
                 </div>
             `;
@@ -143,12 +143,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const timeStr = format12Hour(keralaTime);
             const hour = keralaTime.getHours();
             
-            // 9 AM to 7 PM (19:00 exclusive)
-            const isAvailable = hour >= 9 && hour < 19;
+            // 10 AM to 5 PM (17:00 exclusive)
+            const isAvailable = hour >= 10 && hour < 17;
             
             document.querySelectorAll('#aw-time-display').forEach(el => el.innerText = timeStr);
             document.querySelectorAll('#aw-status-text').forEach(el => {
-                el.innerText = isAvailable ? '🟢 Available Now' : '🔴 Offline - Will respond soon';
+                el.innerText = isAvailable ? '🟢 Available to Connect' : '🌙 Outside Working Hours';
             });
             
             // Only render calendar once since we mostly just care about today
