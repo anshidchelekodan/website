@@ -259,7 +259,7 @@ if (blogCommentForm) {
         </div>
         <h3 style="color: #fff; margin-bottom: 0.8rem; font-size: 2rem;">Message Received!</h3>
         <p style="color: var(--text-secondary); font-size: 1.15rem; max-width: 500px; margin: 0 auto; line-height: 1.6;">
-          Your insight has been sent to Anshid's inbox. Thank you for contributing to the discussion!
+          Your insight has been sent to Mohammad Anshid Ck's inbox. Thank you for contributing to the discussion!
         </p>
       `;
       
