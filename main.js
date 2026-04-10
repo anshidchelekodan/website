@@ -1,32 +1,46 @@
-// Mobile Menu Toggle
+// Mobile Menu Toggle logic
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 const navLinks = document.querySelector('.nav-links');
 
-if (mobileMenuBtn) {
-  mobileMenuBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    const icon = mobileMenuBtn.querySelector('i');
-    if (navLinks.classList.contains('active')) {
-      icon.classList.remove('fa-bars');
-      icon.classList.add('fa-times');
-    } else {
-      icon.classList.remove('fa-times');
-      icon.classList.add('fa-bars');
-    }
-  });
+// Create backdrop element if it doesn't exist
+let navOverlay = document.querySelector('.nav-overlay');
+if (!navOverlay) {
+  navOverlay = document.createElement('div');
+  navOverlay.className = 'nav-overlay';
+  document.body.appendChild(navOverlay);
 }
+
+const toggleMenu = (show) => {
+  const isOpening = show !== undefined ? show : !navLinks.classList.contains('active');
+  
+  if (isOpening) {
+    navLinks.classList.add('active');
+    navOverlay.classList.add('active');
+    document.body.classList.add('menu-open');
+    if (mobileMenuBtn.querySelector('i')) {
+      mobileMenuBtn.querySelector('i').classList.replace('fa-bars', 'fa-times');
+    }
+  } else {
+    navLinks.classList.remove('active');
+    navOverlay.classList.remove('active');
+    document.body.classList.remove('menu-open');
+    if (mobileMenuBtn.querySelector('i')) {
+      mobileMenuBtn.querySelector('i').classList.replace('fa-times', 'fa-bars');
+    }
+  }
+};
+
+if (mobileMenuBtn) {
+  mobileMenuBtn.addEventListener('click', () => toggleMenu());
+}
+
+// Close menu when clicking overlay
+navOverlay.addEventListener('click', () => toggleMenu(false));
 
 // Close mobile menu when clicking a link
 const navItems = document.querySelectorAll('.nav-links a');
 navItems.forEach(item => {
-  item.addEventListener('click', () => {
-    if (navLinks.classList.contains('active')) {
-      navLinks.classList.remove('active');
-      const icon = mobileMenuBtn.querySelector('i');
-      icon.classList.remove('fa-times');
-      icon.classList.add('fa-bars');
-    }
-  });
+  item.addEventListener('click', () => toggleMenu(false));
 });
 
 // Scroll Animations (Intersection Observer)
