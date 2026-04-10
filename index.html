@@ -231,11 +231,41 @@
       line-height: 1.5;
     }
 
-    /* Expertise - Grid Model */
+    /* Expertise - Marquee Model */
+    .expertise-marquee-container {
+      overflow: hidden;
+      padding: 2rem 0;
+      position: relative;
+      width: 100%;
+      mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    }
+
     .expertise-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: clamp(1rem, 2vw, 1.5rem);
+      display: flex !important;
+      width: max-content;
+      animation: expertise-marquee 40s linear infinite;
+      gap: 2rem;
+    }
+
+    .expertise-item {
+      width: 300px;
+      flex-shrink: 0;
+      transition: all 0.4s ease;
+    }
+
+    .expertise-item:hover {
+      transform: translateY(-5px) scale(1.02);
+      border-color: var(--accent-color) !important;
+    }
+
+    @keyframes expertise-marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-300px * 6 - 2rem * 6)); }
+    }
+
+    .expertise-marquee-container:hover .expertise-grid {
+      animation-play-state: paused;
     }
 
     .expertise-item {
@@ -800,106 +830,117 @@
         <p>The tools and strategies I use to drive business growth</p>
       </div>
 
-      <div class="expertise-grid">
-        <!-- SEO -->
-        <div class="moving-border-container expertise-item animate reveal-left glass-card" style="border-radius: 12px;">
-          <div class="moving-border-inner"
-            style="border-radius: 10px; background: transparent; padding: 1.5rem; flex-direction: column;">
-            <div class="skill-label">
-              <div class="skill-info-left">
-                <i class="fas fa-search"></i>
-                <span>SEO</span>
+      <div class="expertise-marquee-container">
+        <div class="expertise-grid">
+          <!-- Slide Set 1 -->
+          <div class="moving-border-container expertise-item glass-card" style="border-radius: 12px;">
+            <div class="moving-border-inner" style="border-radius: 10px; background: rgba(21, 27, 41, 0.7); padding: 1.5rem; flex-direction: column;">
+              <div class="skill-label">
+                <div class="skill-info-left"><i class="fas fa-search"></i><span>SEO</span></div>
+                <span class="skill-info-right">95%</span>
               </div>
-              <span class="skill-info-right">95%</span>
-            </div>
-            <div class="skill-progress-bg">
-              <div class="skill-progress-fill" data-width="95%"></div>
+              <div class="skill-progress-bg"><div class="skill-progress-fill" style="width: 95%;"></div></div>
             </div>
           </div>
-        </div>
-
-        <!-- Google Ads -->
-        <div class="moving-border-container expertise-item animate reveal-right glass-card"
-          style="border-radius: 12px;">
-          <div class="moving-border-inner"
-            style="border-radius: 10px; background: transparent; padding: 1.5rem; flex-direction: column;">
-            <div class="skill-label">
-              <div class="skill-info-left">
-                <i class="fab fa-google"></i>
-                <span>Google Ads</span>
+          <div class="moving-border-container expertise-item glass-card" style="border-radius: 12px;">
+            <div class="moving-border-inner" style="border-radius: 10px; background: rgba(21, 27, 41, 0.7); padding: 1.5rem; flex-direction: column;">
+              <div class="skill-label">
+                <div class="skill-info-left"><i class="fab fa-google"></i><span>Google Ads</span></div>
+                <span class="skill-info-right">90%</span>
               </div>
-              <span class="skill-info-right">90%</span>
-            </div>
-            <div class="skill-progress-bg">
-              <div class="skill-progress-fill" data-width="90%"></div>
+              <div class="skill-progress-bg"><div class="skill-progress-fill" style="width: 90%;"></div></div>
             </div>
           </div>
-        </div>
-
-        <!-- Social Media -->
-        <div class="moving-border-container expertise-item animate stagger-4" style="border-radius: 12px;">
-          <div class="moving-border-inner"
-            style="border-radius: 10px; background: rgba(21, 27, 41, 0.7); padding: 1.5rem; flex-direction: column;">
-            <div class="skill-label">
-              <div class="skill-info-left">
-                <i class="fas fa-share-alt"></i>
-                <span>SMM</span>
+          <div class="moving-border-container expertise-item glass-card" style="border-radius: 12px;">
+            <div class="moving-border-inner" style="border-radius: 10px; background: rgba(21, 27, 41, 0.7); padding: 1.5rem; flex-direction: column;">
+              <div class="skill-label">
+                <div class="skill-info-left"><i class="fas fa-share-alt"></i><span>SMM</span></div>
+                <span class="skill-info-right">88%</span>
               </div>
-              <span class="skill-info-right">88%</span>
-            </div>
-            <div class="skill-progress-bg">
-              <div class="skill-progress-fill" data-width="88%"></div>
+              <div class="skill-progress-bg"><div class="skill-progress-fill" style="width: 88%;"></div></div>
             </div>
           </div>
-        </div>
-
-        <!-- Analytics -->
-        <div class="moving-border-container expertise-item animate stagger-2" style="border-radius: 12px;">
-          <div class="moving-border-inner"
-            style="border-radius: 10px; background: rgba(21, 27, 41, 0.7); padding: 1.5rem; flex-direction: column;">
-            <div class="skill-label">
-              <div class="skill-info-left">
-                <i class="fas fa-chart-pie"></i>
-                <span>Analytics</span>
+          <div class="moving-border-container expertise-item glass-card" style="border-radius: 12px;">
+            <div class="moving-border-inner" style="border-radius: 10px; background: rgba(21, 27, 41, 0.7); padding: 1.5rem; flex-direction: column;">
+              <div class="skill-label">
+                <div class="skill-info-left"><i class="fas fa-chart-pie"></i><span>Analytics</span></div>
+                <span class="skill-info-right">85%</span>
               </div>
-              <span class="skill-info-right">85%</span>
-            </div>
-            <div class="skill-progress-bg">
-              <div class="skill-progress-fill" data-width="85%"></div>
+              <div class="skill-progress-bg"><div class="skill-progress-fill" style="width: 85%;"></div></div>
             </div>
           </div>
-        </div>
-
-        <!-- Keyword Research -->
-        <div class="moving-border-container expertise-item animate stagger-3" style="border-radius: 12px;">
-          <div class="moving-border-inner"
-            style="border-radius: 10px; background: rgba(21, 27, 41, 0.7); padding: 1.5rem; flex-direction: column;">
-            <div class="skill-label">
-              <div class="skill-info-left">
-                <i class="fas fa-key"></i>
-                <span>Keywords</span>
+          <div class="moving-border-container expertise-item glass-card" style="border-radius: 12px;">
+            <div class="moving-border-inner" style="border-radius: 10px; background: rgba(21, 27, 41, 0.7); padding: 1.5rem; flex-direction: column;">
+              <div class="skill-label">
+                <div class="skill-info-left"><i class="fas fa-key"></i><span>Keywords</span></div>
+                <span class="skill-info-right">96%</span>
               </div>
-              <span class="skill-info-right">96%</span>
-            </div>
-            <div class="skill-progress-bg">
-              <div class="skill-progress-fill" data-width="96%"></div>
+              <div class="skill-progress-bg"><div class="skill-progress-fill" style="width: 96%;"></div></div>
             </div>
           </div>
-        </div>
-
-        <!-- Strategy -->
-        <div class="moving-border-container expertise-item animate stagger-4" style="border-radius: 12px;">
-          <div class="moving-border-inner"
-            style="border-radius: 10px; background: rgba(21, 27, 41, 0.7); padding: 1.5rem; flex-direction: column;">
-            <div class="skill-label">
-              <div class="skill-info-left">
-                <i class="fas fa-rocket"></i>
-                <span>Strategy</span>
+          <div class="moving-border-container expertise-item glass-card" style="border-radius: 12px;">
+            <div class="moving-border-inner" style="border-radius: 10px; background: rgba(21, 27, 41, 0.7); padding: 1.5rem; flex-direction: column;">
+              <div class="skill-label">
+                <div class="skill-info-left"><i class="fas fa-rocket"></i><span>Strategy</span></div>
+                <span class="skill-info-right">82%</span>
               </div>
-              <span class="skill-info-right">82%</span>
+              <div class="skill-progress-bg"><div class="skill-progress-fill" style="width: 82%;"></div></div>
             </div>
-            <div class="skill-progress-bg">
-              <div class="skill-progress-fill" data-width="82%"></div>
+          </div>
+          
+          <!-- Slide Set 2 (Duplicated for seamless loop) -->
+          <div class="moving-border-container expertise-item glass-card" style="border-radius: 12px;">
+            <div class="moving-border-inner" style="border-radius: 10px; background: rgba(21, 27, 41, 0.7); padding: 1.5rem; flex-direction: column;">
+              <div class="skill-label">
+                <div class="skill-info-left"><i class="fas fa-search"></i><span>SEO</span></div>
+                <span class="skill-info-right">95%</span>
+              </div>
+              <div class="skill-progress-bg"><div class="skill-progress-fill" style="width: 95%;"></div></div>
+            </div>
+          </div>
+          <div class="moving-border-container expertise-item glass-card" style="border-radius: 12px;">
+            <div class="moving-border-inner" style="border-radius: 10px; background: rgba(21, 27, 41, 0.7); padding: 1.5rem; flex-direction: column;">
+              <div class="skill-label">
+                <div class="skill-info-left"><i class="fab fa-google"></i><span>Google Ads</span></div>
+                <span class="skill-info-right">90%</span>
+              </div>
+              <div class="skill-progress-bg"><div class="skill-progress-fill" style="width: 90%;"></div></div>
+            </div>
+          </div>
+          <div class="moving-border-container expertise-item glass-card" style="border-radius: 12px;">
+            <div class="moving-border-inner" style="border-radius: 10px; background: rgba(21, 27, 41, 0.7); padding: 1.5rem; flex-direction: column;">
+              <div class="skill-label">
+                <div class="skill-info-left"><i class="fas fa-share-alt"></i><span>SMM</span></div>
+                <span class="skill-info-right">88%</span>
+              </div>
+              <div class="skill-progress-bg"><div class="skill-progress-fill" style="width: 88%;"></div></div>
+            </div>
+          </div>
+          <div class="moving-border-container expertise-item glass-card" style="border-radius: 12px;">
+            <div class="moving-border-inner" style="border-radius: 10px; background: rgba(21, 27, 41, 0.7); padding: 1.5rem; flex-direction: column;">
+              <div class="skill-label">
+                <div class="skill-info-left"><i class="fas fa-chart-pie"></i><span>Analytics</span></div>
+                <span class="skill-info-right">85%</span>
+              </div>
+              <div class="skill-progress-bg"><div class="skill-progress-fill" style="width: 85%;"></div></div>
+            </div>
+          </div>
+          <div class="moving-border-container expertise-item glass-card" style="border-radius: 12px;">
+            <div class="moving-border-inner" style="border-radius: 10px; background: rgba(21, 27, 41, 0.7); padding: 1.5rem; flex-direction: column;">
+              <div class="skill-label">
+                <div class="skill-info-left"><i class="fas fa-key"></i><span>Keywords</span></div>
+                <span class="skill-info-right">96%</span>
+              </div>
+              <div class="skill-progress-bg"><div class="skill-progress-fill" style="width: 96%;"></div></div>
+            </div>
+          </div>
+          <div class="moving-border-container expertise-item glass-card" style="border-radius: 12px;">
+            <div class="moving-border-inner" style="border-radius: 10px; background: rgba(21, 27, 41, 0.7); padding: 1.5rem; flex-direction: column;">
+              <div class="skill-label">
+                <div class="skill-info-left"><i class="fas fa-rocket"></i><span>Strategy</span></div>
+                <span class="skill-info-right">82%</span>
+              </div>
+              <div class="skill-progress-bg"><div class="skill-progress-fill" style="width: 82%;"></div></div>
             </div>
           </div>
         </div>
