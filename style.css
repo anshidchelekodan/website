@@ -1107,7 +1107,7 @@ textarea.form-control {
   }
 
   .section {
-    padding: 1.2rem 0;
+    padding: clamp(2.5rem, 6vw, 4rem) 0;
   }
 
   /* Hero Section */
@@ -1166,7 +1166,7 @@ textarea.form-control {
   .btn {
     padding: clamp(0.5rem, 0.8vw, 0.6rem) clamp(0.9rem, 1.5vw, 1.1rem) !important;
     font-size: clamp(0.75rem, 1vw, 0.85rem) !important;
-    border-radius: 4px;
+    border-radius: 10px;
   }
 
   .btn-primary,
@@ -1302,9 +1302,11 @@ textarea.form-control {
   .float-wa {
     width: 50px;
     height: 50px;
-    bottom: 15px;
-    right: 10px;
+    bottom: 20px;
+    left: 15px;
+    right: auto;
     font-size: 24px;
+    z-index: 998;
   }
 
   /* Contact Social Icons */
@@ -1418,12 +1420,16 @@ footer p {
 .header-socials {
   display: flex;
   align-items: center;
-  gap: clamp(0.5rem, 1vw, 1rem);
+  gap: clamp(1rem, 2vw, 1.5rem);
 }
 
 .header-socials a {
   color: var(--text-primary);
-  font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: var(--transition);
   margin-right: 0;
 }
@@ -1442,8 +1448,9 @@ footer p {
   position: fixed;
   width: clamp(50px, 12vw, 60px);
   height: clamp(50px, 12vw, 60px);
-  bottom: clamp(15px, 3vh, 40px);
-  right: clamp(10px, 3vw, 40px);
+  bottom: clamp(20px, 3vh, 40px);
+  left: clamp(15px, 3vw, 40px);
+  right: auto;
   background-color: #25d366;
   color: #FFF;
   border-radius: 50px;
@@ -2107,5 +2114,12 @@ footer p {
   
   .calc-tabs {
     flex-wrap: wrap;
+  }
+}
+
+/* Hide Service Popup on Mobile Only */
+@media (max-width: 768px) {
+  #service-popup {
+    display: none !important;
   }
 }
