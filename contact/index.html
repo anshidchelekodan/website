@@ -64,7 +64,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"></noscript>
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
-  <link rel="stylesheet" href="../style.css?v=20260327-4">
+  <link rel="preload" as="style" href="../style.min.css"><link rel="stylesheet" href="../style.min.css">
   
   <style>
     .page-header {
@@ -331,17 +331,17 @@
 
               <div class="form-group">
                 <label for="name">Your Name</label>
-                <input type="text" name="name" id="name" class="form-control" placeholder="Enter your full name" required>
+                <label for="name" class="sr-only" aria-label="name">name</label> <input type="text" name="name" id="name" id="name" class="form-control" placeholder="Enter your full name" required>
               </div>
 
               <div class="form-group">
                 <label for="email">Email Address</label>
-                <input type="email" name="email" id="email" class="form-control" placeholder="yourname@example.com" required>
+                <label for="email" class="sr-only" aria-label="email">email</label> <input type="email" name="email" id="email" id="email" class="form-control" placeholder="yourname@example.com" required>
               </div>
 
               <div class="form-group">
                 <label for="phone">Phone Number</label>
-                <input type="tel" name="phone" id="phone" class="form-control" placeholder="+91 00000 00000" required>
+                <label for="phone" class="sr-only" aria-label="phone">phone</label> <input type="tel" name="phone" id="phone" id="phone" class="form-control" placeholder="+91 00000 00000" required>
               </div>
 
               <div class="form-group">
@@ -500,6 +500,8 @@
   <script src="../time-widget.js" defer></script>
 </body>
 </html>
+
+
 
 
 
