@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -163,10 +163,12 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">`r`n  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"></noscript>
 
   <!-- FontAwesome for Icons -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" media="print" onload="this.media='all'">`r`n  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 
   <!-- Styles -->
   <link rel="preload" as="style" href="style.min.css">
@@ -1332,12 +1334,12 @@
                   </div>
                 </div>
                 <div class="calc-input-group">
-                  <label style="font-family: var(--font-heading);">Avg. Customer Value (Ã¢â€šÂ¹)</label>
+                  <label style="font-family: var(--font-heading);">Avg. Customer Value (&#8377;)</label>
                   <input type="range" min="500" max="100000" value="10000" step="500" class="range-slider"
                     id="roi-value">
                   <div
                     style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-secondary);">
-                    <span id="roi-value-val" style="font-family: var(--font-main);">Ã¢â€šÂ¹10,000</span>
+                    <span id="roi-value-val" style="font-family: var(--font-main);">&#8377;10,000</span>
                     <span>Per Deal</span>
                   </div>
                 </div>
@@ -1346,7 +1348,7 @@
                 <div class="calc-result-box">
                   <span class="result-label" style="font-family: var(--font-heading);">Est. Revenue Growth</span>
                   <span class="result-value result-highlight" id="roi-result"
-                    style="font-family: var(--font-main);">Ã¢â€šÂ¹5,00,000</span>
+                    style="font-family: var(--font-main);">&#8377;5,00,000</span>
                   <p class="calc-note">Estimated monthly revenue increase based on a 50% improvement in conversion
                     strategy.</p>
                   <div style="margin-top: 2rem;">
@@ -1365,21 +1367,21 @@
             <div class="calc-grid">
               <div class="calc-inputs">
                 <div class="calc-input-group">
-                  <label style="font-family: var(--font-heading);">Monthly Ad Budget (Ã¢â€šÂ¹)</label>
+                  <label style="font-family: var(--font-heading);">Monthly Ad Budget (&#8377;)</label>
                   <input type="range" min="5000" max="500000" value="50000" step="5000" class="range-slider"
                     id="lead-budget">
                   <div
                     style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-secondary);">
-                    <span id="lead-budget-val" style="font-family: var(--font-main);">Ã¢â€šÂ¹50,000</span>
+                    <span id="lead-budget-val" style="font-family: var(--font-main);">&#8377;50,000</span>
                     <span>Investment</span>
                   </div>
                 </div>
                 <div class="calc-input-group">
-                  <label style="font-family: var(--font-heading);">Average CPC (Ã¢â€šÂ¹)</label>
+                  <label style="font-family: var(--font-heading);">Average CPC (&#8377;)</label>
                   <input type="range" min="5" max="200" value="40" step="1" class="range-slider" id="lead-cpc">
                   <div
                     style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-secondary);">
-                    <span id="lead-cpc-val" style="font-family: var(--font-main);">Ã¢â€šÂ¹40</span>
+                    <span id="lead-cpc-val" style="font-family: var(--font-main);">&#8377;40</span>
                     <span>Cost Per Click</span>
                   </div>
                 </div>
@@ -2115,13 +2117,13 @@
 
       document.getElementById('roi-traffic-val').innerText = traffic.toLocaleString();
       document.getElementById('roi-conv-val').innerText = (conv * 100).toFixed(1) + '%';
-      document.getElementById('roi-value-val').innerText = 'Ã¢â€šÂ¹' + value.toLocaleString();
+      document.getElementById('roi-value-val').innerText = '\u20B9' + value.toLocaleString();
 
       // Estimate 50% improvement in conversion efficiency
       const improvement = 1.5;
       const uplift = (traffic * (conv * improvement) * value) - (traffic * conv * value);
 
-      roiResult.innerText = 'Ã¢â€šÂ¹' + Math.round(uplift).toLocaleString();
+      roiResult.innerText = '\u20B9' + Math.round(uplift).toLocaleString();
     }
 
     // Lead Gen Calculator
@@ -2135,8 +2137,8 @@
       const cpc = parseInt(leadCpc.value);
       const conv = parseFloat(leadConv.value) / 100;
 
-      document.getElementById('lead-budget-val').innerText = 'Ã¢â€šÂ¹' + budget.toLocaleString();
-      document.getElementById('lead-cpc-val').innerText = 'Ã¢â€šÂ¹' + cpc.toLocaleString();
+      document.getElementById('lead-budget-val').innerText = '\u20B9' + budget.toLocaleString();
+      document.getElementById('lead-cpc-val').innerText = '\u20B9' + cpc.toLocaleString();
       document.getElementById('lead-conv-val').innerText = (conv * 100).toFixed(1) + '%';
 
       const leads = (budget / cpc) * conv;
