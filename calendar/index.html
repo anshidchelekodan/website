@@ -279,25 +279,429 @@
             border: 1px solid rgba(255, 255, 255, 0.03);
         }
 
+        /* =============================================
+           MOBILE RESPONSIVE — FULL OVERHAUL
+        ============================================= */
+
+        /* --- Tablet & below (≤ 992px) --- */
         @media (max-width: 992px) {
+            .calendar-page {
+                padding-top: 90px;
+                padding-bottom: 60px;
+            }
             .booking-container {
                 grid-template-columns: 1fr;
-                padding: 3rem 2rem;
-                gap: 3rem;
-                border-radius: 0;
+                padding: 2.5rem 1.8rem;
+                gap: 2.5rem;
+                border-radius: 28px;
+                margin: 0 1rem;
             }
-            .calendar-page { padding-top: 100px; padding-bottom: 50px; }
-            .info-panel { text-align: center; }
-            .session-details { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-            .session-details li { margin-bottom: 0; text-align: left; }
-            .time-slots { grid-template-columns: 1fr 1fr; }
-            .booking-footer { flex-direction: column; gap: 1.5rem; text-align: center; }
-            .btn-primary { width: 100%; }
+            .info-panel {
+                text-align: center;
+            }
+            .info-panel h1 {
+                font-size: clamp(1.7rem, 6vw, 2.2rem);
+                letter-spacing: -0.5px;
+            }
+            .info-panel p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            .session-details {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 0.8rem;
+                margin-top: 1.2rem;
+            }
+            .session-details li {
+                margin-bottom: 0;
+                text-align: left;
+                font-size: 0.88rem;
+                gap: 10px;
+            }
+            .session-details li i {
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
+                flex-shrink: 0;
+            }
+            .calendar-widget {
+                padding: 1.8rem 1.5rem;
+                border-radius: 22px;
+            }
+            .cal-grid {
+                gap: 8px;
+            }
+            .day {
+                border-radius: 10px;
+                font-size: 0.85rem;
+            }
+            .time-slots {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+            .booking-footer {
+                flex-direction: column;
+                gap: 1.2rem;
+                text-align: center;
+            }
+        }
+
+        /* --- Mobile (≤ 768px) --- */
+        @media (max-width: 768px) {
+            .calendar-page {
+                padding-top: 80px;
+                padding-bottom: 40px;
+            }
+            .booking-container {
+                padding: 2rem 1.2rem;
+                gap: 2rem;
+                border-radius: 22px;
+                margin: 0 0.5rem;
+            }
+            .info-panel h1 {
+                font-size: clamp(1.5rem, 7vw, 2rem);
+            }
+            .session-details {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.7rem;
+            }
+            .session-details li {
+                font-size: 0.82rem;
+                gap: 8px;
+            }
+            .session-details li i {
+                width: 34px;
+                height: 34px;
+                font-size: 0.9rem;
+                border-radius: 10px;
+            }
+            .calendar-widget {
+                padding: 1.5rem 1rem;
+                border-radius: 18px;
+            }
+            .cal-header h3 {
+                font-size: 1rem;
+            }
+            .cal-grid {
+                gap: 6px;
+            }
+            .day-name {
+                font-size: 0.68rem;
+                padding-bottom: 0.8rem;
+            }
+            .day {
+                border-radius: 9px;
+                font-size: 0.78rem;
+                /* Bigger tap target */
+                min-height: 34px;
+            }
+            .day.available:hover,
+            .day.available:active {
+                transform: scale(1.12);
+            }
+            .time-slots {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+            .slot {
+                padding: 12px 8px;
+                font-size: 0.82rem;
+                border-radius: 12px;
+            }
+            /* Form inputs full-width on mobile */
+            .booking-form {
+                grid-template-columns: 1fr !important;
+                gap: 10px !important;
+            }
+            .booking-form input {
+                font-size: 1rem; /* prevents iOS zoom */
+                padding: 14px 12px;
+            }
+            #finalBookBtn {
+                padding: 1rem;
+                font-size: 0.95rem;
+            }
+            .selected-summary {
+                font-size: 0.85rem;
+                padding: 10px 14px;
+            }
+        }
+
+        /* --- Small phones (≤ 480px) --- */
+        @media (max-width: 480px) {
+            .calendar-page {
+                padding-top: 75px;
+                padding-bottom: 30px;
+            }
+            .booking-container {
+                padding: 1.8rem 1rem;
+                border-radius: 18px;
+                margin: 0;
+                border-left: none;
+                border-right: none;
+            }
+            .info-panel h1 {
+                font-size: clamp(1.35rem, 8vw, 1.8rem);
+            }
+            .info-panel p {
+                font-size: 0.92rem;
+            }
+            .session-details {
+                grid-template-columns: 1fr;
+                gap: 0.6rem;
+            }
+            .session-details li {
+                font-size: 0.85rem;
+                padding: 0.5rem 0;
+                border-bottom: 1px solid rgba(255,255,255,0.04);
+            }
+            .session-details li:last-child {
+                border-bottom: none;
+            }
+            .calendar-widget {
+                padding: 1.2rem 0.8rem;
+                border-radius: 16px;
+            }
+            .cal-header {
+                margin-bottom: 1.2rem;
+            }
+            .cal-header h3 {
+                font-size: 0.9rem;
+                letter-spacing: 0.5px;
+            }
+            .cal-grid {
+                gap: 5px;
+            }
+            .day-name {
+                font-size: 0.62rem;
+                padding-bottom: 0.6rem;
+            }
+            .day {
+                border-radius: 8px;
+                font-size: 0.72rem;
+                min-height: 32px;
+            }
+            /* Show booked label only on desktop */
+            .day.booked::after {
+                font-size: 0.45rem;
+                bottom: 3px;
+            }
+            .time-slots {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 7px;
+                margin-top: 1.5rem !important;
+                max-height: none !important;
+            }
+            .slot {
+                padding: 10px 6px;
+                font-size: 0.78rem;
+                border-radius: 10px;
+            }
+            /* Legend centered and compact */
+            .cal-legend {
+                gap: 1rem !important;
+                font-size: 0.7rem !important;
+                flex-wrap: wrap;
+                justify-content: center !important;
+            }
+        }
+
+        /* --- Tiny phones (≤ 380px) --- */
+        @media (max-width: 380px) {
+            .booking-container {
+                padding: 1.4rem 0.8rem;
+            }
+            .cal-grid { gap: 4px; }
+            .day { font-size: 0.68rem; min-height: 28px; border-radius: 7px; }
+            .day-name { font-size: 0.58rem; }
+            .slot { padding: 9px 5px; font-size: 0.74rem; }
+            .info-panel h1 { font-size: 1.25rem; }
+        }
+
+        /* ---- Mobile Navbar ---- */
+        .mobile-menu-btn-cal {
+            display: none;
+            background: none;
+            border: 1px solid rgba(255,255,255,0.12);
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        .mobile-menu-btn-cal:hover {
+            background: rgba(255,107,53,0.15);
+            border-color: var(--accent-color);
+        }
+        .mobile-nav-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(11,15,25,0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .mobile-nav-overlay.open {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .mobile-nav-overlay a {
+            color: #fff;
+            font-size: 1.6rem;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: color 0.2s;
+        }
+        .mobile-nav-overlay a:hover { color: var(--accent-color); }
+        .mobile-nav-close {
+            position: absolute;
+            top: 20px; right: 20px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.6rem;
+            cursor: pointer;
+            padding: 8px;
+            line-height: 1;
+        }
+        @media (max-width: 768px) {
+            .navbar .nav-links { display: none; }
+            .mobile-menu-btn-cal { display: flex; }
+        }
+
+
+        /* =============================================
+           FLYING BIRDS ANIMATION
+        ============================================= */
+        .birds-canvas-wrapper {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        /* SVG Bird */
+        .bird {
+            position: absolute;
+            will-change: transform;
+            pointer-events: none;
+        }
+
+        .bird svg {
+            animation: wingFlap 0.4s ease-in-out infinite alternate;
+            transform-origin: center;
+        }
+
+        @keyframes wingFlap {
+            0%   { transform: scaleY(1);     }
+            50%  { transform: scaleY(0.55);  }
+            100% { transform: scaleY(1);     }
+        }
+
+        /* Left-to-right flock */
+        @keyframes flyRight {
+            0%   { transform: translateX(-160px) translateY(0px);   opacity: 0; }
+            5%   { opacity: 1; }
+            95%  { opacity: 1; }
+            100% { transform: translateX(calc(100vw + 160px)) translateY(-40px); opacity: 0; }
+        }
+
+        /* Right-to-left flock (mirrored) */
+        @keyframes flyLeft {
+            0%   { transform: translateX(160px)  translateY(0px);   opacity: 0; }
+            5%   { opacity: 1; }
+            95%  { opacity: 1; }
+            100% { transform: translateX(calc(-100vw - 160px)) translateY(-40px); opacity: 0; }
+        }
+
+        .bird.fly-right {
+            animation: flyRight linear infinite;
+        }
+        .bird.fly-right svg {
+            transform-origin: center;
+        }
+
+        .bird.fly-left {
+            animation: flyLeft linear infinite;
+            right: 0; left: auto;
+        }
+        .bird.fly-left svg {
+            transform: scaleX(-1);
+            transform-origin: center;
+        }
+
+        /* Rain canvas */
+        #rainCanvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.65;
+        }
+
+        /* Lightning overlay */
+        #lightningCanvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* Lightning screen flash */
+        #lightningFlash {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(180, 210, 255, 0);
+            pointer-events: none;
+            z-index: 2;
+            transition: background 0.04s ease;
+        }
+
+        /* Ensure main content sits above animations */
+        .calendar-page {
+            position: relative;
+            z-index: 1;
+        }
+        .navbar {
+            position: relative;
+            z-index: 100;
         }
     </style>
 </head>
 
 <body>
+
+    <!-- Rain Canvas -->
+    <canvas id="rainCanvas"></canvas>
+
+    <!-- Lightning Canvas + Flash overlay -->
+    <canvas id="lightningCanvas"></canvas>
+    <div id="lightningFlash"></div>
+
+    <!-- Birds Wrapper -->
+    <div class="birds-canvas-wrapper" id="birdsWrapper"></div>
     <!-- Navbar -->
     <nav class="navbar scrolled">
         <div class="container container-nav">
@@ -309,8 +713,22 @@
                 <li><a href="../blog/">Blog</a></li>
                 <li><a href="../contact/">Contact</a></li>
             </ul>
+            <button class="mobile-menu-btn-cal" id="calMenuBtn" aria-label="Open Menu">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
+
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-nav-overlay" id="calMobileNav">
+        <button class="mobile-nav-close" id="calNavClose" aria-label="Close Menu">&times;</button>
+        <a href="../" onclick="closeMobileNav()">Home</a>
+        <a href="../services/" onclick="closeMobileNav()">Services</a>
+        <a href="../portfolio/" onclick="closeMobileNav()">Portfolio</a>
+        <a href="../blog/" onclick="closeMobileNav()">Blog</a>
+        <a href="../contact/" onclick="closeMobileNav()">Contact</a>
+        <a href="../calendar/" onclick="closeMobileNav()" style="color: var(--accent-color);">📅 Book a Call</a>
+    </div>
 
     <main class="calendar-page">
         <div class="container">
@@ -378,6 +796,254 @@
             </div>
         </div>
     </main>
+
+    <!-- =============================================
+         ANIMATION SCRIPTS
+    ============================================= -->
+    <script>
+    /* ---- RAIN ANIMATION ---- */
+    (function() {
+        const canvas = document.getElementById('rainCanvas');
+        const ctx = canvas.getContext('2d');
+        let drops = [];
+        let W, H;
+
+        function resize() {
+            W = canvas.width  = window.innerWidth;
+            H = canvas.height = window.innerHeight;
+        }
+
+        function createDrop() {
+            return {
+                x: Math.random() * W,
+                y: Math.random() * -H,
+                len: Math.random() * 28 + 14,    /* longer streaks */
+                speed: Math.random() * 7 + 5,     /* faster fall */
+                opacity: Math.random() * 0.6 + 0.35, /* more visible */
+                width: Math.random() * 1.4 + 0.6  /* thicker */
+            };
+        }
+
+        function init() {
+            resize();
+            drops = [];
+            /* Fewer drops on mobile for performance */
+            const divisor = W < 768 ? 9 : 5;
+            const count = Math.floor(W / divisor);
+            for (let i = 0; i < count; i++) {
+                const d = createDrop();
+                d.y = Math.random() * H;
+                drops.push(d);
+            }
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, W, H);
+            drops.forEach(d => {
+                /* Gradient streak: bright top → fades to transparent */
+                const grad = ctx.createLinearGradient(d.x, d.y, d.x - d.len*0.18, d.y + d.len);
+                grad.addColorStop(0, `rgba(200, 225, 255, ${d.opacity})`);
+                grad.addColorStop(1, `rgba(150, 190, 255, 0)`);
+
+                ctx.beginPath();
+                ctx.moveTo(d.x, d.y);
+                ctx.lineTo(d.x - d.len * 0.18, d.y + d.len);
+                ctx.strokeStyle = grad;
+                ctx.lineWidth = d.width;
+                ctx.lineCap = 'round';
+                ctx.stroke();
+
+                d.y += d.speed;
+                d.x -= d.speed * 0.18;
+
+                if (d.y > H + d.len) {
+                    Object.assign(d, createDrop());
+                }
+            });
+            requestAnimationFrame(draw);
+        }
+
+        window.addEventListener('resize', init);
+        init();
+        draw();
+    })();
+
+    /* ---- LIGHTNING ANIMATION ---- */
+    (function() {
+        const lCanvas = document.getElementById('lightningCanvas');
+        const lCtx    = lCanvas.getContext('2d');
+        const flash   = document.getElementById('lightningFlash');
+        let LW, LH;
+
+        function lResize() {
+            LW = lCanvas.width  = window.innerWidth;
+            LH = lCanvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', lResize);
+        lResize();
+
+        /* Draw a jagged lightning bolt from (x1,y1) to (x2,y2) */
+        function drawBolt(x1, y1, x2, y2, roughness, depth) {
+            if (depth <= 0) {
+                lCtx.lineTo(x2, y2);
+                return;
+            }
+            const mx = (x1 + x2) / 2 + (Math.random() - 0.5) * roughness;
+            const my = (y1 + y2) / 2 + (Math.random() - 0.5) * roughness * 0.5;
+            drawBolt(x1, y1, mx, my, roughness / 2, depth - 1);
+            drawBolt(mx, my, x2, y2, roughness / 2, depth - 1);
+        }
+
+        function strike() {
+            lCtx.clearRect(0, 0, LW, LH);
+
+            /* Random start X near top, end X slightly offset at bottom */
+            const startX = LW * (0.15 + Math.random() * 0.7);
+            const endX   = startX + (Math.random() - 0.5) * 250;
+            const endY   = LH * (0.4 + Math.random() * 0.4);
+
+            /* Draw main bolt */
+            lCtx.save();
+            lCtx.beginPath();
+            lCtx.moveTo(startX, 0);
+            drawBolt(startX, 0, endX, endY, 120, 6);
+            lCtx.shadowColor = 'rgba(160, 210, 255, 1)';
+            lCtx.shadowBlur  = 20;
+            lCtx.strokeStyle = 'rgba(220, 240, 255, 0.95)';
+            lCtx.lineWidth   = 2.5;
+            lCtx.stroke();
+
+            /* Glow pass */
+            lCtx.beginPath();
+            lCtx.moveTo(startX, 0);
+            drawBolt(startX, 0, endX, endY, 120, 6);
+            lCtx.shadowBlur  = 50;
+            lCtx.strokeStyle = 'rgba(100, 180, 255, 0.4)';
+            lCtx.lineWidth   = 8;
+            lCtx.stroke();
+            lCtx.restore();
+
+            /* Screen flash */
+            flash.style.background = 'rgba(180, 215, 255, 0.18)';
+            setTimeout(() => { flash.style.background = 'rgba(180, 215, 255, 0)'; }, 80);
+
+            /* Second flash (double-flash effect) */
+            setTimeout(() => {
+                flash.style.background = 'rgba(180, 215, 255, 0.10)';
+                setTimeout(() => { flash.style.background = 'rgba(180, 215, 255, 0)'; }, 60);
+            }, 120);
+
+            /* Fade bolt out */
+            setTimeout(() => { lCtx.clearRect(0, 0, LW, LH); }, 200);
+        }
+
+        /* Random lightning strikes every 3-8 seconds */
+        function scheduleLightning() {
+            const delay = 3000 + Math.random() * 5000;
+            setTimeout(() => {
+                strike();
+                /* Occasional double-strike */
+                if (Math.random() < 0.35) {
+                    setTimeout(strike, 300 + Math.random() * 200);
+                }
+                scheduleLightning();
+            }, delay);
+        }
+
+        /* First strike after 2s so page has time to load */
+        setTimeout(scheduleLightning, 2000);
+    })();
+
+    /* ---- FLYING BIRDS ANIMATION ---- */
+    (function() {
+        const wrapper = document.getElementById('birdsWrapper');
+        const isMobile = window.innerWidth < 768;
+
+        /* Compact M-shape bird SVG */
+        function makeBirdSVG(size, color) {
+            const s = size;
+            return `<svg width="${s*2.2}" height="${s}" viewBox="0 0 44 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 10 Q11 2 22 10 Q33 2 42 10" stroke="${color}" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+            </svg>`;
+        }
+
+        /* Full flock for desktop */
+        const desktopFlock = [
+            { dir:'right', top:12, delay:0,    dur:14, size:18, opacity:0.55 },
+            { dir:'right', top:14, delay:1.2,  dur:15, size:14, opacity:0.45 },
+            { dir:'right', top:10, delay:2.5,  dur:16, size:22, opacity:0.65 },
+            { dir:'right', top:18, delay:3.8,  dur:14, size:12, opacity:0.40 },
+            { dir:'right', top:16, delay:0.6,  dur:17, size:16, opacity:0.50 },
+            { dir:'right', top:22, delay:5,    dur:18, size:11, opacity:0.35 },
+            { dir:'left',  top:75, delay:0.5,  dur:13, size:20, opacity:0.55 },
+            { dir:'left',  top:78, delay:2,    dur:15, size:15, opacity:0.45 },
+            { dir:'left',  top:72, delay:3.5,  dur:14, size:23, opacity:0.60 },
+            { dir:'left',  top:80, delay:1,    dur:16, size:13, opacity:0.40 },
+            { dir:'left',  top:68, delay:4.2,  dur:17, size:17, opacity:0.50 },
+            { dir:'left',  top:85, delay:6,    dur:18, size:12, opacity:0.35 },
+            { dir:'right', top:40, delay:7,    dur:20, size:10, opacity:0.30 },
+            { dir:'left',  top:50, delay:9,    dur:19, size:10, opacity:0.30 },
+            { dir:'right', top:58, delay:11,   dur:22, size:9,  opacity:0.25 },
+        ];
+
+        /* Lighter flock for mobile — fewer, smaller birds */
+        const mobileFlock = [
+            { dir:'right', top:10, delay:0,   dur:12, size:13, opacity:0.50 },
+            { dir:'right', top:15, delay:2,   dur:14, size:10, opacity:0.40 },
+            { dir:'right', top:20, delay:4.5, dur:13, size:11, opacity:0.35 },
+            { dir:'left',  top:75, delay:1,   dur:12, size:14, opacity:0.50 },
+            { dir:'left',  top:80, delay:3.5, dur:14, size:11, opacity:0.40 },
+            { dir:'left',  top:70, delay:6,   dur:13, size:10, opacity:0.35 },
+        ];
+
+        const flockConfig = isMobile ? mobileFlock : desktopFlock;
+
+        flockConfig.forEach((cfg, i) => {
+            const bird = document.createElement('div');
+            bird.className = `bird fly-${cfg.dir}`;
+            bird.style.cssText = `
+                top: ${cfg.top}%;
+                ${cfg.dir === 'right' ? 'left: 0;' : 'right: 0;'}
+                animation-duration: ${cfg.dur}s;
+                animation-delay: ${-cfg.delay}s;
+                opacity: ${cfg.opacity};
+            `;
+
+            /* Wing flap speed variation */
+            const flapSpeed = (0.3 + Math.random() * 0.3).toFixed(2);
+            const birdColor = `rgba(255, 200, 160, ${cfg.opacity + 0.2})`;
+            bird.innerHTML = makeBirdSVG(cfg.size, birdColor);
+            bird.querySelector('svg').style.animationDuration = flapSpeed + 's';
+
+            wrapper.appendChild(bird);
+        });
+    })();
+    /* ---- MOBILE NAV HAMBURGER ---- */
+    (function() {
+        const btn   = document.getElementById('calMenuBtn');
+        const nav   = document.getElementById('calMobileNav');
+        const close = document.getElementById('calNavClose');
+        if (!btn || !nav) return;
+
+        btn.addEventListener('click', () => {
+            nav.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        });
+
+        function closeMobileNavFn() {
+            nav.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        close.addEventListener('click', closeMobileNavFn);
+        nav.addEventListener('click', (e) => {
+            if (e.target === nav) closeMobileNavFn();
+        });
+
+        /* Make closeMobileNav global so inline onclick works */
+        window.closeMobileNav = closeMobileNavFn;
+    })();
+    </script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
