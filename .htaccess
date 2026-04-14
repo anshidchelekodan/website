@@ -1,0 +1,22 @@
+# Redirect broken root-level links to their correct subfolder paths
+Redirect 301 /ecommerce-seo /portfolio/ecommerce-seo/
+Redirect 301 /performance-marketing /services/performance-marketing/
+Redirect 301 /lead-generation /services/lead-generation/
+Redirect 301 /aeo-optimization /services/aeo-optimization/
+Redirect 301 /google-ads /portfolio/google-ads/
+Redirect 301 /seo-campaign /portfolio/seo-campaign/
+Redirect 301 /conversion-optimization /services/conversion-optimization/
+Redirect 301 /social-media-marketing /services/social-media-marketing/
+Redirect 301 /web-development /services/web-development/
+Redirect 301 /local-aeo-maps /portfolio/local-aeo-maps/
+Redirect 301 /website-optimization /portfolio/website-optimization/
+Redirect 301 /sjs-business-solutions /portfolio/sjs-business-solutions/
+
+# Ensure sections with no trailing slash also work (optional but recommended)
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^services$ /services/ [L,R=301]
+RewriteRule ^portfolio$ /portfolio/ [L,R=301]
+RewriteRule ^blog$ /blog/ [L,R=301]
+RewriteRule ^about$ /about/ [L,R=301]
+RewriteRule ^contact$ /contact/ [L,R=301]
