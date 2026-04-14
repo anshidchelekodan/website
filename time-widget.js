@@ -146,15 +146,20 @@ document.addEventListener('DOMContentLoaded', () => {
             // 10 AM to 5 PM (17:00 exclusive)
             const isAvailable = hour >= 10 && hour < 17;
             
-            document.querySelectorAll('#aw-time-display').forEach(el => el.innerText = timeStr);
-            document.querySelectorAll('#aw-status-text').forEach(el => {
-                el.innerText = isAvailable ? '🟢 Available to Connect' : '🌙 Outside Working Hours';
+            requestAnimationFrame(() => {
+                document.querySelectorAll('#aw-time-display').forEach(el => el.innerText = timeStr);
+                document.querySelectorAll('#aw-status-text').forEach(el => {
+                    el.innerText = isAvailable ? '🟢 Available to Connect' : '🌙 Outside Working Hours';
+                });
             });
             
             // Only render calendar once since we mostly just care about today
             document.querySelectorAll('#aw-calendar-display').forEach(el => {
                 if(!el.innerHTML) {
-                    el.innerHTML = renderCalendar(keralaTime);
+                    const calendarHtml = renderCalendar(keralaTime);
+                    requestAnimationFrame(() => {
+                        el.innerHTML = calendarHtml;
+                    });
                 }
             });
         };

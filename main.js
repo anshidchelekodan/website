@@ -59,7 +59,10 @@ const observer = new IntersectionObserver((entries) => {
       if (entry.target.classList.contains('expertise-item')) {
         const progressFill = entry.target.querySelector('.skill-progress-fill');
         if (progressFill) {
-          progressFill.style.width = progressFill.getAttribute('data-width');
+          const width = progressFill.getAttribute('data-width');
+          requestAnimationFrame(() => {
+            progressFill.style.width = width;
+          });
         }
       }
       observer.unobserve(entry.target);
@@ -127,14 +130,27 @@ const initFAQ = () => {
       
       // Close all other items
       faqItems.forEach(otherItem => {
-        otherItem.classList.remove('active');
-        otherItem.querySelector('.faq-answer').style.maxHeight = null;
+        if (otherItem !== item) {
+          otherItem.classList.remove('active');
+          const otherAnswer = otherItem.querySelector('.faq-answer');
+          requestAnimationFrame(() => {
+            otherAnswer.style.maxHeight = null;
+          });
+        }
       });
       
       // Toggle current item
       if (!isActive) {
         item.classList.add('active');
-        answer.style.maxHeight = answer.scrollHeight + "px";
+        const height = answer.scrollHeight;
+        requestAnimationFrame(() => {
+          answer.style.maxHeight = height + "px";
+        });
+      } else {
+        item.classList.remove('active');
+        requestAnimationFrame(() => {
+          answer.style.maxHeight = null;
+        });
       }
     });
   });
@@ -195,10 +211,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const href = link.getAttribute('href');
     if (!href) return;
     
-    // Resolve full path
-    const a = document.createElement('a');
-    a.href = href;
-    const linkPath = a.pathname;
+    // Resolve full path (efficiently)
+    let linkPath;
+    try {
+      linkPath = new URL(href, window.location.origin).pathname;
+    } catch (e) {
+      const a = document.createElement('a');
+      a.href = href;
+      linkPath = a.pathname;
+    }
     
     // Exact match
     if (linkPath === currentPath) {

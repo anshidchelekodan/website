@@ -617,7 +617,12 @@ textarea.form-control {
     max-height: 0;
     overflow: hidden;
     background: rgba(11, 15, 25, 0.3);
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+}
+
+.faq-item.active .faq-answer {
+    opacity: 1;
 }
 
 .faq-answer-inner {
@@ -1737,7 +1742,7 @@ footer p {
 /* Back to Top Button */
 .back-to-top {
   position: fixed;
-  bottom: 100px;
+  bottom: 30px;
   right: 30px;
   width: 50px;
   height: 50px;
@@ -1752,14 +1757,15 @@ footer p {
   z-index: 999;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
 }
 
 .back-to-top.active {
   opacity: 1;
   visibility: visible;
-  bottom: 30px;
+  transform: translateY(0);
 }
 
 .back-to-top:hover {
@@ -1931,7 +1937,7 @@ footer p {
 
 @media (max-width: 768px) {
   .back-to-top { right: 20px; bottom: 85px; }
-  .back-to-top.active { bottom: 85px; }
+  .back-to-top.active { transform: translateY(0); }
   .float-wa { left: 20px; bottom: 20px; width: 50px; height: 50px; font-size: 1.5rem; }
 }
 

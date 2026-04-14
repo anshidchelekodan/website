@@ -196,7 +196,9 @@
     }
 
     function scrollToBottom() {
-        elements.messages.scrollTop = elements.messages.scrollHeight;
+        requestAnimationFrame(() => {
+            elements.messages.scrollTop = elements.messages.scrollHeight;
+        });
     }
 
     function handleUserInput(text) {
