@@ -2112,6 +2112,148 @@ footer p {
 }
 
 @media (prefers-reduced-motion: reduce) { *, ::before, ::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; } }
- img { height: auto; object-fit: cover; }
+img { height: auto; object-fit: cover; }
+
+/* Blog Reference Styling */
+.blog-reference {
+    margin: 4rem 0;
+    padding: 2.5rem;
+    background: rgba(255, 107, 53, 0.03);
+    border: 1px dashed rgba(255, 107, 53, 0.3);
+    border-radius: 20px;
+    text-align: center;
+}
+
+.blog-reference p {
+    margin-bottom: 0;
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+.blog-reference a {
+    color: var(--accent-color);
+    font-weight: 700;
+    text-decoration: underline;
+    transition: all 0.3s ease;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.blog-reference a:hover {
+    color: #fff;
+    background: var(--accent-color);
+}
+
+/* Hire Me Section - Premium Compact Model */
+.hire-section {
+    background: radial-gradient(circle at top right, rgba(255, 107, 53, 0.05), transparent 400px),
+                linear-gradient(135deg, #0B0F19 0%, #111827 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    position: relative;
+    padding: 5rem 0; /* Reduced padding */
+}
+
+.hire-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Equal columns for balance */
+    gap: 3rem;
+    align-items: center;
+    max-width: 1200px; /* Constrain for better readability */
+    margin: 0 auto;
+}
+
+.hire-content h2 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem); /* Slightly smaller heading */
+    margin-top: 0.8rem;
+}
+
+.hire-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two-column features for compactness */
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.02);
+    padding: 10px 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.cta-card-inner {
+    background: rgba(21, 27, 41, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 2.5rem;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 107, 53, 0.15);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cta-card-inner:hover {
+    transform: translateY(-8px) scale(1.01);
+    border-color: var(--accent-color);
+}
+
+.highlight-list {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.highlight-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.highlight-list li i {
+    color: var(--accent-color);
+    font-size: 0.8rem;
+}
+
+.trust-element {
+    margin-top: 1.5rem;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 107, 53, 0.03);
+    border-left: 3px solid var(--accent-color);
+    border-radius: 8px;
+}
+
+@media (max-width: 992px) {
+    .hire-section {
+        padding: 4rem 0;
+    }
+    
+    .hire-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        text-align: center;
+    }
+    
+    .hire-features {
+        grid-template-columns: 1fr; /* Vertical on mobile */
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .feature-item {
+        justify-content: flex-start;
+    }
+}
 
 
