@@ -3,14 +3,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const style = document.createElement('style');
     style.innerHTML = `
         .aw-container {
-            background: rgba(21, 27, 41, 0.7);
-            border: 1px solid rgba(255, 107, 53, 0.2);
+            background: rgba(11, 46, 42, 0.75);
+            border: 1px solid rgba(46, 230, 166, 0.2);
             border-radius: 12px;
             padding: 1rem;
             width: 100%;
             max-width: 280px;
             font-family: inherit;
-            color: #fff;
+            color: #E6FFF7;
             box-sizing: border-box;
             backdrop-filter: blur(10px);
         }
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .aw-time {
             font-size: 1.1rem;
             font-weight: 700;
-            color: var(--accent-color, #FF6B35);
+            color: var(--accent-color, #2EE6A6);
         }
         .aw-timezone {
             font-size: 0.7rem;
@@ -69,8 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
             border-radius: 4px;
         }
         .aw-cal-date.active {
-            background-color: var(--accent-color, #FF6B35);
-            color: #fff;
+            background-color: var(--accent-color, #2EE6A6);
+            color: #050B0A;
             font-weight: bold;
         }
     `;
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="aw-container">
                     <div class="aw-header">
                         <div class="aw-time-box">
-                            <i class="far fa-clock" style="color: var(--accent-color, #FF6B35); font-size: 0.9rem;"></i>
+                            <i class="far fa-clock" style="color: var(--accent-color, #2EE6A6); font-size: 0.9rem;"></i>
                             <span class="aw-time" id="aw-time-display">--:--</span>
                         </div>
                         <span class="aw-timezone">Kerala (IST)</span>

@@ -71,7 +71,7 @@
   <style>
     .page-header {
       padding: 150px 0 80px 0;
-      background: linear-gradient(180deg, rgba(11,15,25,1) 0%, rgba(21,27,41,1) 100%);
+      background: linear-gradient(180deg, rgba(5,11,10,1) 0%, rgba(11,46,42,1) 100%);
       text-align: center;
       border-bottom: 1px solid rgba(255,255,255,0.05);
     }
@@ -115,19 +115,19 @@
     .info-icon {
       width: 45px;
       height: 45px;
-      background: rgba(255, 107, 53, 0.1);
+      background: rgba(46, 230, 166, 0.1);
       border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #FF6B35;
+      color: #2EE6A6;
       font-size: 1.4rem;
       transition: var(--transition);
     }
     
     .moving-border-container:hover .info-icon {
-      background: #FF6B35;
-      color: #0b0f19;
+      background: #2EE6A6;
+      color: #FFFFFF;
       transform: scale(1.1);
     }
     
@@ -159,15 +159,15 @@
     
     .form-control:focus {
       outline: none;
-      border-color: #FF6B35;
-      background: rgba(255, 107, 53, 0.05);
-      box-shadow: 0 0 15px rgba(255, 107, 53, 0.2);
+      border-color: #2EE6A6;
+      background: rgba(46, 230, 166, 0.05);
+      box-shadow: 0 0 15px rgba(46, 230, 166, 0.2);
     }
     
     .btn-primary {
-      background: #FF6B35;
-      border: none;
-      color: #fff;
+      background: linear-gradient(135deg, #0B2E2A 0%, #051512 100%);
+      color: #FFFFFF;
+      border: 2px solid #2EE6A6;
       padding: 1.2rem;
       border-radius: 12px;
       font-weight: 700;
@@ -175,12 +175,14 @@
       letter-spacing: 1px;
       cursor: pointer;
       transition: var(--transition);
+      box-shadow: 0 0 15px rgba(46, 230, 166, 0.15);
     }
     
     .btn-primary:hover {
-      background: #ff8559;
+      background: linear-gradient(135deg, #1fa378 0%, #0B2E2A 100%);
       transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(255, 107, 53, 0.3);
+      box-shadow: 0 10px 30px rgba(46, 230, 166, 0.4);
+      border-color: #4FFFB0;
     }
     
     .map-container {
@@ -329,7 +331,7 @@
 
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 2.5rem; flex-wrap:wrap; gap:15px;">
                 <h2 style="margin:0; font-size: 2.2rem;">Send a Message</h2>
-                <a href="https://wa.me/919778179727" target="_blank" class="btn btn-outline" style="padding: 0.6rem 1.2rem; font-size: 0.9rem; border-color: #FF6B35; color: #FF6B35;"><i class="fab fa-whatsapp" style="margin-right:8px;"></i>Quick Chat</a>
+                <a href="https://wa.me/919778179727" target="_blank" class="btn btn-outline" style="padding: 0.6rem 1.2rem; font-size: 0.9rem; border-color: #2EE6A6; color: #2EE6A6;"><i class="fab fa-whatsapp" style="margin-right:8px;"></i>Quick Chat</a>
               </div>
 
               <div class="form-group">
@@ -484,13 +486,13 @@
     function showSuccessMessage(){
       let msg = document.createElement("div");
       msg.innerText = "Thank you! Your message has been received.";
-      msg.style.background = "#0f172a";
+      msg.style.background = "#050B0A";
       msg.style.color = "#fff";
       msg.style.padding = "12px";
       msg.style.marginTop = "15px";
       msg.style.borderRadius = "8px";
       msg.style.textAlign = "center";
-      msg.style.border = "1px solid #FF6B35";
+      msg.style.border = "1px solid #2EE6A6";
   
       form.appendChild(msg);
   
