@@ -119,26 +119,40 @@ a:hover {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #0B2E2A 0%, #051512 100%);
-  color: #FFFFFF;
-  border: 2px solid var(--accent-color);
-  box-shadow: 0 0 15px rgba(46, 230, 166, 0.15);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent-color) 0%, #1fa378 100%);
+  color: #051512;
+  border: none;
+  box-shadow: 0 0 20px rgba(46, 230, 166, 0.3);
+  font-weight: 800;
+  text-shadow: none;
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #1fa378 0%, #0B2E2A 100%);
-  color: #FFFFFF;
-  border-color: #4FFFB0;
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 0 25px rgba(46, 230, 166, 0.4),
-              0 0 50px rgba(46, 230, 166, 0.1);
+  background: linear-gradient(135deg, #4FFFB0 0%, var(--accent-color) 100%);
+  color: #051512;
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 10px 30px rgba(46, 230, 166, 0.5),
+              0 0 60px rgba(46, 230, 166, 0.2);
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: rotate(45deg);
+  transition: 0.5s;
+}
+
+.btn-primary:hover::after {
+  left: 100%;
 }
 
 .btn-primary:active {
-  box-shadow: 0 5px 20px rgba(46, 230, 166, 0.4);
+  transform: translateY(-2px) scale(0.98);
 }
 
 .btn-outline {
@@ -146,26 +160,64 @@ a:hover {
   border: 2px solid var(--accent-color);
   color: var(--accent-color);
   font-weight: 700;
-  position: relative;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.btn-outline::before {
-  content: '';
-  position: absolute;
-  inset: 2px;
-  background: var(--accent-color);
-  border-radius: 10px;
-  z-index: -1;
-  display: none;
 }
 
 .btn-outline:hover {
-  background: rgba(46, 230, 166, 1);
+  background: var(--accent-color);
   color: #051512;
-  border-color: var(--accent-color);
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 0 25px rgba(46, 230, 166, 0.5);
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(46, 230, 166, 0.3);
+}
+
+/* Premium CTA Animations */
+.btn-pulse {
+  animation: pulse-button 2s infinite;
+  box-shadow: 0 0 0 0 rgba(46, 230, 166, 0.7);
+}
+
+@keyframes pulse-button {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(46, 230, 166, 0.7); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(46, 230, 166, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(46, 230, 166, 0); }
+}
+
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -150%;
+  width: 150%;
+  height: 200%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: rotate(45deg);
+  transition: all 0s;
+}
+
+.btn-primary:hover::after {
+  left: 150%;
+  transition: all 0.6s ease-in-out;
+}
+
+/* Pulsing High-Priority CTA */
+.btn-pulse {
+  animation: pulse-glow 2s infinite;
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(46, 230, 166, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(46, 230, 166, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(46, 230, 166, 0);
+  }
 }
 
 /* Large Button Variant */
@@ -1501,76 +1553,95 @@ footer p {
   transform: scale(1.1);
   box-shadow: 0 5px 15px rgba(46, 230, 166, 0.4);
 }
-/* Roadmap (Compact Grid) */
+/* Roadmap (Vertical Line Style) */
 .roadmap-container {
-  --roadmap-gap: 1.25rem;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: var(--roadmap-gap);
-  max-width: 1100px;
-  margin: 3rem auto 0 auto;
-}
-
-/* 3-column feel on desktop, 2 on tablets, 1 on mobile */
-.roadmap-item {
-  grid-column: span 4;
-  margin: 0;
-  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 800px;
+  margin: 4rem auto 0 auto;
   position: relative;
 }
 
-.roadmap-dot {
+/* The vertical connecting line */
+.roadmap-container::before {
+  content: '';
   position: absolute;
-  top: -12px;
-  left: -12px;
-  width: 40px;
-  height: 40px;
-  border-radius: 14px;
-  background: rgba(5, 11, 10, 0.95);
-  border: 1px solid rgba(46, 230, 166, 0.55);
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, var(--accent-color), transparent);
+  opacity: 0.3;
+}
+
+.roadmap-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.roadmap-dot {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--bg-color);
+  border: 2px solid var(--accent-color);
   color: var(--accent-color);
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: 800;
-  letter-spacing: 0.5px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.45);
-  z-index: 5;
+  position: relative;
+  box-shadow: 0 0 15px rgba(46, 230, 166, 0.2);
 }
 
 .roadmap-card {
-  height: 100%;
-  transition: var(--transition);
+  flex-grow: 1;
+  background: rgba(11, 46, 42, 0.4);
+  border: 1px solid rgba(46, 230, 166, 0.1);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-.roadmap-card .moving-border-inner {
-  height: 100%;
+.roadmap-card:hover {
+  background: rgba(11, 46, 42, 0.7);
+  border-color: var(--accent-color);
+  transform: translateX(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-.roadmap-item:hover .roadmap-card {
-  transform: translateY(-6px);
+.roadmap-item:hover .roadmap-dot {
+  background: var(--accent-color);
+  color: #051512;
+  transform: scale(1.1);
 }
 
-.process-icon {
-  font-size: 1.8rem;
-  color: var(--accent-color);
-  margin-bottom: 1rem;
+/* Animation trigger on hover */
+.roadmap-item .moving-border-container::after {
+  opacity: 0;
+}
+.roadmap-item:hover .moving-border-container::after {
+  opacity: 1;
+  animation: border-rotate 1.8s linear infinite;
 }
 
-/* Variety: subtle per-step glow tints */
-.roadmap-item:nth-child(1) .moving-border-inner { background: linear-gradient(180deg, rgba(46,230,166,0.12), rgba(11,46,42,0.72)); }
-.roadmap-item:nth-child(2) .moving-border-inner { background: linear-gradient(180deg, rgba(79,255,176,0.10), rgba(11,46,42,0.72)); }
-.roadmap-item:nth-child(3) .moving-border-inner { background: linear-gradient(180deg, rgba(46,230,166,0.14), rgba(11,46,42,0.72)); }
-.roadmap-item:nth-child(4) .moving-border-inner { background: linear-gradient(180deg, rgba(15,61,54,0.25), rgba(11,46,42,0.72)); }
-.roadmap-item:nth-child(5) .moving-border-inner { background: linear-gradient(180deg, rgba(46,230,166,0.10), rgba(11,46,42,0.72)); }
-
-@media (max-width: 992px) {
-  .roadmap-item { grid-column: span 6; }
-}
-
-@media (max-width: 640px) {
-  .roadmap-container { grid-template-columns: 1fr; }
-  .roadmap-item { grid-column: span 12; }
-  .roadmap-dot { top: -10px; left: -10px; }
+@media (max-width: 768px) {
+  .roadmap-container::before {
+    left: 22px;
+  }
+  .roadmap-item {
+    gap: 1.5rem;
+  }
+  .roadmap-card {
+    padding: 1.5rem;
+  }
 }
 /* AEO Key Takeaways Box */
 .aeo-summary {
@@ -2307,3 +2378,48 @@ img { height: auto; object-fit: cover; }
 }
 
 
+
+/* Floating WhatsApp Button */
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background-color: #25d366;
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  animation: pulse-whatsapp 2s infinite;
+  text-decoration: none;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  background-color: #128c7e;
+  box-shadow: 0 0 20px rgba(37, 211, 102, 0.6);
+  color: #fff;
+}
+
+@keyframes pulse-whatsapp {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+@media (max-width: 768px) {
+  .whatsapp-float {
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+  }
+}

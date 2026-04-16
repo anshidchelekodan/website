@@ -604,7 +604,11 @@
       display: flex;
       width: max-content;
       animation: testimonial-slide 20s linear infinite;
+      animation-play-state: paused; /* Paused by default */
       gap: 2rem;
+  }
+  .testimonial-track.playing {
+      animation-play-state: running; /* Start sliding when class is added */
   }
   .testimonial-marquee-container:hover .testimonial-track {
       animation-play-state: paused;
@@ -686,32 +690,29 @@
         </div>
 
         <div class="hero-content animate reveal-right stagger-2">
-          <h2 class="hero-subtitle">Leading Digital Marketing Strategist in Kerala</h2>
-          <h1 class="hero-name">Digital Marketing Strategist in Malappuram</h1>
-          <p class="hero-description hero-desc">Scale your brand with 10x ROI-driven strategies from the best
-            <strong>Digital Marketing Strategist in Malappuram</strong>. Specializing in <strong><a
-                href="/services/seo-optimization/" style="color:inherit; text-decoration:underline;">SEO</a></strong>,
-            <strong><a href="/services/performance-marketing/" style="color:inherit; text-decoration:underline;">Google
-                Ads</a></strong>, and <strong>Answer Engine Optimization (AEO)</strong> to dominate the Kerala market.
-          </p>
-          <span class="hero-keyword">Data-Backed Growth. AI-Ready Search Strategies.</span>
+          <h2 class="hero-subtitle">Get More Leads & Sales for Your Business</h2>
+          <h1 class="hero-name" style="font-size: clamp(1.8rem, 6vw, 3.5rem);">Digital Marketing Strategist in Malappuram | Lead Generation Expert Kerala</h1>
+          <p class="hero-description hero-desc">I help Kerala businesses scale with data-driven <strong>SEO</strong>, <strong>Google Ads</strong>, and <strong>AEO</strong>. Transform your online presence into a 24/7 lead generation machine with strategies focused on <strong>ROI</strong>, not vanity metrics.</p>
+          <span class="hero-keyword" style="display: block; margin-bottom: 2rem; color: var(--accent-color); font-weight: 700;">Helping local Kerala businesses generate consistent leads using SEO & Meta Ads</span>
 
           <div class="hero-buttons animate stagger-2">
-            <a href="contact/" class="btn btn-primary"
+            <a href="calendar/" class="btn btn-primary btn-pulse"
               style="display: inline-flex; align-items: center; justify-content: center;">
-              <i class="fas fa-rocket"></i> Get 10x Growth Plan
+              <i class="fas fa-calendar-check"></i> Get Free Strategy Call
             </a>
-            <a href="https://wa.me/919778179727" target="_blank" class="btn btn-outline"
+            <a href="portfolio/" class="btn btn-outline"
               style="display: inline-flex; align-items: center; justify-content: center;">
-              <i class="fab fa-whatsapp"></i> Chat with a Strategist
+              <i class="fas fa-briefcase"></i> View Case Studies
             </a>
           </div>
+          <p style="margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-secondary); opacity: 0.8;">
+            <i class="fas fa-lock" style="margin-right: 5px; color: var(--accent-color);"></i> Limited slots available for new clients this month
+          </p>
         </div>
       </div>
 
+
     </section>
-
-
 
     <!-- About Section Preview -->
     <section class="section" id="about">
@@ -721,38 +722,18 @@
             <div class="section-title" style="text-align:left; margin-bottom:1.5rem;">
               <h2 style="margin-bottom:0.5rem;">The Best Digital Marketing Strategist in Malappuram & Kerala</h2>
             </div>
-            <p>I am Mohammad Anshid Ck, a seasoned <strong>Digital Marketing Strategist in Kerala</strong> dedicated to
-              turning your business vision into measurable ROI. Whether you're a local business in
-              <strong>Malappuram</strong>,
-              <strong>Nilambur</strong>, <strong>Manjeri</strong>, or a growing brand in Kochi, I provide specialized
-              <a href="/services/seo-optimization/" class="text-accent" style="font-weight:600;">SEO services</a> and
-              high-conversion <a href="/services/performance-marketing/" class="text-accent"
-                style="font-weight:600;">Google Ads</a> campaigns.
-            </p>
+            <p>I am Mohammad Anshid Ck, a top-rated <strong>Digital Marketing Strategist in Kerala</strong> who treats your business growth as my own. My mission is simple: to stop the "guesswork" in your marketing and replace it with <strong>proven conversion funnels</strong>. Whether you are a local entrepreneur in <strong>Malappuram</strong> or a brand scaling across Kerala, I provide the strategic edge needed to dominate your niche.</p>
 
-            <p>The digital landscape in <strong>Malappuram</strong> is evolving rapidly. Traditional marketing is no
-              longer enough.
-              As your <strong>freelance digital marketer in Malappuram</strong>, I focus on building a sustainable
-              digital presence
-              that captures high-intent customers right when they are searching for you. My strategies are rooted in
-              data and
-              tailored for the unique consumer behavior of the <strong>Kerala market</strong>.</p>
-
-            <p>With a deep understanding of <strong>Answer Engine Optimization (AEO)</strong>, I ensure your brand stays
-              ahead
-              in the era of AI-driven search like Perplexity and Google SGE. I don't just focus on "traffic" � I focus
-              on
-              practical results: more leads, higher conversion rates, and sustainable business growth for Malappuram
-              entrepreneurs.</p>
+            <p>The digital landscape in <strong>Malappuram</strong> is no longer just about "being online"—it's about being the choice of high-intent customers. As your <strong>dedicated growth partner</strong>, I specialize in SEO that stays on page #1 and Ads that actually convert into bankable revenue. My approach combines local market psychology with global performance standards.</p>
 
             <div class="hero-btns" style="margin-top: 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap;">
-              <a href="services/" class="btn btn-primary"
+              <a href="calendar/" class="btn btn-primary"
                 style="display: inline-flex; align-items: center; justify-content: center;">
-                <i class="fas fa-rocket"></i> Explore My Services
+                <i class="fas fa-calendar-check"></i> Book Free Growth Strategy
               </a>
-              <a href="about/" class="btn btn-outline"
+              <a href="portfolio/" class="btn btn-outline"
                 style="display: inline-flex; align-items: center; justify-content: center;">
-                <i class="fas fa-user"></i> Detailed My Story
+                <i class="fas fa-briefcase"></i> View Results
               </a>
             </div>
           </div>
@@ -764,34 +745,316 @@
           <div
             style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; border: 4px solid var(--accent-color); flex-shrink: 0; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
             <img loading="lazy" src="anshid-optimized.webp" width="600" height="900"
-              alt="Mohammad Anshid Ck - Digital Marketing Strategist in Malappuram"
+              alt="Mohammad Anshid Ck - Best Digital Marketing Strategist in Malappuram"
               style="width: 100%; height: 100%; object-fit: cover;">
           </div>
           <div style="flex: 1; min-width: 300px;">
             <h3 style="font-size: 1.8rem; color: #fff; margin-bottom: 8px;">Mohammad Anshid Ck</h3>
             <p
               style="color: var(--accent-color); font-weight: 700; margin-bottom: 1.5rem; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px;">
-              Digital Marketing Strategist in Malappuram</p>
+              Digital Marketing Strategist | Lead Gen Specialist</p>
             <p style="color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem; margin-bottom: 2rem;">
-              "Mohammad Anshid Ck is a <strong>Digital Marketing Executive at Blueweb2 Agency</strong> with hands-on
-              experience in SEO, Meta Ads, and Google Ads, helping businesses generate leads and improve online
-              visibility." Based in <strong>Malappuram, Kerala</strong>, he bridges the gap between technical complexity
-              and business growth.
+              With a track record of transforming stagnant businesses into <strong>lead-generating machines</strong>, I bring agency-level expertise with the personalized attention of a dedicated consultant. Based in <strong>Malappuram, Kerala</strong>, I help you outsmart the competition through data and creative excellence.
             </p>
-            <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
-              <a href="https://www.linkedin.com/in/mohammad-anshid-ck-9123462aa/" target="_blank"
+            <div style="display: flex; gap: 1.2rem; flex-wrap: wrap;">
+              <a href="calendar/"
                 class="btn btn-primary" style="padding: 0.8rem 1.8rem; font-size: 0.95rem;">
-                <i class="fab fa-linkedin" style="margin-right: 10px;"></i> View LinkedIn Profile
+                <i class="fas fa-phone-alt" style="margin-right: 10px;"></i> Book a Call
+              </a>
+              <a href="https://www.linkedin.com/in/mohammad-anshid-ck-9123462aa" target="_blank" class="btn btn-outline"
+                style="padding: 0.8rem 1.8rem; font-size: 0.95rem; border-color: #0077B5; color: #0077B5;">
+                <i class="fab fa-linkedin" style="margin-right: 10px;"></i> LinkedIn
               </a>
               <a href="https://wa.me/919778179727" target="_blank" class="btn btn-outline"
-                style="padding: 0.8rem 1.8rem; font-size: 0.95rem;">
-                <i class="fab fa-whatsapp" style="margin-right: 10px;"></i> WhatsApp Me
+                style="padding: 0.8rem 1.8rem; font-size: 0.95rem; border-color: #25D366; color: #25D366;">
+                <i class="fab fa-whatsapp" style="margin-right: 10px;"></i> WhatsApp
               </a>
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Case Study Section (Proof of Work) -->
+    <section class="section" id="case-studies" style="background-color: rgba(13, 18, 28, 0.2);">
+      <div class="container">
+        <div class="section-title animate reveal-up">
+          <span>Proof of Work</span>
+          <h2>Real Growth <span class="text-accent">Case Studies</span></h2>
+          <p>Measurable results delivered for businesses in Malappuram and beyond.</p>
+        </div>
+
+        <div class="grid grid-3">
+          <!-- Case Study 1: SJS Business Solutions -->
+          <div class="moving-border-container animate reveal-left" style="border-radius: 24px;">
+            <div class="moving-border-inner"
+              style="border-radius: 22px; background: var(--card-bg); padding: 2.5rem; flex-direction: column; align-items: flex-start; text-align: left;">
+              <div
+                style="background: rgba(46,230,166,0.1); color: var(--accent-color); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1.5rem;">
+                B2B LEAD GENERATION</div>
+              <h3 style="font-size: 1.5rem; color: #fff; margin-bottom: 1rem;">Scaling SJS Business Solutions</h3>
+              <p style="font-size: 0.95rem; margin-bottom: 1.5rem;"><strong>Problem:</strong> Lack of structured lead
+                acquisition for a consulting firm in Kerala.</p>
+              <div style="margin-bottom: 1.5rem;">
+                <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><i class="fas fa-check-circle text-accent"
+                    style="margin-right: 8px;"></i> <strong>Strategy:</strong> Meta Ads + WhatsApp Lead Funnel</p>
+                <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><i class="fas fa-check-circle text-accent"
+                    style="margin-right: 8px;"></i> <strong>Result:</strong> 100% Qualified B2B Lead Flow growth</p>
+              </div>
+              <div style="width: 100%; height: 1px; background: rgba(255,255,255,0.1); margin-bottom: 1.5rem;"></div>
+              <div style="display: flex; gap: 20px;">
+                <div>
+                  <span
+                    style="display: block; font-size: 1.4rem; font-weight: 800; color: var(--accent-color);">10x</span>
+                  <span
+                    style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-secondary);">Leads</span>
+                </div>
+                <div>
+                  <span
+                    style="display: block; font-size: 1.4rem; font-weight: 800; color: var(--accent-color);">B2B</span>
+                  <span
+                    style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-secondary);">Niche</span>
+                </div>
+              </div>
+              <div style="margin-top: 1.5rem; width: 100%;">
+                <a href="portfolio/" class="text-accent" style="font-weight: 700; font-size: 0.9rem; text-decoration: underline;">View Full Case Study <i class="fas fa-arrow-right" style="margin-left:8px;"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Case Study 2: Blueweb2 Agency Impact -->
+          <div class="moving-border-container animate reveal-up" style="border-radius: 24px;">
+            <div class="moving-border-inner"
+              style="border-radius: 22px; background: var(--card-bg); padding: 2.5rem; flex-direction: column; align-items: flex-start; text-align: left;">
+              <div
+                style="background: rgba(46,230,166,0.1); color: var(--accent-color); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1.5rem;">
+                AGENCY PERFORMANCE</div>
+              <h3 style="font-size: 1.5rem; color: #fff; margin-bottom: 1rem;">Multi-Client Growth at Blueweb2</h3>
+              <p style="font-size: 0.95rem; margin-bottom: 1.5rem;"><strong>Role:</strong> Managing full-stack marketing
+                for diverse niche clients from Nilambur center.</p>
+              <div style="margin-bottom: 1.5rem;">
+                <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><i class="fas fa-check-circle text-accent"
+                    style="margin-right: 8px;"></i> <strong>Services:</strong> SEO, Google Ads, Meta Ad Ops</p>
+                <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><i class="fas fa-check-circle text-accent"
+                    style="margin-right: 8px;"></i> <strong>Impact:</strong> Optimized CPL for local & global brands</p>
+              </div>
+              <div style="width: 100%; height: 1px; background: rgba(255,255,255,0.1); margin-bottom: 1.5rem;"></div>
+              <div style="display: flex; gap: 20px;">
+                <div>
+                  <span
+                    style="display: block; font-size: 1.4rem; font-weight: 800; color: var(--accent-color);">-30%</span>
+                  <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-secondary);">CPL</span>
+                </div>
+                <div>
+                  <span
+                    style="display: block; font-size: 1.4rem; font-weight: 800; color: var(--accent-color);">Full</span>
+                  <span
+                    style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-secondary);">Stack</span>
+                </div>
+              </div>
+              <div style="margin-top: 1.5rem; width: 100%;">
+                <a href="about/" class="text-accent" style="font-weight: 700; font-size: 0.9rem; text-decoration: underline;">Experience Details <i class="fas fa-arrow-right" style="margin-left:8px;"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Case Study 3: Local E-Commerce -->
+          <div class="moving-border-container animate reveal-right" style="border-radius: 24px;">
+            <div class="moving-border-inner"
+              style="border-radius: 22px; background: var(--card-bg); padding: 2.5rem; flex-direction: column; align-items: flex-start; text-align: left;">
+              <div
+                style="background: rgba(46,230,166,0.1); color: var(--accent-color); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1.5rem;">
+                E-COMMERCE GROWTH</div>
+              <h3 style="font-size: 1.5rem; color: #fff; margin-bottom: 1rem;">150% Sales Uplift for Malappuram Brand
+              </h3>
+              <p style="font-size: 0.95rem; margin-bottom: 1.5rem;"><strong>Problem:</strong> Low reach for a local
+                factory outlet in Kerala.</p>
+              <div style="margin-bottom: 1.5rem;">
+                <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><i class="fas fa-check-circle text-accent"
+                    style="margin-right: 8px;"></i> <strong>Strategy:</strong> Local SEO + Geo-Fenced Meta Ads</p>
+                <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><i class="fas fa-check-circle text-accent"
+                    style="margin-right: 8px;"></i> <strong>Execution:</strong> Catalog Ads + GMB Dominance</p>
+              </div>
+              <div style="width: 100%; height: 1px; background: rgba(255,255,255,0.1); margin-bottom: 1.5rem;"></div>
+              <div style="display: flex; gap: 20px;">
+                <div>
+                  <span
+                    style="display: block; font-size: 1.4rem; font-weight: 800; color: var(--accent-color);">4x</span>
+                  <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-secondary);">ROAS</span>
+                </div>
+                <div>
+                  <span
+                    style="display: block; font-size: 1.4rem; font-weight: 800; color: var(--accent-color);">₹5L+</span>
+                  <span
+                    style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-secondary);">Monthly</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+          <a href="portfolio/" class="btn btn-outline"><i class="fas fa-image" style="margin-right: 8px;"></i>Explore
+            Full Portfolio</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section (Outcome-Focused) -->
+    <section class="section" id="services" style="background-color: transparent;">
+      <div class="container">
+        <div class="section-title animate stagger-1">
+          <span>Expert Solutions</span>
+          <h2>High-Performance <span class="text-accent">Marketing Services</span></h2>
+          <p>I don't just provide services; I deliver results that impact your bottom line.</p>
+        </div>
+
+        <div class="grid grid-3">
+          <!-- SEO -->
+          <div class="service-detail-card animate stagger-2"
+            style="background: var(--glass-bg); backdrop-filter: blur(15px); border-radius: 24px; border: 1px solid rgba(255,255,255,0.08); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+            <div style="padding: 3rem 2rem 1rem 2rem;">
+              <div
+                style="width: 70px; height: 70px; background: linear-gradient(135deg, rgba(46,230,166,0.15) 0%, rgba(11,46,42,0.5) 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(46, 230, 166, 0.2); margin-bottom: 2rem;">
+                <i class="fas fa-search-dollar" style="font-size: 2rem; color: var(--accent-color);"></i>
+              </div>
+              <h3 style="font-size: 1.6rem; margin-bottom: 1rem; color: #fff;">Dominate Search & AI</h3>
+              <p style="color: var(--text-secondary); line-height: 1.7; font-size: 1rem;">Ranking your business on page #1 and appearing in AI answers (SGE) to drive organic, high-intent revenue.</p>
+              <ul style="margin-top: 1rem; color: var(--text-secondary); font-size: 0.9rem; list-style: none; padding: 0;">
+                <li style="margin-bottom: 8px;"><i class="fas fa-check-circle text-accent" style="margin-right: 8px;"></i> 100% Increase in organic traffic</li>
+                <li style="margin-bottom: 8px;"><i class="fas fa-check-circle text-accent" style="margin-right: 8px;"></i> Sustainable long-term growth</li>
+                <li style="margin-bottom: 8px;"><i class="fas fa-check-circle text-accent" style="margin-right: 8px;"></i> AI-Search (AEO) Optimization</li>
+              </ul>
+            </div>
+            <div style="padding: 1rem 2rem 3rem 2rem; display: flex; flex-direction: column; gap: 15px;">
+              <a href="calendar/" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.6rem 1rem; text-align: center;">Get Free SEO Audit</a>
+              <a href="services/seo-optimization/" class="text-accent"
+                style="font-weight: 700; display: flex; align-items: center; gap: 8px; font-size: 0.9rem;">Service Details <i
+                   class="fas fa-arrow-right" style="font-size: 0.8rem;"></i></a>
+            </div>
+          </div>
+
+          <!-- Google Ads -->
+          <div class="service-detail-card animate stagger-3"
+            style="background: var(--glass-bg); backdrop-filter: blur(15px); border-radius: 24px; border: 1px solid rgba(255,255,255,0.08); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+            <div style="padding: 3rem 2rem 1rem 2rem;">
+              <div
+                style="width: 70px; height: 70px; background: linear-gradient(135deg, rgba(46,230,166,0.15) 0%, rgba(11,46,42,0.5) 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(46, 230, 166, 0.2); margin-bottom: 2rem;">
+                <i class="fab fa-google" style="font-size: 2rem; color: var(--accent-color);"></i>
+              </div>
+              <h3 style="font-size: 1.6rem; margin-bottom: 1rem; color: #fff;">Scalable Lead Generation</h3>
+              <p style="color: var(--text-secondary); line-height: 1.7; font-size: 1rem;">Aggressive Google Ads and Meta Ads campaigns designed to flood your business with qualified leads and sales.</p>
+              <ul style="margin-top: 1rem; color: var(--text-secondary); font-size: 0.9rem; list-style: none; padding: 0;">
+                <li style="margin-bottom: 8px;"><i class="fas fa-check-circle text-accent" style="margin-right: 8px;"></i> Qualified Leads within 48 hours</li>
+                <li style="margin-bottom: 8px;"><i class="fas fa-check-circle text-accent" style="margin-right: 8px;"></i> Data-backed ROAS optimization</li>
+                <li style="margin-bottom: 8px;"><i class="fas fa-check-circle text-accent" style="margin-right: 8px;"></i> High-converting landing pages</li>
+              </ul>
+            </div>
+            <div style="padding: 1rem 2rem 3rem 2rem; display: flex; flex-direction: column; gap: 15px;">
+              <a href="calendar/" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.6rem 1rem; text-align: center;">Book Strategy Call</a>
+              <a href="/services/performance-marketing/" class="text-accent"
+                style="font-weight: 700; display: flex; align-items: center; gap: 8px; font-size: 0.9rem;">Service Details <i
+                  class="fas fa-arrow-right" style="font-size: 0.8rem;"></i></a>
+            </div>
+          </div>
+
+          <!-- Meta Ads -->
+          <div class="service-detail-card animate stagger-4"
+            style="background: var(--glass-bg); backdrop-filter: blur(15px); border-radius: 24px; border: 1px solid rgba(255,255,255,0.08); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+            <div style="padding: 3rem 2rem 1rem 2rem;">
+              <div
+                style="width: 70px; height: 70px; background: linear-gradient(135deg, rgba(46,230,166,0.15) 0%, rgba(11,46,42,0.5) 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(46, 230, 166, 0.2); margin-bottom: 2rem;">
+                <i class="fab fa-meta" style="font-size: 2rem; color: var(--accent-color);"></i>
+              </div>
+              <h3 style="font-size: 1.6rem; margin-bottom: 1rem; color: #fff;">Establish Market Leadership</h3>
+              <p style="color: var(--text-secondary); line-height: 1.7; font-size: 1rem;">Complete social growth and branding strategies that establish you as the market leader in Malappuram.</p>
+              <ul style="margin-top: 1rem; color: var(--text-secondary); font-size: 0.9rem; list-style: none; padding: 0;">
+                <li style="margin-bottom: 8px;"><i class="fas fa-check-circle text-accent" style="margin-right: 8px;"></i> Professional brand presence</li>
+                <li style="margin-bottom: 8px;"><i class="fas fa-check-circle text-accent" style="margin-right: 8px;"></i> Targeted local brand awareness</li>
+                <li style="margin-bottom: 8px;"><i class="fas fa-check-circle text-accent" style="margin-right: 8px;"></i> Viral social media growth</li>
+              </ul>
+            </div>
+            <div style="padding: 1rem 2rem 3rem 2rem; display: flex; flex-direction: column; gap: 15px;">
+              <a href="calendar/" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.6rem 1rem; text-align: center;">Get Branding Quote</a>
+              <a href="services/social-media-marketing/" class="text-accent"
+                style="font-weight: 700; display: flex; align-items: center; gap: 8px; font-size: 0.9rem;">Service Details <i
+                  class="fas fa-arrow-right" style="font-size: 0.8rem;"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center animate stagger-4" style="text-align:center; margin-top:3rem;">
+          <a href="services/" class="btn btn-outline"><i class="fas fa-cube" style="margin-right: 8px;"></i>Explore All
+            Services</a>
+        </div>
+      </div>
+    </section>
+    <!-- My Work Approach (Process) -->
+    <!-- My Work Approach (Process) -->
+    <section class="section" id="process" style="background-color: rgba(13, 18, 28, 0.6); backdrop-filter: blur(5px);">
+      <div class="container">
+        <div class="section-title animate stagger-1">
+          <span>The Roadmap to Results</span>
+          <h2>My Strategic <span class="text-accent">Work Approach</span></h2>
+          <p>A systematic framework designed for predictable business growth.</p>
+        </div>
+
+        <div class="roadmap-container">
+          <!-- Step 1 -->
+          <div class="roadmap-item animate reveal-left">
+            <div class="roadmap-dot">01</div>
+            <div class="moving-border-container roadmap-card">
+              <div class="moving-border-inner" style="padding: 1.5rem; flex-direction: column; align-items: flex-start; background: transparent;">
+                <i class="fas fa-search-plus" style="font-size: 1.8rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                <h3>Market Audit</h3>
+                <p>Deep audit of your current performance and Malappuram market competitors.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="roadmap-item animate reveal-right">
+            <div class="roadmap-dot">02</div>
+            <div class="moving-border-container roadmap-card">
+              <div class="moving-border-inner" style="padding: 1.5rem; flex-direction: column; align-items: flex-start; background: transparent;">
+                <i class="fas fa-chess-knight" style="font-size: 1.8rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                <h3>ROI Strategy</h3>
+                <p>Building a custom roadmap focused on cost-per-lead and sales generation.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="roadmap-item animate reveal-left">
+            <div class="roadmap-dot">03</div>
+            <div class="moving-border-container roadmap-card">
+              <div class="moving-border-inner" style="padding: 1.5rem; flex-direction: column; align-items: flex-start; background: transparent;">
+                <i class="fas fa-vial" style="font-size: 1.8rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                <h3>Agile Deployment</h3>
+                <p>Launching high-converting ads and SEO optimizations with precision.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="roadmap-item animate reveal-right">
+            <div class="roadmap-dot">04</div>
+            <div class="moving-border-container roadmap-card">
+              <div class="moving-border-inner" style="padding: 1.5rem; flex-direction: column; align-items: flex-start; background: transparent;">
+                <i class="fas fa-chart-line" style="font-size: 1.8rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                <h3>Scale & Optimize</h3>
+                <p>Scaling what works and cutting waste to maximize your return on investment.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center animate stagger-4" style="text-align:center; margin-top:3rem;">
+          <a href="calendar/" class="btn btn-primary"><i class="fas fa-bolt" style="margin-right: 8px;"></i>Book Your Growth Audit</a>
+        </div>
+      </div>
+    </section>
+
+
 
     <!-- Local Authority Section -->
     <section class="section" style="background: rgba(46,230,166,0.02); border-top: 1px solid rgba(255,255,255,0.05);">
@@ -1065,88 +1328,7 @@
       </div>
     </section>
 
-    <!-- Services Section Redesign -->
-    <section class="section" id="services" style="background-color: transparent;">
-      <div class="container">
-        <div class="section-title animate stagger-1">
-          <span>My Expertise</span>
-          <h2>Premium Services</h2>
-          <p>Comprehensive digital solutions tailored for your business growth in Malappuram.</p>
-        </div>
 
-        <div class="grid grid-3">
-          <!-- SEO -->
-          <div class="service-detail-card animate stagger-2"
-            style="background: var(--glass-bg); backdrop-filter: blur(15px); border-radius: 24px; border: 1px solid rgba(255,255,255,0.08); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
-            <div style="padding: 3rem 2rem 1rem 2rem;">
-              <div
-                style="width: 70px; height: 70px; background: linear-gradient(135deg, rgba(46,230,166,0.15) 0%, rgba(11,46,42,0.5) 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(46, 230, 166, 0.2); margin-bottom: 2rem;">
-                <i class="fas fa-search-dollar" style="font-size: 2rem; color: var(--accent-color);"></i>
-              </div>
-              <h3 style="font-size: 1.6rem; margin-bottom: 1rem; color: #fff;">Search Engine Success</h3>
-              <p style="color: var(--text-secondary); line-height: 1.7; font-size: 1rem;">Ranking your business on page
-                #1
-                and appearing in AI answers (SGE) to drive organic, high-intent traffic.</p>
-            </div>
-            <div style="padding: 1rem 2rem 3rem 2rem; display: flex; flex-direction: column; gap: 15px;">
-              <a href="services/seo-optimization/" class="text-accent"
-                style="font-weight: 700; display: flex; align-items: center; gap: 8px;">View SEO Services <i
-                  class="fas fa-arrow-right" style="font-size: 0.8rem;"></i></a>
-              <a href="portfolio/"
-                style="font-size: 0.85rem; color: var(--text-secondary); text-decoration: underline;">See SEO Case
-                Study</a>
-            </div>
-          </div>
-
-          <!-- Google Ads -->
-          <div class="service-detail-card animate stagger-3"
-            style="background: var(--glass-bg); backdrop-filter: blur(15px); border-radius: 24px; border: 1px solid rgba(255,255,255,0.08); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
-            <div style="padding: 3rem 2rem 1rem 2rem;">
-              <div
-                style="width: 70px; height: 70px; background: linear-gradient(135deg, rgba(46,230,166,0.15) 0%, rgba(11,46,42,0.5) 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(46, 230, 166, 0.2); margin-bottom: 2rem;">
-                <i class="fab fa-google" style="font-size: 2rem; color: var(--accent-color);"></i>
-              </div>
-              <h3 style="font-size: 1.6rem; margin-bottom: 1rem; color: #fff;">Lead Generation (PPC)</h3>
-              <p style="color: var(--text-secondary); line-height: 1.7; font-size: 1rem;">Aggressive Google Ads and Meta
-                Ads campaigns designed to flood your business with qualified leads and sales.</p>
-            </div>
-            <div style="padding: 1rem 2rem 3rem 2rem; display: flex; flex-direction: column; gap: 15px;">
-              <a href="/services/performance-marketing/" class="text-accent"
-                style="font-weight: 700; display: flex; align-items: center; gap: 8px;">Maximize Your Leads <i
-                  class="fas fa-arrow-right" style="font-size: 0.8rem;"></i></a>
-              <a href="portfolio/"
-                style="font-size: 0.85rem; color: var(--text-secondary); text-decoration: underline;">CPL Case Study</a>
-            </div>
-          </div>
-
-          <!-- Meta Ads -->
-          <div class="service-detail-card animate stagger-4"
-            style="background: var(--glass-bg); backdrop-filter: blur(15px); border-radius: 24px; border: 1px solid rgba(255,255,255,0.08); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
-            <div style="padding: 3rem 2rem 1rem 2rem;">
-              <div
-                style="width: 70px; height: 70px; background: linear-gradient(135deg, rgba(46,230,166,0.15) 0%, rgba(11,46,42,0.5) 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(46, 230, 166, 0.2); margin-bottom: 2rem;">
-                <i class="fab fa-meta" style="font-size: 2rem; color: var(--accent-color);"></i>
-              </div>
-              <h3 style="font-size: 1.6rem; margin-bottom: 1rem; color: #fff;">Brand Domination</h3>
-              <p style="color: var(--text-secondary); line-height: 1.7; font-size: 1rem;">Complete social growth and
-                branding strategies that establish you as the market leader in Malappuram.</p>
-            </div>
-            <div style="padding: 1rem 2rem 3rem 2rem; display: flex; flex-direction: column; gap: 15px;">
-              <a href="services/social-media-marketing/" class="text-accent"
-                style="font-weight: 700; display: flex; align-items: center; gap: 8px;">Grow Your Brand <i
-                  class="fas fa-arrow-right" style="font-size: 0.8rem;"></i></a>
-              <a href="portfolio/"
-                style="font-size: 0.85rem; color: var(--text-secondary); text-decoration: underline;">Latest Results</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="text-center animate stagger-4" style="text-align:center; margin-top:3rem;">
-          <a href="services/" class="btn btn-outline"><i class="fas fa-cube" style="margin-right: 8px;"></i>Explore All
-            Services</a>
-        </div>
-      </div>
-    </section>
 
     <!-- AEO & AI Search Section -->
     <section class="section"
@@ -1219,82 +1401,7 @@
       </div>
     </section>
 
-    <!-- Work Approach Section Restored -->
-    <section class="section" style="background-color: rgba(13, 18, 28, 0.6); backdrop-filter: blur(5px);">
-      <div class="container">
-        <div class="section-title animate stagger-1">
-          <h2>My Work Approach</h2>
-          <p>A systematic framework for predictable growth</p>
-        </div>
 
-        <div class="roadmap-container">
-          <!-- Step 1 -->
-          <div class="roadmap-item animate reveal-left">
-            <div class="roadmap-dot">01</div>
-            <div class="moving-border-container roadmap-card" style="border-radius: 20px;">
-              <div class="moving-border-inner"
-                style="border-radius: 18px; background: transparent; padding: 1.6rem 1.4rem; flex-direction: column; align-items: flex-start;">
-                <i class="fas fa-microscope process-icon"></i>
-                <h3>Understand the Brand</h3>
-                <p>Diving deep into your business model and audience to build a strategy rooted in reality.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 2 -->
-          <div class="roadmap-item animate reveal-right">
-            <div class="roadmap-dot">02</div>
-            <div class="moving-border-container roadmap-card" style="border-radius: 20px;">
-              <div class="moving-border-inner"
-                style="border-radius: 18px; background: transparent; padding: 1.6rem 1.4rem; flex-direction: column; align-items: flex-start;">
-                <i class="fas fa-chess-knight process-icon"></i>
-                <h3>Strategic Planning</h3>
-                <p>Data-driven roadmaps combining SEO, paid search, and social channels tailored for growth.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 3 -->
-          <div class="roadmap-item animate reveal-left">
-            <div class="roadmap-dot">03</div>
-            <div class="moving-border-container roadmap-card" style="border-radius: 20px;">
-              <div class="moving-border-inner"
-                style="border-radius: 18px; background: transparent; padding: 1.6rem 1.4rem; flex-direction: column; align-items: flex-start;">
-                <i class="fas fa-bolt process-icon"></i>
-                <h3>Agile Execution</h3>
-                <p>Precision implementation with high-quality creatives and optimized technical setups.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 4 -->
-          <div class="roadmap-item animate reveal-right">
-            <div class="roadmap-dot">04</div>
-            <div class="moving-border-container roadmap-card" style="border-radius: 20px;">
-              <div class="moving-border-inner"
-                style="border-radius: 18px; background: transparent; padding: 1.6rem 1.4rem; flex-direction: column; align-items: flex-start;">
-                <i class="fas fa-chart-line process-icon"></i>
-                <h3>Analysis & Insights</h3>
-                <p>Continuous monitoring of key metrics to understand what's working and where to optimize.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 5 -->
-          <div class="roadmap-item animate reveal-left">
-            <div class="roadmap-dot">05</div>
-            <div class="moving-border-container roadmap-card" style="border-radius: 20px;">
-              <div class="moving-border-inner"
-                style="border-radius: 18px; background: transparent; padding: 1.6rem 1.4rem; flex-direction: column; align-items: flex-start;">
-                <i class="fas fa-arrows-spin process-icon"></i>
-                <h3>Continuous Growth</h3>
-                <p>Iterative refinements to ensure sustained long-term growth and maximum ROI.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- Interactive Business Calculators -->
     <section class="section" id="growth-calc">
@@ -1474,215 +1581,6 @@
       </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="section" style="background-color: rgba(0, 0, 0, 0.2);">
-      <div class="container text-center">
-        <div class="section-title animate stagger-1">
-          <span class="text-accent"
-            style="font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem; display: block; margin-bottom: 0.5rem;">Social
-            Proof</span>
-          <h2>Client <span class="text-accent">Success Stories</span></h2>
-          <p>What my clients and partners say about our collaboration.</p>
-        </div>
-
-        <div class="testimonial-marquee-container" style="margin-top: 3rem;">
-  <div class="testimonial-track">
-
-          <div class="moving-border-container" style="border-radius: 20px; width: 350px; flex-shrink: 0;">
-            <div class="moving-border-inner"
-              style="border-radius: 18px; background: rgba(11, 46, 42, 0.7); padding: 2.5rem; flex-direction: column; align-items: flex-start; text-align: left;">
-              <div class="testimonial-content">
-                <i class="fas fa-quote-left text-accent"
-                  style="font-size: 1.5rem; margin-bottom: 1.5rem; opacity: 0.5;"></i>
-                <p style="font-style: italic; line-height: 1.8; color: var(--text-secondary); margin-bottom: 2rem;">
-                  "I've
-                  known Anshid personally, and when he handled our marketing, the difference was clear. He doesn't just
-                  run ads Ã¢â‚¬â€ he thinks strategically. We started getting consistent leads within weeks."</p>
-              </div>
-              <div class="testimonial-author" style="display: flex; align-items: center; gap: 15px;">
-                <div
-                  style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--accent-color); display: flex; align-items: center; justify-content: center; background: rgba(46,230,166,0.1); color: var(--accent-color); font-weight: 800;">
-                  A</div>
-                <div>
-                  <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 2px;">Athmika</h4>
-                  <p style="font-size: 0.8rem; color: var(--accent-color); font-weight: 600;"><a
-                      href="https://athmikaa.com/" target="_blank" style="color: inherit; text-decoration: none;">Local
-                      Business Friend</a></p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="moving-border-container" style="border-radius: 20px; width: 350px; flex-shrink: 0;">
-            <div class="moving-border-inner"
-              style="border-radius: 18px; background: rgba(11, 46, 42, 0.7); padding: 2.5rem; flex-direction: column; align-items: flex-start; text-align: left;">
-              <div class="testimonial-content">
-                <i class="fas fa-quote-left text-accent"
-                  style="font-size: 1.5rem; margin-bottom: 1.5rem; opacity: 0.5;"></i>
-                <p style="font-style: italic; line-height: 1.8; color: var(--text-secondary); margin-bottom: 2rem;">
-                  "Anshid is very detail-oriented. He explained everything clearly and focused on results, not just
-                  impressions. Our Google Ads performance improved and we reduced wasted spend."</p>
-              </div>
-              <div class="testimonial-author" style="display: flex; align-items: center; gap: 15px;">
-                <div
-                  style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--accent-color); display: flex; align-items: center; justify-content: center; background: rgba(46,230,166,0.1); color: var(--accent-color); font-weight: 800;">
-                  FN</div>
-                <div>
-                  <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 2px;">Fathima Nabla</h4>
-                  <p style="font-size: 0.8rem; color: var(--accent-color); font-weight: 600;"><a
-                      href="https://fathimanabla.com/" target="_blank"
-                      style="color: inherit; text-decoration: none;">Startup Friend</a></p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="moving-border-container" style="border-radius: 20px; width: 350px; flex-shrink: 0;">
-            <div class="moving-border-inner"
-              style="border-radius: 18px; background: rgba(11, 46, 42, 0.7); padding: 2.5rem; flex-direction: column; align-items: flex-start; text-align: left;">
-              <div class="testimonial-content">
-                <i class="fas fa-quote-left text-accent"
-                  style="font-size: 1.5rem; margin-bottom: 1.5rem; opacity: 0.5;"></i>
-                <p style="font-style: italic; line-height: 1.8; color: var(--text-secondary); margin-bottom: 2rem;">
-                  "Working with Anshid was a game-changer for our digital presence. He doesn't just provide services; he
-                  builds a comprehensive strategy that connects all the dots for real business growth."</p>
-              </div>
-              <div class="testimonial-author" style="display: flex; align-items: center; gap: 15px;">
-                <div
-                  style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--accent-color); display: flex; align-items: center; justify-content: center; background: rgba(46,230,166,0.1); color: var(--accent-color); font-weight: 800;">
-                  MS</div>
-                <div>
-                  <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 2px;">Muhammed Sinan</h4>
-                  <p style="font-size: 0.8rem; color: var(--accent-color); font-weight: 600;"><a
-                      href="https://mhdsinan.com/" target="_blank"
-                      style="color: inherit; text-decoration: none;">Strategic Partner</a></p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="moving-border-container" style="border-radius: 20px; width: 350px; flex-shrink: 0;">
-            <div class="moving-border-inner"
-              style="border-radius: 18px; background: rgba(11, 46, 42, 0.7); padding: 2.5rem; flex-direction: column; align-items: flex-start; text-align: left;">
-              <div class="testimonial-content">
-                <i class="fas fa-quote-left text-accent"
-                  style="font-size: 1.5rem; margin-bottom: 1.5rem; opacity: 0.5;"></i>
-                <p style="font-style: italic; line-height: 1.8; color: var(--text-secondary); margin-bottom: 2rem;">
-                  "Anshid's knowledge in SEO, social media, and ads is truly impressive. He delivers real solutions, not just services. If you want to grow your business online, he's the one to trust in Kerala."</p>
-              </div>
-              <div class="testimonial-author" style="display: flex; align-items: center; gap: 15px;">
-                <div
-                  style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--accent-color); display: flex; align-items: center; justify-content: center; background: rgba(46,230,166,0.1); color: var(--accent-color); font-weight: 800;">
-                  NK</div>
-                <div>
-                  <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 2px;">Navas KM</h4>
-                  <p style="font-size: 0.8rem; color: var(--accent-color); font-weight: 600;"><a
-                      href="https://portfolio-rho-orcin-64.vercel.app/" target="_blank"
-                      style="color: inherit; text-decoration: none;">Client</a></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        
-
-          <div class="moving-border-container" style="border-radius: 20px; width: 350px; flex-shrink: 0;">
-            <div class="moving-border-inner"
-              style="border-radius: 18px; background: rgba(11, 46, 42, 0.7); padding: 2.5rem; flex-direction: column; align-items: flex-start; text-align: left;">
-              <div class="testimonial-content">
-                <i class="fas fa-quote-left text-accent"
-                  style="font-size: 1.5rem; margin-bottom: 1.5rem; opacity: 0.5;"></i>
-                <p style="font-style: italic; line-height: 1.8; color: var(--text-secondary); margin-bottom: 2rem;">
-                  "I've
-                  known Anshid personally, and when he handled our marketing, the difference was clear. He doesn't just
-                  run ads Ã¢â‚¬â€ he thinks strategically. We started getting consistent leads within weeks."</p>
-              </div>
-              <div class="testimonial-author" style="display: flex; align-items: center; gap: 15px;">
-                <div
-                  style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--accent-color); display: flex; align-items: center; justify-content: center; background: rgba(46,230,166,0.1); color: var(--accent-color); font-weight: 800;">
-                  A</div>
-                <div>
-                  <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 2px;">Athmika</h4>
-                  <p style="font-size: 0.8rem; color: var(--accent-color); font-weight: 600;"><a
-                      href="https://athmikaa.com/" target="_blank" style="color: inherit; text-decoration: none;">Local
-                      Business Friend</a></p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="moving-border-container" style="border-radius: 20px; width: 350px; flex-shrink: 0;">
-            <div class="moving-border-inner"
-              style="border-radius: 18px; background: rgba(11, 46, 42, 0.7); padding: 2.5rem; flex-direction: column; align-items: flex-start; text-align: left;">
-              <div class="testimonial-content">
-                <i class="fas fa-quote-left text-accent"
-                  style="font-size: 1.5rem; margin-bottom: 1.5rem; opacity: 0.5;"></i>
-                <p style="font-style: italic; line-height: 1.8; color: var(--text-secondary); margin-bottom: 2rem;">
-                  "Anshid is very detail-oriented. He explained everything clearly and focused on results, not just
-                  impressions. Our Google Ads performance improved and we reduced wasted spend."</p>
-              </div>
-              <div class="testimonial-author" style="display: flex; align-items: center; gap: 15px;">
-                <div
-                  style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--accent-color); display: flex; align-items: center; justify-content: center; background: rgba(46,230,166,0.1); color: var(--accent-color); font-weight: 800;">
-                  FN</div>
-                <div>
-                  <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 2px;">Fathima Nabla</h4>
-                  <p style="font-size: 0.8rem; color: var(--accent-color); font-weight: 600;"><a
-                      href="https://fathimanabla.com/" target="_blank"
-                      style="color: inherit; text-decoration: none;">Startup Friend</a></p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="moving-border-container" style="border-radius: 20px; width: 350px; flex-shrink: 0;">
-            <div class="moving-border-inner"
-              style="border-radius: 18px; background: rgba(11, 46, 42, 0.7); padding: 2.5rem; flex-direction: column; align-items: flex-start; text-align: left;">
-              <div class="testimonial-content">
-                <i class="fas fa-quote-left text-accent"
-                  style="font-size: 1.5rem; margin-bottom: 1.5rem; opacity: 0.5;"></i>
-                <p style="font-style: italic; line-height: 1.8; color: var(--text-secondary); margin-bottom: 2rem;">
-                  "Working with Anshid was a game-changer for our digital presence. He doesn't just provide services; he
-                  builds a comprehensive strategy that connects all the dots for real business growth."</p>
-              </div>
-              <div class="testimonial-author" style="display: flex; align-items: center; gap: 15px;">
-                <div
-                  style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--accent-color); display: flex; align-items: center; justify-content: center; background: rgba(46,230,166,0.1); color: var(--accent-color); font-weight: 800;">
-                  MS</div>
-                <div>
-                  <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 2px;">Muhammed Sinan</h4>
-                  <p style="font-size: 0.8rem; color: var(--accent-color); font-weight: 600;"><a
-                      href="https://mhdsinan.com/" target="_blank"
-                      style="color: inherit; text-decoration: none;">Strategic Partner</a></p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="moving-border-container" style="border-radius: 20px; width: 350px; flex-shrink: 0;">
-            <div class="moving-border-inner"
-              style="border-radius: 18px; background: rgba(11, 46, 42, 0.7); padding: 2.5rem; flex-direction: column; align-items: flex-start; text-align: left;">
-              <div class="testimonial-content">
-                <i class="fas fa-quote-left text-accent"
-                  style="font-size: 1.5rem; margin-bottom: 1.5rem; opacity: 0.5;"></i>
-                <p style="font-style: italic; line-height: 1.8; color: var(--text-secondary); margin-bottom: 2rem;">
-                  "Anshid is passionate about his work and always tries to give the best solutions. His knowledge in SEO, social media, and ads is impressive. He is someone you can trust if you want to grow your business online. Highly recommended digital marketing strategist in Kerala."</p>
-              </div>
-              <div class="testimonial-author" style="display: flex; align-items: center; gap: 15px;">
-                <div
-                  style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--accent-color); display: flex; align-items: center; justify-content: center; background: rgba(46,230,166,0.1); color: var(--accent-color); font-weight: 800;">
-                  NK</div>
-                <div>
-                  <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 2px;">Navas KM</h4>
-                  <p style="font-size: 0.8rem; color: var(--accent-color); font-weight: 600;"><a
-                      href="https://portfolio-rho-orcin-64.vercel.app/" target="_blank"
-                      style="color: inherit; text-decoration: none;">Client</a></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        
-  </div>
-</div>
-      </div>
-    </section>
 
     <!-- Latest Insights Section -->
     <section class="section" style="background-color: rgba(13, 18, 28, 0.4);">
@@ -1736,129 +1634,111 @@
       </div>
     </section>
 
-    <!-- Case Study Section (Updated with SJS & Blueweb2) -->
-    <section class="section" id="case-studies" style="background-color: rgba(13, 18, 28, 0.2);">
-      <div class="container">
-        <div class="section-title animate reveal-up">
-          <span>Proof of Work</span>
-          <h2>Real Growth <span class="text-accent">Case Studies</span></h2>
-          <p>Measurable results delivered for businesses in Malappuram and beyond.</p>
+
+
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section" style="background-color: rgba(0, 0, 0, 0.2);">
+      <div class="container text-center">
+        <div class="section-title animate stagger-1">
+          <span class="text-accent"
+            style="font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem; display: block; margin-bottom: 0.5rem;">Social
+            Proof</span>
+          <h2>Client <span class="text-accent">Success Stories</span></h2>
+          <p>What my clients and partners say about our collaboration.</p>
         </div>
 
-        <div class="grid grid-3">
-          <!-- Case Study 1: SJS Business Solutions -->
-          <div class="moving-border-container animate reveal-left" style="border-radius: 24px;">
-            <div class="moving-border-inner"
-              style="border-radius: 22px; background: var(--card-bg); padding: 2.5rem; flex-direction: column; align-items: flex-start; text-align: left;">
-              <div
-                style="background: rgba(46,230,166,0.1); color: var(--accent-color); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1.5rem;">
-                B2B LEAD GENERATION</div>
-              <h3 style="font-size: 1.5rem; color: #fff; margin-bottom: 1rem;">Scaling SJS Business Solutions</h3>
-              <p style="font-size: 0.95rem; margin-bottom: 1.5rem;"><strong>Problem:</strong> Lack of structured lead
-                acquisition for a consulting firm in Kerala.</p>
-              <div style="margin-bottom: 1.5rem;">
-                <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><i class="fas fa-check-circle text-accent"
-                    style="margin-right: 8px;"></i> <strong>Strategy:</strong> Meta Ads + WhatsApp Lead Funnel</p>
-                <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><i class="fas fa-check-circle text-accent"
-                    style="margin-right: 8px;"></i> <strong>Result:</strong> 100% Qualified B2B Lead Flow growth</p>
-              </div>
-              <div style="width: 100%; height: 1px; background: rgba(255,255,255,0.1); margin-bottom: 1.5rem;"></div>
-              <div style="display: flex; gap: 20px;">
-                <div>
-                  <span
-                    style="display: block; font-size: 1.4rem; font-weight: 800; color: var(--accent-color);">10x</span>
-                  <span
-                    style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-secondary);">Leads</span>
+        <div class="testimonial-marquee-container" style="margin-top: 3rem;">
+          <div class="testimonial-track">
+            <!-- Testimonial 1 -->
+            <div class="moving-border-container" style="border-radius: 20px; width: 350px; flex-shrink: 0;">
+              <div class="moving-border-inner"
+                style="border-radius: 18px; background: rgba(11, 46, 42, 0.7); padding: 2.5rem; flex-direction: column; align-items: flex-start; text-align: left;">
+                <div class="testimonial-content">
+                  <i class="fas fa-quote-left text-accent"
+                    style="font-size: 1.5rem; margin-bottom: 1.5rem; opacity: 0.5;"></i>
+                  <p style="font-style: italic; line-height: 1.8; color: var(--text-secondary); margin-bottom: 2rem;">
+                    "We were struggling to get local walk-ins for our store. Anshid set up a map strategy and Meta ads that really hit the mark. Our footfall practically doubled in a month—he knows exactly how the Malappuram market thinks."</p>
                 </div>
-                <div>
-                  <span
-                    style="display: block; font-size: 1.4rem; font-weight: 800; color: var(--accent-color);">B2B</span>
-                  <span
-                    style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-secondary);">Niche</span>
-                </div>
-              </div>
-              <div style="margin-top: 1.5rem; width: 100%;">
-                <a href="portfolio/sjs-business-solutions/" class="text-accent"
-                <a href="portfolio/" class="text-accent" style="font-weight: 700; font-size: 0.9rem; text-decoration: underline;">View Full Case Study <i class="fas fa-arrow-right" style="margin-left:8px;"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Case Study 2: Blueweb2 Agency Impact -->
-          <div class="moving-border-container animate reveal-up" style="border-radius: 24px;">
-            <div class="moving-border-inner"
-              style="border-radius: 22px; background: var(--card-bg); padding: 2.5rem; flex-direction: column; align-items: flex-start; text-align: left;">
-              <div
-                style="background: rgba(46,230,166,0.1); color: var(--accent-color); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1.5rem;">
-                AGENCY PERFORMANCE</div>
-              <h3 style="font-size: 1.5rem; color: #fff; margin-bottom: 1rem;">Multi-Client Growth at Blueweb2</h3>
-              <p style="font-size: 0.95rem; margin-bottom: 1.5rem;"><strong>Role:</strong> Managing full-stack marketing
-                for diverse niche clients from Nilambur center.</p>
-              <div style="margin-bottom: 1.5rem;">
-                <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><i class="fas fa-check-circle text-accent"
-                    style="margin-right: 8px;"></i> <strong>Services:</strong> SEO, Google Ads, Meta Ad Ops</p>
-                <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><i class="fas fa-check-circle text-accent"
-                    style="margin-right: 8px;"></i> <strong>Impact:</strong> Optimized CPL for local & global brands</p>
-              </div>
-              <div style="width: 100%; height: 1px; background: rgba(255,255,255,0.1); margin-bottom: 1.5rem;"></div>
-              <div style="display: flex; gap: 20px;">
-                <div>
-                  <span
-                    style="display: block; font-size: 1.4rem; font-weight: 800; color: var(--accent-color);">-30%</span>
-                  <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-secondary);">CPL</span>
-                </div>
-                <div>
-                  <span
-                    style="display: block; font-size: 1.4rem; font-weight: 800; color: var(--accent-color);">Full</span>
-                  <span
-                    style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-secondary);">Stack</span>
-                </div>
-              </div>
-              <div style="margin-top: 1.5rem; width: 100%;">
-                <a href="about/" class="text-accent"
-                <a href="about/" class="text-accent" style="font-weight: 700; font-size: 0.9rem; text-decoration: underline;">Experience Details <i class="fas fa-arrow-right" style="margin-left:8px;"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Case Study 3: Local E-Commerce -->
-          <div class="moving-border-container animate reveal-right" style="border-radius: 24px;">
-            <div class="moving-border-inner"
-              style="border-radius: 22px; background: var(--card-bg); padding: 2.5rem; flex-direction: column; align-items: flex-start; text-align: left;">
-              <div
-                style="background: rgba(46,230,166,0.1); color: var(--accent-color); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1.5rem;">
-                E-COMMERCE GROWTH</div>
-              <h3 style="font-size: 1.5rem; color: #fff; margin-bottom: 1rem;">150% Sales Uplift for Malappuram Brand
-              </h3>
-              <p style="font-size: 0.95rem; margin-bottom: 1.5rem;"><strong>Problem:</strong> Low reach for a local
-                factory outlet in Kerala.</p>
-              <div style="margin-bottom: 1.5rem;">
-                <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><i class="fas fa-check-circle text-accent"
-                    style="margin-right: 8px;"></i> <strong>Strategy:</strong> Local SEO + Geo-Fenced Meta Ads</p>
-                <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><i class="fas fa-check-circle text-accent"
-                    style="margin-right: 8px;"></i> <strong>Execution:</strong> Catalog Ads + GMB Dominance</p>
-              </div>
-              <div style="width: 100%; height: 1px; background: rgba(255,255,255,0.1); margin-bottom: 1.5rem;"></div>
-              <div style="display: flex; gap: 20px;">
-                <div>
-                  <span
-                    style="display: block; font-size: 1.4rem; font-weight: 800; color: var(--accent-color);">4x</span>
-                  <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-secondary);">ROAS</span>
-                </div>
-                <div>
-                  <span
-                    style="display: block; font-size: 1.4rem; font-weight: 800; color: var(--accent-color);">Ã¢â€šÂ¹5L+</span>
-                  <span
-                    style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-secondary);">Monthly</span>
+                <div class="testimonial-author" style="display: flex; align-items: center; gap: 15px;">
+                  <div
+                    style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--accent-color); display: flex; align-items: center; justify-content: center; background: rgba(46,230,166,0.1); color: var(--accent-color); font-weight: 800;">
+                    A</div>
+                  <div>
+                    <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 2px;">Athmika</h4>
+                    <p style="font-size: 0.8rem; color: var(--accent-color); font-weight: 600;">Boutique Owner, Malappuram</p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div style="text-align: center; margin-top: 3rem;">
-          <a href="portfolio/" class="btn btn-outline"><i class="fas fa-image" style="margin-right: 8px;"></i>Explore
-            Full Portfolio</a>
+            <!-- Testimonial 2 -->
+            <div class="moving-border-container" style="border-radius: 20px; width: 350px; flex-shrink: 0;">
+              <div class="moving-border-inner"
+                style="border-radius: 18px; background: rgba(11, 46, 42, 0.7); padding: 2.5rem; flex-direction: column; align-items: flex-start; text-align: left;">
+                <div class="testimonial-content">
+                  <i class="fas fa-quote-left text-accent"
+                    style="font-size: 1.5rem; margin-bottom: 1.5rem; opacity: 0.5;"></i>
+                  <p style="font-style: italic; line-height: 1.8; color: var(--text-secondary); margin-bottom: 2rem;">
+                    "Our Google ad spend was a mess before. Anshid cleaned up our campaigns and focused only on keywords that actually convert. He’s very detail-oriented and doesn't waste time on vanity metrics that don't bring sales."</p>
+                </div>
+                <div class="testimonial-author" style="display: flex; align-items: center; gap: 15px;">
+                  <div
+                    style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--accent-color); display: flex; align-items: center; justify-content: center; background: rgba(46,230,166,0.1); color: var(--accent-color); font-weight: 800;">
+                    FN</div>
+                  <div>
+                    <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 2px;">Fathima Nabla</h4>
+                    <p style="font-size: 0.8rem; color: var(--accent-color); font-weight: 600;">E-commerce Founder</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="moving-border-container" style="border-radius: 20px; width: 350px; flex-shrink: 0;">
+              <div class="moving-border-inner"
+                style="border-radius: 18px; background: rgba(11, 46, 42, 0.7); padding: 2.5rem; flex-direction: column; align-items: flex-start; text-align: left;">
+                <div class="testimonial-content">
+                  <i class="fas fa-quote-left text-accent"
+                    style="font-size: 1.5rem; margin-bottom: 1.5rem; opacity: 0.5;"></i>
+                  <p style="font-style: italic; line-height: 1.8; color: var(--text-secondary); margin-bottom: 2rem;">
+                    "Getting 'leads' is easy, but getting buyers is hard. Anshid built a funnel that actually filtered our real estate prospects. Now my team only talks to people who are ready to visit. Total game changer."</p>
+                </div>
+                <div class="testimonial-author" style="display: flex; align-items: center; gap: 15px;">
+                  <div
+                    style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--accent-color); display: flex; align-items: center; justify-content: center; background: rgba(46,230,166,0.1); color: var(--accent-color); font-weight: 800;">
+                    RK</div>
+                  <div>
+                    <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 2px;">Rajesh K.</h4>
+                    <p style="font-size: 0.8rem; color: var(--accent-color); font-weight: 600;">Real Estate Consultant</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Testimonial 4 -->
+            <div class="moving-border-container" style="border-radius: 20px; width: 350px; flex-shrink: 0;">
+              <div class="moving-border-inner"
+                style="border-radius: 18px; background: rgba(11, 46, 42, 0.7); padding: 2.5rem; flex-direction: column; align-items: flex-start; text-align: left;">
+                <div class="testimonial-content">
+                  <i class="fas fa-quote-left text-accent"
+                    style="font-size: 1.5rem; margin-bottom: 1.5rem; opacity: 0.5;"></i>
+                  <p style="font-style: italic; line-height: 1.8; color: var(--text-secondary); margin-bottom: 2rem;">
+                    "We needed to be seen by patients in Nilambur. Anshid handled our local SEO from scratch—we’re now the top-ranking clinic in the area and have seen a 40% jump in monthly bookings. Highly recommend."</p>
+                </div>
+                <div class="testimonial-author" style="display: flex; align-items: center; gap: 15px;">
+                  <div
+                    style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--accent-color); display: flex; align-items: center; justify-content: center; background: rgba(46,230,166,0.1); color: var(--accent-color); font-weight: 800;">
+                    DS</div>
+                  <div>
+                    <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 2px;">Dr. Sameer</h4>
+                    <p style="font-size: 0.8rem; color: var(--accent-color); font-weight: 600;">Clinic Director, Nilambur</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     </section>
@@ -1877,15 +1757,12 @@
           <!-- FAQ 1 -->
           <div class="faq-item">
             <button class="faq-question">
-              Who is the best digital marketing strategist in Malappuram?
+              How much does digital marketing cost in Malappuram, Kerala?
               <i class="fas fa-chevron-down faq-icon"></i>
             </button>
             <div class="faq-answer">
               <div class="faq-answer-inner">
-                <p><strong>Mohammad Anshid Ck</strong> is recognized as a leading <strong>digital marketing strategist
-                    in Malappuram</strong>. With years of experience managing regional and global campaigns, he delivers
-                  specialized <strong>SEO</strong> and <strong>Google Ads</strong> strategies that prioritize absolute
-                  ROI and long-term brand authority in the Kerala market.</p>
+                <p>Digital marketing costs depend on your goals and competition. As a <strong>freelance digital marketing strategist in Malappuram</strong>, I offer flexible packages that provide better ROI than big agencies. Whether you need a small local SEO boost or a full-scale lead generation campaign, I tailor the investment to fit your business budget while ensuring measurable growth.</p>
               </div>
             </div>
           </div>
@@ -1893,24 +1770,12 @@
           <!-- FAQ 2 -->
           <div class="faq-item">
             <button class="faq-question">
-              What services does a freelance digital marketer in Malappuram provide?
+              How long does it take for SEO to show results in the Kerala market?
               <i class="fas fa-chevron-down faq-icon"></i>
             </button>
             <div class="faq-answer">
               <div class="faq-answer-inner">
-                <p>A comprehensive digital marketing strategist like Mohammad Anshid Ck provides 360-degree growth
-                  services:
-                <ul style="margin-top:10px; padding-left:20px;">
-                  <li><strong>SEO (Search Engine Optimization):</strong> Ranking your site for high-intent keywords in
-                    Malappuram.</li>
-                  <li><strong>Performance Marketing:</strong> Managing high-converting Google Ads and Meta Ads
-                    campaigns.</li>
-                  <li><strong>AEO (Answer Engine Optimization):</strong> Preparing your brand for the era of AI search
-                    like Google SGE.</li>
-                  <li><strong>Conversion Rate Optimization:</strong> Turning your existing traffic into qualified leads.
-                  </li>
-                </ul>
-                </p>
+                <p>Typically, <strong>SEO results in Kerala</strong> take between 3 to 6 months to mature. However, for local businesses in Malappuram, we often see significant growth in local map rankings and "near me" searches within the first 60 days. My strategies focus on quick-win local optimizations followed by long-term authority building.</p>
               </div>
             </div>
           </div>
@@ -1918,16 +1783,12 @@
           <!-- FAQ 3 -->
           <div class="faq-item">
             <button class="faq-question">
-              How can local SEO help Malappuram-based businesses?
+              SEO vs Google Ads: Which is better for a new business in Malappuram?
               <i class="fas fa-chevron-down faq-icon"></i>
             </button>
             <div class="faq-answer">
               <div class="faq-answer-inner">
-                <p><strong>Local SEO</strong> is essential for businesses in hubs like <strong>Manjeri</strong>,
-                  <strong>Nilambur</strong>, and <strong>Kottakkal</strong>. It helps you appear in "near me" searches
-                  and Google Maps, allowing you to capture local customers at the exact moment they need your services.
-                  By optimizing your GMB (Google My Business) and localized content, you can dominate the local
-                  Malappuram map pack.</p>
+                <p>If you need <strong>leads today</strong>, Google Ads is the best choice. If you want <strong>sustainable growth</strong> without paying for every click, SEO is the long-term winner. Most successful Kerala businesses use a hybrid approach: Ads for immediate revenue and SEO to dominate the market organically over time.</p>
               </div>
             </div>
           </div>
@@ -1935,51 +1796,16 @@
           <!-- FAQ 4 -->
           <div class="faq-item">
             <button class="faq-question">
-              What is the difference between SEO and AEO?
+              What is AEO and why should my business care?
               <i class="fas fa-chevron-down faq-icon"></i>
             </button>
             <div class="faq-answer">
               <div class="faq-answer-inner">
-                <p>While <strong>SEO</strong> focuses on ranking your website in traditional search results, <strong>AEO
-                    (Answer Engine Optimization)</strong> focuses on making your content the direct answer provided by
-                  AI models like <strong>ChatGPT</strong>, <strong>Perplexity</strong>, and <strong>Google SGE</strong>.
-                  A strategist who understands both ensures your brand is visible both in standard search and modern AI
-                  assistants.</p>
+                <p><strong>AEO (Answer Engine Optimization)</strong> prepares your business for AI-driven search (like ChatGPT and Google SGE). In Malappuram, being the "recommended" answer by AI builds massive trust and positions you as the absolute industry leader.</p>
               </div>
             </div>
           </div>
 
-          <!-- FAQ 5 -->
-          <div class="faq-item">
-            <button class="faq-question">
-              Why is Mohammad Anshid Ck considered a top strategist in Kerala?
-              <i class="fas fa-chevron-down faq-icon"></i>
-            </button>
-            <div class="faq-answer">
-              <div class="faq-answer-inner">
-                <p>Anshid's approach is unique because it blends deep technical mastery (SEO/Ads) with hands-on
-                  experience at top agencies like <strong>Blueweb2</strong> and <strong>Dotcom Creativez</strong>. He
-                  doesn't just provide "services"; he builds <strong>custom growth roadmaps</strong> that are specific
-                  to the business landscape of Kerala and Malappuram.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- FAQ 6 -->
-          <div class="faq-item">
-            <button class="faq-question">
-              How do I start a project with the best strategist in Malappuram?
-              <i class="fas fa-chevron-down faq-icon"></i>
-            </button>
-            <div class="faq-answer">
-              <div class="faq-answer-inner">
-                <p>Starting is simple. You can book a <strong>free digital marketing consultation</strong> via the <a
-                    href="contact/" class="text-accent">Contact Page</a> or send a direct message on <a
-                    href="https://wa.me/919778179727" target="_blank" class="text-accent">WhatsApp</a>. We'll analyze
-                  your current digital presence and build a 10x growth plan tailored for your brand.</p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -2024,7 +1850,7 @@
               </ul>
 
               <div class="cta-actions" style="margin-top: 2rem; display: flex; flex-direction: column; gap: 0.8rem;">
-                <a href="calendar/" class="btn btn-primary" style="width: 100%; text-align: center; justify-content: center; padding: 0.8rem;">
+                <a href="calendar/" class="btn btn-primary btn-pulse" style="width: 100%; text-align: center; justify-content: center; padding: 0.8rem;">
                   <i class="fas fa-calendar-alt" style="margin-right: 8px;"></i>Free Strategy Call
                 </a>
                 <a href="https://wa.me/919778179727" target="_blank" class="btn btn-outline"
@@ -2256,9 +2082,31 @@
         }
       });
     });
+
+    // Testimonial Scroll Trigger & Marquee Prep
+    document.addEventListener('DOMContentLoaded', () => {
+      const track = document.querySelector('.testimonial-track');
+      if (track) {
+        // Double the content for a seamless marquee loop
+        track.innerHTML += track.innerHTML;
+        
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              track.classList.add('playing');
+            }
+          });
+        }, { threshold: 0.1 });
+        observer.observe(document.querySelector('#testimonials'));
+      }
+    });
   </script>
   <script src="chatbot.js" defer></script>
   <script src="time-widget.js" defer></script>
+  <a href="https://wa.me/919778179727" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 </body>
+
 
 </html>

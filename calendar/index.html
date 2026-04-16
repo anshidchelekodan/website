@@ -659,25 +659,7 @@
             opacity: 0.65;
         }
 
-        /* Lightning overlay */
-        #lightningCanvas {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 2;
-        }
 
-        /* Lightning screen flash */
-        #lightningFlash {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(180, 210, 255, 0);
-            pointer-events: none;
-            z-index: 2;
-            transition: background 0.04s ease;
-        }
 
         /* Ensure main content sits above animations */
         .calendar-page {
@@ -696,9 +678,7 @@
     <!-- Rain Canvas -->
     <canvas id="rainCanvas"></canvas>
 
-    <!-- Lightning Canvas + Flash overlay -->
-    <canvas id="lightningCanvas"></canvas>
-    <div id="lightningFlash"></div>
+
 
     <!-- Birds Wrapper -->
     <div class="birds-canvas-wrapper" id="birdsWrapper"></div>
@@ -727,7 +707,7 @@
         <a href="../portfolio/" onclick="closeMobileNav()">Portfolio</a>
         <a href="../blog/" onclick="closeMobileNav()">Blog</a>
         <a href="../contact/" onclick="closeMobileNav()">Contact</a>
-        <a href="../calendar/" onclick="closeMobileNav()" style="color: var(--accent-color);">📅 Book a Call</a>
+        <a href="./" onclick="closeMobileNav()" style="color: var(--accent-color);">📅 Book a Call</a>
     </div>
 
     <main class="calendar-page">
@@ -750,8 +730,8 @@
                     <div class="cal-header">
                         <h3 id="monthDisplay">April 2026</h3>
                         <div class="cal-nav">
-                            <button class="btn btn-outline" style="padding: 5px 15px; opacity: 0.5;" disabled><i class="fas fa-chevron-left"></i></button>
-                            <button class="btn btn-outline" style="padding: 5px 15px; opacity: 0.5;" disabled><i class="fas fa-chevron-right"></i></button>
+                            <button id="prevMonth" class="btn btn-outline" style="padding: 5px 15px;"><i class="fas fa-chevron-left"></i></button>
+                            <button id="nextMonth" class="btn btn-outline" style="padding: 5px 15px;"><i class="fas fa-chevron-right"></i></button>
                         </div>
                     </div>
 
@@ -765,6 +745,9 @@
                         </div>
                         <div style="display: flex; align-items: center; gap: 5px;">
                             <span style="width: 8px; height: 8px; background: rgba(46, 230, 166, 0.4); border-radius: 50%; border: 1px solid rgba(46, 230, 166, 0.3);"></span> Booked
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 5px;">
+                            <span style="width: 8px; height: 8px; background: transparent; border: 1px solid rgba(255,255,255,0.1); border-radius: 50%;"></span> Holiday
                         </div>
                     </div>
 
@@ -788,8 +771,8 @@
                                 <input type="tel" id="userPhone" placeholder="Phone Number" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 10px; color: #fff; outline:none;">
                             </div>
 
-                            <button class="btn btn-primary" id="finalBookBtn" style="width: 100%; justify-content: center;">Confirm & Book via WhatsApp</button>
-                            <p style="font-size: 0.7rem; color: var(--text-secondary); text-align: center; margin-top: 10px;">Data will be saved and you'll be redirected to WhatsApp.</p>
+                            <button class="btn btn-primary btn-pulse" id="finalBookBtn" style="width: 100%; justify-content: center;">Confirm My Slot Now</button>
+                            <p style="font-size: 0.7rem; color: var(--text-secondary); text-align: center; margin-top: 10px;">Your strategy session will be scheduled instantly.</p>
                         </div>
                     </div>
                 </div>
@@ -868,90 +851,6 @@
         draw();
     })();
 
-    /* ---- LIGHTNING ANIMATION ---- */
-    (function() {
-        const lCanvas = document.getElementById('lightningCanvas');
-        const lCtx    = lCanvas.getContext('2d');
-        const flash   = document.getElementById('lightningFlash');
-        let LW, LH;
-
-        function lResize() {
-            LW = lCanvas.width  = window.innerWidth;
-            LH = lCanvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', lResize);
-        lResize();
-
-        /* Draw a jagged lightning bolt from (x1,y1) to (x2,y2) */
-        function drawBolt(x1, y1, x2, y2, roughness, depth) {
-            if (depth <= 0) {
-                lCtx.lineTo(x2, y2);
-                return;
-            }
-            const mx = (x1 + x2) / 2 + (Math.random() - 0.5) * roughness;
-            const my = (y1 + y2) / 2 + (Math.random() - 0.5) * roughness * 0.5;
-            drawBolt(x1, y1, mx, my, roughness / 2, depth - 1);
-            drawBolt(mx, my, x2, y2, roughness / 2, depth - 1);
-        }
-
-        function strike() {
-            lCtx.clearRect(0, 0, LW, LH);
-
-            /* Random start X near top, end X slightly offset at bottom */
-            const startX = LW * (0.15 + Math.random() * 0.7);
-            const endX   = startX + (Math.random() - 0.5) * 250;
-            const endY   = LH * (0.4 + Math.random() * 0.4);
-
-            /* Draw main bolt */
-            lCtx.save();
-            lCtx.beginPath();
-            lCtx.moveTo(startX, 0);
-            drawBolt(startX, 0, endX, endY, 120, 6);
-            lCtx.shadowColor = 'rgba(160, 210, 255, 1)';
-            lCtx.shadowBlur  = 20;
-            lCtx.strokeStyle = 'rgba(220, 240, 255, 0.95)';
-            lCtx.lineWidth   = 2.5;
-            lCtx.stroke();
-
-            /* Glow pass */
-            lCtx.beginPath();
-            lCtx.moveTo(startX, 0);
-            drawBolt(startX, 0, endX, endY, 120, 6);
-            lCtx.shadowBlur  = 50;
-            lCtx.strokeStyle = 'rgba(100, 180, 255, 0.4)';
-            lCtx.lineWidth   = 8;
-            lCtx.stroke();
-            lCtx.restore();
-
-            /* Screen flash */
-            flash.style.background = 'rgba(180, 215, 255, 0.18)';
-            setTimeout(() => { flash.style.background = 'rgba(180, 215, 255, 0)'; }, 80);
-
-            /* Second flash (double-flash effect) */
-            setTimeout(() => {
-                flash.style.background = 'rgba(180, 215, 255, 0.10)';
-                setTimeout(() => { flash.style.background = 'rgba(180, 215, 255, 0)'; }, 60);
-            }, 120);
-
-            /* Fade bolt out */
-            setTimeout(() => { lCtx.clearRect(0, 0, LW, LH); }, 200);
-        }
-
-        /* Random lightning strikes every 3-8 seconds */
-        function scheduleLightning() {
-            const delay = 3000 + Math.random() * 5000;
-            setTimeout(() => {
-                strike();
-                /* Occasional double-strike */
-                if (Math.random() < 0.35) {
-                    setTimeout(strike, 300 + Math.random() * 200);
-                }
-                scheduleLightning();
-            }, delay);
-        }
-
-        /* First strike after 2s so page has time to load */
-        setTimeout(scheduleLightning, 2000);
     })();
 
     /* ---- FLYING BIRDS ANIMATION ---- */
@@ -1055,52 +954,140 @@
             const summaryTime = document.getElementById('summaryTime');
             const finalBookBtn = document.getElementById('finalBookBtn');
 
-            // --- CONFIGURATION ---
-            const AVAILABILITY = {
-                month: "April 2026",
-                daysInMonth: 30,
-                available: [15, 16, 20, 21, 22, 23, 27, 28, 29, 30],
-                booked: [13, 14, 17, 18, 19, 24, 25, 26]
-            };
-            // ---------------------
+            // --- DYNAMIC CALENDAR LOGIC ---
+            const todayDate = new Date();
+            let currentYear = todayDate.getFullYear();
+            let currentMonth = todayDate.getMonth();
 
-            const dayNames = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-            dayNames.forEach(name => {
-                const el = document.createElement('div');
-                el.className = 'day-name';
-                el.innerText = name;
-                calGrid.appendChild(el);
-            });
+            function renderCalendar(year, month) {
+                const date = new Date(year, month, 1);
+                const monthName = date.toLocaleString('default', { month: 'long' });
+                monthDisplay.innerText = `${monthName} ${year}`;
+                
+                calGrid.innerHTML = '';
 
-            for (let i = 1; i <= AVAILABILITY.daysInMonth; i++) {
-                const dayEl = document.createElement('div');
-                const isAvailable = AVAILABILITY.available.includes(i);
-                const isBooked = AVAILABILITY.booked.includes(i);
-                
-                dayEl.className = 'day';
-                if (isAvailable) dayEl.classList.add('available');
-                if (isBooked) dayEl.classList.add('booked');
-                if (!isAvailable && !isBooked) dayEl.classList.add('disabled');
-                
-                dayEl.innerText = i;
-                
-                if (isAvailable) {
-                    dayEl.onclick = () => {
-                        document.querySelectorAll('.day').forEach(d => d.classList.remove('selected'));
-                        dayEl.classList.add('selected');
-                        timeSlots.classList.add('active');
-                        timeHeadline.style.display = 'block';
-                        summaryDate.innerText = i + " " + AVAILABILITY.month.split(' ')[0];
-                        
-                        setTimeout(() => {
-                            timeSlots.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                        }, 200);
-                    };
+                // Add day headers
+                const dayNames = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+                dayNames.forEach(name => {
+                    const el = document.createElement('div');
+                    el.className = 'day-name';
+                    el.innerText = name;
+                    calGrid.appendChild(el);
+                });
+
+                const firstDayIndex = date.getDay();
+                const lastDay = new Date(year, month + 1, 0).getDate();
+                const today = new Date();
+                today.setHours(0,0,0,0);
+
+                // Prev month spacers
+                for (let x = firstDayIndex; x > 0; x--) {
+                    const el = document.createElement('div');
+                    el.className = 'day disabled';
+                    calGrid.appendChild(el);
                 }
-                
-                calGrid.appendChild(dayEl);
+
+                // Current month days
+                for (let i = 1; i <= lastDay; i++) {
+                    const dayEl = document.createElement('div');
+                    const cellDate = new Date(year, month, i);
+                    const dayOfWeek = cellDate.getDay();
+                    
+                    dayEl.className = 'day';
+                    dayEl.innerText = i;
+
+                    // Logic: Distinguish between past, Sunday (Holiday), Booked, and Available
+                    const isPast = cellDate < today;
+                    const isSunday = (dayOfWeek === 0);
+                    
+                    // Realistic "Sliding Momentum" Logic:
+                    // 1. Next 14 days: High intensity (80% booked) - "Busy Now"
+                    // 2. 15-30 days: Medium intensity (40% booked) - "Filling Up"
+                    // 3. 30+ days: ZERO intensity (0% booked) - "Open Future"
+                    
+                    const timeDiff = cellDate.getTime() - today.getTime();
+                    const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+                    
+                    let bookedProbability = 0;
+                    if (daysDiff >= 0 && daysDiff <= 14) bookedProbability = 0.8;
+                    else if (daysDiff > 14 && daysDiff <= 30) bookedProbability = 0.4;
+                    else bookedProbability = 0; // Everything else is free
+                    
+                    // Specific deterministic "booked" pattern using a pseudo-random seed
+                    const daySeed = (year * 1000) + (month * 31) + i;
+                    const pseudoRandom = ((daySeed * 9301 + 49297) % 233280) / 233280;
+                    
+                    const isBooked = !isSunday && !isPast && (pseudoRandom < bookedProbability);
+
+                    if (isPast || isSunday) {
+                        dayEl.classList.add('disabled');
+                        if (isSunday) dayEl.setAttribute('title', 'Holiday');
+                    } else if (isBooked) {
+                        dayEl.classList.add('booked');
+                    } else {
+                        dayEl.classList.add('available');
+                        dayEl.onclick = () => {
+                            document.querySelectorAll('.day').forEach(d => d.classList.remove('selected'));
+                            dayEl.classList.add('selected');
+                            timeSlots.classList.add('active');
+                            timeHeadline.style.display = 'block';
+                            summaryDate.innerText = i + " " + monthName + " " + year;
+                            
+                            setTimeout(() => {
+                                timeSlots.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                            }, 200);
+                        };
+                    }
+                    calGrid.appendChild(dayEl);
+                }
+
+                // Update nav button state (don't go before current month)
+                const realToday = new Date();
+                const prevBtn = document.getElementById('prevMonth');
+                if (year <= realToday.getFullYear() && month <= realToday.getMonth()) {
+                    prevBtn.style.opacity = '0.3';
+                    prevBtn.style.pointerEvents = 'none';
+                } else {
+                    prevBtn.style.opacity = '1';
+                    prevBtn.style.pointerEvents = 'all';
+                }
             }
 
+            // Init
+            renderCalendar(currentYear, currentMonth);
+
+            // Nav Listeners
+            document.getElementById('prevMonth').onclick = () => {
+                currentMonth--;
+                if (currentMonth < 0) {
+                    currentMonth = 11;
+                    currentYear--;
+                }
+                renderCalendar(currentYear, currentMonth);
+                timeSlots.classList.remove('active');
+                timeHeadline.style.display = 'none';
+            };
+
+            document.getElementById('nextMonth').onclick = () => {
+                const limitDate = new Date();
+                limitDate.setMonth(limitDate.getMonth() + 3); // 3 Month Window Limit
+
+                if (currentYear >= limitDate.getFullYear() && currentMonth >= limitDate.getMonth()) {
+                    alert("Only booking for the next 3 months is open right now.");
+                    return;
+                }
+
+                currentMonth++;
+                if (currentMonth > 11) {
+                    currentMonth = 0;
+                    currentYear++;
+                }
+                renderCalendar(currentYear, currentMonth);
+                timeSlots.classList.remove('active');
+                timeHeadline.style.display = 'none';
+            };
+
+            // Time Slot Selection
             document.querySelectorAll('.slot').forEach(slot => {
                 slot.onclick = () => {
                     document.querySelectorAll('.slot').forEach(s => s.classList.remove('selected'));
@@ -1139,13 +1126,11 @@
                     mode: 'no-cors',
                     body: JSON.stringify(formData)
                 }).then(() => {
-                    const whatsappMsg = `Hi Anshid, I'm ${name}. I've booked a Free Strategy Call on ${date} at ${time}. ${phone}`;
-                    window.open(`https://wa.me/919778179727?text=${encodeURIComponent(whatsappMsg)}`, '_blank');
                     finalBookBtn.innerText = "Confirmed!";
+                    alert("Success! Your booking has been received. I will contact you shortly.");
                 }).catch(err => {
                     console.error(err);
-                    alert("Something went wrong, but you can still book via WhatsApp.");
-                    window.open(`https://wa.me/919778179727?text=Hi Anshid, I'd like to book a call on ${date} at ${time}`, '_blank');
+                    alert("Something went wrong, please try again or contact me directly.");
                 });
             };
         });

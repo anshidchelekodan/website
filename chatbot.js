@@ -41,8 +41,8 @@
         
         setTimeout(() => {
             if (!sessionGreeted && !state.isGreetingSent) {
-                openChat();
-                sendBotMessage("Hi 👋 I’m Anshid’s assistant. Need help with SEO, ads, or getting more leads?");
+                // Removed openChat() to prevent auto-popup
+                sendBotMessage("Hi, I’m Anshid’s assistant. Need help with SEO, ads, or getting more leads?");
                 showQuickReplies([
                     "SEO Services", 
                     "Google Ads", 
@@ -62,7 +62,7 @@
         container.className = 'chatbot-container';
         container.innerHTML = `
             <div class="chatbot-bubble" id="chatbotBubble">
-                <span>Hey! 👋 Need help with SEO?</span>
+                <span>Hey! Need help with SEO?</span>
             </div>
             <button class="chatbot-toggle" id="chatbotToggle">
                 <div class="toggle-icon">
@@ -279,7 +279,7 @@
         if (state.inactivityTimer) clearTimeout(state.inactivityTimer);
         state.inactivityTimer = setTimeout(() => {
             if (state.isOpen && state.currentStep === 'initial' && !state.isAuditOfferSent) {
-                sendBotMessage("Want a free website audit? I can help 🚀");
+                sendBotMessage("Want a free website audit? I can help");
                 showQuickReplies(["Yes, Help Me", "Maybe Later"]);
                 state.isAuditOfferSent = true;
             }
