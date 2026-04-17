@@ -115,6 +115,29 @@
       margin: 40px 0 80px 0;
       border: 1px solid rgba(46, 230, 166, 0.1);
     }
+    /* New Blog Badge */
+    .badge-new {
+      background-color: #ff4d4d;
+      color: white;
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-left: 6px;
+      vertical-align: middle;
+      text-transform: uppercase;
+      display: none; /* Controlled by JS */
+      position: relative;
+      top: -1px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 0 10px rgba(255, 77, 77, 0.3);
+      animation: badge-pulse 2s infinite;
+    }
+    @keyframes badge-pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
   </style>
 
 </head>
@@ -145,7 +168,7 @@
           <li><a href="../about/">About</a></li>
           <li><a href="../services/">Services</a></li>
           <li><a href="../portfolio/">Portfolio</a></li>
-          <li><a href="../blog/" class="active">Blog</a></li>
+          <li><a href="../blog/" class="active">Blog <span class="badge-new">NEW</span></a></li>
           <li><a href="../contact/">Contact</a></li>
         </ul>
         <button class="mobile-menu-btn">
@@ -174,7 +197,7 @@
             <time datetime="2026-04-16">April 16, 2026</time>
           </div>
           <a href="voice-search-optimization-kerala/">
-            <h3 class="clickable-title">Voice Search & AI Optimization: The 2026 Toolkit for Kerala Businesses</h3>
+            <h3 class="clickable-title">Voice Search & AI Optimization: The 2026 Toolkit <span class="badge-new">NEW</span></h3>
           </a>
           <p>Voice search and AI assistants are dominating local queries. Learn the top Answer Engine Optimization (AEO) tactics to make your Malappuram business the definitive answer.</p>
           <a href="voice-search-optimization-kerala/" class="btn btn-outline" style="padding: 10px 20px;"><i
@@ -441,6 +464,21 @@
 
   <a href="https://wa.me/919778179727" class="float-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
   <script src="../main.js?v=20260331-1" defer></script>
+  <!-- Blog Badge Logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const LATEST_BLOG_ID = "voice-search-2026-v1"; // Update this when you post a new blog
+      const currentBlogId = LATEST_BLOG_ID;
+      
+      // Update local storage since we are on the blog page
+      localStorage.setItem('seen_latest_blog', currentBlogId);
+      
+      // Hide all badges on this page
+      document.querySelectorAll('.badge-new').forEach(badge => {
+        badge.style.display = 'none';
+      });
+    });
+  </script>
 </body>
 
 </html>

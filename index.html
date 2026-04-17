@@ -616,6 +616,105 @@
   @keyframes testimonial-slide {
       to { transform: translateX(calc(-50% - 1rem)); }
   }
+
+  /* Tools & Platforms Marquee */
+  .tools-section {
+    padding: 1rem 0;
+    background: rgba(11, 46, 42, 0.1);
+    overflow: hidden;
+  }
+  .tools-title {
+    text-align: center;
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+    font-weight: 700;
+    opacity: 0.8;
+  }
+  /* New Blog Badge */
+  .badge-new {
+    background-color: #ff4d4d;
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 6px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    display: none; /* Controlled by JS */
+    position: relative;
+    top: -1px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 0 10px rgba(255, 77, 77, 0.3);
+    animation: badge-pulse 2s infinite;
+  }
+  @keyframes badge-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+  .tool-item {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    padding: 10px 0;
+  }
+  .tools-track {
+    display: flex;
+    width: max-content;
+    animation: tools-slide 40s linear infinite;
+    gap: 5rem;
+    align-items: center;
+  }
+  .tools-marquee-container:hover .tools-track {
+    animation-play-state: paused;
+  }
+  .tool-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    opacity: 0.6;
+    transition: all 0.4s ease;
+    cursor: default;
+  }
+  .tool-item:hover {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  .tool-item span {
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    white-space: nowrap;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  /* Decorative dot between items */
+  .tool-item::after {
+    content: "•";
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    margin-left: 2.5rem;
+  }
+  .tool-item span {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+  }
+  @keyframes tools-slide {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @media (max-width: 768px) {
+    .tools-track { gap: 3rem; }
+    .tool-item img { height: 24px; }
+    .tool-item span { font-size: 0.8rem; }
+  }
 </style>
 </head>
 
@@ -646,7 +745,7 @@
           <li><a href="about/">About</a></li>
           <li><a href="services/">Services</a></li>
           <li><a href="portfolio/">Portfolio</a></li>
-          <li><a href="blog/">Blog</a></li>
+          <li><a href="blog/">Blog <span class="badge-new">NEW</span></a></li>
           <li><a href="contact/">Contact</a></li>
         </ul>
 
@@ -713,6 +812,36 @@
 
 
     </section>
+
+    <!-- Tools & Platforms Section -->
+    <div class="tools-section" style="margin-top: 5rem;">
+      <div class="container" style="max-width: 100%; padding: 0;">
+        <p class="tools-title">Tools & Platforms I Work With</p>
+        <div class="tools-marquee-container">
+          <div class="tools-track">
+            <!-- Set 1 -->
+            <div class="tool-item"><span>Google Ads</span></div>
+            <div class="tool-item"><span>Meta Ads</span></div>
+            <div class="tool-item"><span>Google Analytics</span></div>
+            <div class="tool-item"><span>Search Console</span></div>
+            <div class="tool-item"><span>Ahrefs</span></div>
+            <div class="tool-item"><span>SEMrush</span></div>
+            <div class="tool-item"><span>Canva</span></div>
+            <div class="tool-item"><span>WordPress</span></div>
+            
+            <!-- Set 2 (Duplicated for seamless loop) -->
+            <div class="tool-item"><span>Google Ads</span></div>
+            <div class="tool-item"><span>Meta Ads</span></div>
+            <div class="tool-item"><span>Google Analytics</span></div>
+            <div class="tool-item"><span>Search Console</span></div>
+            <div class="tool-item"><span>Ahrefs</span></div>
+            <div class="tool-item"><span>SEMrush</span></div>
+            <div class="tool-item"><span>Canva</span></div>
+            <div class="tool-item"><span>WordPress</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- About Section Preview -->
     <section class="section" id="about">
@@ -1595,7 +1724,7 @@
     <section class="section" style="background-color: rgba(13, 18, 28, 0.4);">
       <div class="container text-center">
         <div class="section-title animate stagger-1">
-          <h2>Latest Insights</h2>
+          <h2>Latest Insights <span class="badge-new" style="font-size: 0.8rem; padding: 4px 10px;">NEW</span></h2>
           <p style="margin: 0 auto; max-width: 600px;">Expert digital marketing tips and strategies tailored for the
             Malappuram market.</p>
         </div>
@@ -1603,11 +1732,9 @@
           <article class="moving-border-container animate stagger-2" style="border-radius: 12px;">
             <div class="moving-border-inner"
               style="border-radius: 10px; background: rgba(11, 46, 42, 0.7); padding: 1.5rem; flex-direction: column; align-items: flex-start; text-align: left;">
-              <h4 style="font-size: 1.1rem; margin-bottom: 1rem;"><a href="blog/grow-business-online-malappuram/">How to
-                  Grow Your Business Online in Malappuram</a></h4>
-              <p style="font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--text-secondary);">Practical steps for
-                improving your website, SEO, social media, and local lead generation in Kerala...</p>
-              <a href="blog/grow-business-online-malappuram/" class="text-accent"
+              <h4 style="font-size: 1.1rem; margin-bottom: 1rem;"><a href="blog/voice-search-optimization-kerala/">Voice Search & AI Optimization: The 2026 Toolkit <span class="badge-new">NEW</span></a></h4>
+              <p style="font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--text-secondary);">Voice search and AI assistants are dominating local queries. Learn the top AEO tactics for Kerala...</p>
+              <a href="blog/voice-search-optimization-kerala/" class="text-accent"
                 style="font-size: 0.9rem; font-weight:700;">Read More <i class="fas fa-arrow-right"
                   style="font-size: 0.8rem; margin-left: 5px;"></i></a>
             </div>
@@ -2108,6 +2235,19 @@
         }, { threshold: 0.1 });
         observer.observe(document.querySelector('#testimonials'));
       }
+      // Blog Badge Logic
+      (function() {
+        const LATEST_BLOG_ID = "voice-search-2026-v1"; // Update this when you post a new blog
+        const badges = document.querySelectorAll('.badge-new');
+        const seenBlogId = localStorage.getItem('seen_latest_blog');
+        const isBlogPage = window.location.pathname.includes('/blog/') && !window.location.pathname.split('/blog/')[1];
+
+        if (isBlogPage) {
+          localStorage.setItem('seen_latest_blog', LATEST_BLOG_ID);
+        } else if (seenBlogId !== LATEST_BLOG_ID) {
+          badges.forEach(badge => badge.style.display = 'inline-block');
+        }
+      })();
     });
   </script>
   <script src="chatbot.js" defer></script>
