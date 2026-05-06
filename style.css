@@ -948,7 +948,7 @@ textarea.form-control {
     border: 1px solid rgba(46, 230, 166, 0.2);
     border-radius: 32px;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     z-index: 1001;
     opacity: 0;
@@ -957,7 +957,7 @@ textarea.form-control {
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8),
                 0 0 40px rgba(46, 230, 166, 0.08);
     padding: 3.5rem 2rem;
-    gap: 25px;
+    gap: 15px;
     overflow-y: auto;
   }
 
@@ -972,7 +972,7 @@ textarea.form-control {
     font-weight: 700;
     width: 100%;
     text-align: center;
-    padding: 12px 20px;
+    padding: 15px 20px;
     border-radius: 12px;
     transition: all 0.3s ease;
   }

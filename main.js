@@ -214,33 +214,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Resolve full path (efficiently)
     let linkPath;
     try {
-      linkPath = new URL(href, window.location.origin).pathname;
+      linkPath = new URL(href, window.location.href).pathname;
     } catch (e) {
       const a = document.createElement('a');
       a.href = href;
       linkPath = a.pathname;
     }
     
-    // Exact match
-    if (linkPath === currentPath) {
+    const normalize = (p) => p.replace(/\/index\.html$/, '/').replace(/(.+)\/$/, '$1') || '/';
+    const nCurrent = normalize(currentPath);
+    const nLink = normalize(linkPath);
+    
+    if (nLink === nCurrent) {
       link.classList.add('active');
-    }
-    // Folder match (services, portfolio, blog)
-    else if (href !== 'index.html' && !href.endsWith('index.html') && href !== '' && href !== './') {
-      const folderSegment = href.replace(/^(\.\.\/)+/, '').replace(/\/$/, '');
-      if (folderSegment && currentPath.includes('/' + folderSegment + '/')) {
-        link.classList.add('active');
-      }
-    }
-    // Special case for home page (root or root index.html)
-    const normalizedPath = currentPath.endsWith('/index.html')
-      ? currentPath.slice(0, -'index.html'.length)
-      : currentPath;
-    const isRoot = normalizedPath === '/' || normalizedPath === '';
-    const isRootIndex = currentPath === '/index.html';
-    const isHomeLink = href === 'index.html' || href === './' || href === '../' || href === '../../' || href === '../index.html' || href === '../../index.html';
-
-    if (isHomeLink && (isRoot || isRootIndex)) {
+    } else if (nLink !== '/' && nCurrent.startsWith(nLink + '/')) {
       link.classList.add('active');
     }
   });
