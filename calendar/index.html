@@ -279,12 +279,290 @@
             border: 1px solid rgba(255, 255, 255, 0.03);
         }
 
+        /* 3D Artificial Owl Eyes */
+        .eyes-container {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .eye-socket {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(145deg, #1a2322, #0d1211);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 
+                5px 5px 15px rgba(0,0,0,0.8),
+                -5px -5px 15px rgba(255,255,255,0.05),
+                inset 0 0 20px rgba(0,0,0,0.9);
+            position: relative;
+            border: 2px solid #2a3a38;
+        }
+
+        .eye {
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle at 30% 30%, #fff, var(--accent-color) 35%, #0b2e2a 70%, #000 100%);
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 
+                inset 0 0 15px rgba(0,0,0,0.9),
+                0 0 25px rgba(46, 230, 166, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 1px solid rgba(46, 230, 166, 0.5);
+        }
+        
+        /* Glass reflection over the eye */
+        .eye::after {
+            content: '';
+            position: absolute;
+            top: 5%;
+            left: 10%;
+            width: 40%;
+            height: 20%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,0));
+            border-radius: 50%;
+            transform: rotate(-20deg);
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .pupil {
+            width: 24px;
+            height: 24px;
+            background: radial-gradient(circle at 40% 40%, #111, #000 60%);
+            border-radius: 50%;
+            position: absolute;
+            transition: transform 0.05s linear;
+            box-shadow: 
+                inset 0 0 5px rgba(255,255,255,0.2), 
+                0 0 15px rgba(0,0,0,0.9), 
+                0 0 5px rgba(46, 230, 166, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Artificial mechanical center inside the pupil */
+        .pupil::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, var(--accent-color), transparent);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-color);
+            opacity: 0.8;
+        }
+
+        /* Owl Scene */
+        .owl-scene {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            margin-top: -1rem; 
+        }
+
+        /* Tree Branch */
+        .tree-branch {
+            width: 350px;
+            height: 20px;
+            background: linear-gradient(to bottom, #2b1d14, #140d09);
+            border-radius: 10px;
+            position: absolute;
+            bottom: -10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.8), inset 0 2px 5px rgba(255,255,255,0.1);
+            z-index: 1;
+        }
+
+        .leaf {
+            position: absolute;
+            width: 35px;
+            height: 16px;
+            background: linear-gradient(135deg, #1c7a4b, #09331e);
+            border-radius: 0 25px 0 25px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+            border: 1px solid rgba(46, 230, 166, 0.2);
+        }
+        .leaf-1 { top: 8px; right: -15px; transform: rotate(20deg); }
+        .leaf-2 { bottom: -12px; left: 30px; transform: rotate(-30deg); }
+        .leaf-3 { top: -10px; left: -10px; transform: rotate(-40deg); }
+
+        /* Owl Container */
+        .owl {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 2;
+            animation: breathing 4s ease-in-out infinite;
+            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.5));
+        }
+
+        @keyframes breathing {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        /* Owl Head */
+        .owl-head {
+            width: 190px;
+            height: 120px;
+            background: linear-gradient(145deg, #1c2624, #0f1514);
+            border-radius: 80px 80px 50px 50px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: inset 0 8px 15px rgba(255,255,255,0.05);
+            z-index: 3;
+            border: 2px solid #2a3a38;
+        }
+
+        /* Ears */
+        .owl-ears {
+            position: absolute;
+            top: -20px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 15px;
+            z-index: 1;
+        }
+
+        .ear {
+            width: 0;
+            height: 0;
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+            border-bottom: 45px solid #1c2624;
+        }
+
+        .ear.left { transform: rotate(-30deg); }
+        .ear.right { transform: rotate(30deg); }
+
+        /* Beak */
+        .beak {
+            width: 0;
+            height: 0;
+            border-left: 14px solid transparent;
+            border-right: 14px solid transparent;
+            border-top: 30px solid #d4af37;
+            position: absolute;
+            bottom: -12px;
+            filter: drop-shadow(0 5px 8px rgba(0,0,0,0.7));
+            z-index: 4;
+        }
+        .beak::after {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: -2px;
+            width: 4px;
+            height: 25px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.6), transparent);
+        }
+
+        /* Reposition Eyes */
+        .owl-head .eyes-container {
+            margin-top: 25px;
+            margin-bottom: 0;
+            gap: 15px; 
+        }
+
+        /* Owl Body */
+        .owl-body {
+            width: 130px;
+            height: 130px;
+            background: linear-gradient(145deg, #161e1d, #090c0b);
+            border-radius: 40px 40px 70px 70px;
+            margin-top: -25px;
+            position: relative;
+            box-shadow: inset 0 -10px 20px rgba(0,0,0,0.8);
+            border: 2px solid #2a3a38;
+            z-index: 2;
+        }
+
+        /* Belly Grid / Artificial Texture */
+        .belly {
+            width: 80px;
+            height: 90px;
+            background: 
+                linear-gradient(90deg, rgba(46, 230, 166, 0.05) 1px, transparent 1px) 0 0 / 10px 10px,
+                linear-gradient(0deg, rgba(46, 230, 166, 0.05) 1px, transparent 1px) 0 0 / 10px 10px;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.9);
+            border: 1px solid rgba(46, 230, 166, 0.1);
+        }
+
+        /* Wings */
+        .wing {
+            width: 40px;
+            height: 100px;
+            background: linear-gradient(145deg, #131a19, #050807);
+            border-radius: 40px;
+            position: absolute;
+            top: 20px;
+            border: 1px solid #2a3a38;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+        }
+        .wing.left { left: -15px; transform: rotate(15deg); }
+        .wing.right { right: -15px; transform: rotate(-15deg); }
+
+        /* Claws */
+        .claws {
+            position: absolute;
+            bottom: -15px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            width: 100%;
+            z-index: 4;
+        }
+
+        .claw {
+            width: 25px;
+            height: 25px;
+            background: linear-gradient(145deg, #998028, #66551a);
+            border-radius: 10px;
+            position: relative;
+            box-shadow: 0 5px 8px rgba(0,0,0,0.8);
+            border: 1px solid #d4af37;
+        }
+        .claw::after, .claw::before, .claw .toe {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 15px;
+            background: #d4af37;
+            border-radius: 5px;
+            bottom: -10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .claw::before { left: 2px; transform: rotate(20deg); }
+        .claw::after { right: 2px; transform: rotate(-20deg); }
+        .claw .toe { left: 9px; transform: rotate(0deg); }
+
         /* =============================================
            MOBILE RESPONSIVE — FULL OVERHAUL
         ============================================= */
 
         /* --- Tablet & below (≤ 992px) --- */
         @media (max-width: 992px) {
+            .eyes-container {
+                justify-content: center;
+            }
             .calendar-page {
                 padding-top: 90px;
                 padding-bottom: 60px;
@@ -714,6 +992,43 @@
         <div class="container">
             <div class="booking-container">
                 <div class="info-panel">
+                    <div class="owl-scene">
+                        <div class="tree-branch">
+                            <div class="leaf leaf-1"></div>
+                            <div class="leaf leaf-2"></div>
+                            <div class="leaf leaf-3"></div>
+                        </div>
+                        <div class="owl">
+                            <div class="owl-ears">
+                                <div class="ear left"></div>
+                                <div class="ear right"></div>
+                            </div>
+                            <div class="owl-head">
+                                <div class="eyes-container">
+                                    <div class="eye-socket">
+                                        <div class="eye">
+                                            <div class="pupil"></div>
+                                        </div>
+                                    </div>
+                                    <div class="eye-socket">
+                                        <div class="eye">
+                                            <div class="pupil"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="beak"></div>
+                            </div>
+                            <div class="owl-body">
+                                <div class="wing left"></div>
+                                <div class="wing right"></div>
+                                <div class="belly"></div>
+                                <div class="claws">
+                                    <div class="claw"><div class="toe"></div></div>
+                                    <div class="claw"><div class="toe"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <span class="text-accent" style="font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem;">Booking System</span>
                     <h1>Claim Your <span class="text-accent">Free</span> Strategy Session</h1>
                     <p>Ready to scale? Select a date and time for our 1-on-1 growth audit. No strings attached, just pure ROI-focused value.</p>
@@ -1137,6 +1452,28 @@
                     alert("Something went wrong, please try again or contact me directly.");
                 });
             };
+        });
+
+        /* ---- EYE TRACKING ANIMATION ---- */
+        document.addEventListener('mousemove', (e) => {
+            const eyes = document.querySelectorAll('.eye');
+            eyes.forEach(eye => {
+                const rect = eye.getBoundingClientRect();
+                const eyeX = rect.left + rect.width / 2;
+                const eyeY = rect.top + rect.height / 2;
+                const rad = Math.atan2(e.clientY - eyeY, e.clientX - eyeX);
+                
+                // Max distance the pupil can move from center (eye radius 25 - pupil radius 12 = max 13)
+                const distance = Math.min(13, Math.hypot(e.clientX - eyeX, e.clientY - eyeY) / 10);
+                
+                const pupilX = distance * Math.cos(rad);
+                const pupilY = distance * Math.sin(rad);
+                
+                const pupil = eye.querySelector('.pupil');
+                if(pupil) {
+                    pupil.style.transform = `translate(${pupilX}px, ${pupilY}px)`;
+                }
+            });
         });
     </script>
 </body>
