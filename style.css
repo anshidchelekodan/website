@@ -120,7 +120,7 @@ a:hover {
 
 .btn-primary {
   background: linear-gradient(135deg, var(--accent-color) 0%, #1fa378 100%);
-  color: #051512;
+  color: #051512 !important;
   border: none;
   box-shadow: 0 0 20px rgba(46, 230, 166, 0.3);
   font-weight: 800;
@@ -171,53 +171,13 @@ a:hover {
 
 /* Premium CTA Animations */
 .btn-pulse {
-  animation: pulse-button 2s infinite;
-  box-shadow: 0 0 0 0 rgba(46, 230, 166, 0.7);
-}
-
-@keyframes pulse-button {
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(46, 230, 166, 0.7); }
-  70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(46, 230, 166, 0); }
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(46, 230, 166, 0); }
-}
-
-.btn-primary {
-  position: relative;
-  overflow: hidden;
-}
-
-.btn-primary::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -150%;
-  width: 150%;
-  height: 200%;
-  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
-  transform: rotate(45deg);
-  transition: all 0s;
-}
-
-.btn-primary:hover::after {
-  left: 150%;
-  transition: all 0.6s ease-in-out;
-}
-
-/* Pulsing High-Priority CTA */
-.btn-pulse {
   animation: pulse-glow 2s infinite;
 }
 
 @keyframes pulse-glow {
-  0% {
-    box-shadow: 0 0 0 0 rgba(46, 230, 166, 0.7);
-  }
-  70% {
-    box-shadow: 0 0 0 15px rgba(46, 230, 166, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(46, 230, 166, 0);
-  }
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(46, 230, 166, 0.7); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(46, 230, 166, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(46, 230, 166, 0); }
 }
 
 /* Large Button Variant */
@@ -254,9 +214,9 @@ button.btn-primary,
 button[type="submit"].btn-primary {
   width: auto;
   padding: 0.8rem 2.5rem;
-  background: linear-gradient(135deg, #0B2E2A 0%, #051512 100%);
-  color: #FFFFFF;
-  border: 2px solid var(--accent-color);
+  background: linear-gradient(135deg, var(--accent-color) 0%, #1fa378 100%);
+  color: #051512 !important;
+  border: none;
   border-radius: 12px;
   font-weight: 700;
   cursor: pointer;
@@ -435,10 +395,10 @@ body.menu-open {
   opacity: 0.15;
   z-index: -1;
   pointer-events: none;
-  animation: pulse-glow 10s ease-in-out infinite alternate;
+  animation: pulse-bg-glow 10s ease-in-out infinite alternate;
 }
 
-@keyframes pulse-glow {
+@keyframes pulse-bg-glow {
   0% { transform: scale(1); opacity: 0.1; }
   100% { transform: scale(1.3); opacity: 0.2; }
 }
