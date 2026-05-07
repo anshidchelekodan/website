@@ -987,6 +987,27 @@
                     calGrid.appendChild(el);
                 }
 
+                // Pre-calculate exactly 13 available days for the current month
+                let futureWorkingDays = [];
+                for (let i = 1; i <= lastDay; i++) {
+                    const d = new Date(year, month, i);
+                    if (d >= today && d.getDay() !== 0) {
+                        futureWorkingDays.push(i);
+                    }
+                }
+                
+                // Shuffle deterministically
+                let shuffledWorkingDays = [...futureWorkingDays].sort((a, b) => {
+                    const seedA = (year * 1000) + (month * 31) + a;
+                    const randA = ((seedA * 9301 + 49297) % 233280) / 233280;
+                    const seedB = (year * 1000) + (month * 31) + b;
+                    const randB = ((seedB * 9301 + 49297) % 233280) / 233280;
+                    return randA - randB;
+                });
+                
+                // Select up to 13 days to be available
+                const availableDays = new Set(shuffledWorkingDays.slice(0, 13));
+
                 // Current month days
                 for (let i = 1; i <= lastDay; i++) {
                     const dayEl = document.createElement('div');
@@ -1000,24 +1021,7 @@
                     const isPast = cellDate < today;
                     const isSunday = (dayOfWeek === 0);
                     
-                    // Realistic "Sliding Momentum" Logic:
-                    // 1. Next 14 days: High intensity (80% booked) - "Busy Now"
-                    // 2. 15-30 days: Medium intensity (40% booked) - "Filling Up"
-                    // 3. 30+ days: ZERO intensity (0% booked) - "Open Future"
-                    
-                    const timeDiff = cellDate.getTime() - today.getTime();
-                    const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
-                    
-                    let bookedProbability = 0;
-                    if (daysDiff >= 0 && daysDiff <= 14) bookedProbability = 0.8;
-                    else if (daysDiff > 14 && daysDiff <= 30) bookedProbability = 0.4;
-                    else bookedProbability = 0; // Everything else is free
-                    
-                    // Specific deterministic "booked" pattern using a pseudo-random seed
-                    const daySeed = (year * 1000) + (month * 31) + i;
-                    const pseudoRandom = ((daySeed * 9301 + 49297) % 233280) / 233280;
-                    
-                    const isBooked = !isSunday && !isPast && (pseudoRandom < bookedProbability);
+                    const isBooked = !isSunday && !isPast && !availableDays.has(i);
 
                     if (isPast || isSunday) {
                         dayEl.classList.add('disabled');
