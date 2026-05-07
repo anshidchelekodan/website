@@ -623,6 +623,13 @@
             position: relative;
             box-shadow: 0 5px 8px rgba(0,0,0,0.8);
             border: 1px solid #d4af37;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .claw:hover {
+            transform: translateY(-15px) scale(1.1);
+            filter: brightness(1.2);
         }
         .claw::after, .claw::before, .claw .toe {
             content: '';
@@ -1032,6 +1039,67 @@
             position: relative;
             z-index: 100;
         }
+
+        /* 3D Boom Animation */
+        @keyframes boomEffect {
+            0% { transform: perspective(1000px) rotateX(0deg) translateZ(0) translateY(0); filter: brightness(1); }
+            15% { transform: perspective(1000px) rotateX(-20deg) translateZ(100px) translateY(-30px); filter: brightness(1.8) contrast(1.2); }
+            100% { transform: perspective(1000px) rotateX(60deg) translateZ(-600px) translateY(1200px); filter: brightness(0); opacity: 0; }
+        }
+        .booking-boom {
+            animation: boomEffect 1.2s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+            pointer-events: none !important;
+        }
+
+        /* Success Popup */
+        .success-popup-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .success-popup-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+        .success-popup-content {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem 2rem;
+            border-radius: 30px;
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            transform: scale(0.8);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+        .success-popup-overlay.active .success-popup-content {
+            transform: scale(1);
+        }
+        .success-icon {
+            font-size: 5rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 15px var(--accent-color));
+        }
+        .success-popup-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        .success-popup-content p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
     </style>
 </head>
 
@@ -1112,8 +1180,8 @@
                                 <div class="wing right"></div>
                                 <div class="belly"></div>
                                 <div class="claws">
-                                    <div class="claw"><div class="toe"></div></div>
-                                    <div class="claw"><div class="toe"></div></div>
+                                    <div class="claw left"><div class="toe"></div></div>
+                                    <div class="claw right"><div class="toe"></div></div>
                                 </div>
                             </div>
                         </div>
@@ -1535,7 +1603,19 @@
                     body: JSON.stringify(formData)
                 }).then(() => {
                     finalBookBtn.innerText = "Confirmed!";
-                    alert("Success! Your booking has been received. I will contact you shortly.");
+                    
+                    // Trigger 3D Boom Effect & Sound on ONLY the selected date
+                    if (typeof playBoomSound === 'function') playBoomSound();
+                    const selectedDate = document.querySelector('.day.selected');
+                    if (selectedDate) {
+                        selectedDate.style.zIndex = "100";
+                        selectedDate.classList.add('booking-boom');
+                    }
+
+                    setTimeout(() => {
+                        const popup = document.getElementById('successPopup');
+                        if(popup) popup.classList.add('active');
+                    }, 1100);
                 }).catch(err => {
                     console.error(err);
                     alert("Something went wrong, please try again or contact me directly.");
@@ -1572,7 +1652,57 @@
             beakContainer.addEventListener('mouseenter', () => owl.classList.add('angry'));
             beakContainer.addEventListener('mouseleave', () => owl.classList.remove('angry'));
         }
+        /* ---- BOOM SOUND EFFECT ---- */
+        function playBoomSound() {
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                
+                // Deep Thump
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(120, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.8);
+                gain.gain.setValueAtTime(1.5, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.8);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.8);
+
+                // Noise Burst
+                const bufferSize = audioCtx.sampleRate * 0.4;
+                const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+                const data = buffer.getChannelData(0);
+                for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+                const noise = audioCtx.createBufferSource();
+                noise.buffer = buffer;
+                const noiseGain = audioCtx.createGain();
+                noiseGain.gain.setValueAtTime(0.4, audioCtx.currentTime);
+                noiseGain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+                noise.connect(noiseGain);
+                noiseGain.connect(audioCtx.destination);
+                noise.start();
+                noise.stop(audioCtx.currentTime + 0.4);
+            } catch(e) { console.error("Audio error", e); }
+        }
+
+        function closeSuccessPopup() {
+            window.location.reload();
+        }
     </script>
+
+    <!-- Success Popup HTML -->
+    <div class="success-popup-overlay" id="successPopup">
+        <div class="success-popup-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Booking Confirmed!</h2>
+            <p>Your strategy session has been successfully scheduled. I will contact you shortly via WhatsApp or Phone.</p>
+            <button class="btn btn-primary" onclick="closeSuccessPopup()" style="width: 100%; padding: 1rem; border-radius: 15px; font-weight: 700;">Done</button>
+        </div>
+    </div>
 </body>
 
 </html>
