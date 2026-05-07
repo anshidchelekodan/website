@@ -1098,7 +1098,12 @@ textarea.form-control {
   }
   
   .footer-links a {
-    word-break: break-all;
+    overflow-wrap: break-word;
+  }
+  
+  /* Disable fixed background on mobile for performance */
+  .section[style*="background-attachment: fixed"] {
+    background-attachment: scroll !important;
   }
 }
 
@@ -1112,8 +1117,8 @@ textarea.form-control {
   }
   
   .btn {
-    padding: clamp(0.55rem, 1vw, 0.65rem) clamp(1rem, 2vw, 1.2rem) !important;
-    font-size: clamp(0.8rem, 1.2vw, 0.9rem) !important;
+    padding: clamp(0.65rem, 1.2vw, 0.8rem) clamp(1.2rem, 2.5vw, 1.5rem) !important;
+    font-size: clamp(0.85rem, 1.2vw, 0.95rem) !important;
   }
 }
 
