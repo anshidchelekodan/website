@@ -543,6 +543,13 @@
             100% { transform: translate(25px, -20px) scale(3); opacity: 0; }
         }
 
+        @keyframes noseShake {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-3deg) translateX(-2px); }
+            50% { transform: rotate(3deg) translateX(2px); }
+            75% { transform: rotate(-1deg) translateX(-1px); }
+        }
+
         /* Angry Eyes */
         .owl.angry .eye {
             background: radial-gradient(circle at 30% 30%, #fff, #ff2a2a 35%, #4a0000 70%, #000 100%);
@@ -644,6 +651,56 @@
         .claw::before { left: 2px; transform: rotate(20deg); }
         .claw::after { right: 2px; transform: rotate(-20deg); }
         .claw .toe { left: 9px; transform: rotate(0deg); }
+
+        /* Nose Interaction Styles */
+        .nose-warning {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%) scale(0.5);
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 100;
+            box-shadow: 0 5px 15px rgba(255, 75, 43, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .nose-warning::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid #ff4b2b;
+        }
+        .nose-warning.show {
+            opacity: 1;
+            transform: translateX(-50%) scale(1);
+            top: -45px;
+        }
+        .nose-trigger {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 18px;
+            background: transparent;
+            z-index: 10;
+            cursor: pointer;
+            border-radius: 50%;
+        }
 
         /* =============================================
            MOBILE RESPONSIVE — FULL OVERHAUL
@@ -1169,6 +1226,8 @@
                                     </div>
                                 </div>
                                 <div class="beak-container">
+                                    <div class="nose-warning" id="noseWarning">NO No NO</div>
+                                    <div class="nose-trigger" id="noseTrigger"></div>
                                     <div class="smoke left"></div>
                                     <div class="beak-top"></div>
                                     <div class="beak-bottom"></div>
@@ -1645,12 +1704,56 @@
             });
         });
 
+        /* ---- OWL NOSE INTERACTION ---- */
+        const noseTrigger = document.getElementById('noseTrigger');
+        const noseWarning = document.getElementById('noseWarning');
+        
+        if(noseTrigger && noseWarning) {
+            const handleNoseTouch = (e) => {
+                if (e.cancelable) e.preventDefault();
+                
+                // Show warning
+                noseWarning.classList.add('show');
+                owl.classList.add('angry');
+                
+                // Add a small "recoil" effect to the head
+                const owlHead = document.querySelector('.owl-head');
+                if(owlHead) {
+                    owlHead.style.transform = 'translateY(5px) rotate(2deg)';
+                    setTimeout(() => {
+                        owlHead.style.transform = '';
+                    }, 150);
+                }
+
+                // Shake the owl slightly
+                owl.style.animation = 'none';
+                void owl.offsetWidth; // Trigger reflow
+                owl.style.animation = 'breathing 4s ease-in-out infinite, noseShake 0.4s ease-in-out';
+
+                setTimeout(() => {
+                    noseWarning.classList.remove('show');
+                    // Only remove angry if not hovering anymore
+                    if (!beakContainer.matches(':hover')) {
+                        owl.classList.remove('angry');
+                    }
+                }, 1500);
+            };
+
+            noseTrigger.addEventListener('mousedown', handleNoseTouch);
+            noseTrigger.addEventListener('touchstart', handleNoseTouch, { passive: false });
+        }
+
         /* ---- OWL ANGRY INTERACTION ---- */
         const beakContainer = document.querySelector('.beak-container');
         const owl = document.querySelector('.owl');
         if(beakContainer && owl) {
             beakContainer.addEventListener('mouseenter', () => owl.classList.add('angry'));
-            beakContainer.addEventListener('mouseleave', () => owl.classList.remove('angry'));
+            beakContainer.addEventListener('mouseleave', () => {
+                // Only remove if nose warning isn't active
+                if(!noseWarning.classList.contains('show')) {
+                    owl.classList.remove('angry');
+                }
+            });
         }
         /* ---- BOOM SOUND EFFECT ---- */
         function playBoomSound() {
