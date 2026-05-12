@@ -945,71 +945,8 @@
             .info-panel h1 { font-size: 1.25rem; }
         }
 
-        /* ---- Mobile Navbar ---- */
-        .mobile-menu-btn-cal {
-            display: none;
-            background: none;
-            border: 1px solid rgba(255,255,255,0.12);
-            color: #fff;
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            flex-shrink: 0;
-        }
-        .mobile-menu-btn-cal:hover {
-            background: rgba(46,230,166,0.15);
-            border-color: var(--accent-color);
-        }
-        .mobile-nav-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(5,11,10,0.98);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            z-index: 999;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 2rem;
-            opacity: 0;
-            transform: translateY(-20px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-        .mobile-nav-overlay.open {
-            display: flex;
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .mobile-nav-overlay a {
-            color: #fff;
-            font-size: 1.6rem;
-            font-weight: 700;
-            text-decoration: none;
-            letter-spacing: 1px;
-            transition: color 0.2s;
-        }
-        .mobile-nav-overlay a:hover { color: var(--accent-color); }
-        .mobile-nav-close {
-            position: absolute;
-            top: 20px; right: 20px;
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 1.6rem;
-            cursor: pointer;
-            padding: 8px;
-            line-height: 1;
-        }
         @media (max-width: 768px) {
             .navbar .nav-links { display: none; }
-            .mobile-menu-btn-cal { display: flex; }
         }
 
 
@@ -1093,8 +1030,8 @@
             z-index: 1;
         }
         .navbar {
-            position: relative;
-            z-index: 100;
+            position: fixed;
+            z-index: 1000;
         }
 
         /* 3D Boom Animation */
@@ -1173,29 +1110,24 @@
     <nav class="navbar scrolled">
         <div class="container container-nav">
             <a href="../" class="logo">Anshid Ck<span class="text-accent">.</span></a>
-            <ul class="nav-links"><li class="mobile-nav-header"><span class="logo">Anshid Ck<span class="text-accent">.</span></span><button class="close-menu-btn" aria-label="Close menu">&times;</button></li>
+            <ul class="nav-links">
+                <li class="mobile-nav-header">
+                    <span class="logo">Anshid Ck<span class="text-accent">.</span></span>
+                    <button class="close-menu-btn" aria-label="Close menu">&times;</button>
+                </li>
                 <li><a href="../">Home</a></li>
                 <li><a href="../services/">Services</a></li>
                 <li><a href="../portfolio/">Portfolio</a></li>
                 <li><a href="../blog/">Blog</a></li>
                 <li><a href="../contact/">Contact</a></li>
+                <li><a href="./" class="active">Book a Call</a></li>
             </ul>
-            <button class="mobile-menu-btn-cal" id="calMenuBtn" aria-label="Open Menu">
+            <button class="mobile-menu-btn" aria-label="Open Menu">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
+        <div class="nav-overlay"></div>
     </nav>
-
-    <!-- Mobile Nav Overlay -->
-    <div class="mobile-nav-overlay" id="calMobileNav">
-        <button class="mobile-nav-close" id="calNavClose" aria-label="Close Menu">&times;</button>
-        <a href="../" onclick="closeMobileNav()">Home</a>
-        <a href="../services/" onclick="closeMobileNav()">Services</a>
-        <a href="../portfolio/" onclick="closeMobileNav()">Portfolio</a>
-        <a href="../blog/" onclick="closeMobileNav()">Blog</a>
-        <a href="../contact/" onclick="closeMobileNav()">Contact</a>
-        <a href="./" onclick="closeMobileNav()" style="color: var(--accent-color);">Book a Call</a>
-    </div>
 
     <main class="calendar-page">
         <div class="container">
@@ -1448,32 +1380,8 @@
             wrapper.appendChild(bird);
         });
     })();
-    /* ---- MOBILE NAV HAMBURGER ---- */
-    (function() {
-        const btn   = document.getElementById('calMenuBtn');
-        const nav   = document.getElementById('calMobileNav');
-        const close = document.getElementById('calNavClose');
-        if (!btn || !nav) return;
-
-        btn.addEventListener('click', () => {
-            nav.classList.add('open');
-            document.body.style.overflow = 'hidden';
-        });
-
-        function closeMobileNavFn() {
-            nav.classList.remove('open');
-            document.body.style.overflow = '';
-        }
-
-        close.addEventListener('click', closeMobileNavFn);
-        nav.addEventListener('click', (e) => {
-            if (e.target === nav) closeMobileNavFn();
-        });
-
-        /* Make closeMobileNav global so inline onclick works */
-        window.closeMobileNav = closeMobileNavFn;
-    })();
     </script>
+    <script src="../main.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
