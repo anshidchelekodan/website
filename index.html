@@ -855,7 +855,109 @@
 
     </section>
 
+    <!-- Feature 4: Client Brand Carousel -->
+    <section id="client-brands" class="brands-marquee-section">
+      <style>
+        .brands-marquee-section {
+          padding: 3rem 0 1rem;
+          background: transparent;
+          overflow: hidden;
+          position: relative;
+        }
+
+        .brands-title {
+          text-align: center;
+          font-size: 0.8rem;
+          font-weight: 800;
+          letter-spacing: 3px;
+          text-transform: uppercase;
+          color: rgba(255,255,255,0.4);
+          margin-bottom: 2.5rem;
+        }
+
+        .brands-marquee-container {
+          width: 100%;
+          display: flex;
+          overflow: hidden;
+          mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+          -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+        }
+
+        .brands-track {
+          display: flex;
+          align-items: center;
+          gap: 5rem;
+          padding: 10px 0;
+          animation: brands-scroll 30s linear infinite;
+          width: max-content;
+        }
+
+        @keyframes brands-scroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+
+        .brand-item {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          filter: grayscale(1) opacity(0.5);
+          transition: all 0.4s ease;
+          cursor: pointer;
+        }
+
+        .brand-item:hover {
+          filter: grayscale(0) opacity(1);
+          transform: translateY(-2px);
+        }
+
+        .brand-item i {
+          font-size: 1.8rem;
+          color: #fff;
+        }
+
+        .brand-item span {
+          font-size: 1.2rem;
+          font-weight: 800;
+          color: #fff;
+          white-space: nowrap;
+          font-family: var(--font-heading);
+          letter-spacing: -0.5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+          .brands-track { gap: 3rem; }
+          .brand-item i { font-size: 1.5rem; }
+          .brand-item span { font-size: 1rem; }
+        }
+      </style>
+
+      <div class="brands-title animate reveal-up">Trusted by innovative businesses</div>
+
+      <div class="brands-marquee-container">
+        <div class="brands-track">
+          <!-- Set 1 -->
+          <div class="brand-item"><i class="fas fa-bolt" style="color: #62ffb0;"></i> <span>Kalpaka Electronics</span></div>
+          <div class="brand-item"><i class="fas fa-microchip" style="color: #62ffb0;"></i> <span>Sigma Electronics</span></div>
+          <div class="brand-item"><i class="fas fa-home" style="color: #62ffb0;"></i> <span>Blueweb2 Agency</span></div>
+          <div class="brand-item"><i class="fas fa-shopping-cart" style="color: #62ffb0;"></i> <span>Local Retailers</span></div>
+          <div class="brand-item"><i class="fas fa-heartbeat" style="color: #62ffb0;"></i> <span>Health Centers</span></div>
+          <div class="brand-item"><i class="fas fa-graduation-cap" style="color: #62ffb0;"></i> <span>Edu Platforms</span></div>
+          
+          <!-- Duplicate for seamless loop -->
+          <div class="brand-item"><i class="fas fa-bolt" style="color: #62ffb0;"></i> <span>Kalpaka Electronics</span></div>
+          <div class="brand-item"><i class="fas fa-microchip" style="color: #62ffb0;"></i> <span>Sigma Electronics</span></div>
+          <div class="brand-item"><i class="fas fa-home" style="color: #62ffb0;"></i> <span>Blueweb2 Agency</span></div>
+          <div class="brand-item"><i class="fas fa-shopping-cart" style="color: #62ffb0;"></i> <span>Local Retailers</span></div>
+          <div class="brand-item"><i class="fas fa-heartbeat" style="color: #62ffb0;"></i> <span>Health Centers</span></div>
+          <div class="brand-item"><i class="fas fa-graduation-cap" style="color: #62ffb0;"></i> <span>Edu Platforms</span></div>
+        </div>
+      </div>
+    </section>
+
     <!-- Tools & Platforms Section -->
+
     <div class="tools-section" style="margin-top: 5rem;">
       <div class="container" style="max-width: 100%; padding: 0;">
         <p class="tools-title">Tools & Platforms I Work With</p>
@@ -885,7 +987,217 @@
       </div>
     </div>
 
+    <!-- Feature 8: Growth Proof & Comparison -->
+    <section id="results-proof" class="section">
+      <style>
+        #results-proof {
+          background: #080808;
+          position: relative;
+        }
+
+        .results-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 3rem;
+          margin-top: 3.5rem;
+          align-items: center;
+        }
+
+        /* Results Card */
+        .results-card {
+          background: rgba(15, 15, 15, 0.8);
+          border: 1px solid rgba(98, 255, 176, 0.15);
+          border-radius: 24px;
+          padding: 2.5rem;
+          position: relative;
+          overflow: hidden;
+          backdrop-filter: blur(10px);
+        }
+
+        .results-card::before {
+          content: '';
+          position: absolute;
+          top: 0; right: 0;
+          width: 150px; height: 150px;
+          background: radial-gradient(circle, rgba(98,255,176,0.1), transparent 70%);
+          pointer-events: none;
+        }
+
+        .result-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          margin-bottom: 2rem;
+        }
+
+        .result-label {
+          font-size: 0.7rem;
+          font-weight: 800;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: var(--accent-color);
+          background: rgba(98, 255, 176, 0.1);
+          padding: 4px 12px;
+          border-radius: 50px;
+        }
+
+        .result-stats {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 20px;
+        }
+
+        .stat-item {
+          padding: 1.2rem;
+          background: rgba(255,255,255,0.03);
+          border-radius: 16px;
+          border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .stat-value {
+          display: block;
+          font-size: 1.8rem;
+          font-weight: 900;
+          color: #fff;
+          margin-bottom: 4px;
+        }
+
+        .stat-name {
+          font-size: 0.75rem;
+          color: rgba(255,255,255,0.4);
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+
+        .growth-badge {
+          color: #62ffb0;
+          font-size: 0.8rem;
+          font-weight: 700;
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          margin-top: 8px;
+        }
+
+        /* Comparison Table */
+        .comp-container {
+          background: rgba(15,15,15,0.5);
+          border-radius: 24px;
+          border: 1px solid rgba(255,255,255,0.05);
+          overflow: hidden;
+        }
+
+        .comp-row {
+          display: grid;
+          grid-template-columns: 1.5fr 1fr 1fr;
+          padding: 1.2rem 1.5rem;
+          border-bottom: 1px solid rgba(255,255,255,0.05);
+          align-items: center;
+        }
+
+        .comp-header {
+          background: rgba(255,255,255,0.02);
+          font-weight: 800;
+          font-size: 0.75rem;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          color: rgba(255,255,255,0.4);
+        }
+
+        .comp-row:last-child { border-bottom: none; }
+
+        .comp-feature { color: #fff; font-size: 0.9rem; font-weight: 600; }
+        .comp-anshid { color: #62ffb0; font-weight: 700; text-align: center; font-size: 0.85rem; }
+        .comp-others { color: rgba(255,255,255,0.3); text-align: center; font-size: 0.85rem; }
+
+        .comp-anshid i { margin-right: 6px; }
+
+        @media (max-width: 992px) {
+          .results-grid { grid-template-columns: 1fr; }
+        }
+      </style>
+
+      <div class="container">
+        <div class="section-title animate reveal-up">
+          <span>Results That Talk</span>
+          <h2>Data-Driven <span class="text-accent">Growth Proof</span></h2>
+          <p>Real impact delivered for Malappuram and Kerala businesses. I focus on ROI, not just metrics.</p>
+        </div>
+
+        <div class="results-grid">
+          <!-- Case Card 1 -->
+          <div class="results-card animate reveal-left">
+            <div class="result-header">
+              <div>
+                <h3 style="color:#fff; margin-bottom:5px;">Retail Growth</h3>
+                <p style="font-size:0.85rem; color:rgba(255,255,255,0.5);">Electronics Hub, Malappuram</p>
+              </div>
+              <span class="result-label">SEO + ADS</span>
+            </div>
+            
+            <div class="result-stats">
+              <div class="stat-item">
+                <span class="stat-value">₹12.4L</span>
+                <span class="stat-name">New Revenue</span>
+                <div class="growth-badge"><i class="fas fa-caret-up"></i> 310%</div>
+              </div>
+              <div class="stat-item">
+                <span class="stat-value">4.8x</span>
+                <span class="stat-name">Ad ROAS</span>
+                <div class="growth-badge"><i class="fas fa-caret-up"></i> 2.1x</div>
+              </div>
+            </div>
+            
+            <div style="margin-top:2rem; padding:1rem; background:rgba(98,255,176,0.05); border-radius:12px; font-size:0.85rem; color:rgba(255,255,255,0.7); line-height:1.6;">
+              <i class="fas fa-quote-left" style="color:var(--accent-color); margin-right:8px;"></i>
+              Anshid transformed our local visibility in just 3 months. Our WhatsApp is now buzzing with high-quality leads daily.
+            </div>
+          </div>
+
+          <!-- Comparison Table -->
+          <div class="comp-container animate reveal-right">
+            <div class="comp-row comp-header">
+              <span>Core Values</span>
+              <span style="text-align:center;">Anshid CK</span>
+              <span style="text-align:center;">Big Agencies</span>
+            </div>
+            
+            <div class="comp-row">
+              <span class="comp-feature">Personal Dedication</span>
+              <span class="comp-anshid"><i class="fas fa-check-circle"></i> 100% Me</span>
+              <span class="comp-others">Junior Interns</span>
+            </div>
+            
+            <div class="comp-row">
+              <span class="comp-feature">Focus Metric</span>
+              <span class="comp-anshid"><i class="fas fa-check-circle"></i> Revenue/ROI</span>
+              <span class="comp-others">Clicks/Views</span>
+            </div>
+            
+            <div class="comp-row">
+              <span class="comp-feature">Communication</span>
+              <span class="comp-anshid"><i class="fas fa-check-circle"></i> Direct WhatsApp</span>
+              <span class="comp-others">Ticketing System</span>
+            </div>
+            
+            <div class="comp-row">
+              <span class="comp-feature">Strategy</span>
+              <span class="comp-anshid"><i class="fas fa-check-circle"></i> Custom Funnels</span>
+              <span class="comp-others">Generic Templates</span>
+            </div>
+            
+            <div class="comp-row">
+              <span class="comp-feature">Local Expertise</span>
+              <span class="comp-anshid"><i class="fas fa-check-circle"></i> Kerala Specialist</span>
+              <span class="comp-others">Broad/Outsourced</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- About Section Preview -->
+
     <section class="section" id="about">
       <div class="container">
         <div class="about-container">
@@ -2192,9 +2504,53 @@
             in Malappuram & Kerala.</p>
         </div>
 
+        <!-- FAQ Search & Filter -->
+        <div class="faq-controls" style="margin-bottom: 3rem; display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
+          <div style="width: 100%; max-width: 500px; position: relative;">
+            <i class="fas fa-search" style="position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: rgba(98,255,176,0.5);"></i>
+            <input type="text" id="faq-search" placeholder="Search for your question..." style="width: 100%; padding: 1.1rem 1.1rem 1.1rem 3.5rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; color: #fff; font-size: 0.95rem; outline: none; transition: all 0.3s ease;">
+          </div>
+          
+          <div class="faq-filters" style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="cost">Cost</button>
+            <button class="filter-btn" data-filter="seo">SEO</button>
+            <button class="filter-btn" data-filter="aeo">AEO</button>
+            <button class="filter-btn" data-filter="strategy">Strategy</button>
+          </div>
+        </div>
+
+        <style>
+          .filter-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 8px 18px;
+            border-radius: 50px;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+          }
+          .filter-btn:hover {
+            border-color: rgba(98,255,176,0.3);
+            color: #fff;
+          }
+          .filter-btn.active {
+            background: rgba(98, 255, 176, 0.1);
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+          }
+          #faq-search:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 20px rgba(98, 255, 176, 0.1);
+          }
+        </style>
+
         <div class="faq-container animate reveal-up">
+
           <!-- FAQ 1 -->
-          <div class="faq-item">
+          <div class="faq-item" data-category="cost">
             <button class="faq-question">
               How much does digital marketing cost in Malappuram, Kerala?
               <i class="fas fa-chevron-down faq-icon"></i>
@@ -2207,7 +2563,7 @@
           </div>
 
           <!-- FAQ 2 -->
-          <div class="faq-item">
+          <div class="faq-item" data-category="seo">
             <button class="faq-question">
               How long does it take for SEO to show results in the Kerala market?
               <i class="fas fa-chevron-down faq-icon"></i>
@@ -2220,7 +2576,7 @@
           </div>
 
           <!-- FAQ 3 -->
-          <div class="faq-item">
+          <div class="faq-item" data-category="strategy">
             <button class="faq-question">
               SEO vs Google Ads: Which is better for a new business in Malappuram?
               <i class="fas fa-chevron-down faq-icon"></i>
@@ -2233,7 +2589,7 @@
           </div>
 
           <!-- FAQ 4 -->
-          <div class="faq-item">
+          <div class="faq-item" data-category="aeo">
             <button class="faq-question">
               What is AEO and why should my business care?
               <i class="fas fa-chevron-down faq-icon"></i>
@@ -2248,9 +2604,460 @@
         </div>
       </div>
     </section>
+    <!-- ============================================
+         FEATURE 3: Pricing / Package Cards
+    ================================================ -->
+    <!-- Feature 10: Service Match Quiz -->
+    <section id="service-quiz" class="section" style="background: #0d0d0d; border-top: 1px solid rgba(255,255,255,0.05);">
+      <div class="container">
+        <div style="max-width: 800px; margin: 0 auto; background: rgba(15,15,15,0.8); border: 1px solid rgba(98,255,176,0.1); border-radius: 30px; padding: 4rem 2rem; text-align: center; backdrop-filter: blur(20px); position: relative; overflow: hidden;">
+          
+          <!-- Decorative glow -->
+          <div style="position: absolute; top: -100px; left: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(98,255,176,0.05), transparent 70%); pointer-events: none;"></div>
+
+          <div id="quiz-intro">
+            <span class="text-accent" style="font-weight: 800; text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem;">Personalised Roadmap</span>
+            <h2 style="font-size: 2.5rem; color: #fff; margin: 1rem 0 1.5rem;">Unsure which <span class="text-accent">plan is right?</span></h2>
+            <p style="color: rgba(255,255,255,0.5); font-size: 1.1rem; margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto;">Take this 30-second quiz and I'll match you with the perfect strategy for your business goals.</p>
+            <button onclick="startQuiz()" class="btn btn-primary" style="padding: 1.2rem 3rem; border-radius: 50px; font-weight: 800; font-size: 1.1rem;">Start Quiz</button>
+          </div>
+
+          <div id="quiz-container" style="display: none;">
+            <!-- Progress Bar -->
+            <div style="width: 100%; height: 4px; background: rgba(255,255,255,0.05); border-radius: 10px; margin-bottom: 3rem; overflow: hidden;">
+              <div id="quiz-progress" style="width: 33%; height: 100%; background: var(--accent-color); transition: width 0.4s ease;"></div>
+            </div>
+
+            <!-- Step 1 -->
+            <div class="quiz-step" id="step-1">
+              <h3 style="font-size: 1.8rem; color: #fff; margin-bottom: 2rem;">What is your primary marketing goal?</h3>
+              <div class="quiz-options" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                <button onclick="nextStep(1, 'awareness')" class="quiz-opt">Brand Awareness</button>
+                <button onclick="nextStep(1, 'leads')" class="quiz-opt">Leads & Sales</button>
+                <button onclick="nextStep(1, 'local')" class="quiz-opt">Local Footfall</button>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="quiz-step" id="step-2" style="display: none;">
+              <h3 style="font-size: 1.8rem; color: #fff; margin-bottom: 2rem;">What is your current monthly revenue?</h3>
+              <div class="quiz-options" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                <button onclick="nextStep(2, 'startup')" class="quiz-opt">Startup (under ₹50k)</button>
+                <button onclick="nextStep(2, 'growth')" class="quiz-opt">₹50k - ₹2L</button>
+                <button onclick="nextStep(2, 'elite')" class="quiz-opt">₹2L+</button>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="quiz-step" id="step-3" style="display: none;">
+              <h3 style="font-size: 1.8rem; color: #fff; margin-bottom: 2rem;">How fast do you want to scale?</h3>
+              <div class="quiz-options" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                <button onclick="calculateResult('steady')" class="quiz-opt">Slow & Steady</button>
+                <button onclick="calculateResult('moderate')" class="quiz-opt">Moderate</button>
+                <button onclick="calculateResult('aggressive')" class="quiz-opt">Aggressive</button>
+              </div>
+            </div>
+
+            <!-- Result -->
+            <div id="quiz-result" style="display: none;">
+              <div id="result-loader" style="padding: 3rem 0;">
+                <i class="fas fa-spinner fa-spin" style="font-size: 3rem; color: var(--accent-color); margin-bottom: 1.5rem;"></i>
+                <p style="color: rgba(255,255,255,0.6); font-weight: 700;">Analysing your business needs...</p>
+              </div>
+              <div id="result-content" style="display: none;">
+                <span id="match-score" style="background: rgba(98, 255, 176, 0.1); color: var(--accent-color); padding: 5px 15px; border-radius: 50px; font-weight: 800; font-size: 0.8rem; text-transform: uppercase;">98% Strategy Match</span>
+                <h3 id="recommended-plan" style="font-size: 2.2rem; color: #fff; margin: 1.5rem 0 1rem;">The Accelerator Plan</h3>
+                <p id="plan-desc" style="color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 2rem;">Based on your goal for Leads & Sales and aggressive scaling needs, our Growth Accelerator is the perfect fit.</p>
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                  <button onclick="scrollToPricing()" class="btn btn-primary" style="padding: 1rem 2.5rem; border-radius: 12px;">View Plan Details</button>
+                  <button onclick="resetQuiz()" class="btn btn-outline" style="padding: 1rem 2.5rem; border-radius: 12px;">Restart Quiz</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <style>
+        .quiz-opt {
+          background: rgba(255,255,255,0.03);
+          border: 1px solid rgba(255,255,255,0.1);
+          border-radius: 16px;
+          padding: 1.5rem;
+          color: #fff;
+          font-weight: 700;
+          font-size: 1rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        .quiz-opt:hover {
+          background: rgba(98, 255, 176, 0.08);
+          border-color: var(--accent-color);
+          transform: translateY(-3px);
+        }
+      </style>
+
+      <script>
+        let quizData = { step1: '', step2: '', step3: '' };
+
+        function startQuiz() {
+          document.getElementById('quiz-intro').style.display = 'none';
+          document.getElementById('quiz-container').style.display = 'block';
+        }
+
+        function nextStep(step, val) {
+          quizData['step' + step] = val;
+          document.getElementById('step-' + step).style.display = 'none';
+          document.getElementById('step-' + (step + 1)).style.display = 'block';
+          document.getElementById('quiz-progress').style.width = ((step + 1) * 33) + '%';
+        }
+
+        function calculateResult(val) {
+          quizData.step3 = val;
+          document.getElementById('step-3').style.display = 'none';
+          document.getElementById('quiz-result').style.display = 'block';
+          document.getElementById('quiz-progress').style.width = '100%';
+
+          // Mock analysis time
+          setTimeout(() => {
+            document.getElementById('result-loader').style.display = 'none';
+            document.getElementById('result-content').style.display = 'block';
+            
+            const planEl = document.getElementById('recommended-plan');
+            const descEl = document.getElementById('plan-desc');
+            
+            // Logic
+            if (quizData.step2 === 'startup' || (quizData.step1 === 'awareness' && quizData.step3 === 'steady')) {
+              planEl.innerText = 'Foundation Package';
+              descEl.innerText = 'Perfect for startups focusing on local presence and steady organic growth in Malappuram.';
+            } else if (quizData.step2 === 'elite' && quizData.step3 === 'aggressive') {
+              planEl.innerText = 'Dominator Package';
+              descEl.innerText = 'For businesses ready to dominate the entire Kerala market with a full-scale multi-channel strategy.';
+            } else {
+              planEl.innerText = 'Accelerator Package';
+              descEl.innerText = 'The sweet spot for businesses ready to scale their leads and revenue aggressively using Paid Ads + SEO.';
+            }
+          }, 2000);
+        }
+
+        function resetQuiz() {
+          document.getElementById('quiz-intro').style.display = 'block';
+          document.getElementById('quiz-container').style.display = 'none';
+          document.getElementById('quiz-result').style.display = 'none';
+          document.getElementById('result-loader').style.display = 'block';
+          document.getElementById('result-content').style.display = 'none';
+          document.getElementById('step-1').style.display = 'block';
+          document.getElementById('step-2').style.display = 'none';
+          document.getElementById('step-3').style.display = 'none';
+          document.getElementById('quiz-progress').style.width = '33%';
+        }
+
+        function scrollToPricing() {
+          document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
+        }
+      </script>
+    </section>
+
+    <section id="pricing" class="section">
+
+      <style>
+        #pricing {
+          background: radial-gradient(ellipse at 30% 50%, rgba(98,255,176,0.05), transparent 55%),
+                      #0a0a0a;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .pricing-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.8rem;
+          margin-top: 3.5rem;
+          align-items: start;
+        }
+
+        .pricing-card {
+          position: relative;
+          background: rgba(15, 15, 15, 0.8);
+          border: 1px solid rgba(255,255,255,0.07);
+          border-radius: 24px;
+          padding: 2.5rem 2rem;
+          transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .pricing-card::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          border-radius: 24px;
+          background: radial-gradient(circle at 50% 0%, rgba(98,255,176,0.06), transparent 60%);
+          opacity: 0;
+          transition: opacity 0.4s ease;
+        }
+
+        .pricing-card:hover {
+          border-color: rgba(98,255,176,0.3);
+          transform: translateY(-8px);
+          box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(98,255,176,0.08);
+        }
+
+        .pricing-card:hover::before { opacity: 1; }
+
+        /* Popular card */
+        .pricing-card.popular {
+          border-color: rgba(98,255,176,0.35);
+          background: rgba(15,15,15,0.9);
+          box-shadow: 0 0 40px rgba(98,255,176,0.1), 0 20px 50px rgba(0,0,0,0.5);
+          transform: scale(1.03);
+        }
+
+        .pricing-card.popular:hover {
+          transform: scale(1.03) translateY(-8px);
+          box-shadow: 0 0 50px rgba(98,255,176,0.18), 0 25px 60px rgba(0,0,0,0.5);
+        }
+
+        .popular-badge {
+          position: absolute;
+          top: -1px;
+          right: 28px;
+          background: linear-gradient(135deg, #62ffb0, #30d890);
+          color: #0a0a0a;
+          font-size: 0.65rem;
+          font-weight: 900;
+          letter-spacing: 2.5px;
+          text-transform: uppercase;
+          padding: 6px 14px;
+          border-radius: 0 0 12px 12px;
+        }
+
+        .pricing-tier {
+          font-size: 0.7rem;
+          font-weight: 800;
+          letter-spacing: 3px;
+          text-transform: uppercase;
+          color: rgba(98,255,176,0.6);
+          margin-bottom: 0.5rem;
+        }
+
+        .pricing-name {
+          font-size: 1.6rem;
+          font-weight: 900;
+          color: #fff;
+          margin-bottom: 0.8rem;
+        }
+
+        .pricing-desc {
+          font-size: 0.85rem;
+          color: rgba(255,255,255,0.45);
+          line-height: 1.6;
+          margin-bottom: 1.8rem;
+          min-height: 48px;
+        }
+
+        .pricing-price {
+          margin-bottom: 2rem;
+          padding-bottom: 2rem;
+          border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .pricing-amount {
+          font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+          font-weight: 900;
+          color: #fff;
+          line-height: 1;
+        }
+
+        .pricing-amount span {
+          font-size: 1rem;
+          font-weight: 600;
+          color: rgba(255,255,255,0.4);
+        }
+
+        .pricing-note {
+          font-size: 0.75rem;
+          color: rgba(255,255,255,0.3);
+          margin-top: 6px;
+        }
+
+        .pricing-features {
+          list-style: none;
+          padding: 0;
+          margin: 0 0 2.2rem;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          flex-grow: 1;
+        }
+
+        .pricing-features li {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-size: 0.88rem;
+          color: rgba(255,255,255,0.7);
+        }
+
+        .pricing-features li i.fa-check {
+          color: #62ffb0;
+          font-size: 0.75rem;
+          flex-shrink: 0;
+        }
+
+        .pricing-features li i.fa-times {
+          color: rgba(255,255,255,0.2);
+          font-size: 0.75rem;
+          flex-shrink: 0;
+        }
+
+        .pricing-features li.dimmed {
+          color: rgba(255,255,255,0.25);
+        }
+
+        .pricing-cta {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          width: 100%;
+          padding: 0.9rem;
+          border-radius: 14px;
+          font-weight: 700;
+          font-size: 0.9rem;
+          letter-spacing: 0.5px;
+          text-decoration: none;
+          text-transform: uppercase;
+          transition: all 0.35s ease;
+          cursor: pointer;
+        }
+
+        .pricing-cta-primary {
+          background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
+          border: 1px solid rgba(98,255,176,0.45);
+          color: #F2F2F2;
+          box-shadow: 0 0 16px rgba(98,255,176,0.15);
+        }
+
+        .pricing-cta-primary:hover {
+          border-color: rgba(98,255,176,0.75);
+          box-shadow: 0 0 28px rgba(98,255,176,0.3);
+          color: #fff;
+          transform: translateY(-2px);
+        }
+
+        .pricing-cta-ghost {
+          background: transparent;
+          border: 1px solid rgba(255,255,255,0.1);
+          color: rgba(255,255,255,0.5);
+        }
+
+        .pricing-cta-ghost:hover {
+          border-color: rgba(255,255,255,0.25);
+          color: #fff;
+        }
+
+        .pricing-note-bottom {
+          text-align: center;
+          margin-top: 2.5rem;
+          font-size: 0.82rem;
+          color: rgba(255,255,255,0.3);
+        }
+
+        .pricing-note-bottom strong { color: rgba(98,255,176,0.7); }
+
+        @media (max-width: 992px) {
+          .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
+          .pricing-card.popular { transform: none; }
+          .pricing-card.popular:hover { transform: translateY(-8px); }
+        }
+      </style>
+
+      <div class="container">
+        <div class="section-title animate stagger-1">
+          <span style="display:inline-block; padding:5px 18px; background:rgba(98,255,176,0.08); border:1px solid rgba(98,255,176,0.2); border-radius:50px; font-size:0.75rem; font-weight:800; letter-spacing:3px; text-transform:uppercase; color:var(--accent-color); margin-bottom:1.5rem;">Transparent Pricing</span>
+          <h2>Simple, <span class="text-accent">Results-First</span> Packages</h2>
+          <p>No hidden fees. No long-term lock-ins. Just focused execution that delivers measurable ROI.</p>
+        </div>
+
+        <div class="pricing-grid">
+
+          <!-- Starter -->
+          <div class="pricing-card animate reveal-left">
+            <span class="pricing-tier">Starter</span>
+            <h3 class="pricing-name">Foundation</h3>
+            <p class="pricing-desc">Perfect for local businesses just getting started with digital marketing.</p>
+            <div class="pricing-price">
+              <div class="pricing-amount">₹15,000 <span>/ mo</span></div>
+              <div class="pricing-note">3-month minimum engagement</div>
+            </div>
+            <ul class="pricing-features">
+              <li><i class="fas fa-check"></i> Local SEO Optimization</li>
+              <li><i class="fas fa-check"></i> Google My Business Setup</li>
+              <li><i class="fas fa-check"></i> 4 Social Media Posts / Month</li>
+              <li><i class="fas fa-check"></i> Monthly Performance Report</li>
+              <li><i class="fas fa-check"></i> WhatsApp Support</li>
+              <li class="dimmed"><i class="fas fa-times"></i> Google / Meta Ads Management</li>
+              <li class="dimmed"><i class="fas fa-times"></i> Dedicated Account Manager</li>
+            </ul>
+            <a href="contact/" class="pricing-cta pricing-cta-ghost">Get Started <i class="fas fa-arrow-right"></i></a>
+          </div>
+
+          <!-- Growth (Popular) -->
+          <div class="pricing-card popular animate reveal-up">
+            <span class="popular-badge">Most Popular</span>
+            <span class="pricing-tier">Growth</span>
+            <h3 class="pricing-name">Accelerator</h3>
+            <p class="pricing-desc">Full-stack digital marketing for businesses ready to scale aggressively.</p>
+            <div class="pricing-price">
+              <div class="pricing-amount">₹35,000 <span>/ mo</span></div>
+              <div class="pricing-note">Includes ad spend management</div>
+            </div>
+            <ul class="pricing-features">
+              <li><i class="fas fa-check"></i> Advanced SEO + AEO Strategy</li>
+              <li><i class="fas fa-check"></i> Google Ads Management</li>
+              <li><i class="fas fa-check"></i> Meta (FB/IG) Ads Management</li>
+              <li><i class="fas fa-check"></i> 12 Social Media Posts / Month</li>
+              <li><i class="fas fa-check"></i> Lead Funnel + WhatsApp CRM</li>
+              <li><i class="fas fa-check"></i> Bi-Weekly Reports & Calls</li>
+              <li><i class="fas fa-check"></i> Dedicated Account Manager</li>
+            </ul>
+            <a href="calendar/" class="pricing-cta pricing-cta-primary"><i class="fas fa-bolt"></i> Book Free Audit</a>
+          </div>
+
+          <!-- Elite -->
+          <div class="pricing-card animate reveal-right">
+            <span class="pricing-tier">Elite</span>
+            <h3 class="pricing-name">Dominator</h3>
+            <p class="pricing-desc">Full-agency experience with Anshid leading every channel personally.</p>
+            <div class="pricing-price">
+              <div class="pricing-amount">Custom <span>pricing</span></div>
+              <div class="pricing-note">Tailored to your revenue goals</div>
+            </div>
+            <ul class="pricing-features">
+              <li><i class="fas fa-check"></i> Everything in Accelerator</li>
+              <li><i class="fas fa-check"></i> Video Production & Reels</li>
+              <li><i class="fas fa-check"></i> Website CRO & Speed Audit</li>
+              <li><i class="fas fa-check"></i> AEO + Voice Search Mastery</li>
+              <li><i class="fas fa-check"></i> Influencer Outreach Strategy</li>
+              <li><i class="fas fa-check"></i> Weekly Strategy Calls</li>
+              <li><i class="fas fa-check"></i> Priority 24/7 WhatsApp Line</li>
+            </ul>
+            <a href="https://wa.me/919778179727?text=Hi%20Anshid%2C%20I'm%20interested%20in%20the%20Elite%20package." target="_blank" class="pricing-cta pricing-cta-ghost">Let's Talk <i class="fas fa-arrow-right"></i></a>
+          </div>
+
+        </div>
+
+        <p class="pricing-note-bottom animate stagger-4">
+          All packages include a <strong>Free Discovery Call</strong> before commitment. Prices exclude ad spend budget. &nbsp;|&nbsp; <a href="contact/" style="color:rgba(98,255,176,0.6); text-decoration:underline;">Need a custom quote?</a>
+        </p>
+      </div>
+    </section>
 
     <!-- Hire Me Section -->
     <section id="hire-me" class="hire-section">
+
       <div class="container">
         <div class="hire-grid">
           <div class="hire-content animate reveal-left">
@@ -2304,9 +3111,36 @@
     </section>
 
     <!-- Footer -->
+    <!-- Feature 9: Newsletter Signup -->
+    <section id="newsletter" style="background: rgba(10, 10, 10, 0.5); padding: 4rem 0; border-top: 1px solid rgba(255,255,255,0.05);">
+      <div class="container">
+        <div style="background: linear-gradient(135deg, rgba(15,15,15,0.9), rgba(10,10,10,0.95)); border: 1px solid rgba(98, 255, 176, 0.15); border-radius: 30px; padding: 3.5rem 2.5rem; display: flex; align-items: center; justify-content: space-between; gap: 3rem; flex-wrap: wrap; position: relative; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.4);">
+          
+          <div style="position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(98,255,176,0.08), transparent 70%); pointer-events: none;"></div>
+
+          <div style="flex: 1; min-width: 300px; position: relative; z-index: 1;">
+            <h2 style="font-size: 2.2rem; color: #fff; margin-bottom: 0.8rem;">Master the <span class="text-accent">Kerala Market</span></h2>
+            <p style="color: rgba(255,255,255,0.5); font-size: 1.05rem; line-height: 1.6;">Join 1,200+ local entrepreneurs. Get weekly ROI strategies, SEO growth hacks, and ad optimization tips directly in your inbox.</p>
+          </div>
+
+          <div style="flex: 1; min-width: 300px; position: relative; z-index: 1;">
+            <form id="newsletter-form" style="display: flex; gap: 12px; flex-wrap: wrap;">
+              <div style="flex: 1; min-width: 240px; position: relative;">
+                <i class="fas fa-envelope" style="position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: rgba(98,255,176,0.5);"></i>
+                <input type="email" placeholder="Enter your business email" required style="width: 100%; padding: 1.1rem 1.1rem 1.1rem 3.2rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; color: #fff; font-size: 0.95rem; outline: none; transition: all 0.3s ease;">
+              </div>
+              <button type="submit" class="btn btn-primary" style="padding: 1.1rem 2.2rem; border-radius: 14px; font-weight: 800;">Subscribe</button>
+            </form>
+            <p style="font-size: 0.75rem; color: rgba(255,255,255,0.25); margin-top: 1rem; text-align: center;">No spam. Just value. Unsubscribe anytime.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <footer>
       <div class="container">
         <div class="footer-grid">
+
           <div class="footer-col">
             <a href="./" class="logo"
               style="margin-bottom: 2rem; display: block; font-size: 1.8rem; font-weight: 800;">Mohammad Anshid Ck<span
@@ -2390,8 +3224,432 @@
     </footer>
   </main>
 
+  <!-- ============================================
+       FEATURE 1: Sticky Mobile CTA Bar
+       Shows after scrolling 400px, mobile only
+  ================================================ -->
+  <div id="sticky-cta-bar" aria-label="Quick contact bar">
+    <div class="sticky-cta-inner">
+      <div class="sticky-cta-text">
+        <span class="sticky-dot"></span>
+        <span><strong>Available for new clients</strong> · Malappuram</span>
+      </div>
+      <div class="sticky-cta-btns">
+        <a href="https://wa.me/919778179727" target="_blank" id="sticky-wa-btn" aria-label="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="calendar/" id="sticky-book-btn">
+          <i class="fas fa-calendar-check"></i> Book Free Call
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    #sticky-cta-bar {
+      display: none; /* JS reveals on mobile */
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 998;
+      padding: 0 0 env(safe-area-inset-bottom, 0);
+      transform: translateY(100%);
+      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    #sticky-cta-bar.visible {
+      transform: translateY(0);
+    }
+
+    .sticky-cta-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: rgba(10, 10, 10, 0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(98, 255, 176, 0.2);
+      padding: 12px 18px 14px;
+      box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.5),
+                  0 -1px 0 rgba(98, 255, 176, 0.08);
+    }
+
+    .sticky-cta-text {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.65);
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .sticky-dot {
+      width: 7px;
+      height: 7px;
+      background: #62ffb0;
+      border-radius: 50%;
+      flex-shrink: 0;
+      box-shadow: 0 0 8px rgba(98,255,176,0.8);
+      animation: sticky-dot-pulse 2s infinite;
+    }
+
+    @keyframes sticky-dot-pulse {
+      0%, 100% { box-shadow: 0 0 6px rgba(98,255,176,0.7); }
+      50% { box-shadow: 0 0 14px rgba(98,255,176,1); }
+    }
+
+    .sticky-cta-btns {
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    #sticky-wa-btn {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(37, 211, 102, 0.12);
+      border: 1px solid rgba(37, 211, 102, 0.35);
+      border-radius: 12px;
+      color: #25D366;
+      font-size: 1.3rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    #sticky-wa-btn:hover {
+      background: rgba(37, 211, 102, 0.25);
+      border-color: #25D366;
+      color: #25D366;
+      transform: scale(1.08);
+    }
+
+    #sticky-book-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 18px;
+      height: 44px;
+      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+      border: 1px solid rgba(98,255,176,0.4);
+      border-radius: 12px;
+      color: #F2F2F2;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      text-transform: uppercase;
+      box-shadow: 0 0 14px rgba(98,255,176,0.15);
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    #sticky-book-btn:hover {
+      border-color: rgba(98,255,176,0.7);
+      box-shadow: 0 0 22px rgba(98,255,176,0.3);
+      color: #fff;
+    }
+
+    /* Only show on mobile */
+    @media (min-width: 769px) {
+      #sticky-cta-bar { display: none !important; }
+    }
+
+    @media (max-width: 768px) {
+      #sticky-cta-bar { display: block; }
+      /* Push float-wa button up when bar is visible */
+      .float-wa { bottom: 80px !important; }
+    }
+
+    @media (max-width: 400px) {
+      .sticky-cta-text { display: none; }
+      .sticky-cta-inner { justify-content: center; }
+    }
+  </style>
+
+  <script>
+    // Sticky Mobile CTA Bar — show after scrolling 400px
+    (function() {
+      var bar = document.getElementById('sticky-cta-bar');
+      if (!bar) return;
+
+      var shown = false;
+      var threshold = 400;
+
+      function checkScroll() {
+        if (window.scrollY > threshold && !shown) {
+          bar.classList.add('visible');
+          shown = true;
+        } else if (window.scrollY <= threshold && shown) {
+          bar.classList.remove('visible');
+          shown = false;
+        }
+      }
+
+      window.addEventListener('scroll', checkScroll, { passive: true });
+      checkScroll();
+    })();
+  </script>
+
+  <!-- Feature 6: Social Proof Notifications -->
+  <div id="social-proof-toast">
+    <div class="toast-icon">
+      <i class="fas fa-chart-line"></i>
+    </div>
+    <div class="toast-content">
+      <div class="toast-text" id="toast-message">Someone from <strong>Malappuram</strong> just booked a free audit.</div>
+      <div class="toast-time">Just now</div>
+    </div>
+    <button id="toast-close">&times;</button>
+  </div>
+
+  <style>
+    #social-proof-toast {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      background: rgba(10, 10, 10, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(98, 255, 176, 0.2);
+      border-radius: 16px;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      z-index: 9990;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      transform: translateX(-120%);
+      transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      max-width: 320px;
+      pointer-events: auto;
+    }
+
+    #social-proof-toast.show {
+      transform: translateX(0);
+    }
+
+    .toast-icon {
+      width: 38px;
+      height: 38px;
+      background: rgba(98, 255, 176, 0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #62ffb0;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .toast-content {
+      flex-grow: 1;
+    }
+
+    .toast-text {
+      font-size: 0.85rem;
+      color: #fff;
+      line-height: 1.4;
+    }
+
+    .toast-text strong {
+      color: #62ffb0;
+    }
+
+    .toast-time {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.4);
+      margin-top: 4px;
+    }
+
+    #toast-close {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.3);
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 0;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+
+    #toast-close:hover {
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      #social-proof-toast {
+        bottom: 150px; /* Above mobile CTA bar and WhatsApp */
+        left: 20px;
+        right: 20px;
+        max-width: none;
+      }
+    }
+  </style>
+
+  <script>
+    (function() {
+      const messages = [
+        "Someone from <strong>Malappuram</strong> just booked a free audit.",
+        "A business in <strong>Manjeri</strong> started an SEO campaign.",
+        "New inquiry received from <strong>Nilambur</strong> regarding Meta Ads.",
+        "A client in <strong>Kottakkal</strong> achieved #1 ranking on Google.",
+        "Someone from <strong>Perinthalmanna</strong> just joined the growth program.",
+        "A strategy call was just scheduled from <strong>Kozhikode</strong>.",
+        "A local business in <strong>Tirur</strong> just scaled their ad spend.",
+        "New SEO project started for a brand in <strong>Kondotty</strong>."
+      ];
+
+      const toast = document.getElementById('social-proof-toast');
+      const messageEl = document.getElementById('toast-message');
+      const closeBtn = document.getElementById('toast-close');
+      
+      let index = 0;
+      let toastTimeout;
+
+      function showToast() {
+        if (!toast) return;
+        
+        // Pick random message
+        index = Math.floor(Math.random() * messages.length);
+        messageEl.innerHTML = messages[index];
+        
+        toast.classList.add('show');
+        
+        // Hide after 6 seconds
+        toastTimeout = setTimeout(() => {
+          toast.classList.remove('show');
+          // Show next one in 15-25 seconds
+          setTimeout(showToast, Math.random() * 10000 + 15000);
+        }, 6000);
+      }
+
+      closeBtn.addEventListener('click', () => {
+        toast.classList.remove('show');
+        clearTimeout(toastTimeout);
+      });
+
+      // Start first toast after 8 seconds
+      setTimeout(showToast, 8000);
+    })();
+  </script>
+
   <a href="https://wa.me/919778179727" class="float-wa" target="_blank" aria-label="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress-container">
+    <div id="scroll-progress-bar"></div>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" aria-label="Back to Top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <style>
+    /* Scroll Progress Bar */
+    #scroll-progress-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: transparent;
+      z-index: 10001;
+    }
+    #scroll-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #62ffb0, #30d890);
+      box-shadow: 0 0 10px rgba(98, 255, 176, 0.5);
+      transition: width 0.1s ease-out;
+    }
+
+    /* Back to Top Button */
+    #back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      background: rgba(10, 10, 10, 0.8);
+      border: 1px solid rgba(98, 255, 176, 0.2);
+      color: #62ffb0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 997;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    #back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    #back-to-top:not(.show) {
+      transform: translateY(20px);
+    }
+    #back-to-top:hover {
+      background: rgba(98, 255, 176, 0.1);
+      border-color: #62ffb0;
+      box-shadow: 0 0 20px rgba(98, 255, 176, 0.3);
+      transform: translateY(-5px);
+    }
+
+    /* Reposition WhatsApp button on mobile if needed */
+    @media (max-width: 768px) {
+      #back-to-top {
+        bottom: 90px; /* Above the sticky CTA bar */
+        right: 20px;
+        width: 44px;
+        height: 44px;
+      }
+    }
+  </style>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      // Scroll Progress
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('scroll-progress-bar').style.width = scrolled + '%';
+
+      // Back to Top Visibility
+      const backToTop = document.getElementById('back-to-top');
+      if (window.scrollY > 500) {
+        backToTop.classList.add('show');
+      } else {
+        backToTop.classList.remove('show');
+      }
+    });
+
+    document.getElementById('back-to-top').addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+
   <script src="main.js?v=20260327-4" defer></script>
+
 
   <script>
     // Business Calculators Logic
@@ -2557,6 +3815,346 @@
   <a href="https://wa.me/919778179727" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
     <i class="fab fa-whatsapp"></i>
   </a>
+  <!-- ============================================
+       FEATURE 2: Exit Intent Popup
+       Desktop: mouse leaves top of window
+       Mobile: 40s idle timer
+  ================================================ -->
+  <div id="exit-popup-overlay" role="dialog" aria-modal="true" aria-labelledby="exit-popup-title">
+    <div id="exit-popup-box">
+      <button id="exit-popup-close" aria-label="Close">&times;</button>
+
+      <!-- Glow accent -->
+      <div class="exit-glow-ring"></div>
+
+      <!-- Badge -->
+      <span class="exit-badge">Free Offer</span>
+
+      <!-- Headline -->
+      <h2 id="exit-popup-title">Wait — Don't Leave<br><span>Without Your Free Audit</span></h2>
+
+      <p class="exit-sub">Get a <strong>personalised digital marketing audit</strong> for your business — absolutely free. I'll show you exactly where you're losing leads and how to fix it.</p>
+
+      <!-- Value bullets -->
+      <ul class="exit-bullets">
+        <li><i class="fas fa-check-circle"></i> SEO gap analysis specific to Malappuram</li>
+        <li><i class="fas fa-check-circle"></i> Competitor keyword steal report</li>
+        <li><i class="fas fa-check-circle"></i> Quick-win strategy roadmap (no fluff)</li>
+      </ul>
+
+      <!-- CTAs -->
+      <div class="exit-cta-group">
+        <a href="calendar/" class="exit-primary-btn" id="exit-book-btn">
+          <i class="fas fa-calendar-check"></i> Yes! Book My Free Audit
+        </a>
+        <a href="https://wa.me/919778179727?text=Hi%20Anshid%2C%20I%20want%20a%20free%20digital%20marketing%20audit%20for%20my%20business." target="_blank" class="exit-wa-btn">
+          <i class="fab fa-whatsapp"></i> Chat on WhatsApp Instead
+        </a>
+      </div>
+
+      <button class="exit-dismiss" id="exit-dismiss-btn">No thanks, I'll pass on free growth</button>
+    </div>
+  </div>
+
+  <style>
+    /* Overlay */
+    #exit-popup-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 9995;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    #exit-popup-overlay.show {
+      display: flex;
+      opacity: 1;
+    }
+
+    /* Popup Box */
+    #exit-popup-box {
+      position: relative;
+      background: rgba(11, 11, 11, 0.97);
+      border: 1px solid rgba(98, 255, 176, 0.2);
+      border-radius: 28px;
+      padding: 3rem 2.5rem 2.5rem;
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+      overflow: hidden;
+      animation: exit-popup-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      box-shadow:
+        0 0 60px rgba(98,255,176,0.08),
+        0 30px 80px rgba(0,0,0,0.6);
+    }
+
+    @keyframes exit-popup-in {
+      from { transform: scale(0.88) translateY(30px); opacity: 0; }
+      to   { transform: scale(1) translateY(0);       opacity: 1; }
+    }
+
+    /* Glow ring decoration */
+    .exit-glow-ring {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(98,255,176,0.12), transparent 70%);
+      top: -100px;
+      right: -80px;
+      pointer-events: none;
+    }
+
+    /* Close button */
+    #exit-popup-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      color: rgba(255,255,255,0.35);
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s;
+      z-index: 2;
+    }
+
+    #exit-popup-close:hover { color: #fff; }
+
+    /* Badge */
+    .exit-badge {
+      display: inline-block;
+      padding: 5px 16px;
+      background: rgba(98,255,176,0.1);
+      border: 1px solid rgba(98,255,176,0.25);
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #62ffb0;
+      text-transform: uppercase;
+      margin-bottom: 1.4rem;
+    }
+
+    /* Headline */
+    #exit-popup-box h2 {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    #exit-popup-box h2 span {
+      color: #62ffb0;
+    }
+
+    /* Sub text */
+    .exit-sub {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .exit-sub strong { color: #fff; }
+
+    /* Bullets */
+    .exit-bullets {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2rem;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .exit-bullets li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.75);
+    }
+
+    .exit-bullets li i {
+      color: #62ffb0;
+      flex-shrink: 0;
+      font-size: 0.85rem;
+    }
+
+    /* CTA group */
+    .exit-cta-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 1.2rem;
+    }
+
+    .exit-primary-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+      border: 1px solid rgba(98,255,176,0.45);
+      border-radius: 14px;
+      color: #F2F2F2;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 0 20px rgba(98,255,176,0.15);
+      transition: all 0.35s ease;
+      animation: hero-breathing 4s infinite ease-in-out;
+    }
+
+    .exit-primary-btn:hover {
+      border-color: rgba(98,255,176,0.75);
+      box-shadow: 0 0 30px rgba(98,255,176,0.3);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .exit-wa-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0.85rem 2rem;
+      background: rgba(37,211,102,0.08);
+      border: 1px solid rgba(37,211,102,0.3);
+      border-radius: 14px;
+      color: #25D366;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .exit-wa-btn:hover {
+      background: rgba(37,211,102,0.16);
+      border-color: #25D366;
+      color: #25D366;
+    }
+
+    /* Dismiss link */
+    .exit-dismiss {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.25);
+      font-size: 0.78rem;
+      cursor: pointer;
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+
+    .exit-dismiss:hover { color: rgba(255,255,255,0.55); }
+
+    @media (max-width: 480px) {
+      #exit-popup-box { padding: 2.5rem 1.5rem 2rem; border-radius: 20px; }
+    }
+  </style>
+
+  <script>
+    (function() {
+      var STORAGE_KEY = 'exitPopupShown_v2';
+      var overlay = document.getElementById('exit-popup-overlay');
+      var closeBtn = document.getElementById('exit-popup-close');
+      var dismissBtn = document.getElementById('exit-dismiss-btn');
+
+      if (!overlay) return;
+
+      // Only show once per session
+      try { if (sessionStorage.getItem(STORAGE_KEY)) return; } catch(e) {}
+
+      function showPopup() {
+        try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch(e) {}
+        overlay.style.display = 'flex';
+        requestAnimationFrame(function() {
+          overlay.classList.add('show');
+        });
+      }
+
+      function closePopup() {
+        overlay.classList.remove('show');
+        setTimeout(function() { overlay.style.display = 'none'; }, 400);
+      }
+
+      closeBtn.addEventListener('click', closePopup);
+      dismissBtn.addEventListener('click', closePopup);
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) closePopup();
+      });
+
+      // Desktop: mouse exit at top of page
+      var triggered = false;
+      document.addEventListener('mouseleave', function(e) {
+        if (e.clientY <= 10 && !triggered) {
+          triggered = true;
+          setTimeout(showPopup, 200);
+        }
+      });
+
+      // Mobile: show after 40 seconds of page time
+      if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+        setTimeout(function() {
+          if (!triggered) { triggered = true; showPopup(); }
+        }, 40000);
+      }
+    })();
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const faqSearch = document.getElementById('faq-search');
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const faqItems = document.querySelectorAll('.faq-item');
+
+      if (!faqSearch) return;
+
+      function filterFAQs() {
+        const searchTerm = faqSearch.value.toLowerCase();
+        const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+
+        faqItems.forEach(item => {
+          const question = item.querySelector('.faq-question').innerText.toLowerCase();
+          const answer = item.querySelector('.faq-answer').innerText.toLowerCase();
+          const category = item.dataset.category;
+          
+          const matchesSearch = question.includes(searchTerm) || answer.includes(searchTerm);
+          const matchesFilter = activeFilter === 'all' || category === activeFilter;
+
+          if (matchesSearch && matchesFilter) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      }
+
+      faqSearch.addEventListener('input', filterFAQs);
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          filterFAQs();
+        });
+      });
+    });
+  </script>
+
 </body>
 
 
