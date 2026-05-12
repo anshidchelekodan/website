@@ -25,27 +25,54 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": "The Impact of AI in Search Results (AEO - Answer Engine Optimization)",
-    "description": "A deep dive into how AI is transforming the search landscape and why Answer Engine Optimization is the future of digital visibility.",
-    "author": {
-      "@type": "Person",
-      "name": "Mohammad Anshid Ck",
-      "url": "https://anshidck.com/"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Mohammad Anshid Ck",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://anshidck.com/anshid-optimized.jpg"
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "headline": "The Impact of AI in Search Results (AEO - Answer Engine Optimization)",
+        "description": "A deep dive into how AI is transforming the search landscape and why Answer Engine Optimization is the future of digital visibility.",
+        "author": {
+          "@type": "Person",
+          "name": "Mohammad Anshid Ck",
+          "url": "https://anshidck.com/"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Mohammad Anshid Ck",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://anshidck.com/anshid-optimized.jpg"
+          }
+        },
+        "datePublished": "2026-05-12",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://anshidck.com/blog/impact-of-ai-in-search-results-aeo/"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://anshidck.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://anshidck.com/blog/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "The Impact of AI in Search Results",
+            "item": "https://anshidck.com/blog/impact-of-ai-in-search-results-aeo/"
+          }
+        ]
       }
-    },
-    "datePublished": "2026-05-12",
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://anshidck.com/blog/impact-of-ai-in-search-results-aeo/"
-    }
+    ]
   }
   </script>
 
@@ -148,16 +175,81 @@
       gap: 18px;
       text-shadow: 0 0 10px rgba(46,230,166,0.3);
     }
-    .internal-link {
-      color: var(--article-accent);
-      text-decoration: none;
-      font-weight: 600;
-      border-bottom: 1px dashed var(--article-accent);
-      transition: all 0.3s;
-    }
     .internal-link:hover {
       background: rgba(46, 230, 166, 0.1);
       border-bottom-style: solid;
+    }
+
+    /* AEO & SEO Enhancements */
+    .aeo-summary {
+      background: linear-gradient(135deg, rgba(46, 230, 166, 0.08), rgba(46, 230, 166, 0.02));
+      border: 1px solid rgba(46, 230, 166, 0.2);
+      border-radius: 20px;
+      padding: 2rem;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+    .aeo-summary h3 {
+      font-size: 1.2rem;
+      color: var(--article-accent);
+      margin-top: 0;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .aeo-summary ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .aeo-summary li {
+      margin-bottom: 0.8rem;
+      font-size: 1rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .aeo-summary li::before {
+      content: '→';
+      color: var(--article-accent);
+      font-weight: bold;
+    }
+
+    .toc-container {
+      background: rgba(255, 255, 255, 0.03);
+      border-left: 4px solid var(--article-accent);
+      padding: 1.5rem 2rem;
+      margin-bottom: 3rem;
+      border-radius: 0 16px 16px 0;
+    }
+    .toc-container h4 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .toc-container ul {
+      list-style: none;
+      padding: 0;
+    }
+    .toc-container li {
+      margin-bottom: 0.6rem;
+    }
+    .toc-container a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: all 0.3s;
+    }
+    .toc-container a:hover {
+      color: var(--article-accent);
+      padding-left: 5px;
+    }
+    
+    html {
+      scroll-behavior: smooth;
     }
   </style>
   
@@ -219,7 +311,28 @@
 
       <p>As a <a href="../../" class="internal-link">Digital Marketing Strategist in Kerala</a>, I've observed how these changes are impacting businesses from Malappuram to global markets. Understanding the impact of AI on search results isn't just an option anymore—it's a survival requirement for any brand that wants to remain visible online.</p>
 
-      <h2>The End of the "Ten Blue Links" Era?</h2>
+      <!-- AEO Summary Card -->
+      <div class="aeo-summary">
+        <h3><i class="fas fa-bolt"></i> Key Takeaways for AEO</h3>
+        <ul>
+          <li>Search is moving from "Ten Blue Links" to direct Generative AI answers.</li>
+          <li>Content must be structured semantically for LLM interpretation.</li>
+          <li>Brand authority and E-E-A-T are the new ranking currencies.</li>
+          <li>Structured data (Schema) is essential for entity recognition.</li>
+        </ul>
+      </div>
+
+      <!-- Table of Contents -->
+      <div class="toc-container">
+        <h4>Table of Contents</h4>
+        <ul>
+          <li><a href="#era-end">The End of the "Ten Blue Links" Era?</a></li>
+          <li><a href="#visibility-impact">How AI Impacts Your Business Visibility</a></li>
+          <li><a href="#aeo-strategies">Core Strategies for Answer Engine Optimization</a></li>
+        </ul>
+      </div>
+
+      <h2 id="era-end">The End of the "Ten Blue Links" Era?</h2>
       <p>For decades, SEO was about fighting for a spot in the top 10 search results. Google, Bing, and others would provide a list of links, and users would click to find information. Today, AI-powered platforms like ChatGPT Search, Perplexity AI, and Google's SGE provide the answer directly on the search page.</p>
       
       <p>This "Zero-Click" trend means that if your content isn't the one being synthesized into the AI's answer, you're effectively invisible. The goal has shifted from being a <em>result</em> to being the <em>answer</em>.</p>
@@ -238,7 +351,7 @@
 
       <p>This impact is even more pronounced in local searches. Voice-activated AI (Siri, Alexa, Google Assistant) relies almost exclusively on Answer Engine principles to provide a single, definitive response to users on the go.</p>
 
-      <h2>Core Strategies for Answer Engine Optimization (AEO)</h2>
+      <h2 id="aeo-strategies">Core Strategies for Answer Engine Optimization (AEO)</h2>
       <p>To dominate search results in this AI-first world, your <a href="../../services/seo-optimization/" class="internal-link">SEO Optimization</a> strategy must evolve. Here are the pillars of successful AEO:</p>
 
       <h3>1. Become an Entity, Not Just a Website</h3>

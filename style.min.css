@@ -48,6 +48,24 @@ main {
   transition: filter 0.4s ease;
 }
 
+/* Scroll Progress Bar */
+#scroll-progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: transparent;
+  z-index: 10001;
+}
+#scroll-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent-color), #30d890);
+  box-shadow: 0 0 10px rgba(98, 255, 176, 0.5);
+  transition: width 0.1s ease-out;
+}
+
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);

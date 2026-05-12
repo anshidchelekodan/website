@@ -167,18 +167,53 @@ const initFAQ = () => {
 };
 
 
-// Back to Top Logic
-const backToTopBtn = document.createElement('div');
-backToTopBtn.className = 'back-to-top';
-backToTopBtn.innerHTML = '<i class="fas fa-chevron-up"></i>';
-document.body.appendChild(backToTopBtn);
+// Global UI Elements Generation
+const initGlobalUI = () => {
+  // Scroll Progress Bar
+  if (!document.getElementById('scroll-progress-container')) {
+    const progressContainer = document.createElement('div');
+    progressContainer.id = 'scroll-progress-container';
+    progressContainer.innerHTML = '<div id="scroll-progress-bar"></div>';
+    document.body.prepend(progressContainer);
+  }
 
-backToTopBtn.addEventListener('click', () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-});
+  // Back to Top Button
+  if (!document.querySelector('.back-to-top')) {
+    const bttBtn = document.createElement('div');
+    bttBtn.className = 'back-to-top';
+    bttBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    document.body.appendChild(bttBtn);
+
+    bttBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+};
+
+initGlobalUI();
+
+const backToTopBtn = document.querySelector('.back-to-top');
+const progressBar = document.getElementById('scroll-progress-bar');
+
+const updateScrollUI = () => {
+  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  
+  // Progress Bar
+  if (progressBar && height > 0) {
+    const scrolled = (winScroll / height) * 100;
+    progressBar.style.width = scrolled + '%';
+  }
+
+  // Back to Top Visibility
+  if (backToTopBtn) {
+    if (winScroll > 400) {
+      backToTopBtn.classList.add('active');
+    } else {
+      backToTopBtn.classList.remove('active');
+    }
+  }
+};
 
 document.addEventListener('DOMContentLoaded', () => {
   // Observe animated elements
@@ -188,15 +223,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Init other features
   handleScroll();
   initFAQ();
+  updateScrollUI();
   
-  // Back to top visibility
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 400) {
-      backToTopBtn.classList.add('active');
-    } else {
-      backToTopBtn.classList.remove('active');
-    }
-  });
+  window.addEventListener('scroll', updateScrollUI);
 
   // Smooth scroll for all internal links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {

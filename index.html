@@ -2500,6 +2500,64 @@
       </div>
     </section>
 
+    <!-- Marketing Myth vs Reality Section (Time Spent Booster) -->
+    <section class="section" style="background-color: rgba(13, 13, 13, 0.6);">
+      <div class="container">
+        <div class="section-title animate reveal-up">
+          <span>Expert Perspective</span>
+          <h2>Digital Marketing <span class="text-accent">Myth vs Reality</span></h2>
+          <p>Test your marketing knowledge and discover the truth behind sustainable growth.</p>
+        </div>
+
+        <div class="grid grid-3" style="margin-top: 3rem; gap: 2rem;">
+          <!-- Card 1 -->
+          <div class="myth-item animate stagger-1">
+            <div class="myth-card-new glass-card">
+              <div class="myth-header">
+                <span class="type-tag myth-tag">The Myth</span>
+                <h3>SEO is a one-time project.</h3>
+              </div>
+              <div class="reality-body">
+                <span class="type-tag reality-tag">The Reality</span>
+                <p>SEO is a continuous evolution. Search algorithms change 500-600 times a year. To stay #1 in Malappuram, you need consistent content and technical updates.</p>
+              </div>
+              <div class="glow-point"></div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="myth-item animate stagger-2">
+            <div class="myth-card-new glass-card">
+              <div class="myth-header">
+                <span class="type-tag myth-tag">The Myth</span>
+                <h3>More Traffic = More Revenue.</h3>
+              </div>
+              <div class="reality-body">
+                <span class="type-tag reality-tag">The Reality</span>
+                <p>Irrelevant traffic is a vanity metric. You need <strong>high-intent leads</strong>. 100 qualified buyers are better than 10,000 random visitors.</p>
+              </div>
+              <div class="glow-point"></div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="myth-item animate stagger-3">
+            <div class="myth-card-new glass-card">
+              <div class="myth-header">
+                <span class="type-tag myth-tag">The Myth</span>
+                <h3>AI will replace human marketers.</h3>
+              </div>
+              <div class="reality-body">
+                <span class="type-tag reality-tag">The Reality</span>
+                <p>AI is a tool, not a replacement. AEO needs <strong>human expertise</strong> to build trust, empathy, and strategic direction that resonates locally.</p>
+              </div>
+              <div class="glow-point"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- FAQ Section (AEO Implementation) -->
     <section id="faq" class="faq-section">
       <div class="container">
@@ -2964,6 +3022,75 @@
           color: #fff;
         }
 
+        /* New Myth vs Reality Styles */
+        .myth-card-new {
+          padding: 2.5rem;
+          border-radius: 24px;
+          height: 100%;
+          border: 1px solid rgba(255, 255, 255, 0.05);
+          transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+          position: relative;
+          overflow: hidden;
+          background: rgba(255, 255, 255, 0.02);
+        }
+        
+        .myth-card-new:hover {
+          border-color: rgba(98, 255, 176, 0.3);
+          background: rgba(46, 230, 166, 0.04);
+          transform: translateY(-8px);
+          box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .type-tag {
+          font-size: 0.65rem;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          font-weight: 900;
+          padding: 5px 12px;
+          border-radius: 50px;
+          display: inline-block;
+          margin-bottom: 1.2rem;
+        }
+
+        .myth-tag {
+          background: rgba(255, 82, 82, 0.1);
+          color: #ff5252;
+          border: 1px solid rgba(255, 82, 82, 0.2);
+        }
+
+        .reality-tag {
+          background: rgba(46, 230, 166, 0.1);
+          color: #2ee6a6;
+          border: 1px solid rgba(46, 230, 166, 0.2);
+          margin-top: 1.5rem;
+        }
+
+        .myth-header h3 {
+          font-size: 1.35rem;
+          color: rgba(255, 255, 255, 0.6);
+          text-decoration: line-through;
+          text-decoration-color: #ff5252;
+          margin: 0;
+          line-height: 1.3;
+        }
+
+        .reality-body p {
+          font-size: 1rem;
+          line-height: 1.7;
+          color: #fff;
+          margin: 0;
+        }
+
+        .glow-point {
+          position: absolute;
+          width: 100px;
+          height: 100px;
+          background: radial-gradient(circle, rgba(46, 230, 166, 0.1), transparent 70%);
+          bottom: -50px;
+          right: -50px;
+          pointer-events: none;
+        }
+
         .pricing-note-bottom {
           text-align: center;
           margin-top: 2.5rem;
@@ -3219,6 +3346,28 @@
             </ul>
             <!-- Availability Widget -->
             <div id="availability-widget" style="margin-top: 1.5rem;"></div>
+          </div>
+        </div>
+
+        <!-- Payment Details Section -->
+        <div class="footer-payments" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); text-align: center;">
+          <h5 style="color: rgba(255,255,255,0.4); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1.5rem; font-weight: 800;">Secure Payments Accepted</h5>
+          <div class="payment-icons-grid" style="display: flex; justify-content: center; align-items: center; gap: 2rem; flex-wrap: wrap;">
+            <div class="payment-item" title="Visa">
+              <i class="fab fa-cc-visa" style="font-size: 2rem; color: #1a1f71; filter: drop-shadow(0 0 5px rgba(26,31,113,0.3));"></i>
+            </div>
+            <div class="payment-item" title="Mastercard">
+              <i class="fab fa-cc-mastercard" style="font-size: 2rem; color: #eb001b; filter: drop-shadow(0 0 5px rgba(235,0,27,0.3));"></i>
+            </div>
+            <div class="payment-item" title="PayPal">
+              <i class="fab fa-cc-paypal" style="font-size: 2rem; color: #003087; filter: drop-shadow(0 0 5px rgba(0,48,135,0.3));"></i>
+            </div>
+            <div class="payment-item" title="Apple Pay">
+              <i class="fab fa-apple-pay" style="font-size: 2.5rem; color: #fff; opacity: 0.9;"></i>
+            </div>
+            <div class="payment-item" title="Google Pay">
+              <i class="fab fa-google-pay" style="font-size: 2.5rem; color: #4285F4;"></i>
+            </div>
           </div>
         </div>
 
@@ -3551,108 +3700,6 @@
 
   <a href="https://wa.me/919778179727" class="float-wa" target="_blank" aria-label="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
-  <!-- Scroll Progress Bar -->
-  <div id="scroll-progress-container">
-    <div id="scroll-progress-bar"></div>
-  </div>
-
-  <!-- Back to Top Button -->
-  <button id="back-to-top" aria-label="Back to Top">
-    <i class="fas fa-arrow-up"></i>
-  </button>
-
-  <style>
-    /* Scroll Progress Bar */
-    #scroll-progress-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: transparent;
-      z-index: 10001;
-    }
-    #scroll-progress-bar {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, #62ffb0, #30d890);
-      box-shadow: 0 0 10px rgba(98, 255, 176, 0.5);
-      transition: width 0.1s ease-out;
-    }
-
-    /* Back to Top Button */
-    #back-to-top {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 50px;
-      height: 50px;
-      border-radius: 12px;
-      background: rgba(10, 10, 10, 0.8);
-      border: 1px solid rgba(98, 255, 176, 0.2);
-      color: #62ffb0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      cursor: pointer;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 997;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-    #back-to-top.show {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-    #back-to-top:not(.show) {
-      transform: translateY(20px);
-    }
-    #back-to-top:hover {
-      background: rgba(98, 255, 176, 0.1);
-      border-color: #62ffb0;
-      box-shadow: 0 0 20px rgba(98, 255, 176, 0.3);
-      transform: translateY(-5px);
-    }
-
-    /* Reposition WhatsApp button on mobile if needed */
-    @media (max-width: 768px) {
-      #back-to-top {
-        bottom: 90px; /* Above the sticky CTA bar */
-        right: 20px;
-        width: 44px;
-        height: 44px;
-      }
-    }
-  </style>
-
-  <script>
-    window.addEventListener('scroll', () => {
-      // Scroll Progress
-      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = (winScroll / height) * 100;
-      document.getElementById('scroll-progress-bar').style.width = scrolled + '%';
-
-      // Back to Top Visibility
-      const backToTop = document.getElementById('back-to-top');
-      if (window.scrollY > 500) {
-        backToTop.classList.add('show');
-      } else {
-        backToTop.classList.remove('show');
-      }
-    });
-
-    document.getElementById('back-to-top').addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-  </script>
 
   <script src="main.js?v=20260327-4" defer></script>
 
@@ -3814,6 +3861,13 @@
           badges.forEach(badge => badge.style.display = 'inline-block');
         }
       })();
+
+      // Myth vs Reality Click Logic
+      document.querySelectorAll('.myth-card').forEach(card => {
+        card.addEventListener('click', () => {
+          card.classList.toggle('flipped');
+        });
+      });
     });
   </script>
   <script src="chatbot.js" defer></script>
