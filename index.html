@@ -501,40 +501,11 @@
       visibility: visible !important;
     }
 
-    .hero-buttons .btn.btn-primary i {
-      color: #051512 !important;
-      font-size: 1.2rem !important;
-    }
-
-    .hero-buttons .btn.btn-primary:hover {
-      background: #4FFFB0 !important;
-      transform: translateY(-5px) scale(1.02) !important;
-      box-shadow: 0 10px 40px rgba(46, 230, 166, 0.8) !important;
-    }
-
-    /* Outline Button - Forced Visibility */
-    .hero-buttons .btn.btn-outline {
-      background: rgba(46, 230, 166, 0.05) !important;
-      border: 2px solid #2EE6A6 !important;
-      color: #2EE6A6 !important;
-      backdrop-filter: blur(5px) !important;
-    }
-
-    .hero-buttons .btn.btn-outline i {
-      color: #2EE6A6 !important;
-    }
-
-    .hero-buttons .btn.btn-outline:hover {
-      background: #2EE6A6 !important;
-      color: #051512 !important;
-      transform: translateY(-5px) scale(1.02) !important;
-    }
-
     @media (max-width: 768px) {
       .hero-buttons {
         flex-direction: column !important;
         width: 100% !important;
-        gap: 1rem !important;
+        gap: 1.2rem !important;
       }
       .hero-buttons .btn {
         width: 100% !important;
@@ -868,7 +839,7 @@
           <span class="hero-keyword" style="display: block; margin-bottom: 2rem; color: var(--accent-color); font-weight: 700;">Helping local Kerala businesses generate consistent leads using SEO & Meta Ads</span>
 
           <div class="hero-buttons animate stagger-2">
-            <a href="calendar/" class="btn btn-primary btn-pulse">
+            <a href="calendar/" class="btn btn-primary btn-hero">
               <i class="fas fa-calendar-check"></i> Get Free Strategy Call
             </a>
             <a href="portfolio/" class="btn btn-outline">
@@ -927,12 +898,10 @@
             <p>The digital landscape in <strong>Malappuram</strong> is no longer just about "being online"—it's about being the choice of high-intent customers. As your <strong>dedicated growth partner</strong>, I specialize in SEO that stays on page #1 and Ads that actually convert into bankable revenue. My approach combines local market psychology with global performance standards.</p>
 
             <div class="hero-btns" style="margin-top: 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap;">
-              <a href="calendar/" class="btn btn-primary"
-                style="display: inline-flex; align-items: center; justify-content: center;">
+              <a href="calendar/" class="btn btn-primary">
                 <i class="fas fa-calendar-check"></i> Book Free Growth Strategy
               </a>
-              <a href="portfolio/" class="btn btn-outline"
-                style="display: inline-flex; align-items: center; justify-content: center;">
+              <a href="portfolio/" class="btn btn-outline">
                 <i class="fas fa-briefcase"></i> View Results
               </a>
             </div>
@@ -966,17 +935,16 @@
               <i class="fas fa-check-circle" style="color: var(--accent-color); margin-right: 8px;"></i> Focused on real business growth, not vanity metrics.
             </p>
             <div style="display: flex; gap: 1.2rem; flex-wrap: wrap;">
-              <a href="calendar/"
-                class="btn btn-primary" style="padding: 0.8rem 1.8rem; font-size: 0.95rem;">
-                <i class="fas fa-phone-alt" style="margin-right: 10px;"></i> Book a Call
+              <a href="calendar/" class="btn btn-primary">
+                <i class="fas fa-phone-alt"></i> Book a Call
               </a>
               <a href="https://www.linkedin.com/in/mohammad-anshid-ck-9123462aa" target="_blank" class="btn btn-outline"
-                style="padding: 0.8rem 1.8rem; font-size: 0.95rem; border-color: #0077B5; color: #0077B5;" aria-label="View Mohammad Anshid Ck's LinkedIn Profile">
-                <i class="fab fa-linkedin" style="margin-right: 10px;"></i> LinkedIn Profile
+                style="border-color: #0077B5; color: #0077B5;" aria-label="View Mohammad Anshid Ck's LinkedIn Profile">
+                <i class="fab fa-linkedin"></i> LinkedIn Profile
               </a>
               <a href="https://wa.me/919778179727" target="_blank" class="btn btn-outline"
-                style="padding: 0.8rem 1.8rem; font-size: 0.95rem; border-color: #25D366; color: #25D366;" aria-label="Chat with Mohammad Anshid Ck on WhatsApp">
-                <i class="fab fa-whatsapp" style="margin-right: 10px;"></i> WhatsApp
+                style="border-color: #25D366; color: #25D366;" aria-label="Chat with Mohammad Anshid Ck on WhatsApp">
+                <i class="fab fa-whatsapp"></i> WhatsApp
               </a>
             </div>
           </div>
@@ -1264,69 +1232,270 @@
       </div>
     </section>
     <!-- My Work Approach (Process) -->
-    <!-- My Work Approach (Process) -->
-    <section class="section" id="process" style="background-color: rgba(13, 18, 28, 0.6); backdrop-filter: blur(5px);">
-      <div class="container">
+    <section class="section" id="process">
+      <style>
+        #process {
+          background: radial-gradient(ellipse at 60% 0%, rgba(98,255,176,0.06) 0%, transparent 60%),
+                      radial-gradient(ellipse at 10% 100%, rgba(98,255,176,0.04) 0%, transparent 50%),
+                      rgba(8, 14, 20, 0.85);
+          position: relative;
+          overflow: hidden;
+        }
+
+        #process::before {
+          content: 'PROCESS';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: clamp(5rem, 18vw, 14rem);
+          font-weight: 900;
+          color: transparent;
+          -webkit-text-stroke: 1px rgba(98, 255, 176, 0.04);
+          letter-spacing: 0.2em;
+          pointer-events: none;
+          white-space: nowrap;
+          z-index: 0;
+        }
+
+        .approach-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 1.5rem;
+          position: relative;
+          z-index: 1;
+          margin-top: 3.5rem;
+        }
+
+        /* Connector line between cards */
+        .approach-grid::before {
+          content: '';
+          position: absolute;
+          top: 52px;
+          left: calc(12.5% + 12px);
+          right: calc(12.5% + 12px);
+          height: 1px;
+          background: linear-gradient(to right,
+            transparent,
+            rgba(98,255,176,0.3) 15%,
+            rgba(98,255,176,0.5) 50%,
+            rgba(98,255,176,0.3) 85%,
+            transparent
+          );
+          z-index: 0;
+        }
+
+        .approach-card {
+          position: relative;
+          background: rgba(15, 15, 15, 0.7);
+          border: 1px solid rgba(98, 255, 176, 0.12);
+          border-radius: 24px;
+          padding: 2.2rem 1.8rem 2rem;
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+          overflow: hidden;
+          z-index: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .approach-card::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          border-radius: 24px;
+          background: radial-gradient(circle at 50% 0%, rgba(98,255,176,0.08), transparent 65%);
+          opacity: 0;
+          transition: opacity 0.4s ease;
+        }
+
+        .approach-card:hover {
+          border-color: rgba(98, 255, 176, 0.4);
+          transform: translateY(-10px);
+          box-shadow:
+            0 0 30px rgba(98,255,176,0.12),
+            0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .approach-card:hover::before {
+          opacity: 1;
+        }
+
+        .approach-step-num {
+          font-size: clamp(3.5rem, 7vw, 5.5rem);
+          font-weight: 900;
+          line-height: 1;
+          color: transparent;
+          -webkit-text-stroke: 1.5px rgba(98,255,176,0.25);
+          letter-spacing: -2px;
+          margin-bottom: 1rem;
+          transition: -webkit-text-stroke 0.4s ease;
+          font-family: var(--font-heading);
+        }
+
+        .approach-card:hover .approach-step-num {
+          -webkit-text-stroke: 1.5px rgba(98,255,176,0.7);
+        }
+
+        .approach-icon-wrap {
+          width: 52px;
+          height: 52px;
+          background: rgba(98,255,176,0.08);
+          border: 1px solid rgba(98,255,176,0.2);
+          border-radius: 14px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 1.4rem;
+          transition: all 0.4s ease;
+        }
+
+        .approach-card:hover .approach-icon-wrap {
+          background: rgba(98,255,176,0.18);
+          border-color: rgba(98,255,176,0.5);
+          box-shadow: 0 0 20px rgba(98,255,176,0.2);
+        }
+
+        .approach-icon-wrap i {
+          font-size: 1.3rem;
+          color: var(--accent-color);
+          transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+        }
+
+        .approach-card:hover .approach-icon-wrap i {
+          transform: scale(1.2) rotate(8deg);
+        }
+
+        .approach-label {
+          font-size: 0.7rem;
+          font-weight: 800;
+          letter-spacing: 3px;
+          text-transform: uppercase;
+          color: var(--accent-color);
+          margin-bottom: 0.6rem;
+          opacity: 0.7;
+        }
+
+        .approach-title {
+          font-size: clamp(1.2rem, 2vw, 1.45rem);
+          font-weight: 800;
+          color: #fff;
+          margin-bottom: 0.9rem;
+          line-height: 1.2;
+        }
+
+        .approach-desc {
+          font-size: 0.9rem;
+          color: var(--text-secondary);
+          line-height: 1.7;
+          margin: 0;
+          flex-grow: 1;
+        }
+
+        .approach-tag {
+          display: inline-block;
+          margin-top: 1.4rem;
+          padding: 5px 14px;
+          background: rgba(98,255,176,0.06);
+          border: 1px solid rgba(98,255,176,0.15);
+          border-radius: 50px;
+          font-size: 0.72rem;
+          font-weight: 700;
+          color: rgba(98,255,176,0.7);
+          letter-spacing: 1.5px;
+          text-transform: uppercase;
+          transition: all 0.3s ease;
+        }
+
+        .approach-card:hover .approach-tag {
+          background: rgba(98,255,176,0.12);
+          border-color: rgba(98,255,176,0.35);
+          color: var(--accent-color);
+        }
+
+        @media (max-width: 1024px) {
+          .approach-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+          .approach-grid::before { display: none; }
+        }
+
+        @media (max-width: 600px) {
+          .approach-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+      </style>
+
+      <div class="container" style="position: relative; z-index: 1;">
         <div class="section-title animate stagger-1">
-          <span>The Roadmap to Results</span>
+          <span style="display:inline-block; padding: 5px 18px; background: rgba(98,255,176,0.08); border: 1px solid rgba(98,255,176,0.2); border-radius: 50px; font-size: 0.75rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-color); margin-bottom: 1.5rem;">The Roadmap to Results</span>
           <h2>My Strategic <span class="text-accent">Work Approach</span></h2>
-          <p>A systematic framework designed for predictable business growth.</p>
+          <p>A systematic 4-step framework engineered for predictable, compounding business growth.</p>
         </div>
 
-        <div class="roadmap-container">
-          <!-- Step 1 -->
-          <div class="roadmap-item animate reveal-left">
-            <div class="roadmap-dot">01</div>
-            <div class="moving-border-container roadmap-card">
-              <div class="moving-border-inner" style="padding: 1.5rem; flex-direction: column; align-items: flex-start; background: transparent;">
-                <i class="fas fa-search-plus" style="font-size: 1.8rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
-                <h3>Market Audit</h3>
-                <p>Deep audit of your current performance and Malappuram market competitors.</p>
-              </div>
+        <div class="approach-grid">
+
+          <!-- Step 01 -->
+          <div class="approach-card animate reveal-up stagger-1">
+            <div class="approach-step-num">01</div>
+            <div class="approach-icon-wrap">
+              <i class="fas fa-search-plus"></i>
             </div>
+            <span class="approach-label">Discovery</span>
+            <h3 class="approach-title">Market Audit</h3>
+            <p class="approach-desc">Deep analysis of your current digital footprint, Malappuram market competitors, keyword gaps, and untapped audience segments.</p>
+            <span class="approach-tag">Week 1</span>
           </div>
 
-          <!-- Step 2 -->
-          <div class="roadmap-item animate reveal-right">
-            <div class="roadmap-dot">02</div>
-            <div class="moving-border-container roadmap-card">
-              <div class="moving-border-inner" style="padding: 1.5rem; flex-direction: column; align-items: flex-start; background: transparent;">
-                <i class="fas fa-chess-knight" style="font-size: 1.8rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
-                <h3>ROI Strategy</h3>
-                <p>Building a custom roadmap focused on cost-per-lead and sales generation.</p>
-              </div>
+          <!-- Step 02 -->
+          <div class="approach-card animate reveal-up stagger-2">
+            <div class="approach-step-num">02</div>
+            <div class="approach-icon-wrap">
+              <i class="fas fa-chess-knight"></i>
             </div>
+            <span class="approach-label">Strategy</span>
+            <h3 class="approach-title">ROI Blueprint</h3>
+            <p class="approach-desc">Building a custom growth roadmap laser-focused on reducing cost-per-lead and maximizing revenue from every marketing rupee.</p>
+            <span class="approach-tag">Week 2</span>
           </div>
 
-          <!-- Step 3 -->
-          <div class="roadmap-item animate reveal-left">
-            <div class="roadmap-dot">03</div>
-            <div class="moving-border-container roadmap-card">
-              <div class="moving-border-inner" style="padding: 1.5rem; flex-direction: column; align-items: flex-start; background: transparent;">
-                <i class="fas fa-vial" style="font-size: 1.8rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
-                <h3>Agile Deployment</h3>
-                <p>Launching high-converting ads and SEO optimizations with precision.</p>
-              </div>
+          <!-- Step 03 -->
+          <div class="approach-card animate reveal-up stagger-3">
+            <div class="approach-step-num">03</div>
+            <div class="approach-icon-wrap">
+              <i class="fas fa-rocket"></i>
             </div>
+            <span class="approach-label">Execution</span>
+            <h3 class="approach-title">Agile Launch</h3>
+            <p class="approach-desc">Deploying high-converting campaigns, technical SEO optimizations, and conversion systems with precision and speed.</p>
+            <span class="approach-tag">Week 3–4</span>
           </div>
 
-          <!-- Step 4 -->
-          <div class="roadmap-item animate reveal-right">
-            <div class="roadmap-dot">04</div>
-            <div class="moving-border-container roadmap-card">
-              <div class="moving-border-inner" style="padding: 1.5rem; flex-direction: column; align-items: flex-start; background: transparent;">
-                <i class="fas fa-chart-line" style="font-size: 1.8rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
-                <h3>Scale & Optimize</h3>
-                <p>Scaling what works and cutting waste to maximize your return on investment.</p>
-              </div>
+          <!-- Step 04 -->
+          <div class="approach-card animate reveal-up stagger-4">
+            <div class="approach-step-num">04</div>
+            <div class="approach-icon-wrap">
+              <i class="fas fa-chart-line"></i>
             </div>
+            <span class="approach-label">Growth</span>
+            <h3 class="approach-title">Scale & Win</h3>
+            <p class="approach-desc">Doubling down on what drives results. Continuous A/B testing, budget optimization, and scaling proven funnels for compound growth.</p>
+            <span class="approach-tag">Ongoing</span>
           </div>
+
         </div>
-        <div class="text-center animate stagger-4" style="text-align:center; margin-top:3rem;">
-          <a href="calendar/" class="btn btn-primary"><i class="fas fa-bolt" style="margin-right: 8px;"></i>Book Your Growth Audit</a>
+
+        <div class="text-center animate stagger-4" style="text-align:center; margin-top: 3.5rem;">
+          <a href="calendar/" class="btn btn-primary btn-hero" style="padding: 1rem 3rem;">
+            <i class="fas fa-bolt"></i> Book Your Free Growth Audit
+          </a>
         </div>
       </div>
     </section>
+
 
 
 
@@ -1734,8 +1903,7 @@
                   <p class="calc-note">Estimated monthly revenue increase based on a 50% improvement in conversion
                     strategy.</p>
                   <div style="margin-top: 2rem;">
-                    <a href="contact/" class="btn btn-primary"
-                      style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                    <a href="contact/" class="btn btn-primary" style="width: 100%;">
                       <i class="fas fa-chart-line"></i> Get This Result
                     </a>
                   </div>
@@ -1784,8 +1952,7 @@
                   <p class="calc-note">Estimated quantity of high-intent leads generated through optimized ad campaigns.
                   </p>
                   <div style="margin-top: 2rem;">
-                    <a href="contact/" class="btn btn-primary"
-                      style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                    <a href="contact/" class="btn btn-primary" style="width: 100%;">
                       <i class="fas fa-bullseye"></i> Start Generating Leads
                     </a>
                   </div>
@@ -1868,9 +2035,9 @@
           <article class="moving-border-container animate stagger-2" style="border-radius: 12px;">
             <div class="moving-border-inner"
               style="border-radius: 10px; background: rgba(11, 46, 42, 0.7); padding: 1.5rem; flex-direction: column; align-items: flex-start; text-align: left;">
-              <h4 style="font-size: 1.1rem; margin-bottom: 1rem;"><a href="blog/voice-search-optimization-kerala/">Voice Search & AI Optimization: The 2026 Toolkit <span class="badge-new">NEW</span></a></h4>
-              <p style="font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--text-secondary);">Voice search and AI assistants are dominating local queries. Learn the top AEO tactics for Kerala...</p>
-              <a href="blog/voice-search-optimization-kerala/" class="text-accent"
+              <h4 style="font-size: 1.1rem; margin-bottom: 1rem;"><a href="blog/impact-of-ai-in-search-results-aeo/">The Impact of AI in Search Results: <span class="text-accent">AEO Explained</span> <span class="badge-new">NEW</span></a></h4>
+              <p style="font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--text-secondary);">Search is evolving from links to answers. Discover how AI is reshaping the digital landscape and why AEO is the next frontier...</p>
+              <a href="blog/impact-of-ai-in-search-results-aeo/" class="text-accent"
                 style="font-size: 0.9rem; font-weight:700;">Read More <i class="fas fa-arrow-right"
                   style="font-size: 0.8rem; margin-left: 5px;"></i></a>
             </div>
@@ -2122,12 +2289,12 @@
               </ul>
 
               <div class="cta-actions" style="margin-top: 2rem; display: flex; flex-direction: column; gap: 0.8rem;">
-                <a href="calendar/" class="btn btn-primary btn-pulse" style="width: 100%; text-align: center; justify-content: center; padding: 0.8rem;">
-                  <i class="fas fa-calendar-alt" style="margin-right: 8px;"></i>Free Strategy Call
+                <a href="calendar/" class="btn btn-primary" style="width: 100%;">
+                  <i class="fas fa-calendar-alt"></i> Free Strategy Call
                 </a>
                 <a href="https://wa.me/919778179727" target="_blank" class="btn btn-outline"
-                  style="width: 100%; text-align: center; border-color: #25D366; color: #25D366; justify-content: center; padding: 0.8rem;">
-                  <i class="fab fa-whatsapp" style="margin-right: 8px;"></i>Chat on WhatsApp
+                  style="width: 100%; border-color: #25D366; color: #25D366;">
+                  <i class="fab fa-whatsapp"></i> Chat on WhatsApp
                 </a>
               </div>
             </div>
@@ -2303,10 +2470,9 @@
       <h2 style="color:var(--accent-color);margin-bottom:1rem;">Grow Your Business with Me!</h2>
       <p style="color:var(--text-secondary);margin-bottom:1.5rem;">Unlock ROI-driven SEO, Google Ads, and Performance
         Marketing. Book a free consultation now and start scaling your brand in Kerala.</p>
-      <a href="services/" class="btn btn-primary" style="margin-bottom:0.5rem;display:inline-block;">Explore
-        Services</a>
+      <a href="services/" class="btn btn-primary" style="margin-bottom:0.5rem;">Explore Services</a>
       <br>
-      <a href="contact/" class="btn btn-outline" style="display:inline-block;">Contact Me</a>
+      <a href="contact/" class="btn btn-outline">Contact Me</a>
     </div>
   </div>
 
@@ -2373,7 +2539,7 @@
       }
       // Blog Badge Logic
       (function() {
-        const LATEST_BLOG_ID = "ai-prompt-engineering-kerala-2026"; // Update this when you post a new blog
+        const LATEST_BLOG_ID = "impact-of-ai-in-search-results-aeo"; // Update this when you post a new blog
         const badges = document.querySelectorAll('.badge-new');
         const seenBlogId = localStorage.getItem('seen_latest_blog');
         const isBlogPage = window.location.pathname.includes('/blog/') && !window.location.pathname.split('/blog/')[1];

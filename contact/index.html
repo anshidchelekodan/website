@@ -164,26 +164,7 @@
       box-shadow: 0 0 15px rgba(46, 230, 166, 0.2);
     }
     
-    .btn-primary {
-      background: linear-gradient(135deg, #0B2E2A 0%, #051512 100%);
-      color: #FFFFFF;
-      border: 2px solid #2EE6A6;
-      padding: 1.2rem;
-      border-radius: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      cursor: pointer;
-      transition: var(--transition);
-      box-shadow: 0 0 15px rgba(46, 230, 166, 0.15);
-    }
-    
-    .btn-primary:hover {
-      background: linear-gradient(135deg, #1fa378 0%, #0B2E2A 100%);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(46, 230, 166, 0.4);
-      border-color: #4FFFB0;
-    }
+    /* Buttons use global style.min.css cinematic styles */
     
     .map-container {
       width: 100% !important;
@@ -331,7 +312,7 @@
 
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 2.5rem; flex-wrap:wrap; gap:15px;">
                 <h2 style="margin:0; font-size: 2.2rem;">Send a Message</h2>
-                <a href="https://wa.me/919778179727" target="_blank" class="btn btn-outline" style="padding: 0.6rem 1.2rem; font-size: 0.9rem; border-color: #2EE6A6; color: #2EE6A6;"><i class="fab fa-whatsapp" style="margin-right:8px;"></i>Quick Chat</a>
+                <a href="https://wa.me/919778179727" target="_blank" class="btn btn-outline" style="padding: 0.6rem 1.2rem; font-size: 0.9rem; border-color: #25D366; color: #25D366;"><i class="fab fa-whatsapp"></i> Quick Chat</a>
               </div>
 
               <div class="form-group">
@@ -355,8 +336,8 @@
               </div>
 
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                <button type="submit" class="btn btn-primary btn-pulse" style="width: 100%; font-size: 1rem;"><i class="fas fa-paper-plane" style="margin-right: 8px;"></i>Send Message</button>
-                <button type="button" onclick="sendToWhatsApp()" class="btn btn-outline" style="width: 100%; border-color: #25D366; color: #25D366;"><i class="fab fa-whatsapp" style="margin-right:8px;"></i>Send to WhatsApp</button>
+                <button type="submit" class="btn btn-primary btn-pulse" style="width: 100%;"><i class="fas fa-paper-plane"></i> Send Message</button>
+                <button type="button" onclick="sendToWhatsApp()" class="btn btn-outline" style="width: 100%; border-color: #25D366; color: #25D366;"><i class="fab fa-whatsapp"></i> Send to WhatsApp</button>
               </div>
             </form>
         </div>
