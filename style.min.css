@@ -48,6 +48,11 @@ main {
   transition: filter 0.4s ease;
 }
 
+/* Global Utils */
+@media (max-width: 768px) {
+  .hide-on-mobile { display: none !important; }
+}
+
 /* Scroll Progress Bar */
 #scroll-progress-container {
   position: fixed;
