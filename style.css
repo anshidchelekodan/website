@@ -98,6 +98,27 @@ a:hover {
 .grid-3 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
 .grid-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
 
+/* Partnerships Specific Grid */
+.partnerships-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 2.5rem;
+  align-items: stretch;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .partnerships-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .partnerships-grid .moving-border-inner {
+    padding: 2rem 1.5rem !important;
+  }
+}
+
 /* Buttons */
 /* Cinematic CTA Buttons */
 .btn {
