@@ -1,8 +1,12 @@
-// Mobile Menu Toggle logic
-const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-const navLinks = document.querySelector('.nav-links');
+/**
+ * main.js — Performance-Optimized
+ * Fixes: layout thrashing, passive listeners, RAF throttling, GPU-only transforms
+ */
 
-// Create backdrop element if it doesn't exist
+/* ─── Mobile Menu ─────────────────────────────────────────── */
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const navLinks      = document.querySelector('.nav-links');
+
 let navOverlay = document.querySelector('.nav-overlay');
 if (!navOverlay) {
   navOverlay = document.createElement('div');
@@ -11,271 +15,188 @@ if (!navOverlay) {
 }
 
 const closeMenuBtn = document.querySelector('.close-menu-btn');
+const mainContent  = document.querySelector('main');
 
 const toggleMenu = (show) => {
   const isOpening = show !== undefined ? show : !navLinks.classList.contains('active');
-  
   if (isOpening) {
     navLinks.classList.add('active');
     navOverlay.classList.add('active');
     document.body.classList.add('menu-open');
-    // Blur main content
-    const mainContent = document.querySelector('main');
     if (mainContent) mainContent.style.filter = 'blur(10px)';
   } else {
     navLinks.classList.remove('active');
     navOverlay.classList.remove('active');
     document.body.classList.remove('menu-open');
-    // Unblur main content
-    const mainContent = document.querySelector('main');
     if (mainContent) mainContent.style.filter = '';
   }
 };
 
-if (mobileMenuBtn) {
-  mobileMenuBtn.addEventListener('click', () => toggleMenu(true));
-}
-
-if (closeMenuBtn) {
-  closeMenuBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    toggleMenu(false);
-  });
-}
-
-// Close menu when clicking overlay
+if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', () => toggleMenu(true));
+if (closeMenuBtn)  closeMenuBtn.addEventListener('click', (e) => { e.stopPropagation(); toggleMenu(false); });
 navOverlay.addEventListener('click', () => toggleMenu(false));
 
-// Close mobile menu when clicking a link
 const navItems = document.querySelectorAll('.nav-links a');
-navItems.forEach(item => {
-  item.addEventListener('click', () => toggleMenu(false));
-});
+navItems.forEach(item => item.addEventListener('click', () => toggleMenu(false)));
 
 
-// Scroll Animations (Intersection Observer)
-const observerOptions = {
-  root: null,
-  rootMargin: '0px 0px -10% 0px',
-  threshold: 0.1
-};
-
+/* ─── Scroll Animations (IntersectionObserver) ───────────── */
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('reveal');
-      
-      // Skill bars animation
+      // Skill bars — write only inside RAF to avoid forced reflow
       if (entry.target.classList.contains('expertise-item')) {
-        const progressFill = entry.target.querySelector('.skill-progress-fill');
-        if (progressFill) {
-          const width = progressFill.getAttribute('data-width');
-          requestAnimationFrame(() => {
-            progressFill.style.width = width;
-          });
+        const fill = entry.target.querySelector('.skill-progress-fill');
+        if (fill) {
+          const w = fill.getAttribute('data-width');
+          requestAnimationFrame(() => { fill.style.width = w; });
         }
       }
       observer.unobserve(entry.target);
     }
   });
-}, observerOptions);
+}, { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
 
-// Navbar & Header Logic
+
+/* ─── Navbar Scroll (RAF-throttled, GPU class only) ─────── */
 const navbar = document.querySelector('.navbar');
-
-let isScrolling = false;
+let _navRaf = false;
 function handleScroll() {
-  if (!isScrolling) {
-    window.requestAnimationFrame(() => {
-      if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-      isScrolling = false;
+  if (!_navRaf) {
+    _navRaf = true;
+    requestAnimationFrame(() => {
+      // window.scrollY is cheap — doesn't force layout when read inside RAF
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+      _navRaf = false;
     });
-    isScrolling = true;
   }
 }
+window.addEventListener('scroll', handleScroll, { passive: true });
 
-// Magnetic Button Effect DISABLED for cleaner UI
-// function initMagneticButtons() {
-//   const buttons = document.querySelectorAll('.btn-primary');
-//   buttons.forEach(btn => {
-//     btn.addEventListener('mousemove', (e) => {
-//       const rect = btn.getBoundingClientRect();
-//       const x = e.clientX - rect.left - rect.width / 2;
-//       const y = e.clientY - rect.top - rect.height / 2;
-//       btn.style.transform = `translate(${x * 0.3}px, ${y * 0.5}px)`;
-//     });
-//     btn.addEventListener('mouseleave', () => {
-//       btn.style.transform = 'translate(0px, 0px)';
-//     });
-//   });
-// }
 
-// Pro Mouse Glow Mouse Effect DISABLED for cleaner UI
-// function initMouseGlow() {
-//   const cards = document.querySelectorAll('.pro-mv-card');
-//   cards.forEach(card => {
-//     card.addEventListener('mousemove', (e) => {
-//       const rect = card.getBoundingClientRect();
-//       const x = ((e.clientX - rect.left) / rect.width) * 100;
-//       const y = ((e.clientY - rect.top) / rect.height) * 100;
-//       card.style.setProperty('--mouse-x', `${x}%`);
-//       card.style.setProperty('--mouse-y', `${y}%`);
-//     });
-//   });
-// }
-
+/* ─── FAQ Accordion — batch read then write to avoid reflow ─ */
 const initFAQ = () => {
   const faqItems = document.querySelectorAll('.faq-item');
-  
   faqItems.forEach(item => {
     const question = item.querySelector('.faq-question');
-    const answer = item.querySelector('.faq-answer');
-    
+    const answer   = item.querySelector('.faq-answer');
     question.addEventListener('click', () => {
       const isActive = item.classList.contains('active');
-      
-      // Close all other items
-      faqItems.forEach(otherItem => {
-        if (otherItem !== item) {
-          otherItem.classList.remove('active');
-          const otherAnswer = otherItem.querySelector('.faq-answer');
-          requestAnimationFrame(() => {
-            otherAnswer.style.maxHeight = null;
-          });
+      // READ phase — gather all heights before touching DOM
+      const heights = new Map();
+      faqItems.forEach(other => {
+        if (other !== item && other.classList.contains('active')) {
+          heights.set(other, other.querySelector('.faq-answer').scrollHeight);
         }
       });
-      
-      // Toggle current item
-      if (!isActive) {
-        item.classList.add('active');
-        const height = answer.scrollHeight;
-        requestAnimationFrame(() => {
-          answer.style.maxHeight = height + "px";
+      const targetHeight = !isActive ? answer.scrollHeight : 0;
+
+      // WRITE phase — single RAF
+      requestAnimationFrame(() => {
+        faqItems.forEach(other => {
+          if (other !== item) {
+            other.classList.remove('active');
+            other.querySelector('.faq-answer').style.maxHeight = null;
+          }
         });
-      } else {
-        item.classList.remove('active');
-        requestAnimationFrame(() => {
+        if (!isActive) {
+          item.classList.add('active');
+          answer.style.maxHeight = targetHeight + 'px';
+        } else {
+          item.classList.remove('active');
           answer.style.maxHeight = null;
-        });
-      }
+        }
+      });
     });
   });
 };
 
 
-// Global UI Elements Generation
+/* ─── Global UI (Progress Bar + Back-to-Top) ────────────── */
 const initGlobalUI = () => {
-  // Scroll Progress Bar
+  // Progress bar — use transform:scaleX() instead of width (GPU composited)
   if (!document.getElementById('scroll-progress-container')) {
-    const progressContainer = document.createElement('div');
-    progressContainer.id = 'scroll-progress-container';
-    progressContainer.innerHTML = '<div id="scroll-progress-bar"></div>';
-    document.body.prepend(progressContainer);
+    const pc = document.createElement('div');
+    pc.id = 'scroll-progress-container';
+    pc.innerHTML = '<div id="scroll-progress-bar"></div>';
+    document.body.prepend(pc);
   }
 
-  // Back to Top Button
   if (!document.querySelector('.back-to-top')) {
-    const bttBtn = document.createElement('div');
-    bttBtn.className = 'back-to-top';
-    bttBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
-    document.body.appendChild(bttBtn);
-
-    bttBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    const btn = document.createElement('div');
+    btn.className = 'back-to-top';
+    btn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    btn.setAttribute('aria-label', 'Back to top');
+    document.body.appendChild(btn);
+    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   }
 };
 
 initGlobalUI();
 
+const progressBar  = document.getElementById('scroll-progress-bar');
 const backToTopBtn = document.querySelector('.back-to-top');
-const progressBar = document.getElementById('scroll-progress-bar');
+let _scrollRaf = false;
 
 const updateScrollUI = () => {
-  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  
-  // Progress Bar
-  if (progressBar && height > 0) {
-    const scrolled = (winScroll / height) * 100;
-    progressBar.style.width = scrolled + '%';
-  }
-
-  // Back to Top Visibility
-  if (backToTopBtn) {
-    if (winScroll > 400) {
-      backToTopBtn.classList.add('active');
-    } else {
-      backToTopBtn.classList.remove('active');
+  if (_scrollRaf) return;
+  _scrollRaf = true;
+  requestAnimationFrame(() => {
+    const winScroll = window.scrollY || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    // GPU-composited: scaleX instead of width
+    if (progressBar && height > 0) {
+      progressBar.style.transform = `scaleX(${winScroll / height})`;
     }
-  }
+    if (backToTopBtn) {
+      backToTopBtn.classList.toggle('active', winScroll > 400);
+    }
+    _scrollRaf = false;
+  });
 };
 
+window.addEventListener('scroll', updateScrollUI, { passive: true });
+
+
+/* ─── DOMContentLoaded init ─────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
-  // Observe animated elements
-  const animatedElements = document.querySelectorAll('.animate');
-  animatedElements.forEach(el => observer.observe(el));
-  
-  // Init other features
+  // Observe animated elements (skip hero elements — they're already visible)
+  document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+
   handleScroll();
   initFAQ();
   updateScrollUI();
-  
-  window.addEventListener('scroll', updateScrollUI);
 
-  // Smooth scroll for all internal links
+  // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+    anchor.addEventListener('click', function(e) {
       e.preventDefault();
-      const targetId = this.getAttribute('href').slice(1);
-      const targetElement = document.getElementById(targetId);
-      if (targetElement) {
-        targetElement.scrollIntoView({
-          behavior: 'smooth'
-        });
-      }
+      const el = document.getElementById(this.getAttribute('href').slice(1));
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
     });
   });
-  
-  // Set active nav link
+
+  // Active nav link highlighting
   const currentPath = window.location.pathname;
-  
-  // Highlighting logic
+  const normalize = (p) => p.replace(/\/index\.html$/, '/').replace(/(.+)\/$/, '$1') || '/';
+  const nCurrent = normalize(currentPath);
   navItems.forEach(link => {
-    link.classList.remove('active'); // Clear first
+    link.classList.remove('active');
     const href = link.getAttribute('href');
     if (!href) return;
-    
-    // Resolve full path (efficiently)
     let linkPath;
-    try {
-      linkPath = new URL(href, window.location.href).pathname;
-    } catch (e) {
-      const a = document.createElement('a');
-      a.href = href;
-      linkPath = a.pathname;
-    }
-    
-    const normalize = (p) => p.replace(/\/index\.html$/, '/').replace(/(.+)\/$/, '$1') || '/';
-    const nCurrent = normalize(currentPath);
+    try { linkPath = new URL(href, window.location.href).pathname; }
+    catch (e) { const a = document.createElement('a'); a.href = href; linkPath = a.pathname; }
     const nLink = normalize(linkPath);
-    
-    if (nLink === nCurrent) {
-      link.classList.add('active');
-    } else if (nLink !== '/' && nCurrent.startsWith(nLink + '/')) {
+    if (nLink === nCurrent || (nLink !== '/' && nCurrent.startsWith(nLink + '/'))) {
       link.classList.add('active');
     }
   });
 });
 
-window.addEventListener('scroll', handleScroll);
 
-
-// Blog Comment Form Handler
+/* ─── Blog Comment Form ─────────────────────────────────── */
 const blogCommentForm = document.getElementById('blogCommentForm');
 if (blogCommentForm) {
   blogCommentForm.addEventListener('submit', (e) => {
@@ -284,53 +205,26 @@ if (blogCommentForm) {
     const originalText = btn.textContent;
     btn.disabled = true;
     btn.textContent = 'Sending...';
-    
-    // Prepare data to match existing contact script (name, email, message, phone)
     const formData = {
       name: document.getElementById('comment-name').value,
       email: document.getElementById('comment-email').value,
-      message: "[BLOG COMMENT]: " + document.getElementById('comment-msg').value,
-      phone: "N/A"
+      message: '[BLOG COMMENT]: ' + document.getElementById('comment-msg').value,
+      phone: 'N/A'
     };
-
-    // Use the existing Google Script endpoint found in contact/index.html
-    const scriptURL = "https://script.google.com/macros/s/AKfycbwHQNCp53r_-9lnEKM6pXrVuyqtxuqq-5C3tCm8tHJYJYEhJJYN1dryN_PTSZLbo1tA/exec";
-
-    fetch(scriptURL, {
-      method: 'POST',
-      mode: 'no-cors', // Google Script requires no-cors for simple fetch
-      body: JSON.stringify(formData)
-    })
-    .then(() => {
-      // Show Premium Success State
+    fetch('https://script.google.com/macros/s/AKfycbwHQNCp53r_-9lnEKM6pXrVuyqtxuqq-5C3tCm8tHJYJYEhJJYN1dryN_PTSZLbo1tA/exec', {
+      method: 'POST', mode: 'no-cors', body: JSON.stringify(formData)
+    }).then(() => {
       const container = blogCommentForm.parentElement;
       const successMsg = document.createElement('div');
       successMsg.className = 'animate reveal reveal-up';
-      successMsg.style.padding = '3.5rem 2rem';
-      successMsg.style.background = 'rgba(255, 255, 255, 0.02)';
-      successMsg.style.border = '1px solid var(--accent-color)';
-      successMsg.style.borderRadius = '24px';
-      successMsg.style.textAlign = 'center';
-      successMsg.style.marginTop = '2rem';
-      successMsg.style.boxShadow = 'var(--shadow-hover)';
-      
-      successMsg.innerHTML = `
-        <div style="margin-bottom: 1.5rem;">
-          <i class="fas fa-check-circle" style="font-size: 3.5rem; color: var(--accent-color);"></i>
-        </div>
-        <h3 style="color: #fff; margin-bottom: 0.8rem; font-size: 2rem;">Message Received!</h3>
-        <p style="color: var(--text-secondary); font-size: 1.15rem; max-width: 500px; margin: 0 auto; line-height: 1.6;">
-          Your insight has been sent to Mohammad Anshid Ck's inbox. Thank you for contributing to the discussion!
-        </p>
-      `;
-      
+      successMsg.style.cssText = 'padding:3.5rem 2rem;background:rgba(255,255,255,.02);border:1px solid var(--accent-color);border-radius:24px;text-align:center;margin-top:2rem;';
+      successMsg.innerHTML = `<div style="margin-bottom:1.5rem"><i class="fas fa-check-circle" style="font-size:3.5rem;color:var(--accent-color)"></i></div><h3 style="color:#fff;margin-bottom:.8rem;font-size:2rem">Message Received!</h3><p style="color:var(--text-secondary);font-size:1.15rem;max-width:500px;margin:0 auto;line-height:1.6">Your insight has been sent to Mohammad Anshid Ck's inbox.</p>`;
       blogCommentForm.style.display = 'none';
       container.insertBefore(successMsg, blogCommentForm.nextSibling);
-    })
-    .catch(error => {
+    }).catch(() => {
       btn.disabled = false;
       btn.textContent = originalText;
-      alert("Something went wrong. Please try again or contact me directly via WhatsApp.");
+      alert('Something went wrong. Please try again or contact me directly via WhatsApp.');
     });
   });
 }

@@ -2,15 +2,20 @@
 <html lang="en">
 
 <head>
-  <!-- Google Tag Manager -->
-  <script>(function (w, d, s, l, i) {
-      w[l] = w[l] || []; w[l].push({
-        'gtm.start':
-          new Date().getTime(), event: 'gtm.js'
-      }); var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-NXNM6B7R');</script>
+  <!-- Google Tag Manager (Deferred for Performance) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
+        (function (w, d, s, l, i) {
+          w[l] = w[l] || []; w[l].push({
+            'gtm.start': new Date().getTime(), event: 'gtm.js'
+          }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+              'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-NXNM6B7R');
+      }, 3500); // Delay by 3.5s to let LCP finish first
+    });
+  </script>
   <!-- End Google Tag Manager -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +30,7 @@
   <meta property="og:title" content="Best Digital Marketing Strategist in Malappuram & Kerala | Mohammad Anshid Ck">
   <meta property="og:description"
     content="Scale your business with expert SEO and Performance Marketing. Mohammad Anshid Ck is the leading Digital Marketing Strategist in Malappuram & Kerala.">
-  <meta property="og:image" content="https://anshidck.com/anshid-optimized.jpg">
+  <meta property="og:image" content="https://anshidck.com/anshid-optimized.webp">
   <meta property="og:url" content="https://anshidck.com/">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://anshidck.com/">
@@ -35,12 +40,18 @@
   <meta name="twitter:title" content="Best Digital Marketing Strategist in Malappuram | Mohammad Anshid Ck">
   <meta name="twitter:description"
     content="Expert Digital Marketing services in Malappuram. Focused on ROI, leads, and 10x growth.">
-  <meta name="twitter:image" content="https://anshidck.com/anshid-optimized.jpg">
+  <meta name="twitter:image" content="https://anshidck.com/anshid-optimized.webp">
 
   <!-- Favicon setup -->
   <link rel="icon" type="image/webp" href="favicon.webp">
   <link rel="apple-touch-icon" href="favicon.webp">
   <link rel="preload" as="image" href="assets/hero.webp">
+  <!-- Resource Hints: Reduce connection latency on mobile -->
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
 
   <!-- SEO JSON-LD Schema (AEO Optimized) -->
   <script type="application/ld+json">
@@ -72,7 +83,7 @@
         "@type": "LocalBusiness",
         "@id": "https://anshidck.com/#organization",
         "name": "Mohammad Anshid Ck - Digital Marketing Strategist in Malappuram",
-        "image": "https://anshidck.com/anshid-optimized.jpg",
+        "image": "https://anshidck.com/anshid-optimized.webp",
         "description": "Premium digital marketing services in Malappuram, Kerala. Helping local businesses grow through data-driven strategies.",
         "url": "https://anshidck.com/",
         "telephone": "+919778179727",
@@ -179,16 +190,64 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap"></noscript>
 
   <!-- FontAwesome for Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 
-  <!-- Styles -->
-  <link rel="preload" as="style" href="style.min.css?v=20260507-3">
-  <link rel="stylesheet" href="style.min.css?v=20260507-3">
+  <!-- Critical CSS Inlined for Instant First Paint -->
+  <style>
+    :root{--bg-color:#051512;--card-bg:#0B2E2A;--accent-color:#62ffb0;--accent-hover:#4FFFB0;--text-primary:#F2F2F2;--text-secondary:#9FD9C7;--font-main:'Montserrat',sans-serif;--font-heading:'Nevis','Montserrat',sans-serif;--shadow-soft:0 10px 30px rgba(0,0,0,.6);--shadow-hover:0 15px 40px rgba(98,255,176,.15);--transition:all .4s cubic-bezier(.4,0,.2,1);--glass-bg:rgba(21,21,21,.7);--glass-border:rgba(98,255,176,.1)}
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font-main);background-color:var(--bg-color);color:var(--text-primary);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    h1,h2,h3,h4,h5,h6{font-family:var(--font-heading);font-weight:700;line-height:1.2;margin-bottom:1rem;letter-spacing:-.02em}
+    h1{font-size:clamp(2.5rem,5vw,4rem)}h2{font-size:clamp(2rem,4vw,3rem)}h3{font-size:clamp(1.5rem,3vw,2.2rem)}
+    p{color:var(--text-secondary);margin-bottom:1rem}
+    a{text-decoration:none;color:var(--text-primary)}
+    a:hover{color:var(--accent-color)}
+    .text-accent{color:var(--accent-color)}
+    .container{width:100%;max-width:1728px;margin:0 auto;padding:0 2rem}
+    .section{padding:6rem 0}
+    .navbar{position:fixed;top:0;width:100%;padding:1.5rem 0;background-color:transparent;z-index:1000;transition:all .5s cubic-bezier(.4,0,.2,1);border-bottom:1px solid transparent}
+    .navbar.scrolled{background-color:rgba(5,11,10,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:.8rem 0;border-bottom:1px solid rgba(46,230,166,.08);box-shadow:0 10px 30px rgba(0,0,0,.5)}
+    .navbar .container.container-nav{display:flex;justify-content:space-between;align-items:center}
+    .logo-group{display:flex;align-items:center;gap:2.5rem}
+    .logo{font-size:1.5rem;font-weight:800;letter-spacing:1px}
+    .nav-links{display:flex;list-style:none;gap:30px;align-items:center}
+    .nav-links a{color:var(--text-primary);font-weight:500;font-size:.95rem}
+    .nav-links a.active{color:var(--accent-color)}
+    .mobile-menu-btn{display:none;font-size:1.6rem;background:none;border:none;color:var(--text-primary);cursor:pointer;width:44px;height:44px;align-items:center;justify-content:center;border-radius:10px}
+    .hero{padding-top:clamp(80px,12vw,140px);padding-bottom:clamp(30px,6vw,60px);min-height:auto;display:flex;align-items:center;position:relative;overflow:hidden}
+    .hero-container{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:clamp(2rem,5vw,60px);width:100%;position:relative;z-index:10}
+    .hero-name{font-size:clamp(2rem,8vw,4.2rem);font-weight:800;margin-bottom:.8rem;line-height:1.1;color:#fff;letter-spacing:-.5px}
+    .hero-description{font-size:clamp(.9rem,1.5vw,1.15rem);line-height:1.6;color:var(--text-secondary);margin-bottom:clamp(1.5rem,3vw,2.5rem);max-width:600px}
+    .hero-image{position:relative;width:100%;display:flex;justify-content:center;padding:clamp(0px,2vw,20px)}
+    .hero-image img{height:auto!important;object-fit:cover;width:100%;max-width:clamp(200px,50vw,440px);border-radius:clamp(12px,2vw,24px);position:relative;z-index:2;box-shadow:0 20px 50px rgba(0,0,0,.6);border:1px solid rgba(46,230,166,.2)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:.9rem 2.2rem;border-radius:16px;font-weight:700;cursor:pointer;transition:all .35s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden;text-transform:uppercase;font-size:clamp(.85rem,1.5vw,.95rem);letter-spacing:1px;border:1px solid transparent;gap:10px;z-index:1}
+    .btn-primary{background:linear-gradient(135deg,#0f0f0f,#1a1a1a);color:#F2F2F2!important;border:1px solid rgba(98,255,176,.35);box-shadow:0 0 12px rgba(98,255,176,.18),0 0 30px rgba(98,255,176,.08)}
+    .btn-outline,.btn-secondary{background:rgba(21,21,21,.4);border:1px solid rgba(98,255,176,.25);color:#F2F2F2}
+    .hero-buttons{display:flex!important;gap:1.5rem!important;align-items:center!important;margin-top:2.5rem!important;flex-wrap:wrap!important;position:relative!important;z-index:100!important}
+    .hero-buttons .btn{min-width:240px!important;padding:1.2rem 2.5rem!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:12px!important;font-size:1rem!important;font-weight:800!important;border-radius:14px!important}
+    .hero-buttons .btn.btn-primary{background:#2EE6A6!important;color:#051512!important;border:none!important;box-shadow:0 0 30px rgba(46,230,166,.6)!important}
+    #scroll-progress-container{position:fixed;top:0;left:0;width:100%;height:3px;z-index:9999;background:transparent}
+    #scroll-progress-bar{height:100%;width:100%;background:linear-gradient(90deg,var(--accent-color),var(--accent-hover));transform-origin:left;transform:scaleX(0);transition:transform .1s linear}
+    .animate{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.2,0,.2,1),transform .8s cubic-bezier(.2,0,.2,1);will-change:opacity,transform}
+    .animate.reveal{opacity:1;transform:translateY(0)}
+    .reveal-left{transform:translateX(-30px)}
+    .reveal-right{transform:translateX(30px)}
+    .animate.reveal-left.reveal,.animate.reveal-right.reveal{transform:translateX(0)}
+    .stagger-1{transition-delay:.1s}.stagger-2{transition-delay:.2s}
+    .hero-subtitle{display:block;color:var(--accent-color);letter-spacing:clamp(2px,1vw,4px);text-transform:uppercase;font-weight:700;font-size:clamp(.7rem,1.2vw,.85rem);margin-bottom:.8rem;opacity:.9}
+    @media(max-width:992px){.hero-container{grid-template-columns:1fr;gap:3rem;text-align:center}.hero-content{text-align:center}.hero-image{margin:0 auto}}
+    @media(max-width:768px){.mobile-menu-btn{display:flex}.nav-links{display:none;position:fixed;top:0;right:0;width:85%;max-width:360px;height:100vh;background:rgba(5,11,10,.98);flex-direction:column;padding:5rem 2rem 2rem;z-index:1000;transform:translateX(100%);transition:transform .4s ease;gap:0;align-items:flex-start}.nav-links.active{display:flex;transform:translateX(0)}.hero-buttons{flex-direction:column!important;width:100%!important;gap:1.2rem!important}.hero-buttons .btn{width:100%!important;min-width:auto!important}}
+  </style>
+
+  <!-- Styles (Async Loading) -->
+  <link rel="preload" as="style" href="style.min.css?v=20260516-1" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="style.min.css?v=20260516-1"></noscript>
   <link rel="preload" href="chatbot.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="chatbot.css"></noscript>
 
@@ -198,7 +257,14 @@
       background-image: linear-gradient(rgba(5, 11, 10, 0.88), rgba(5, 11, 10, 0.96)), url('image.png');
       background-size: cover;
       background-position: center;
-      background-attachment: fixed;
+      background-attachment: fixed; /* desktop only */
+    }
+    /* Mobile: disable fixed-attachment (causes constant repaints on iOS/Android) */
+    @media (max-width: 768px) {
+      body {
+        background-attachment: scroll;
+        background-image: none; /* Remove heavy image on mobile */
+      }
     }
 
     /* Services Redesign - Compact Model */
@@ -874,6 +940,97 @@
           0% { transform: translateY(-100%); }
           100% { transform: translateY(500%); }
         }
+
+  /* =============================================
+     MOBILE PERFORMANCE OPTIMIZATIONS
+     Disable heavy GPU effects on small screens
+     ============================================= */
+  @media (max-width: 768px) {
+    /* Hide mouse spotlight entirely on mobile (no mouse = no point) */
+    .mouse-spotlight { display: none !important; }
+
+    /* Disable heavy ambient glow animations on mobile */
+    .ambient-glow {
+      animation: none !important;
+      opacity: 0.06 !important;
+      filter: blur(60px) !important; /* Reduce blur radius */
+    }
+    /* Only keep 1 glow on mobile */
+    .glow-2, .glow-3 { display: none !important; }
+
+    /* Disable scanline animation on cyber-grid */
+    .cyber-grid::after { animation: none !important; display: none !important; }
+    .cyber-grid { opacity: 0.25 !important; }
+
+    /* Remove backdrop-filter blurs on mobile (huge GPU killer) */
+    .floating-badge .moving-border-inner {
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+
+    /* Hide floating badges on mobile to reduce DOM complexity */
+    .floating-badge { display: none !important; }
+
+    /* Reduce/pause marquee animations on mobile for battery life */
+    .expertise-marquee-container .expertise-grid {
+      animation-duration: 60s !important; /* Slow it down */
+    }
+    .tools-track { animation-duration: 60s !important; }
+    .brands-track { animation-duration: 45s !important; }
+    .testimonial-track { animation-duration: 30s !important; }
+
+    /* Simplify card hover effects on mobile */
+    .card:hover {
+      transform: none !important;
+    }
+    .service-card:hover {
+      transform: none !important;
+    }
+    .timeline-item:hover .timeline-content {
+      transform: none !important;
+    }
+
+    /* Remove heavy hero shape blur */
+    .hero-shape {
+      filter: blur(40px) !important;
+      opacity: 0.5 !important;
+    }
+
+    /* Hero CTA button - remove breathing animation on mobile */
+    .btn-hero {
+      animation: none !important;
+    }
+    .btn-hero::after {
+      display: none !important;
+    }
+
+    /* Remove backdrop-filter on service cards + results cards (GPU killer) */
+    .service-detail-card {
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+    .results-card {
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+    .faq-question {
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+    .navbar.scrolled {
+      backdrop-filter: blur(8px) !important; /* Reduce navbar blur on mobile */
+      -webkit-backdrop-filter: blur(8px) !important;
+    }
+  }
+
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 </style>
 </head>
 
@@ -938,7 +1095,7 @@
       <div class="hero-container">
         <div class="hero-image animate reveal-left stagger-1">
           <div class="hero-shape"></div>
-          <img src="assets/hero.webp" width="600" height="700" fetchpriority="high"
+          <img src="assets/hero.webp" width="600" height="700" fetchpriority="high" loading="eager" decoding="async"
             alt="Digital Marketing Strategist in Malappuram">
 
           <!-- Floating Badges -->
@@ -1355,7 +1512,7 @@
           style="margin-top: clamp(2rem, 5vw, 4rem); background: rgba(11, 46, 42, 0.4); border-radius: 20px; padding: clamp(1.5rem, 4vw, 3rem); border: 1px solid rgba(46, 230, 166, 0.15); display: flex; gap: clamp(1.5rem, 4vw, 3rem); align-items: center; flex-wrap: wrap;">
           <div
             style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; border: 4px solid var(--accent-color); flex-shrink: 0; box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center;">
-            <img loading="lazy" src="anshid-optimized.webp" width="600" height="900"
+            <img loading="lazy" decoding="async" src="anshid-optimized.webp" width="600" height="900"
               alt="Mohammad Anshid Ck - Best Digital Marketing Strategist in Malappuram"
               style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 15%;">
           </div>
@@ -2488,7 +2645,7 @@
           </div>
           <div class="animate reveal-right">
             <div style="position: relative; max-width: 550px; margin: 0 auto;">
-              <img loading="lazy" src="assets/lap.webp" width="1280" height="1706"
+              <img loading="lazy" decoding="async" src="assets/lap.webp" width="1280" height="1706"
                 alt="Performance Marketing Strategist in Kerala"
                 style="width: 100%; height: auto; border-radius: 20px; border: 1px solid rgba(46,230,166,0.15); box-shadow: 0 20px 40px rgba(0,0,0,0.6); object-fit: contain;">
               <div
@@ -3916,17 +4073,59 @@
 
 
   <script>
-    // Mouse Spotlight Movement
-    document.addEventListener('mousemove', (e) => {
-      const spotlight = document.querySelector('.mouse-spotlight');
-      if (spotlight) {
-        spotlight.style.left = e.clientX + 'px';
-        spotlight.style.top = e.clientY + 'px';
+    // Mouse Spotlight Movement — desktop only (no mouse on mobile)
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      var _spotlight = document.querySelector('.mouse-spotlight');
+      if (_spotlight) {
+        var _spotX = window.innerWidth / 2, _spotY = window.innerHeight / 2;
+        var _rafPending = false;
+        document.addEventListener('mousemove', function(e) {
+          _spotX = e.clientX; _spotY = e.clientY;
+          if (!_rafPending) {
+            _rafPending = true;
+            requestAnimationFrame(function() {
+              _spotlight.style.left = _spotX + 'px';
+              _spotlight.style.top = _spotY + 'px';
+              _rafPending = false;
+            });
+          }
+        }, { passive: true });
+      }
+    }
+  </script>
+
+  <script src="main.js?v=20260516-1" defer></script>
+
+  <script>
+    // Performance: Pause marquee animations when off-screen (saves GPU on mobile)
+    document.addEventListener('DOMContentLoaded', function() {
+      var marqueeSelectors = [
+        '.brands-track', '.tools-track', '.expertise-marquee-container .expertise-grid',
+        '.testimonial-track'
+      ];
+      if ('IntersectionObserver' in window) {
+        marqueeSelectors.forEach(function(sel) {
+          var el = document.querySelector(sel);
+          if (!el) return;
+          var parent = el.closest('.brands-marquee-container, .tools-marquee-container, .expertise-marquee-container, .testimonial-marquee-container') || el.parentElement;
+          var io = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+              el.style.animationPlayState = e.isIntersecting ? 'running' : 'paused';
+            });
+          }, { threshold: 0 });
+          io.observe(parent);
+        });
+      }
+
+      // Mobile: disable backdrop-filter on service cards & results cards
+      if (window.matchMedia('(max-width: 768px)').matches) {
+        document.querySelectorAll('.service-detail-card, .results-card, .faq-question').forEach(function(el) {
+          el.style.backdropFilter = 'none';
+          el.style.webkitBackdropFilter = 'none';
+        });
       }
     });
   </script>
-
-  <script src="main.js?v=20260327-4" defer></script>
 
 
   <script>
@@ -4095,8 +4294,26 @@
       });
     });
   </script>
-  <script src="chatbot.js" defer></script>
-  <script src="time-widget.js" defer></script>
+  <!-- Third-party / low-priority scripts lazy loaded -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Defer heavy widgets until browser is idle
+      const loadWidgets = () => {
+        ['chatbot.js', 'time-widget.js'].forEach(src => {
+          const script = document.createElement('script');
+          script.src = src;
+          script.defer = true;
+          document.body.appendChild(script);
+        });
+      };
+      
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadWidgets, { timeout: 3000 });
+      } else {
+        setTimeout(loadWidgets, 2500); // Fallback for Safari
+      }
+    });
+  </script>
   <a href="https://wa.me/919778179727" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
     <i class="fab fa-whatsapp"></i>
   </a>
@@ -4441,15 +4658,8 @@
     });
   </script>
 
-  <script>
-    // Mouse Spotlight Movement
-    document.addEventListener('mousemove', (e) => {
-      const spotlight = document.querySelector('.mouse-spotlight');
-      if (spotlight) {
-        spotlight.style.left = e.clientX + 'px';
-        spotlight.style.top = e.clientY + 'px';
-      }
-    });
+    // Mouse Spotlight is already handled above — no duplicate listener needed
+
 
     // Newsletter Form Logic
     const newsletterForm = document.getElementById('newsletter-form');
