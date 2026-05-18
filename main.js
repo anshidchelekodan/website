@@ -228,3 +228,26 @@ if (blogCommentForm) {
     });
   });
 }
+
+// Global Owl Eye Tracking
+document.addEventListener('mousemove', (e) => {
+    const eyes = document.querySelectorAll('.eye');
+    if(eyes.length === 0) return;
+    eyes.forEach(eye => {
+        const rect = eye.getBoundingClientRect();
+        const eyeX = rect.left + rect.width / 2;
+        const eyeY = rect.top + rect.height / 2;
+        const rad = Math.atan2(e.clientY - eyeY, e.clientX - eyeX);
+        
+        // Max distance the pupil can move from center
+        const distance = Math.min(13, Math.hypot(e.clientX - eyeX, e.clientY - eyeY) / 10);
+        
+        const pupilX = distance * Math.cos(rad);
+        const pupilY = distance * Math.sin(rad);
+        
+        const pupil = eye.querySelector('.pupil');
+        if(pupil) {
+            pupil.style.transform = `translate(${pupilX}px, ${pupilY}px)`;
+        }
+    });
+});

@@ -1,0 +1,415 @@
+.eye-socket {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(145deg, #1a2322, #0d1211);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 
+                5px 5px 15px rgba(0,0,0,0.8),
+                -5px -5px 15px rgba(255,255,255,0.05),
+                inset 0 0 20px rgba(0,0,0,0.9);
+            position: relative;
+            border: 2px solid #2a3a38;
+        }
+
+        .eye {
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle at 30% 30%, #fff, var(--accent-color) 35%, #0b2e2a 70%, #000 100%);
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 
+                inset 0 0 15px rgba(0,0,0,0.9),
+                0 0 25px rgba(46, 230, 166, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 1px solid rgba(46, 230, 166, 0.5);
+        }
+        
+        /* Glass reflection over the eye */
+        .eye::after {
+            content: '';
+            position: absolute;
+            top: 5%;
+            left: 10%;
+            width: 40%;
+            height: 20%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,0));
+            border-radius: 50%;
+            transform: rotate(-20deg);
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .pupil {
+            width: 24px;
+            height: 24px;
+            background: radial-gradient(circle at 40% 40%, #111, #000 60%);
+            border-radius: 50%;
+            position: absolute;
+            transition: transform 0.05s linear;
+            box-shadow: 
+                inset 0 0 5px rgba(255,255,255,0.2), 
+                0 0 15px rgba(0,0,0,0.9), 
+                0 0 5px rgba(46, 230, 166, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Artificial mechanical center inside the pupil */
+        .pupil::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, var(--accent-color), transparent);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-color);
+            opacity: 0.8;
+        }
+
+        /* Owl Scene */
+        .owl-scene {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            margin-top: -1rem; 
+        }
+
+        /* Tree Branch */
+        .tree-branch {
+            width: 350px;
+            height: 20px;
+            background: linear-gradient(to bottom, #2b1d14, #140d09);
+            border-radius: 10px;
+            position: absolute;
+            bottom: -10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.8), inset 0 2px 5px rgba(255,255,255,0.1);
+            z-index: 1;
+        }
+
+        .leaf {
+            position: absolute;
+            width: 35px;
+            height: 16px;
+            background: linear-gradient(135deg, #1c7a4b, #09331e);
+            border-radius: 0 25px 0 25px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+            border: 1px solid rgba(46, 230, 166, 0.2);
+        }
+        .leaf-1 { top: 8px; right: -15px; transform: rotate(20deg); }
+        .leaf-2 { bottom: -12px; left: 30px; transform: rotate(-30deg); }
+        .leaf-3 { top: -10px; left: -10px; transform: rotate(-40deg); }
+
+        /* Owl Container */
+        .owl {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 2;
+            animation: breathing 4s ease-in-out infinite;
+            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.5));
+        }
+
+        @keyframes breathing {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        /* Owl Head */
+        .owl-head {
+            width: 190px;
+            height: 120px;
+            background: linear-gradient(145deg, #1c2624, #0f1514);
+            border-radius: 80px 80px 50px 50px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: inset 0 8px 15px rgba(255,255,255,0.05);
+            z-index: 3;
+            border: 2px solid #2a3a38;
+        }
+
+        /* Ears */
+        .owl-ears {
+            position: absolute;
+            top: -20px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 15px;
+            z-index: 1;
+        }
+
+        .ear {
+            width: 0;
+            height: 0;
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+            border-bottom: 45px solid #1c2624;
+        }
+
+        .ear.left { transform: rotate(-30deg); }
+        .ear.right { transform: rotate(30deg); }
+
+        /* Beak Container */
+        .beak-container {
+            position: absolute;
+            bottom: -15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 4;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+        }
+
+        /* Smoke */
+        .smoke {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: rgba(200, 200, 200, 0.6);
+            border-radius: 50%;
+            filter: blur(4px);
+            opacity: 0;
+            z-index: 5;
+            pointer-events: none;
+            top: 10px;
+        }
+        .smoke.left { left: -10px; }
+        .smoke.right { right: -10px; }
+
+        /* Beak Parts */
+        .beak-top {
+            width: 0;
+            height: 0;
+            border-left: 14px solid transparent;
+            border-right: 14px solid transparent;
+            border-top: 25px solid #d4af37;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.7));
+            transition: transform 0.1s;
+            transform-origin: top center;
+            position: relative;
+            z-index: 2;
+        }
+        .beak-top::after {
+            content: '';
+            position: absolute;
+            top: -25px;
+            left: -2px;
+            width: 4px;
+            height: 20px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.6), transparent);
+        }
+
+        .beak-bottom {
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 15px solid #b38f00;
+            margin-top: -8px; 
+            transition: transform 0.1s;
+            transform-origin: bottom center;
+            z-index: 1;
+        }
+
+        /* Angry Animations */
+        .owl.angry .beak-top {
+            animation: biteTop 0.15s infinite alternate;
+        }
+        .owl.angry .beak-bottom {
+            animation: biteBottom 0.15s infinite alternate;
+        }
+        .owl.angry .smoke.left {
+            animation: blowSmokeLeft 0.5s infinite;
+        }
+        .owl.angry .smoke.right {
+            animation: blowSmokeRight 0.5s infinite;
+        }
+
+        @keyframes biteTop {
+            0% { transform: rotateX(0deg); }
+            100% { transform: rotateX(40deg) translateY(-3px); }
+        }
+        @keyframes biteBottom {
+            0% { transform: rotateX(0deg); }
+            100% { transform: rotateX(-40deg) translateY(3px); }
+        }
+        @keyframes blowSmokeLeft {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.8; }
+            100% { transform: translate(-25px, -20px) scale(3); opacity: 0; }
+        }
+        @keyframes blowSmokeRight {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.8; }
+            100% { transform: translate(25px, -20px) scale(3); opacity: 0; }
+        }
+
+        @keyframes noseShake {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-3deg) translateX(-2px); }
+            50% { transform: rotate(3deg) translateX(2px); }
+            75% { transform: rotate(-1deg) translateX(-1px); }
+        }
+
+        /* Angry Eyes */
+        .owl.angry .eye {
+            background: radial-gradient(circle at 30% 30%, #fff, #ff2a2a 35%, #4a0000 70%, #000 100%);
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.9), 0 0 35px rgba(255, 42, 42, 0.8);
+            border-color: rgba(255, 42, 42, 0.6);
+        }
+        .owl.angry .pupil::before {
+            background: radial-gradient(circle, #ff2a2a, transparent);
+            box-shadow: 0 0 12px #ff2a2a;
+        }
+
+        /* Reposition Eyes */
+        .owl-head .eyes-container {
+            margin-top: 25px;
+            margin-bottom: 0;
+            gap: 15px; 
+        }
+
+        /* Owl Body */
+        .owl-body {
+            width: 130px;
+            height: 130px;
+            background: linear-gradient(145deg, #161e1d, #090c0b);
+            border-radius: 40px 40px 70px 70px;
+            margin-top: -25px;
+            position: relative;
+            box-shadow: inset 0 -10px 20px rgba(0,0,0,0.8);
+            border: 2px solid #2a3a38;
+            z-index: 2;
+        }
+
+        /* Belly Grid / Artificial Texture */
+        .belly {
+            width: 80px;
+            height: 90px;
+            background: 
+                linear-gradient(90deg, rgba(46, 230, 166, 0.05) 1px, transparent 1px) 0 0 / 10px 10px,
+                linear-gradient(0deg, rgba(46, 230, 166, 0.05) 1px, transparent 1px) 0 0 / 10px 10px;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.9);
+            border: 1px solid rgba(46, 230, 166, 0.1);
+        }
+
+        /* Wings */
+        .wing {
+            width: 40px;
+            height: 100px;
+            background: linear-gradient(145deg, #131a19, #050807);
+            border-radius: 40px;
+            position: absolute;
+            top: 20px;
+            border: 1px solid #2a3a38;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+        }
+        .wing.left { left: -15px; transform: rotate(15deg); }
+        .wing.right { right: -15px; transform: rotate(-15deg); }
+
+        /* Claws */
+        .claws {
+            position: absolute;
+            bottom: -15px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            width: 100%;
+            z-index: 4;
+        }
+
+        .claw {
+            width: 25px;
+            height: 25px;
+            background: linear-gradient(145deg, #998028, #66551a);
+            border-radius: 10px;
+            position: relative;
+            box-shadow: 0 5px 8px rgba(0,0,0,0.8);
+            border: 1px solid #d4af37;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .claw:hover {
+            transform: translateY(-15px) scale(1.1);
+            filter: brightness(1.2);
+        }
+        .claw::after, .claw::before, .claw .toe {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 15px;
+            background: #d4af37;
+            border-radius: 5px;
+            bottom: -10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .claw::before { left: 2px; transform: rotate(20deg); }
+        .claw::after { right: 2px; transform: rotate(-20deg); }
+        .claw .toe { left: 9px; transform: rotate(0deg); }
+
+        /* Nose Interaction Styles */
+        .nose-warning {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%) scale(0.5);
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 100;
+            box-shadow: 0 5px 15px rgba(255, 75, 43, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .nose-warning::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid #ff4b2b;
+        }
+        .nose-warning.show {
+            opacity: 1;
+            transform: translateX(-50%) scale(1);
+            top: -45px;
+        }
+        .nose-trigger {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 18px;
+            background: transparent;
+            z-index: 10;
+            cursor: pointer;
+            border-radius: 50%;
+        }

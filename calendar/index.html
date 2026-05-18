@@ -1460,7 +1460,8 @@
                     const isPast = cellDate < today;
                     const isSunday = (dayOfWeek === 0);
                     
-                    const isBooked = !isSunday && !isPast && !availableDays.has(i);
+                    const isLocallyBooked = localStorage.getItem(`booked_${year}_${month}_${i}`) === "true";
+                    const isBooked = !isSunday && !isPast && (!availableDays.has(i) || isLocallyBooked);
 
                     if (isPast || isSunday) {
                         dayEl.classList.add('disabled');
@@ -1577,6 +1578,18 @@
                     if (selectedDate) {
                         selectedDate.style.zIndex = "100";
                         selectedDate.classList.add('booking-boom');
+                        
+                        // Save booked status locally
+                        const bookedKey = `booked_${currentYear}_${currentMonth}_${selectedDate.innerText.trim()}`;
+                        localStorage.setItem(bookedKey, "true");
+                        
+                        // Visually transition to booked status after boom animation
+                        setTimeout(() => {
+                            selectedDate.classList.remove('selected');
+                            selectedDate.classList.remove('available');
+                            selectedDate.classList.add('booked');
+                            selectedDate.onclick = null;
+                        }, 1200);
                     }
 
                     setTimeout(() => {
