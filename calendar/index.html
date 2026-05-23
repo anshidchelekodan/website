@@ -196,6 +196,161 @@
             border: 1px solid rgba(46, 230, 166, 0.3);
         }
 
+        /* ===== BIRTHDAY DAY — June 29 ===== */
+        .day.birthday {
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.15), rgba(255, 87, 34, 0.1)) !important;
+            border: 1.5px solid rgba(255, 200, 80, 0.5) !important;
+            color: #fff !important;
+            animation: bday-pulse 2s ease-in-out infinite;
+            position: relative;
+            overflow: visible;
+        }
+        .day.birthday::before {
+            content: '🎂';
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.85rem;
+            z-index: 10;
+            animation: bday-float 2s ease-in-out infinite;
+        }
+        .day.birthday::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 16px;
+            background: transparent;
+            border: 1.5px solid rgba(255, 200, 80, 0.35);
+            animation: bday-ring 2s ease-in-out infinite;
+        }
+        .day.birthday:hover {
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.35), rgba(255, 87, 34, 0.25)) !important;
+            transform: translateY(-5px) scale(1.12) !important;
+            box-shadow: 0 15px 35px rgba(255, 200, 80, 0.4) !important;
+            border-color: rgba(255, 200, 80, 0.9) !important;
+        }
+        @keyframes bday-pulse {
+            0%, 100% { box-shadow: 0 0 10px rgba(255, 200, 80, 0.2); }
+            50% { box-shadow: 0 0 25px rgba(255, 200, 80, 0.6), 0 0 50px rgba(255, 120, 50, 0.2); }
+        }
+        @keyframes bday-float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-4px); }
+        }
+        @keyframes bday-ring {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.08); opacity: 1; }
+        }
+
+        /* ===== BIRTHDAY MODAL ===== */
+        .bday-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.6s ease;
+            overflow: hidden;
+        }
+        .bday-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .bday-card {
+            background: linear-gradient(145deg, #0d1f1a, #07130f);
+            border: 1px solid rgba(255, 200, 80, 0.35);
+            border-radius: 32px;
+            padding: 3.5rem 3rem;
+            max-width: 520px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 40px 100px rgba(255, 193, 7, 0.15), 0 0 0 1px rgba(255,200,80,0.08);
+            transform: scale(0.85) translateY(40px);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            overflow: hidden;
+        }
+        .bday-overlay.active .bday-card {
+            transform: scale(1) translateY(0);
+        }
+        .bday-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #ffc107, #ff5722, #ffc107, transparent);
+        }
+        .bday-emoji {
+            font-size: 4rem;
+            display: block;
+            margin-bottom: 1.2rem;
+            animation: bday-emoji-bounce 1s ease-in-out infinite;
+        }
+        @keyframes bday-emoji-bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15) rotate(-5deg); }
+        }
+        .bday-title {
+            font-size: clamp(1.6rem, 4vw, 2.2rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffd54f, #ff8f00, #ffd54f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.8rem;
+            letter-spacing: -0.5px;
+            line-height: 1.15;
+        }
+        .bday-subtitle {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.55);
+            margin-bottom: 1.8rem;
+            line-height: 1.6;
+        }
+        .bday-message {
+            background: rgba(255, 200, 80, 0.07);
+            border: 1px solid rgba(255, 200, 80, 0.15);
+            border-radius: 18px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.7;
+            font-style: italic;
+        }
+        .bday-close-btn {
+            background: linear-gradient(135deg, #ffc107, #ff8f00);
+            color: #000;
+            border: none;
+            border-radius: 16px;
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 800;
+            cursor: pointer;
+            width: 100%;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 193, 7, 0.3);
+        }
+        .bday-close-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 193, 7, 0.5);
+        }
+
+        /* ===== CONFETTI CANVAS ===== */
+        #bdayConfetti {
+            position: fixed;
+            inset: 0;
+            z-index: 99998;
+            pointer-events: none;
+        }
+
         .day.booked::after {
             content: 'Booked';
             position: absolute;
@@ -1447,6 +1602,13 @@
                 // Select up to 13 days to be available
                 const availableDays = new Set(shuffledWorkingDays.slice(0, 13));
 
+                // 🎂 Always force June 29 (Anshid CK's birthday) to be available — never booked
+                if (month === 5) {
+                    availableDays.add(29);
+                    // Clear any stale localStorage booking for this date so testing always works
+                    localStorage.removeItem(`booked_${year}_5_29`);
+                }
+
                 // Current month days
                 for (let i = 1; i <= lastDay; i++) {
                     const dayEl = document.createElement('div');
@@ -1463,6 +1625,9 @@
                     const isLocallyBooked = localStorage.getItem(`booked_${year}_${month}_${i}`) === "true";
                     const isBooked = !isSunday && !isPast && (!availableDays.has(i) || isLocallyBooked);
 
+                    // Check if this is Anshid CK's birthday (June 29)
+                    const isBirthday = (month === 5 && i === 29);
+
                     if (isPast || isSunday) {
                         dayEl.classList.add('disabled');
                         if (isSunday) dayEl.setAttribute('title', 'Holiday');
@@ -1470,16 +1635,25 @@
                         dayEl.classList.add('booked');
                     } else {
                         dayEl.classList.add('available');
+                        if (isBirthday) {
+                            dayEl.classList.add('birthday');
+                            dayEl.setAttribute('title', '🎂 Anshid\'s Birthday!');
+                        }
                         dayEl.onclick = () => {
                             document.querySelectorAll('.day').forEach(d => d.classList.remove('selected'));
                             dayEl.classList.add('selected');
                             timeSlots.classList.add('active');
                             timeHeadline.style.display = 'block';
                             summaryDate.innerText = i + " " + monthName + " " + year;
-                            
-                            setTimeout(() => {
-                                timeSlots.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                            }, 200);
+
+                            // 🎉 Birthday special surprise!
+                            if (isBirthday) {
+                                setTimeout(() => triggerBirthdaySurprise(), 300);
+                            } else {
+                                setTimeout(() => {
+                                    timeSlots.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                                }, 200);
+                            }
                         };
                     }
                     calGrid.appendChild(dayEl);
@@ -1549,6 +1723,12 @@
 
                 if (name === "Anonymous" || phone === "No Phone") {
                     alert("Please enter your name and phone number to continue.");
+                    return;
+                }
+
+                // 🎂 BIRTHDAY BLOCK — June 29 is off limits. No calls, no submissions!
+                if (currentMonth === 5 && summaryDate.innerText.startsWith('29')) {
+                    triggerBirthdayBlock();
                     return;
                 }
 
@@ -1716,6 +1896,198 @@
         }
     </script>
 
+    <!-- Birthday Confetti Canvas -->
+    <canvas id="bdayConfetti"></canvas>
+
+    <!-- Birthday Modal -->
+    <div class="bday-overlay" id="bdayModal">
+        <div class="bday-card">
+            <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, rgba(255,193,7,0.15), rgba(255,87,34,0.1)); border: 1.5px solid rgba(255,200,80,0.3); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                <i class="fa-solid fa-cake-candles" style="font-size: 2rem; color: #ffc107; filter: drop-shadow(0 0 10px rgba(255,193,7,0.4));"></i>
+            </div>
+            <div class="bday-title">Happy Birthday, Anshid</div>
+            <div class="bday-subtitle">June 29 &middot; The day a growth architect was born</div>
+            <div class="bday-message">
+                "May every campaign you launch hit record ROAS,<br>
+                every funnel you build overflow with quality leads,<br>
+                and every year bring you closer to your biggest vision.<br><br>
+                Wishing you a legendary birthday, Anshid CK."
+            </div>
+            <button class="bday-close-btn" onclick="closeBirthdayModal()"><i class="fa-solid fa-calendar-check" style="margin-right: 8px;"></i>Continue to Booking</button>
+        </div>
+    </div>
+
+    <script>
+        /* ===== BIRTHDAY CONFETTI ENGINE ===== */
+        function launchConfetti() {
+            const canvas = document.getElementById('bdayConfetti');
+            if (!canvas) return;
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            const ctx = canvas.getContext('2d');
+            const particles = [];
+            const colors = ['#ffc107', '#ff5722', '#4caf50', '#2196f3', '#e91e63', '#9c27b0', '#00bcd4', '#62ffb0'];
+            const shapes = ['circle', 'rect', 'triangle'];
+
+            for (let i = 0; i < 180; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: -Math.random() * canvas.height,
+                    r: Math.random() * 8 + 4,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    shape: shapes[Math.floor(Math.random() * shapes.length)],
+                    speed: Math.random() * 3 + 2,
+                    drift: (Math.random() - 0.5) * 2,
+                    rotation: Math.random() * Math.PI * 2,
+                    spin: (Math.random() - 0.5) * 0.15,
+                    opacity: 1
+                });
+            }
+
+            let frame = 0;
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => {
+                    p.y += p.speed;
+                    p.x += p.drift;
+                    p.rotation += p.spin;
+                    if (p.y > canvas.height + 20) {
+                        p.opacity -= 0.05;
+                    }
+                    ctx.save();
+                    ctx.globalAlpha = Math.max(0, p.opacity);
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate(p.rotation);
+                    ctx.fillStyle = p.color;
+                    if (p.shape === 'circle') {
+                        ctx.beginPath();
+                        ctx.arc(0, 0, p.r, 0, Math.PI * 2);
+                        ctx.fill();
+                    } else if (p.shape === 'rect') {
+                        ctx.fillRect(-p.r, -p.r / 2, p.r * 2, p.r);
+                    } else {
+                        ctx.beginPath();
+                        ctx.moveTo(0, -p.r);
+                        ctx.lineTo(p.r, p.r);
+                        ctx.lineTo(-p.r, p.r);
+                        ctx.closePath();
+                        ctx.fill();
+                    }
+                    ctx.restore();
+                });
+                frame++;
+                if (frame < 220) requestAnimationFrame(draw);
+                else {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                }
+            }
+            draw();
+        }
+
+        function triggerBirthdaySurprise() {
+            launchConfetti();
+            const modal = document.getElementById('bdayModal');
+            if (modal) modal.classList.add('active');
+
+            // Make the owl dance happily
+            const owl = document.querySelector('.owl');
+            if (owl) {
+                owl.style.animation = 'none';
+                void owl.offsetWidth;
+                owl.style.animation = 'bday-owl-dance 0.5s ease-in-out 4, breathing 4s ease-in-out infinite 2s';
+            }
+
+            // Play a celebratory tone
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const notes = [523.25, 659.25, 783.99, 1046.50, 783.99, 1046.50];
+                notes.forEach((freq, i) => {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = 'triangle';
+                    osc.frequency.value = freq;
+                    gain.gain.setValueAtTime(0.3, ctx.currentTime + i * 0.18);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.18 + 0.3);
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.start(ctx.currentTime + i * 0.18);
+                    osc.stop(ctx.currentTime + i * 0.18 + 0.3);
+                });
+            } catch(e) {}
+        }
+
+        function closeBirthdayModal() {
+            const modal = document.getElementById('bdayModal');
+            if (modal) modal.classList.remove('active');
+            // Scroll to time slots after closing
+            const timeSlots = document.getElementById('timeSlots');
+            if (timeSlots) {
+                setTimeout(() => timeSlots.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 200);
+            }
+        }
+
+        // Add owl happy dance keyframe dynamically
+        const bdayStyle = document.createElement('style');
+        bdayStyle.textContent = `
+            @keyframes bday-owl-dance {
+                0%   { transform: translateY(0) rotate(0deg); }
+                25%  { transform: translateY(-12px) rotate(-8deg); }
+                50%  { transform: translateY(0) rotate(0deg); }
+                75%  { transform: translateY(-12px) rotate(8deg); }
+                100% { transform: translateY(0) rotate(0deg); }
+            }
+        `;
+        document.head.appendChild(bdayStyle);
+
+        // Auto-trigger if today IS June 29
+        window.addEventListener('DOMContentLoaded', () => {
+            const now = new Date();
+            if (now.getMonth() === 5 && now.getDate() === 29) {
+                setTimeout(() => triggerBirthdaySurprise(), 1800);
+            }
+        });
+        /* ===== BIRTHDAY BLOCK FUNCTION ===== */
+        function triggerBirthdayBlock() {
+            launchConfetti();
+            const block = document.getElementById('bdayBlockPopup');
+            if (block) block.classList.add('active');
+
+            // Owl does a cheeky little shake
+            const owl = document.querySelector('.owl');
+            if (owl) {
+                owl.style.animation = 'none';
+                void owl.offsetWidth;
+                owl.style.animation = 'bday-owl-dance 0.4s ease-in-out 5, breathing 4s ease-in-out infinite 2.1s';
+            }
+
+            // Play a cheeky "nope" descending tone
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const notes = [880, 698.46, 587.33, 493.88, 392.00];
+                notes.forEach((freq, i) => {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.value = freq;
+                    gain.gain.setValueAtTime(0.25, ctx.currentTime + i * 0.14);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.14 + 0.2);
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.start(ctx.currentTime + i * 0.14);
+                    osc.stop(ctx.currentTime + i * 0.14 + 0.2);
+                });
+            } catch(e) {}
+        }
+
+        function closeBirthdayBlock() {
+            const block = document.getElementById('bdayBlockPopup');
+            if (block) block.classList.remove('active');
+            // Reset book button
+            const btn = document.getElementById('finalBookBtn');
+            if (btn) { btn.innerText = 'Confirm Booking'; btn.disabled = false; }
+        }
+    </script>
+
     <!-- Success Popup HTML -->
     <div class="success-popup-overlay" id="successPopup">
         <div class="success-popup-content">
@@ -1725,6 +2097,54 @@
             <h2>Booking Confirmed!</h2>
             <p>Your strategy session has been successfully scheduled. I will contact you shortly via WhatsApp or Phone.</p>
             <button class="btn btn-primary" onclick="closeSuccessPopup()" style="width: 100%; padding: 1rem; border-radius: 15px; font-weight: 700;">Done</button>
+        </div>
+    </div>
+
+    <!-- Birthday Block Popup — shown when someone tries to book June 29 -->
+    <div class="bday-overlay" id="bdayBlockPopup" style="z-index: 999999;">
+        <div class="bday-card" style="max-width: 560px;">
+            <!-- Premium icon badge -->
+            <div style="width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(135deg, rgba(255,193,7,0.12), rgba(255,87,34,0.08)); border: 1.5px solid rgba(255,200,80,0.25); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.8rem; position: relative;">
+                <i class="fa-solid fa-champagne-glasses" style="font-size: 2.2rem; color: #ffc107; filter: drop-shadow(0 0 12px rgba(255,193,7,0.35));"></i>
+                <div style="position: absolute; inset: -5px; border-radius: 50%; border: 1px solid rgba(255,200,80,0.12); animation: bday-ring 2s ease-in-out infinite;"></div>
+            </div>
+
+            <div class="bday-title" style="font-size: clamp(1.5rem, 4vw, 2rem); margin-bottom: 0.6rem;">
+                Not Today, Friend.
+            </div>
+            <div class="bday-subtitle" style="font-size: 0.95rem; margin-bottom: 1.5rem;">
+                June 29 &middot; Officially Out of Office &middot; It's My Birthday
+            </div>
+
+            <div class="bday-message" style="text-align: left; font-style: normal;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
+                    <i class="fa-solid fa-phone-slash" style="color: #ffc107; font-size: 1rem;"></i>
+                    <span style="font-weight: 700; color: #ffc107;">No strategy calls on this date.</span>
+                </div>
+                <p style="margin: 0; color: rgba(255,255,255,0.75); line-height: 1.8;">
+                    June 29 is the one day I've reserved for stepping away — to celebrate, recharge,
+                    and come back with a sharper perspective.<br><br>
+                    I'll be back at full capacity on <strong style="color: #62ffb0;">June 30th</strong>.
+                    Pick any other available date and let's build something extraordinary together.
+                </p>
+            </div>
+
+            <!-- Stats row -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 1.8rem; text-align: center;">
+                <div style="background: rgba(255,193,7,0.06); border: 1px solid rgba(255,193,7,0.15); border-radius: 14px; padding: 0.9rem;">
+                    <div style="font-size: 1.4rem; font-weight: 900; color: #ffc107;">364</div>
+                    <div style="font-size: 0.75rem; color: rgba(255,255,255,0.45); margin-top: 4px; text-transform: uppercase; letter-spacing: 1px;">Days Available</div>
+                </div>
+                <div style="background: rgba(255,87,34,0.06); border: 1px solid rgba(255,87,34,0.15); border-radius: 14px; padding: 0.9rem;">
+                    <div style="font-size: 1.4rem; font-weight: 900; color: #ff7043;">1</div>
+                    <div style="font-size: 0.75rem; color: rgba(255,255,255,0.45); margin-top: 4px; text-transform: uppercase; letter-spacing: 1px;">Day Reserved</div>
+                </div>
+            </div>
+
+            <button class="bday-close-btn" onclick="closeBirthdayBlock()" style="background: linear-gradient(135deg, #62ffb0, #00c97a); color: #051512; margin-bottom: 1rem;">
+                <i class="fa-solid fa-arrow-rotate-left" style="margin-right: 8px;"></i>Choose Another Date
+            </button>
+            <p style="font-size: 0.78rem; color: rgba(255,255,255,0.25); margin: 0; letter-spacing: 0.3px;">Alternatively, reach me on WhatsApp for urgent queries.</p>
         </div>
     </div>
 </body>
