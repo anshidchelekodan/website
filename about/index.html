@@ -745,28 +745,6 @@
         </div>
       </div>
 
-      <!-- Payment Details Section -->
-      <div class="footer-payments hide-on-mobile" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); text-align: center;">
-        <h5 style="color: rgba(255,255,255,0.4); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1.5rem; font-weight: 800;">Secure Payments Accepted</h5>
-        <div class="payment-icons-grid" style="display: flex; justify-content: center; align-items: center; gap: 2rem; flex-wrap: wrap;">
-          <div class="payment-item" title="Visa">
-            <i class="fab fa-cc-visa" style="font-size: 2rem; color: #1a1f71; filter: drop-shadow(0 0 5px rgba(26,31,113,0.3));"></i>
-          </div>
-          <div class="payment-item" title="Mastercard">
-            <i class="fab fa-cc-mastercard" style="font-size: 2rem; color: #eb001b; filter: drop-shadow(0 0 5px rgba(235,0,27,0.3));"></i>
-          </div>
-          <div class="payment-item" title="PayPal">
-            <i class="fab fa-cc-paypal" style="font-size: 2rem; color: #003087; filter: drop-shadow(0 0 5px rgba(0,48,135,0.3));"></i>
-          </div>
-          <div class="payment-item" title="Apple Pay">
-            <i class="fab fa-apple-pay" style="font-size: 2.5rem; color: #fff; opacity: 0.9;"></i>
-          </div>
-          <div class="payment-item" title="Google Pay">
-            <i class="fab fa-google-pay" style="font-size: 2.5rem; color: #4285F4;"></i>
-          </div>
-        </div>
-      </div>
-
       <div class="footer-bottom">
         <p>&copy; <time datetime="2026">2026</time> Mohammad Anshid Ck. All rights reserved. | <a href="../sitemap.xml" style="color: inherit; text-decoration: underline;">Sitemap</a></p>
       </div>
@@ -777,70 +755,11 @@
   <a href="https://wa.me/919778179727" class="float-wa" target="_blank" aria-label="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
   <script src="../main.js?v=20260327-4"></script>
 
-  <!-- Service Poster Popup -->
-  <div id="service-popup" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(5,11,10,0.85);backdrop-filter:blur(4px);align-items:center;justify-content:center;">
-    <div style="position:relative;max-width:420px;width:90vw;background:var(--card-bg);border-radius:24px;box-shadow:0 10px 40px rgba(0,0,0,0.7);padding:2.5rem 2rem 2rem 2rem;text-align:center;animation:popup-fade-in 0.7s cubic-bezier(.4,0,.2,1);">
-      <button id="close-popup" aria-label="Close" style="position:absolute;top:18px;right:18px;background:none;border:none;font-size:1.7rem;color:var(--text-secondary);cursor:pointer;transition:color .2s;z-index:2;">&times;</button>
-      <h2 style="color:var(--accent-color);margin-bottom:1rem;">Grow Your Business with Me!</h2>
-      <p style="color:var(--text-secondary);margin-bottom:1.5rem;">Unlock ROI-driven SEO, Google Ads, and Performance Marketing. Book a free consultation now and start scaling your brand in Kerala.</p>
-      <a href="../services/" class="btn btn-primary" style="margin-bottom:0.5rem;">Explore Services</a>
-      <br>
-      <a href="../contact/" class="btn btn-outline">Contact Me</a>
-    </div>
-  </div>
 
-  <style>
-    @keyframes popup-fade-in {
-      from { opacity:0; transform:scale(0.95); }
-      to { opacity:1; transform:scale(1); }
-    }
-  </style>
-
-  <script>
-    // Service Poster Popup Logic
-    function showServicePopup() {
-      const popup = document.getElementById('service-popup');
-      if (!popup) {
-        return;
-      }
-
-      try {
-        if (localStorage.getItem('servicePopupShown')) {
-          return;
-        }
-        localStorage.setItem('servicePopupShown', 'yes');
-      } catch (error) {
-        // Ignore storage access issues and still show the popup.
-      }
-
-      popup.style.display = 'flex';
-    }
-    function closeServicePopup() {
-      const popup = document.getElementById('service-popup');
-      if (popup) {
-        popup.style.display = 'none';
-      }
-    }
-    document.addEventListener('DOMContentLoaded', function() {
-      const popup = document.getElementById('service-popup');
-      const closePopupBtn = document.getElementById('close-popup');
-
-      if (!popup || !closePopupBtn) {
-        return;
-      }
-
-      setTimeout(showServicePopup, 1200); // Show after 1.2s
-      closePopupBtn.onclick = closeServicePopup;
-      popup.addEventListener('click', function(event) {
-        if (event.target === popup) {
-          closeServicePopup();
-        }
-      });
-    });
-  </script>
 </body>
 
 </html>
+
 
 
 
