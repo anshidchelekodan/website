@@ -251,3 +251,220 @@ document.addEventListener('mousemove', (e) => {
         }
     });
 });
+
+/* ─── The Growth Owl Easter Egg ─────────────────────────────────── */
+const initGrowthOwl = () => {
+    // Check localStorage (once every 24 hours)
+    const lastSeen = localStorage.getItem('growthOwlSeen');
+    const now = new Date().getTime();
+    if (lastSeen && now - parseInt(lastSeen) < 24 * 60 * 60 * 1000) {
+        return; // Already seen in the last 24 hours
+    }
+
+    // Only run once per session
+    if (sessionStorage.getItem('growthOwlActive')) return;
+    sessionStorage.setItem('growthOwlActive', 'true');
+
+    // Wait a bit before flying (3 to 8 seconds)
+    setTimeout(() => {
+        createOwl();
+    }, Math.random() * 5000 + 3000);
+
+    function createOwl() {
+        const wrapper = document.createElement('div');
+        wrapper.id = 'growth-owl-wrapper';
+        wrapper.style.cssText = `
+            position: fixed;
+            top: ${Math.random() * 40 + 20}vh;
+            left: -100px;
+            z-index: 9999;
+            will-change: transform;
+            user-select: none;
+            cursor: pointer;
+        `;
+        
+        const owl = document.createElement('div');
+        owl.innerHTML = '🦉';
+        owl.style.cssText = `
+            font-size: 3.5rem;
+            filter: drop-shadow(0 0 15px rgba(46, 230, 166, 0.8));
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: owlWiggle 2s infinite ease-in-out;
+        `;
+        
+        wrapper.appendChild(owl);
+        document.body.appendChild(wrapper);
+
+        // Add global keyframes for wiggle
+        if (!document.getElementById('owl-styles')) {
+            const style = document.createElement('style');
+            style.id = 'owl-styles';
+            style.textContent = `
+                @keyframes owlWiggle {
+                    0%, 100% { transform: translateY(0) rotate(5deg); }
+                    50% { transform: translateY(-15px) rotate(-5deg); }
+                }
+                @keyframes owlFadeIn {
+                    from { opacity: 0; transform: translate(-50%, -40%); }
+                    to { opacity: 1; transform: translate(-50%, -50%); }
+                }
+                .owl-particle {
+                    position: fixed;
+                    pointer-events: none;
+                    z-index: 10001;
+                    background: var(--accent-color, #2EE6A6);
+                    border-radius: 50%;
+                    box-shadow: 0 0 10px var(--accent-color, #2EE6A6), 0 0 20px rgba(46, 230, 166, 0.5);
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Fly animation using Web Animations API (GPU accelerated, no layout thrashing)
+        const duration = 10000; // 10 seconds to cross
+        const flyAnimation = wrapper.animate([
+            { transform: 'translate3d(0, 0, 0)' },
+            { transform: \`translate3d(calc(100vw + 200px), \${Math.random() * 200 - 100}px, 0)\` }
+        ], {
+            duration: duration,
+            easing: 'linear',
+            fill: 'forwards'
+        });
+
+        let clicked = false;
+        
+        wrapper.addEventListener('click', () => {
+            if (clicked) return;
+            clicked = true;
+            flyAnimation.pause();
+            localStorage.setItem('growthOwlSeen', now.toString()); // Mark as seen
+            
+            // Get current bounds for smooth transition
+            const rect = wrapper.getBoundingClientRect();
+            wrapper.style.left = rect.left + 'px';
+            wrapper.style.top = rect.top + 'px';
+            wrapper.style.transform = 'none';
+            
+            // Disable animation temporarily to transition to center
+            requestAnimationFrame(() => {
+                wrapper.style.transition = 'all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                wrapper.style.left = '50%';
+                wrapper.style.top = '30%';
+                owl.style.animation = 'none';
+                owl.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                
+                setTimeout(() => {
+                    showPopup();
+                    createConfetti();
+                    wrapper.style.opacity = '0';
+                    setTimeout(() => wrapper.remove(), 300);
+                }, 600);
+            });
+        });
+
+        flyAnimation.onfinish = () => {
+            if (!clicked && wrapper.parentNode) wrapper.remove();
+        };
+    }
+
+    function showPopup() {
+        const overlay = document.createElement('div');
+        overlay.style.cssText = `
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(5, 11, 10, 0.8); z-index: 10000; backdrop-filter: blur(8px);
+            opacity: 0; transition: opacity 0.4s ease;
+        `;
+        document.body.appendChild(overlay);
+
+        const popup = document.createElement('div');
+        popup.className = 'owl-popup';
+        popup.style.cssText = `
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(11, 46, 42, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(46, 230, 166, 0.3);
+            border-radius: 24px;
+            padding: 3rem 2.5rem;
+            z-index: 10001;
+            text-align: center;
+            width: 90%;
+            max-width: 420px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+            color: #fff;
+            opacity: 0;
+            animation: owlFadeIn 0.6s forwards cubic-bezier(0.16, 1, 0.3, 1);
+        `;
+
+        popup.innerHTML = `
+            <div style="font-size: 4.5rem; margin-bottom: 1rem; filter: drop-shadow(0 0 20px rgba(46, 230, 166, 0.6)); transform: scale(1.1);">🦉</div>
+            <h3 style="font-size: 1.8rem; margin-bottom: 1rem; color: #fff; font-weight: 700;">You found the Growth Owl!</h3>
+            <p style="color: var(--text-secondary, #cbd5e1); font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">
+               Smart businesses know growth comes from strategy, not luck.<br><br>
+               <strong style="color: var(--accent-color, #2EE6A6);">Claim your free digital marketing strategy session.</strong>
+            </p>
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <a href="/contact/" class="btn btn-primary" style="width: 100%; justify-content: center;"><i class="fas fa-rocket" style="margin-right: 8px;"></i>Book Free Strategy Call</a>
+                <button class="btn btn-outline close-owl-btn" style="width: 100%; justify-content: center; background: transparent; color: #fff; border-color: rgba(255,255,255,0.2);">Continue Exploring</button>
+            </div>
+        `;
+        
+        document.body.appendChild(popup);
+        
+        // Trigger overlay fade in
+        requestAnimationFrame(() => {
+            overlay.style.opacity = '1';
+        });
+
+        const closePopup = () => {
+            popup.style.animation = 'none';
+            popup.style.transition = 'all 0.4s ease';
+            popup.style.opacity = '0';
+            popup.style.transform = 'translate(-50%, -40%) scale(0.95)';
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                popup.remove();
+                overlay.remove();
+            }, 400);
+        };
+
+        popup.querySelector('.close-owl-btn').addEventListener('click', closePopup);
+        overlay.addEventListener('click', closePopup);
+    }
+
+    function createConfetti() {
+        for (let i = 0; i < 40; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'owl-particle';
+            const size = Math.random() * 5 + 3;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            
+            particle.style.left = '50%';
+            particle.style.top = '30%';
+            
+            document.body.appendChild(particle);
+            
+            const angle = Math.random() * Math.PI * 2;
+            const velocity = 80 + Math.random() * 150;
+            const tx = Math.cos(angle) * velocity;
+            const ty = Math.sin(angle) * velocity + (Math.random() * 100 + 50); // Gravity effect
+            
+            particle.animate([
+                { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
+                { transform: \`translate(calc(-50% + \${tx}px), calc(-50% + \${ty}px)) scale(0)\`, opacity: 0 }
+            ], {
+                duration: 1000 + Math.random() * 1500,
+                easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                fill: 'forwards'
+            }).onfinish = () => particle.remove();
+        }
+    }
+};
+
+window.addEventListener('load', () => {
+    setTimeout(initGrowthOwl, 2500);
+});
