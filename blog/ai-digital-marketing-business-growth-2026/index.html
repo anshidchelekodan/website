@@ -601,6 +601,239 @@
   </footer>
 
   <a href="https://wa.me/919778179727" class="float-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+  <!-- Growth Owl Easter Egg -->
+  <style>
+    #growth-owl-container {
+        position: fixed;
+        top: 15%;
+        left: -100px;
+        z-index: 9999;
+        cursor: pointer;
+        transition: transform 0.3s;
+        filter: drop-shadow(0 0 12px rgba(37, 211, 102, 0.8));
+        animation: flyAcross 25s linear infinite;
+        pointer-events: auto;
+    }
+
+    @keyframes flyAcross {
+        0% { transform: translateX(-10vw) translateY(0) scale(0.8) rotate(5deg); }
+        25% { transform: translateX(30vw) translateY(-30px) scale(0.9) rotate(-5deg); }
+        50% { transform: translateX(60vw) translateY(15px) scale(0.8) rotate(5deg); }
+        75% { transform: translateX(90vw) translateY(-10px) scale(0.9) rotate(-5deg); }
+        100% { transform: translateX(110vw) translateY(0) scale(0.8) rotate(0deg); }
+    }
+
+    #growth-owl-container:hover {
+        animation-play-state: paused;
+        transform: scale(1.1) !important;
+        filter: drop-shadow(0 0 20px #25D366);
+    }
+
+    .growth-owl-svg {
+        width: 70px;
+        height: 70px;
+    }
+
+    .owl-wing-left { animation: flapLeft 0.4s ease-in-out infinite; transform-origin: 30px 45px; }
+    .owl-wing-right { animation: flapRight 0.4s ease-in-out infinite; transform-origin: 70px 45px; }
+
+    @keyframes flapLeft { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-30deg); } }
+    @keyframes flapRight { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(30deg); } }
+
+    #growth-owl-modal {
+        position: fixed;
+        top: 0; left: 0; width: 100vw; height: 100vh;
+        background: rgba(5, 11, 10, 0.7);
+        backdrop-filter: blur(10px);
+        z-index: 10000;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .owl-modal-content {
+        background: rgba(11, 46, 42, 0.85);
+        border: 1px solid rgba(37, 211, 102, 0.4);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(37, 211, 102, 0.15) inset;
+        border-radius: 24px;
+        padding: 3.5rem 2rem;
+        max-width: 550px;
+        width: 90%;
+        text-align: center;
+        transform: translateY(30px) scale(0.95);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .owl-branch-icon {
+        font-size: 5rem;
+        margin-bottom: 1rem;
+        line-height: 1;
+        filter: drop-shadow(0 0 15px rgba(37, 211, 102, 0.6));
+        animation: hoverOwl 3s ease-in-out infinite;
+    }
+
+    @keyframes hoverOwl {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+
+    .owl-modal-content h3 {
+        color: #fff;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+    }
+
+    .owl-modal-content h3 span {
+        color: #25D366;
+    }
+
+    .owl-modal-content p {
+        color: #cbd5e1;
+        font-size: 1.15rem;
+        line-height: 1.6;
+        margin-bottom: 2.5rem;
+    }
+
+    .owl-btn-group {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .owl-btn-primary {
+        background: #25D366;
+        color: #050b0a;
+        padding: 14px 28px;
+        border-radius: 50px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: all 0.3s;
+        font-size: 1.05rem;
+        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+
+    .owl-btn-primary:hover {
+        box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
+        transform: translateY(-3px);
+    }
+
+    .owl-btn-secondary {
+        background: transparent;
+        color: #fff;
+        border: 2px solid rgba(255, 255, 255, 0.15);
+        padding: 12px 28px;
+        border-radius: 50px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-size: 1.05rem;
+    }
+
+    .owl-btn-secondary:hover {
+        background: rgba(255,255,255,0.05);
+        border-color: rgba(255,255,255,0.3);
+    }
+
+    .owl-particle {
+        position: absolute;
+        border-radius: 50%;
+        background: #25D366;
+        pointer-events: none;
+        box-shadow: 0 0 10px #25D366;
+        animation: particle-float 3s ease-out forwards;
+    }
+
+    @keyframes particle-float {
+        0% { transform: translateY(0) scale(1); opacity: 0.8; }
+        100% { transform: translateY(-150px) scale(0); opacity: 0; }
+    }
+  </style>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+      const lastSeen = localStorage.getItem('growthOwlSeen');
+      const now = new Date().getTime();
+      
+      // Check if seen in last 24 hours (86400000 ms)
+      if (lastSeen && (now - parseInt(lastSeen)) < 86400000) {
+          return;
+      }
+
+      // Spawn owl after 8 seconds
+      setTimeout(() => {
+          const owlContainer = document.createElement('div');
+          owlContainer.id = 'growth-owl-container';
+          owlContainer.title = "Click to catch the Growth Owl!";
+          owlContainer.innerHTML = \`<svg class="growth-owl-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="#25D366" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M 30 80 Q 20 50 30 25 Q 50 10 70 25 Q 80 50 70 80 Z" fill="rgba(5, 11, 10, 0.9)" />
+              <circle cx="40" cy="35" r="7" /><circle cx="60" cy="35" r="7" />
+              <circle cx="40" cy="35" r="2" fill="#25D366" /><circle cx="60" cy="35" r="2" fill="#25D366" />
+              <path d="M 47 45 L 53 45 L 50 53 Z" fill="#25D366" />
+              <path class="owl-wing-left" d="M 28 45 Q -5 40 10 75" fill="rgba(37, 211, 102, 0.1)" />
+              <path class="owl-wing-right" d="M 72 45 Q 105 40 90 75" fill="rgba(37, 211, 102, 0.1)" />
+              <path d="M 35 80 L 35 90 M 40 80 L 40 90 M 60 80 L 60 90 M 65 80 L 65 90" stroke-width="2" />
+            </g>
+          </svg>\`;
+          document.body.appendChild(owlContainer);
+
+          const modal = document.createElement('div');
+          modal.id = 'growth-owl-modal';
+          modal.innerHTML = \`
+              <div class="owl-modal-content" id="owl-modal-content">
+                  <div class="owl-branch-icon">🦉</div>
+                  <h3>You found the <span>Growth Owl!</span></h3>
+                  <p>Smart businesses know growth comes from strategy, not luck.<br>Claim your free digital marketing strategy session.</p>
+                  <div class="owl-btn-group">
+                      <a href="../../contact/" class="owl-btn-primary">Book Free Strategy Call</a>
+                      <button class="owl-btn-secondary" id="owl-close-btn">Continue Exploring</button>
+                  </div>
+              </div>
+          \`;
+          document.body.appendChild(modal);
+
+          owlContainer.addEventListener('click', () => {
+              owlContainer.style.display = 'none';
+              modal.style.display = 'flex';
+              
+              void modal.offsetWidth; // Trigger reflow
+              modal.style.opacity = '1';
+              document.getElementById('owl-modal-content').style.transform = 'translateY(0) scale(1)';
+              
+              localStorage.setItem('growthOwlSeen', new Date().getTime().toString());
+              
+              // Create glowing particles
+              const content = document.getElementById('owl-modal-content');
+              for(let i=0; i<30; i++) {
+                  const particle = document.createElement('div');
+                  particle.className = 'owl-particle';
+                  particle.style.left = 10 + Math.random() * 80 + '%';
+                  particle.style.top = 50 + Math.random() * 40 + '%';
+                  const size = Math.random() * 6 + 2;
+                  particle.style.width = size + 'px';
+                  particle.style.height = size + 'px';
+                  particle.style.animationDelay = Math.random() * 0.5 + 's';
+                  content.appendChild(particle);
+              }
+          });
+
+          document.getElementById('owl-close-btn').addEventListener('click', () => {
+              modal.style.opacity = '0';
+              document.getElementById('owl-modal-content').style.transform = 'translateY(30px) scale(0.95)';
+              setTimeout(() => { modal.style.display = 'none'; }, 400);
+          });
+      }, 8000); // 8 seconds delay
+  });
+  </script>
+
 <script src="../../main.js?v=20260331-1"></script>
 </body>
 </html>
