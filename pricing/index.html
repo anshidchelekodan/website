@@ -840,6 +840,25 @@
       document.getElementById(tabId).classList.add('active');
       event.currentTarget.classList.add('active');
     }
+
+    // Auto-append package to contact URLs
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.pricing-card').forEach(card => {
+        const titleEl = card.querySelector('.pricing-title');
+        const btnEl = card.querySelector('.btn-pricing');
+        if (titleEl && btnEl && btnEl.href.includes('contact')) {
+          const tabId = card.closest('.tab-content').id;
+          let category = tabId.charAt(0).toUpperCase() + tabId.slice(1);
+          if (tabId === 'meta') category = 'Meta Ads';
+          if (tabId === 'google') category = 'Google Ads';
+          if (tabId === 'social') category = 'Social Media';
+          
+          const url = new URL(btnEl.href, window.location.origin);
+          url.searchParams.set('package', category + ' - ' + titleEl.textContent.trim());
+          btnEl.href = url.toString();
+        }
+      });
+    });
   </script>
 </body>
 </html>

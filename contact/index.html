@@ -741,6 +741,22 @@
   formInputs.forEach(input => {
     input.addEventListener('input', updateProgression);
   });
+  // Pre-fill package from URL
+  document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const pkg = urlParams.get('package');
+    if (pkg) {
+      document.getElementById('message').value = 'Hi Anshid, I am interested in the ' + pkg + ' package. Can we discuss further?';
+      
+      const chips = document.querySelectorAll('.chip');
+      chips.forEach(c => {
+        if (pkg.toLowerCase().includes(c.dataset.value.toLowerCase())) {
+          c.click();
+        }
+      });
+      updateProgression();
+    }
+  });
   </script>
 
   <script src="../time-widget.js" defer></script>
