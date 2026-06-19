@@ -13,15 +13,15 @@
   <link rel="icon" type="image/webp" href="../favicon.webp">
   <link rel="apple-touch-icon" href="../favicon.webp">
   
-  <title>Digital Marketing Pricing | Mohammad Anshid CK</title>
-  <meta name="description" content="Explore custom SEO, Meta Ads, Google Ads, social media management, and lead generation solutions tailored to your business goals.">
+  <title>Premium Digital Marketing Pricing | Adverix Media</title>
+  <meta name="description" content="Explore custom SEO, Meta Ads, Google Ads, social media management, cinematic video production, and lead generation solutions tailored to your business goals.">
   
   <link rel="canonical" href="https://anshidck.com/pricing/">
   <meta name="robots" content="index,follow">
 
   <!-- OpenGraph / Twitter -->
-  <meta property="og:title" content="Digital Marketing Pricing | Mohammad Anshid CK">
-  <meta property="og:description" content="Explore custom SEO, Meta Ads, Google Ads, social media management, and lead generation solutions tailored to your business goals.">
+  <meta property="og:title" content="Premium Digital Marketing Pricing | Adverix Media">
+  <meta property="og:description" content="Explore custom SEO, Meta Ads, Google Ads, social media management, cinematic video production, and lead generation solutions tailored to your business goals.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://anshidck.com/pricing/">
   <meta property="og:image" content="https://anshidck.com/anshid-optimized.jpg">
@@ -41,55 +41,141 @@
   <link rel="preload" as="style" href="../style.min.css"><link rel="stylesheet" href="../style.min.css">
   
   <style>
+    /* OVERRIDING GLOBAL CSS VARS FOR ADVERIX MEDIA BRANDING */
+    :root {
+      --bg-color: #0D0D0D;
+      --card-bg: #1a1a1a;
+      --accent-color: #E63946;
+      --accent-hover: #ff4d5a;
+      --text-primary: #F2F2F2;
+      --text-secondary: #a0a0a0;
+      --glass-bg: rgba(26, 26, 26, 0.7);
+      --glass-border: rgba(230, 57, 70, 0.15);
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      font-family: 'Montserrat', sans-serif;
+    }
+
     .page-header {
-      padding: 180px 0 100px 0;
+      padding: 200px 0 120px 0;
       position: relative;
       overflow: hidden;
-      background: radial-gradient(circle at 70% 20%, rgba(46, 230, 166, 0.15), transparent 600px), 
-                  radial-gradient(circle at 10% 80%, rgba(74, 108, 247, 0.1), transparent 600px);
+      background: radial-gradient(circle at 50% 0%, rgba(230, 57, 70, 0.1), transparent 700px);
       text-align: center;
       border-bottom: 1px solid rgba(255,255,255,0.05);
     }
+
+    .hero-glow {
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 400px;
+      background: var(--accent-color);
+      filter: blur(150px);
+      opacity: 0.15;
+      z-index: 0;
+      pointer-events: none;
+    }
     
     .page-header h1 {
-      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-size: clamp(3rem, 7vw, 5rem);
       margin-bottom: 1.5rem;
       background: linear-gradient(135deg, #fff 30%, var(--accent-color) 100%);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
       font-weight: 800;
+      line-height: 1.1;
+      position: relative;
+      z-index: 1;
     }
 
     .header-tagline {
       display: inline-block;
-      padding: 0.5rem 1.2rem;
-      background: rgba(46, 230, 166, 0.1);
+      padding: 0.5rem 1.5rem;
+      background: rgba(230, 57, 70, 0.1);
       color: var(--accent-color);
       border-radius: 50px;
-      font-weight: 600;
-      font-size: 0.9rem;
+      font-weight: 700;
+      font-size: 0.95rem;
       margin-bottom: 2rem;
-      border: 1px solid rgba(46, 230, 166, 0.2);
+      border: 1px solid rgba(230, 57, 70, 0.2);
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
+      position: relative;
+      z-index: 1;
     }
 
+    .hero-desc {
+      font-size: clamp(1.1rem, 2vw, 1.25rem);
+      max-width: 800px;
+      margin: 0 auto 3rem auto;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      position: relative;
+      z-index: 1;
+    }
+
+    .trust-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 3rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .trust-line span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .trust-line i {
+      color: var(--accent-color);
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+
+    .section-title p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+    }
+
+    /* PRICING GRID STYLES */
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 2.5rem;
-      margin-top: 3rem;
+      margin-bottom: 5rem;
     }
 
     .pricing-card {
       background: var(--glass-bg);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border-radius: 24px;
       padding: 3rem 2.5rem;
-      border: 1px solid rgba(255,255,255,0.08);
-      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid #333333;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       position: relative;
       display: flex;
       flex-direction: column;
@@ -97,61 +183,61 @@
     }
     
     .pricing-card:hover {
-      border-color: rgba(46, 230, 166, 0.4);
-      transform: translateY(-12px);
-      box-shadow: 0 30px 60px -15px rgba(0,0,0,0.5), 0 0 30px -10px rgba(46, 230, 166, 0.15);
+      border-color: rgba(230, 57, 70, 0.5);
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 30px rgba(230, 57, 70, 0.1);
     }
 
-    .pricing-card.popular {
-      border-color: var(--accent-color);
-      box-shadow: 0 0 30px rgba(46, 230, 166, 0.15);
+    .pricing-card.premium {
+      background: linear-gradient(180deg, rgba(26,26,26,0.9) 0%, rgba(13,13,13,0.95) 100%);
+      border: 1px solid var(--accent-color);
+      box-shadow: 0 0 30px rgba(230, 57, 70, 0.15);
     }
 
-    .popular-badge {
+    .pricing-card.premium::before {
+      content: '';
       position: absolute;
-      top: -15px;
-      left: 50%;
-      transform: translateX(-50%);
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
       background: var(--accent-color);
-      color: #051512;
-      padding: 0.5rem 1.5rem;
-      border-radius: 20px;
-      font-weight: 800;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .pricing-icon {
-      font-size: 2.5rem;
-      color: var(--accent-color);
-      margin-bottom: 1.5rem;
+      border-radius: 24px 24px 0 0;
     }
 
     .pricing-title {
       font-size: 1.8rem;
       color: #fff;
-      margin-bottom: 0.5rem;
-    }
-
-    .pricing-desc {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      margin-bottom: 2rem;
-      line-height: 1.6;
+      margin-bottom: 1rem;
+      font-weight: 700;
     }
 
     .pricing-amount {
-      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #333333;
+    }
+
+    .pricing-amount .starting {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+      display: block;
+      font-weight: 600;
+    }
+
+    .pricing-amount .price {
+      font-size: 2.2rem;
       font-weight: 800;
       color: #fff;
-      margin-bottom: 2rem;
       display: flex;
-      align-items: center;
+      align-items: baseline;
       gap: 5px;
     }
 
-    .pricing-amount span {
+    .pricing-amount .period {
       font-size: 1rem;
       color: var(--text-secondary);
       font-weight: 500;
@@ -164,11 +250,11 @@
     }
 
     .pricing-features li {
-      margin-bottom: 1rem;
-      padding-left: 30px;
+      margin-bottom: 1.2rem;
+      padding-left: 32px;
       position: relative;
-      color: #e2e8f0;
-      font-size: 0.95rem;
+      color: var(--text-primary);
+      font-size: 1rem;
     }
 
     .pricing-features li::before {
@@ -178,13 +264,40 @@
       position: absolute;
       left: 0;
       color: var(--accent-color);
+      font-size: 1.1rem;
     }
 
     .btn-pricing {
       width: 100%;
       text-align: center;
+      margin-top: auto;
     }
 
+    /* CTA Banner */
+    .cta-banner {
+      background: linear-gradient(135deg, rgba(26,26,26,0.9) 0%, rgba(13,13,13,0.95) 100%);
+      border: 1px solid #333333;
+      border-radius: 24px;
+      padding: 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin: 4rem 0;
+    }
+
+    .cta-banner::after {
+      content: '';
+      position: absolute;
+      right: -50px;
+      bottom: -50px;
+      width: 200px;
+      height: 200px;
+      background: var(--accent-color);
+      filter: blur(100px);
+      opacity: 0.2;
+    }
+
+    /* FAQ Section */
     .faq-container {
       max-width: 800px;
       margin: 0 auto;
@@ -192,7 +305,7 @@
 
     .faq-item {
       background: var(--glass-bg);
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid #333333;
       border-radius: 16px;
       margin-bottom: 1.5rem;
       padding: 2rem;
@@ -200,7 +313,8 @@
     }
 
     .faq-item:hover {
-      border-color: rgba(46, 230, 166, 0.3);
+      border-color: rgba(230, 57, 70, 0.4);
+      background: rgba(40,40,40,0.8);
     }
 
     .faq-item h3 {
@@ -223,13 +337,32 @@
       margin-bottom: 0;
     }
 
+    .custom-notice {
+      text-align: center;
+      padding: 1rem;
+      color: var(--text-secondary);
+      font-style: italic;
+      margin-top: -2rem;
+      margin-bottom: 4rem;
+    }
+
+    @media (max-width: 992px) {
+      .trust-line {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
     @media (max-width: 768px) {
       .page-header {
-        padding: 140px 0 70px 0;
+        padding: 160px 0 80px 0;
       }
       .pricing-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
+      }
+      .cta-banner {
+        padding: 3rem 1.5rem;
       }
       .faq-item {
         padding: 1.5rem;
@@ -243,12 +376,12 @@
     <nav class="navbar">
       <div class="container container-nav">
         <div class="logo-group">
-          <a href="../" class="logo">Anshid Ck<span class="text-accent">.</span></a>
+          <a href="../" class="logo">Adverix Media<span class="text-accent">.</span></a>
         </div>
         
         <ul class="nav-links">
           <li class="mobile-nav-header">
-            <span class="logo">Anshid Ck<span class="text-accent">.</span></span>
+            <span class="logo">Adverix Media<span class="text-accent">.</span></span>
             <button class="close-menu-btn" aria-label="Close menu">&times;</button>
           </li>
           <li><a href="../">Home</a></li>
@@ -269,132 +402,430 @@
   </header>
 
   <main>
-    <!-- Hero Section -->
+    <!-- HERO SECTION -->
     <section class="page-header">
+      <div class="hero-glow"></div>
       <div class="container animate stagger-1">
-        <span class="header-tagline">Investment & Value</span>
-        <h1>Transparent Pricing</h1>
-        <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; color: var(--text-secondary);">Premium, results-driven digital marketing solutions tailored to your specific business objectives and growth targets.</p>
-      </div>
-    </section>
-
-    <!-- Why Custom Pricing Section -->
-    <section class="section" style="background: rgba(255,255,255,0.02);">
-      <div class="container">
-        <div style="max-width: 800px; margin: 0 auto; text-align: center;" class="animate reveal-up">
-          <h2 style="margin-bottom: 1.5rem;">Why Custom Pricing?</h2>
-          <p style="color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem; margin-bottom: 2rem;">Every business has unique goals, a distinct target audience, and specific market challenges. Rather than pushing rigid, "one-size-fits-all" packages, my approach is purely <strong>Project-Based</strong>. I build a customized strategy and scope around your exact needs to ensure you get the maximum ROI for your investment.</p>
+        <span class="header-tagline">Adverix Media Packages</span>
+        <h1>Transparent Pricing for Digital Growth</h1>
+        <p class="hero-desc">Flexible solutions tailored to your goals. Whether you need SEO, paid advertising, social media management, or cinematic video production, we create strategies that fit your business—not the other way around.</p>
+        
+        <a href="../contact/" class="btn btn-primary btn-pulse" style="font-size: 1.1rem; padding: 1.2rem 2.5rem; z-index: 1; position: relative;">
+          Book a Free Strategy Call
+        </a>
+        
+        <div class="trust-line">
+          <span><i class="fas fa-check-circle"></i> No hidden fees</span>
+          <span style="color: #333;">•</span>
+          <span><i class="fas fa-check-circle"></i> Custom solutions</span>
+          <span style="color: #333;">•</span>
+          <span><i class="fas fa-check-circle"></i> ROI-focused execution</span>
         </div>
       </div>
     </section>
 
-    <!-- Services Offered Grid -->
+    <!-- SEO SERVICES -->
     <section class="section">
       <div class="container">
-        <div style="text-align: center; margin-bottom: 4rem;" class="animate stagger-1">
-          <h2>Services Offered</h2>
-          <p>Explore my specialized digital marketing solutions.</p>
+        <div class="section-title animate reveal-up">
+          <h2>SEO Services</h2>
+          <p>Dominate search rankings with data-driven organic growth strategies.</p>
         </div>
         
         <div class="pricing-grid">
-          
-          <!-- SEO Package -->
+          <!-- Starter -->
           <div class="pricing-card animate reveal-left">
-            <div class="pricing-icon"><i class="fas fa-search-dollar"></i></div>
-            <h2 class="pricing-title">SEO Optimization</h2>
-            <p class="pricing-desc">Dominate organic search results with data-backed content and technical SEO.</p>
-            <div class="pricing-amount">Custom<span>/project</span></div>
+            <h3 class="pricing-title">SEO Starter</h3>
+            <div class="pricing-amount">
+              <span class="starting">Starting From</span>
+              <div class="price">₹15,000<span class="period">/month</span></div>
+            </div>
             <ul class="pricing-features">
-              <li>Comprehensive Site Audit</li>
-              <li>Keyword Mapping & Intent</li>
-              <li>On-Page & Technical Fixes</li>
-              <li>High-Authority Link Building</li>
-              <li>Local SEO & AEO Strategy</li>
+              <li>Keyword Research</li>
+              <li>On-Page SEO</li>
+              <li>Technical SEO</li>
+              <li>Monthly Reporting</li>
             </ul>
-            <a href="../contact/" class="btn btn-outline btn-pricing">Get a Quote</a>
+            <a href="../contact/" class="btn btn-outline btn-pricing">Get Started</a>
           </div>
 
-          <!-- Ads Package -->
-          <div class="pricing-card popular animate reveal-up">
-            <div class="popular-badge">High Conversion</div>
-            <div class="pricing-icon"><i class="fas fa-bullseye"></i></div>
-            <h2 class="pricing-title">Google & Meta Ads</h2>
-            <p class="pricing-desc">ROI-focused campaigns designed to acquire customers at the lowest CPL.</p>
-            <div class="pricing-amount">Custom<span>/project</span></div>
+          <!-- Growth -->
+          <div class="pricing-card premium animate reveal-up">
+            <h3 class="pricing-title">SEO Growth</h3>
+            <div class="pricing-amount">
+              <span class="starting">Starting From</span>
+              <div class="price">₹25,000<span class="period">/month</span></div>
+            </div>
             <ul class="pricing-features">
-              <li>Google Search & Display Ads</li>
-              <li>Facebook/Instagram Funnels</li>
-              <li>Advanced Conversion Tracking</li>
-              <li>A/B Testing Creatives</li>
-              <li>Retargeting & Audience Setup</li>
+              <li>Blog Optimization</li>
+              <li>Local SEO</li>
+              <li>Competitor Analysis</li>
+              <li>Schema Setup</li>
             </ul>
-            <a href="../contact/" class="btn btn-primary btn-pricing">Get a Quote</a>
+            <a href="../contact/" class="btn btn-primary btn-pricing">Get Started</a>
           </div>
 
-          <!-- Social Media & Lead Gen -->
+          <!-- Custom -->
           <div class="pricing-card animate reveal-right">
-            <div class="pricing-icon"><i class="fas fa-users-viewfinder"></i></div>
-            <h2 class="pricing-title">Social & Lead Gen</h2>
-            <p class="pricing-desc">Build your brand authority and capture high-quality B2B/B2C leads.</p>
-            <div class="pricing-amount">Custom<span>/project</span></div>
+            <h3 class="pricing-title">Custom SEO</h3>
+            <div class="pricing-amount">
+              <span class="starting">Tailored Enterprise Strategy</span>
+              <div class="price">Custom<span class="period">Pricing</span></div>
+            </div>
+            <ul class="pricing-features">
+              <li>Full Site Architecture Review</li>
+              <li>Advanced Link Building</li>
+              <li>AEO & Voice Search Setup</li>
+              <li>Dedicated Account Manager</li>
+            </ul>
+            <a href="../contact/" class="btn btn-outline btn-pricing">Request Quote</a>
+          </div>
+        </div>
+        <div class="custom-notice animate reveal-up">* Custom Pricing Available for specialized or enterprise requirements.</div>
+      </div>
+    </section>
+
+    <!-- META ADS MANAGEMENT -->
+    <section class="section" style="background: rgba(255,255,255,0.02);">
+      <div class="container">
+        <div class="section-title animate reveal-up">
+          <h2>Meta Ads Management</h2>
+          <p>High-converting Facebook and Instagram ad campaigns.</p>
+        </div>
+        
+        <div class="pricing-grid">
+          <div class="pricing-card animate reveal-left">
+            <h3 class="pricing-title">Meta Ads Starter</h3>
+            <div class="pricing-amount">
+              <span class="starting">Starting From</span>
+              <div class="price">₹12,000<span class="period">/month</span></div>
+            </div>
+            <ul class="pricing-features">
+              <li>Campaign Setup</li>
+              <li>Audience Research</li>
+              <li>Ad Copy</li>
+              <li>Monthly Optimization</li>
+            </ul>
+            <a href="../contact/" class="btn btn-outline btn-pricing">Get Started</a>
+          </div>
+
+          <div class="pricing-card premium animate reveal-up">
+            <h3 class="pricing-title">Meta Ads Growth</h3>
+            <div class="pricing-amount">
+              <span class="starting">Starting From</span>
+              <div class="price">₹20,000<span class="period">/month</span></div>
+            </div>
+            <ul class="pricing-features">
+              <li>Retargeting Campaigns</li>
+              <li>Creative Strategy</li>
+              <li>Weekly Optimization</li>
+              <li>Conversion Tracking</li>
+            </ul>
+            <a href="../contact/" class="btn btn-primary btn-pricing">Get Started</a>
+          </div>
+
+          <div class="pricing-card animate reveal-right">
+            <h3 class="pricing-title">Custom Meta Ads</h3>
+            <div class="pricing-amount">
+              <span class="starting">Tailored Ad Strategies</span>
+              <div class="price">Custom<span class="period">Pricing</span></div>
+            </div>
+            <ul class="pricing-features">
+              <li>High-Budget Scaling</li>
+              <li>Advanced Pixel Implementation</li>
+              <li>A/B Testing Creatives</li>
+              <li>Custom Audience Mapping</li>
+            </ul>
+            <a href="../contact/" class="btn btn-outline btn-pricing">Request Quote</a>
+          </div>
+        </div>
+        <div class="custom-notice animate reveal-up">* Custom Pricing Available for advanced funnels and large ad spends.</div>
+      </div>
+    </section>
+
+    <!-- GOOGLE ADS MANAGEMENT -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title animate reveal-up">
+          <h2>Google Ads Management</h2>
+          <p>Capture high-intent traffic directly from search engines.</p>
+        </div>
+        
+        <div class="pricing-grid">
+          <div class="pricing-card animate reveal-left">
+            <h3 class="pricing-title">Google Ads Starter</h3>
+            <div class="pricing-amount">
+              <span class="starting">Starting From</span>
+              <div class="price">₹15,000<span class="period">/month</span></div>
+            </div>
+            <ul class="pricing-features">
+              <li>Search Campaign Setup</li>
+              <li>Keyword Research</li>
+              <li>Conversion Tracking</li>
+            </ul>
+            <a href="../contact/" class="btn btn-outline btn-pricing">Get Started</a>
+          </div>
+
+          <div class="pricing-card premium animate reveal-up">
+            <h3 class="pricing-title">Google Ads Growth</h3>
+            <div class="pricing-amount">
+              <span class="starting">Starting From</span>
+              <div class="price">₹25,000<span class="period">/month</span></div>
+            </div>
+            <ul class="pricing-features">
+              <li>Search + Performance Max</li>
+              <li>Competitor Analysis</li>
+              <li>Weekly Optimization</li>
+            </ul>
+            <a href="../contact/" class="btn btn-primary btn-pricing">Get Started</a>
+          </div>
+
+          <div class="pricing-card animate reveal-right">
+            <h3 class="pricing-title">Custom Google Ads</h3>
+            <div class="pricing-amount">
+              <span class="starting">Advanced Search Strategies</span>
+              <div class="price">Custom<span class="period">Pricing</span></div>
+            </div>
+            <ul class="pricing-features">
+              <li>Display & Video Ads (YouTube)</li>
+              <li>Remarketing Lists</li>
+              <li>ROAS Bidding Setup</li>
+              <li>E-commerce Shopping Setup</li>
+            </ul>
+            <a href="../contact/" class="btn btn-outline btn-pricing">Request Quote</a>
+          </div>
+        </div>
+        <div class="custom-notice animate reveal-up">* Custom Pricing Available for comprehensive cross-network Google campaigns.</div>
+      </div>
+    </section>
+
+    <!-- SOCIAL MEDIA MANAGEMENT -->
+    <section class="section" style="background: rgba(255,255,255,0.02);">
+      <div class="container">
+        <div class="section-title animate reveal-up">
+          <h2>Social Media Management</h2>
+          <p>Build an engaging community and elevate your brand presence.</p>
+        </div>
+        
+        <div class="pricing-grid">
+          <div class="pricing-card animate reveal-left">
+            <h3 class="pricing-title">Essential Package</h3>
+            <div class="pricing-amount">
+              <span class="starting">Starting From</span>
+              <div class="price">₹10,000<span class="period">/month</span></div>
+            </div>
+            <ul class="pricing-features">
+              <li>12 Posts</li>
+              <li>Content Calendar</li>
+              <li>Page Management</li>
+            </ul>
+            <a href="../contact/" class="btn btn-outline btn-pricing">Get Started</a>
+          </div>
+
+          <div class="pricing-card premium animate reveal-up">
+            <h3 class="pricing-title">Growth Package</h3>
+            <div class="pricing-amount">
+              <span class="starting">Starting From</span>
+              <div class="price">₹18,000<span class="period">/month</span></div>
+            </div>
+            <ul class="pricing-features">
+              <li>Posts + Reels</li>
+              <li>Creative Designs</li>
+              <li>Audience Engagement</li>
+              <li>Monthly Reports</li>
+            </ul>
+            <a href="../contact/" class="btn btn-primary btn-pricing">Get Started</a>
+          </div>
+
+          <div class="pricing-card animate reveal-right">
+            <h3 class="pricing-title">Custom Social Media</h3>
+            <div class="pricing-amount">
+              <span class="starting">Full Brand Authority</span>
+              <div class="price">Custom<span class="period">Pricing</span></div>
+            </div>
+            <ul class="pricing-features">
+              <li>Daily Posting Schedule</li>
+              <li>Influencer Collaborations</li>
+              <li>Community Management</li>
+              <li>Custom Graphic Suites</li>
+            </ul>
+            <a href="../contact/" class="btn btn-outline btn-pricing">Request Quote</a>
+          </div>
+        </div>
+        <div class="custom-notice animate reveal-up">* Custom Pricing Available for extensive multi-platform brand management.</div>
+      </div>
+    </section>
+
+    <!-- VIDEO PRODUCTION SERVICES -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title animate reveal-up">
+          <h2>Video Production Services</h2>
+          <p style="color: var(--accent-color); font-weight: 600; text-transform: uppercase; letter-spacing: 2px;">Cinematic iPhone Video Production</p>
+        </div>
+        
+        <div class="pricing-grid">
+          <div class="pricing-card animate reveal-left">
+            <h3 class="pricing-title">Reels & Social Videos</h3>
+            <div class="pricing-amount">
+              <span class="starting">Starting From</span>
+              <div class="price">₹8,000<span class="period">/project</span></div>
+            </div>
+            <ul class="pricing-features">
+              <li>Short-form Videos</li>
+              <li>Reels Editing</li>
+              <li>Color Grading</li>
+            </ul>
+            <a href="../contact/" class="btn btn-outline btn-pricing">Get Started</a>
+          </div>
+
+          <div class="pricing-card premium animate reveal-up">
+            <h3 class="pricing-title">Promotional Package</h3>
+            <div class="pricing-amount">
+              <span class="starting">Starting From</span>
+              <div class="price">₹15,000<span class="period">/project</span></div>
+            </div>
+            <ul class="pricing-features">
+              <li>Cinematic iPhone Shooting</li>
+              <li>Product Videos</li>
+              <li>Business Promotion Videos</li>
+              <li>Professional Editing</li>
+            </ul>
+            <a href="../contact/" class="btn btn-primary btn-pricing">Get Started</a>
+          </div>
+
+          <div class="pricing-card animate reveal-right">
+            <h3 class="pricing-title">Corporate & Events</h3>
+            <div class="pricing-amount">
+              <span class="starting">Starting From</span>
+              <div class="price">₹25,000<span class="period">/project</span></div>
+            </div>
+            <ul class="pricing-features">
+              <li>Event Coverage</li>
+              <li>Corporate Videos</li>
+              <li>Multi-shot Editing</li>
+            </ul>
+            <a href="../contact/" class="btn btn-outline btn-pricing">Get Started</a>
+          </div>
+        </div>
+        <div class="custom-notice animate reveal-up">* Custom Pricing Available for specialized film formats or extended shooting days.</div>
+      </div>
+    </section>
+
+    <!-- GROWTH PACKAGES -->
+    <section class="section" style="background: rgba(255,255,255,0.02);">
+      <div class="container">
+        <div class="section-title animate reveal-up">
+          <h2>Growth Packages</h2>
+          <p>All-in-one scalable bundles for aggressive digital expansion.</p>
+        </div>
+        
+        <div class="pricing-grid">
+          <div class="pricing-card animate reveal-left">
+            <h3 class="pricing-title">Startup Package</h3>
+            <div class="pricing-amount">
+              <span class="starting">Starting From</span>
+              <div class="price">₹20,000<span class="period">/month</span></div>
+            </div>
             <ul class="pricing-features">
               <li>Social Media Management</li>
-              <li>Brand Identity & Content</li>
-              <li>B2B Outreach Campaigns</li>
-              <li>Lead Magnet & Funnel Building</li>
-              <li>CRM Integration Strategies</li>
+              <li>Meta Ads</li>
+              <li>Monthly Strategy</li>
             </ul>
-            <a href="../contact/" class="btn btn-outline btn-pricing">Get a Quote</a>
+            <a href="../contact/" class="btn btn-outline btn-pricing">Get Started</a>
           </div>
 
+          <div class="pricing-card premium animate reveal-up">
+            <h3 class="pricing-title">Business Growth</h3>
+            <div class="pricing-amount">
+              <span class="starting">Starting From</span>
+              <div class="price">₹35,000<span class="period">/month</span></div>
+            </div>
+            <ul class="pricing-features">
+              <li>SEO Optimization</li>
+              <li>Meta Ads</li>
+              <li>Social Media Management</li>
+              <li>Content Strategy</li>
+            </ul>
+            <a href="../contact/" class="btn btn-primary btn-pricing">Get Started</a>
+          </div>
+
+          <div class="pricing-card animate reveal-right">
+            <h3 class="pricing-title">Scale Package</h3>
+            <div class="pricing-amount">
+              <span class="starting">Starting From</span>
+              <div class="price">₹50,000<span class="period">/month</span></div>
+            </div>
+            <ul class="pricing-features">
+              <li>SEO Optimization</li>
+              <li>Meta Ads & Google Ads</li>
+              <li>Social Media Management</li>
+              <li>Video Production Support</li>
+            </ul>
+            <a href="../contact/" class="btn btn-outline btn-pricing">Get Started</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- FAQ Section -->
+    <!-- CUSTOM PROJECT SECTION -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-banner animate reveal-up">
+          <h2 style="font-size: 2.5rem; margin-bottom: 1rem; position: relative; z-index: 1;">Need Something Unique?</h2>
+          <p style="font-size: 1.15rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 2.5rem auto; line-height: 1.8; position: relative; z-index: 1;">Every business has different goals. We create customized solutions based on your requirements, budget, and growth objectives.</p>
+          <a href="../contact/" class="btn btn-primary btn-pulse" style="font-size: 1.1rem; padding: 1rem 2rem; position: relative; z-index: 1;">Book a Free Strategy Call</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ SECTION (AEO + SEO) -->
     <section class="section" style="background: rgba(255,255,255,0.02);">
       <div class="container">
-        <div style="text-align: center; margin-bottom: 4rem;" class="animate stagger-1">
-          <h2>Pricing FAQ</h2>
-          <p>Common questions about my engagement model and billing.</p>
+        <div class="section-title animate reveal-up">
+          <h2>Frequently Asked Questions</h2>
+          <p>Everything you need to know about our pricing and services.</p>
         </div>
         
         <div class="faq-container">
+          <!-- FAQ 1 -->
           <div class="faq-item animate reveal-up">
-            <h3><i class="fas fa-question-circle"></i> Do you have fixed monthly packages?</h3>
-            <p>I prefer a project-based approach because no two businesses are the same. However, for ongoing retainers like SEO or Ad Management, I create a customized monthly flat fee based on the agreed-upon scope of work and ad spend volume.</p>
+            <h3><i class="fas fa-question-circle"></i> How much does digital marketing cost in Kerala?</h3>
+            <p>The cost depends on your business goals and services required. Most projects start from ₹10,000–₹15,000 and scale based on complexity and the aggressiveness of the desired growth.</p>
           </div>
           
+          <!-- FAQ 2 -->
           <div class="faq-item animate reveal-up" style="transition-delay: 0.1s;">
-            <h3><i class="fas fa-question-circle"></i> Do you charge a percentage of Ad Spend?</h3>
-            <p>For Performance Marketing (Google/Meta Ads), my pricing typically involves a base management fee plus a small performance percentage on ad spend over a certain threshold. This ensures my goals align with your ROI.</p>
+            <h3><i class="fas fa-question-circle"></i> Do you provide custom packages?</h3>
+            <p>Yes. Every business is different, and we create tailored strategies based on your exact objectives, target market, and budget.</p>
           </div>
           
+          <!-- FAQ 3 -->
           <div class="faq-item animate reveal-up" style="transition-delay: 0.2s;">
-            <h3><i class="fas fa-question-circle"></i> Are there any hidden fees?</h3>
-            <p>Absolutely not. My project-based approach guarantees complete transparency. You will know exactly what the costs are, what deliverables are included, and the expected timelines before we sign any agreements.</p>
+            <h3><i class="fas fa-question-circle"></i> Do you provide video production?</h3>
+            <p>Yes. We offer cinematic iPhone-based video production, promotional videos, social media content, product videos, and comprehensive event coverage to elevate your brand's visual identity.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CTA Section -->
+    <!-- FINAL CTA -->
     <section class="section">
       <div class="container" style="text-align: center;">
-        <div class="glass-card" style="padding: 5rem 2rem; border-color: rgba(46, 230, 166, 0.2); background: radial-gradient(circle at top right, rgba(46, 230, 166, 0.1), transparent);">
-          <h2 class="animate stagger-1">Ready to scale your business?</h2>
-          <p class="animate stagger-2" style="margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto; font-size: 1.2rem;">Let's discuss your exact needs and build a custom strategy that guarantees ROI.</p>
-          <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;" class="animate stagger-3">
-            <a href="https://wa.me/919778179727" target="_blank" class="btn btn-primary btn-pulse">
-              <i class="fab fa-whatsapp" style="font-size:1.2rem; margin-right: 8px;"></i> Book Free Strategy Call
-            </a>
-            <a href="../contact/" class="btn btn-outline">
-              <i class="fas fa-envelope" style="margin-right: 8px;"></i> Contact Me
-            </a>
-          </div>
+        <h2 class="animate stagger-1" style="font-size: 3rem; margin-bottom: 1rem;">Ready to Grow Your Business?</h2>
+        <p class="animate stagger-2" style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 3rem;">Let's create a strategy that delivers measurable results.</p>
+        
+        <div class="animate stagger-3" style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+          <a href="../contact/" class="btn btn-primary" style="padding: 1.2rem 2.5rem; font-size: 1.1rem;">
+            Book Free Strategy Call
+          </a>
+          <a href="https://wa.me/919778179727" target="_blank" class="btn btn-outline" style="padding: 1.2rem 2.5rem; font-size: 1.1rem; border-color: #333; color: #fff;">
+            <i class="fab fa-whatsapp" style="margin-right: 8px; color: #25D366;"></i> Chat on WhatsApp
+          </a>
         </div>
       </div>
     </section>
+
   </main>
 
   <!-- Footer -->
@@ -402,8 +833,8 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col">
-          <a href="../" class="logo" style="margin-bottom: 2rem; display: block; font-size: 1.8rem; font-weight: 800;">Anshid Ck<span class="text-accent">.</span></a>
-          <p style="margin-bottom: 2.5rem; max-width: 350px;">Leading Digital Marketing Strategist in Malappuram & Kerala. Helping brands dominate the digital landscape through ROI-driven SEO and Performance Marketing.</p>
+          <a href="../" class="logo" style="margin-bottom: 2rem; display: block; font-size: 1.8rem; font-weight: 800;">Adverix Media<span class="text-accent">.</span></a>
+          <p style="margin-bottom: 2.5rem; max-width: 350px;">Leading Digital Marketing Agency in Malappuram & Kerala. Helping brands dominate the digital landscape through ROI-driven strategies.</p>
         </div>
         <div class="footer-col">
           <h4>Explore</h4>
