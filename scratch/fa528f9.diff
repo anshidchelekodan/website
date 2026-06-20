@@ -1,0 +1,424 @@
+﻿commit fa528f98cfbb974f161236f4e2d3df7d1b780016
+Author: Muhammed Anshid Chelekodan <anshidchelekodan@gmail.com>
+Date:   Tue Mar 31 12:12:42 2026 +0530
+
+    feat: implement tabbed business growth and lead projection calculators with interactive sliders
+
+diff --git a/index.html b/index.html
+index 1140731..2c27dcc 100644
+--- a/index.html
++++ b/index.html
+@@ -894,57 +894,107 @@
+     </div>
+   </section>
+ 
+-  <!-- Interactive ROI Calculator -->
++
++  <!-- Interactive Business Calculators -->
+   <section class="section" id="growth-calc">
+-    <div class="container">
++    <div class="container text-center">
+       <div class="section-title animate reveal-up">
+-        <h2>ROI <span class="text-accent">Growth Estimator</span></h2>
+-        <p>See the potential impact of a data-driven marketing strategy on your business.</p>
++        <span>Strategic Planning</span>
++        <h2>Business <span class="text-accent">Growth Calculators</span></h2>
++        <p>Project your potential growth and lead generation with our interactive tools.</p>
+       </div>
+ 
+-      <div class="roi-calculator animate reveal-up">
+-        <div class="calc-grid">
+-          <div class="calc-inputs">
+-            <div class="input-group">
+-              <label>Monthly Traffic (Current)</label>
+-              <input type="range" min="1000" max="50000" value="5000" step="500" class="range-slider" id="trafficRange">
+-              <div
+-                style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-secondary);">
+-                <span id="trafficValue">5,000</span>
+-                <span>Visitors</span>
+-              </div>
+-            </div>
++      <div class="calc-tabs animate reveal-up">
++        <div class="calc-tab active" onclick="switchCalc('roi')">ROI Estimator</div>
++        <div class="calc-tab" onclick="switchCalc('lead')">Lead Projection</div>
++      </div>
+ 
+-            <div class="input-group">
+-              <label>Current Conversion Rate (%)</label>
+-              <input type="range" min="0.5" max="10" value="2" step="0.1" class="range-slider" id="convRange">
+-              <div
+-                style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-secondary);">
+-                <span id="convValue">2%</span>
+-                <span>Conversion</span>
++      <div class="calc-container animate reveal-up">
++        <!-- ROI Calculator -->
++        <div id="roi-calc" class="calc-card active">
++          <div class="calc-grid">
++            <div class="calc-inputs">
++              <div class="calc-input-group">
++                <label>Monthly Website Traffic</label>
++                <input type="range" min="500" max="100000" value="5000" step="500" class="range-slider" id="roi-traffic">
++                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-secondary);">
++                  <span id="roi-traffic-val">5,000</span>
++                  <span>Visitors</span>
++                </div>
++              </div>
++              <div class="calc-input-group">
++                <label>Current Conversion Rate (%)</label>
++                <input type="range" min="0.1" max="15" value="2" step="0.1" class="range-slider" id="roi-conv">
++                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-secondary);">
++                  <span id="roi-conv-val">2.0%</span>
++                  <span>Conversion</span>
++                </div>
++              </div>
++              <div class="calc-input-group">
++                <label>Avg. Customer Value (Γé╣)</label>
++                <input type="range" min="500" max="100000" value="10000" step="500" class="range-slider" id="roi-value">
++                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-secondary);">
++                  <span id="roi-value-val">Γé╣10,000</span>
++                  <span>Per Deal</span>
++                </div>
+               </div>
+             </div>
+-
+-            <div class="input-group">
+-              <label>Avg. Customer Value (Γé╣)</label>
+-              <input type="range" min="500" max="50000" value="5000" step="500" class="range-slider" id="valueRange">
+-              <div
+-                style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-secondary);">
+-                <span id="valueValue">Γé╣5,000</span>
+-                <span>Per Client</span>
++            <div class="calc-result">
++              <div class="calc-result-box">
++                <span class="result-label">Est. Revenue Growth</span>
++                <span class="result-value result-highlight" id="roi-result">Γé╣5,00,000</span>
++                <p class="calc-note">Estimated monthly revenue increase based on a 50% improvement in conversion strategy.</p>
++                <div style="margin-top: 2rem;">
++                  <a href="contact/" class="btn btn-primary" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;">
++                    <i class="fas fa-chart-line"></i> Get This Result
++                  </a>
++                </div>
+               </div>
+             </div>
+           </div>
++        </div>
+ 
+-          <div class="calc-result">
+-            <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 1rem;">Potential
+-              Monthly Revenue Uplift</p>
+-            <span class="result-value" id="roiTotal">Γé╣2,50,000</span>
+-            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 2.5rem;">*Estimated based on a 50%
+-              improvement in conversion efficiency.</p>
+-            <a href="contact/" class="btn btn-primary" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 0.8rem; padding: 1rem 2rem;">
+-              <i class="fas fa-rocket"></i> Start Your Strategy
+-            </a>
++        <!-- Lead Gen Calculator -->
++        <div id="lead-calc" class="calc-card">
++          <div class="calc-grid">
++            <div class="calc-inputs">
++              <div class="calc-input-group">
++                <label>Monthly Ad Budget (Γé╣)</label>
++                <input type="range" min="5000" max="500000" value="50000" step="5000" class="range-slider" id="lead-budget">
++                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-secondary);">
++                  <span id="lead-budget-val">Γé╣50,000</span>
++                  <span>Investment</span>
++                </div>
++              </div>
++              <div class="calc-input-group">
++                <label>Average CPC (Γé╣)</label>
++                <input type="range" min="5" max="200" value="40" step="1" class="range-slider" id="lead-cpc">
++                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-secondary);">
++                  <span id="lead-cpc-val">Γé╣40</span>
++                  <span>Cost Per Click</span>
++                </div>
++              </div>
++              <div class="calc-input-group">
++                <label>Landing Page Conv. (%)</label>
++                <input type="range" min="1" max="25" value="5" step="0.5" class="range-slider" id="lead-conv">
++                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-secondary);">
++                  <span id="lead-conv-val">5.0%</span>
++                  <span>Leads Ratio</span>
++                </div>
++              </div>
++            </div>
++            <div class="calc-result">
++              <div class="calc-result-box">
++                <span class="result-label">Projected Monthly Leads</span>
++                <span class="result-value result-highlight" id="lead-result">62</span>
++                <p class="calc-note">Estimated quantity of high-intent leads generated through optimized ad campaigns.</p>
++                <div style="margin-top: 2rem;">
++                  <a href="contact/" class="btn btn-primary" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;">
++                    <i class="fas fa-bullseye"></i> Start Generating Leads
++                  </a>
++                </div>
++              </div>
++            </div>
+           </div>
+         </div>
+       </div>
+@@ -1308,38 +1358,72 @@
+ 
+   <a href="https://wa.me/919778179727" class="float-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+   <script src="main.js?v=20260327-4"></script>
++
+   <script>
+-    // ROI Calculator Logic
+-    const trafficRange = document.getElementById('trafficRange');
+-    const convRange = document.getElementById('convRange');
+-    const valueRange = document.getElementById('valueRange');
++    // Business Calculators Logic
++    function switchCalc(type) {
++      document.querySelectorAll('.calc-tab').forEach(tab => tab.classList.remove('active'));
++      document.querySelectorAll('.calc-card').forEach(card => card.classList.remove('active'));
++      
++      if (type === 'roi') {
++        document.querySelector('.calc-tab:nth-child(1)').classList.add('active');
++        document.getElementById('roi-calc').classList.add('active');
++      } else {
++        document.querySelector('.calc-tab:nth-child(2)').classList.add('active');
++        document.getElementById('lead-calc').classList.add('active');
++      }
++    }
+ 
+-    const trafficValue = document.getElementById('trafficValue');
+-    const convValue = document.getElementById('convValue');
+-    const valueValue = document.getElementById('valueValue');
+-    const roiTotal = document.getElementById('roiTotal');
++    // ROI Calculator
++    const roiTraffic = document.getElementById('roi-traffic');
++    const roiConv = document.getElementById('roi-conv');
++    const roiValue = document.getElementById('roi-value');
++    const roiResult = document.getElementById('roi-result');
+ 
+-    function calculateROI() {
+-      const traffic = parseInt(trafficRange.value);
+-      const conv = parseFloat(convRange.value) / 100;
+-      const value = parseInt(valueRange.value);
++    function updateROI() {
++      const traffic = parseInt(roiTraffic.value);
++      const conv = parseFloat(roiConv.value) / 100;
++      const value = parseInt(roiValue.value);
++      
++      document.getElementById('roi-traffic-val').innerText = traffic.toLocaleString();
++      document.getElementById('roi-conv-val').innerText = (conv * 100).toFixed(1) + '%';
++      document.getElementById('roi-value-val').innerText = 'Γé╣' + value.toLocaleString();
+ 
+       // Estimate 50% improvement in conversion efficiency
+       const improvement = 1.5;
+       const uplift = (traffic * (conv * improvement) * value) - (traffic * conv * value);
+-
+-      trafficValue.innerText = traffic.toLocaleString();
+-      convValue.innerText = (conv * 100).toFixed(1) + '%';
+-      valueValue.innerText = 'Γé╣' + value.toLocaleString();
+-      roiTotal.innerText = 'Γé╣' + Math.round(uplift).toLocaleString();
++      
++      roiResult.innerText = 'Γé╣' + Math.round(uplift).toLocaleString();
+     }
+ 
+-    if (trafficRange && convRange && valueRange && trafficValue && convValue && valueValue && roiTotal) {
+-      calculateROI();
+-      trafficRange.addEventListener('input', calculateROI);
+-      convRange.addEventListener('input', calculateROI);
+-      valueRange.addEventListener('input', calculateROI);
++    // Lead Gen Calculator
++    const leadBudget = document.getElementById('lead-budget');
++    const leadCpc = document.getElementById('lead-cpc');
++    const leadConv = document.getElementById('lead-conv');
++    const leadResult = document.getElementById('lead-result');
++
++    function updateLead() {
++      const budget = parseInt(leadBudget.value);
++      const cpc = parseInt(leadCpc.value);
++      const conv = parseFloat(leadConv.value) / 100;
++
++      document.getElementById('lead-budget-val').innerText = 'Γé╣' + budget.toLocaleString();
++      document.getElementById('lead-cpc-val').innerText = 'Γé╣' + cpc.toLocaleString();
++      document.getElementById('lead-conv-val').innerText = (conv * 100).toFixed(1) + '%';
++
++      const leads = (budget / cpc) * conv;
++      leadResult.innerText = Math.round(leads).toLocaleString();
+     }
++
++    // Event Listeners
++    [roiTraffic, roiConv, roiValue].forEach(el => el.addEventListener('input', updateROI));
++    [leadBudget, leadCpc, leadConv].forEach(el => el.addEventListener('input', updateLead));
++
++    // Initialize
++    document.addEventListener('DOMContentLoaded', () => {
++      updateROI();
++      updateLead();
++    });
+   </script>
+ 
+   <!-- Service Poster Popup -->
+diff --git a/style.css b/style.css
+index 910c819..33b29d2 100644
+--- a/style.css
++++ b/style.css
+@@ -1876,3 +1876,166 @@ footer p {
+   .back-to-top.active { bottom: 85px; }
+   .float-wa { left: 20px; bottom: 20px; width: 50px; height: 50px; font-size: 1.5rem; }
+ }
++
++/* Interactive Business Calculators */
++.calc-container {
++  display: grid;
++  grid-template-columns: 1fr;
++  gap: 2rem;
++  margin-top: 3rem;
++}
++
++.calc-tabs {
++  display: flex;
++  justify-content: center;
++  gap: 1rem;
++  margin-bottom: 2rem;
++}
++
++.calc-tab {
++  padding: 0.8rem 2rem;
++  background: rgba(255, 255, 255, 0.05);
++  border: 1px solid rgba(255, 255, 255, 0.1);
++  border-radius: 12px;
++  color: var(--text-secondary);
++  font-weight: 600;
++  cursor: pointer;
++  transition: var(--transition);
++}
++
++.calc-tab.active {
++  background: var(--accent-color);
++  color: #fff;
++  border-color: var(--accent-color);
++  box-shadow: 0 10px 20px rgba(255, 107, 53, 0.2);
++}
++
++.calc-card {
++  display: none;
++  animation: fadeIn 0.5s ease-out;
++}
++
++.calc-card.active {
++  display: block;
++}
++
++.calc-grid {
++  display: grid;
++  grid-template-columns: 1fr 1fr;
++  gap: 3rem;
++  align-items: center;
++  background: var(--glass-bg);
++  backdrop-filter: blur(15px);
++  padding: 3rem;
++  border-radius: 24px;
++  border: 1px solid var(--glass-border);
++}
++
++.calc-inputs {
++  display: flex;
++  flex-direction: column;
++  gap: 2rem;
++}
++
++.calc-input-group {
++  display: flex;
++  flex-direction: column;
++  gap: 0.8rem;
++}
++
++.calc-input-group label {
++  font-weight: 600;
++  color: #fff;
++  font-size: 0.95rem;
++}
++
++.range-slider {
++  appearance: none;
++  -webkit-appearance: none;
++  width: 100%;
++  height: 6px;
++  background: rgba(255, 255, 255, 0.1);
++  border-radius: 5px;
++  outline: none;
++}
++
++.range-slider::-webkit-slider-thumb {
++  appearance: none;
++  -webkit-appearance: none;
++  width: 20px;
++  height: 20px;
++  background: var(--accent-color);
++  border-radius: 50%;
++  cursor: pointer;
++  box-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
++  transition: transform 0.2s;
++}
++
++.range-slider::-webkit-slider-thumb:hover {
++  transform: scale(1.2);
++}
++
++.calc-result-box {
++  background: rgba(255, 107, 53, 0.05);
++  border: 1px solid rgba(255, 107, 53, 0.2);
++  border-radius: 20px;
++  padding: 2.5rem;
++  text-align: center;
++  position: relative;
++  overflow: hidden;
++}
++
++.calc-result-box::before {
++  content: '';
++  position: absolute;
++  top: -50%;
++  left: -50%;
++  width: 200%;
++  height: 200%;
++  background: radial-gradient(circle, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
++  pointer-events: none;
++}
++
++.result-label {
++  text-transform: uppercase;
++  letter-spacing: 2px;
++  font-size: 0.85rem;
++  color: var(--text-secondary);
++  margin-bottom: 1rem;
++  display: block;
++}
++
++.result-value {
++  font-size: clamp(2.5rem, 5vw, 3.5rem);
++  font-weight: 800;
++  color: #fff;
++  margin-bottom: 1rem;
++  display: block;
++}
++
++.result-highlight {
++  color: var(--accent-color);
++}
++
++.calc-note {
++  font-size: 0.85rem;
++  color: var(--text-secondary);
++  line-height: 1.6;
++}
++
++@keyframes fadeIn {
++  from { opacity: 0; transform: translateY(10px); }
++  to { opacity: 1; transform: translateY(0); }
++}
++
++@media (max-width: 992px) {
++  .calc-grid {
++    grid-template-columns: 1fr;
++    padding: 2rem;
++    gap: 2.5rem;
++  }
++  
++  .calc-tabs {
++    flex-wrap: wrap;
++  }
++}
