@@ -801,89 +801,75 @@
     </section>
 
     <!-- Business Growth Calculators - Standalone Section -->
-    <section class="section" style="padding-top: 2rem; padding-bottom: 2rem;">
-      <div class="container">
-        <div style="text-align: center; margin-bottom: 2rem;">
-          <span style="color: var(--accent-color); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 3px; font-weight: 700;">Strategic Planning</span>
-          <h2 style="font-size: clamp(1.6rem, 3vw, 2rem); margin-top: 0.5rem; margin-bottom: 0.5rem;">Business <span class="text-accent">Growth Calculators</span></h2>
-          <p style="color: var(--text-secondary); max-width: 500px; margin: 0 auto;">Project your potential growth and lead generation with our interactive tools.</p>
+    <section class="section" id="growth-calc" style="padding-top:6rem;padding-bottom:6rem;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:-20%;left:-10%;width:50%;height:50%;background:radial-gradient(circle,rgba(98,255,176,0.05) 0%,transparent 70%);z-index:0;pointer-events:none;"></div>
+      <div style="position:absolute;bottom:-20%;right:-10%;width:50%;height:50%;background:radial-gradient(circle,rgba(230,57,70,0.03) 0%,transparent 70%);z-index:0;pointer-events:none;"></div>
+      <div class="container" style="position:relative;z-index:1;">
+        <div style="text-align:center;margin-bottom:4rem;">
+          <span style="display:inline-block;padding:0.4rem 1.2rem;background:rgba(98,255,176,0.1);border:1px solid rgba(98,255,176,0.2);border-radius:50px;color:var(--accent-color);font-size:0.8rem;text-transform:uppercase;letter-spacing:2px;font-weight:700;margin-bottom:1.5rem;">Interactive ROI Dashboard</span>
+          <h2 style="font-size:clamp(2rem,5vw,3rem);font-weight:800;margin-bottom:1rem;">Project Your <span class="text-accent" style="text-shadow:0 0 20px rgba(98,255,176,0.3);">Growth</span></h2>
+          <p style="max-width:600px;margin:0 auto;color:var(--text-secondary);font-size:1.1rem;line-height:1.6;">Stop guessing. Use our data-driven calculators to see the exact revenue and lead volume you can generate.</p>
         </div>
-
-        <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem;">
-          <div id="tab-roi" onclick="switchCalc('roi')" style="padding: 0.75rem 2rem; background: var(--accent-color); border: 1px solid var(--accent-color); border-radius: 12px; color: #051512; font-weight: 700; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">ROI Estimator</div>
-          <div id="tab-lead" onclick="switchCalc('lead')" style="padding: 0.75rem 2rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(98,255,176,0.15); border-radius: 12px; color: var(--text-secondary); font-weight: 600; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">Lead Projection</div>
+        
+        <div style="display:flex;justify-content:center;gap:0.5rem;margin-bottom:3rem;background:rgba(255,255,255,0.03);padding:0.5rem;border-radius:20px;width:fit-content;margin-left:auto;margin-right:auto;border:1px solid rgba(255,255,255,0.05);flex-wrap:wrap;">
+          <div id="tab-roi" onclick="switchCalc('roi')" style="padding:1rem 2.5rem;background:var(--accent-color);border-radius:14px;color:#000;font-weight:800;cursor:pointer;transition:all 0.3s ease;font-size:0.9rem;text-transform:uppercase;letter-spacing:1px;box-shadow:0 10px 20px -10px rgba(98,255,176,0.5);flex:1;text-align:center;">ROI Estimator</div>
+          <div id="tab-lead" onclick="switchCalc('lead')" style="padding:1rem 2.5rem;background:transparent;border-radius:14px;color:var(--text-secondary);font-weight:700;cursor:pointer;transition:all 0.3s ease;font-size:0.9rem;text-transform:uppercase;letter-spacing:1px;flex:1;text-align:center;">Lead Projection</div>
         </div>
-
-        <!-- ROI Calculator -->
-        <div id="roi-calc" style="display: block;">
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; align-items: center; background: rgba(11,46,42,0.4); backdrop-filter: blur(15px); padding: 2.5rem; border-radius: 24px; border: 1px solid rgba(98,255,176,0.12);">
-            <div style="display: flex; flex-direction: column; gap: 1.8rem;">
-              <div style="display: flex; flex-direction: column; gap: 0.7rem;">
-                <label style="font-weight: 600; color: #fff; font-size: 0.9rem;">Monthly Website Traffic</label>
-                <input type="range" min="500" max="100000" value="5000" step="500" id="roi-traffic" style="width: 100%; height: 6px; border-radius: 5px; outline: none; accent-color: var(--accent-color); cursor: pointer;">
-                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-secondary);">
-                  <span id="roi-traffic-val">5,000</span><span>Visitors</span>
+        
+        <div id="roi-calc" style="display:block;">
+          <div class="pro-calc-container">
+            <div class="pro-calc-left">
+              <h3 style="font-size:1.4rem;margin-bottom:2.5rem;display:flex;align-items:center;gap:10px;"><i class="fas fa-sliders-h text-accent"></i> Adjust Your Metrics</h3>
+              <div>
+                <div class="pro-calc-slider-wrapper">
+                  <div style="display:flex;justify-content:space-between;margin-bottom:0.8rem;"><label style="font-weight:700;color:#fff;">Monthly Website Traffic</label><span id="roi-traffic-val" style="color:var(--accent-color);font-weight:800;font-family:monospace;">5,000</span></div>
+                  <input type="range" min="500" max="100000" value="5000" step="500" id="roi-traffic" style="width:100%;height:8px;border-radius:8px;outline:none;accent-color:var(--accent-color);cursor:pointer;background:rgba(255,255,255,0.1);">
                 </div>
-              </div>
-              <div style="display: flex; flex-direction: column; gap: 0.7rem;">
-                <label style="font-weight: 600; color: #fff; font-size: 0.9rem;">Current Conversion Rate (%)</label>
-                <input type="range" min="0.1" max="15" value="2" step="0.1" id="roi-conv" style="width: 100%; height: 6px; border-radius: 5px; outline: none; accent-color: var(--accent-color); cursor: pointer;">
-                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-secondary);">
-                  <span id="roi-conv-val">2.0%</span><span>Conversion</span>
+                <div class="pro-calc-slider-wrapper">
+                  <div style="display:flex;justify-content:space-between;margin-bottom:0.8rem;"><label style="font-weight:700;color:#fff;">Current Conversion Rate</label><span id="roi-conv-val" style="color:var(--accent-color);font-weight:800;font-family:monospace;">2.0%</span></div>
+                  <input type="range" min="0.1" max="15" value="2" step="0.1" id="roi-conv" style="width:100%;height:8px;border-radius:8px;outline:none;accent-color:var(--accent-color);cursor:pointer;background:rgba(255,255,255,0.1);">
                 </div>
-              </div>
-              <div style="display: flex; flex-direction: column; gap: 0.7rem;">
-                <label style="font-weight: 600; color: #fff; font-size: 0.9rem;">Avg. Customer Value (₹)</label>
-                <input type="range" min="500" max="100000" value="10000" step="500" id="roi-value" style="width: 100%; height: 6px; border-radius: 5px; outline: none; accent-color: var(--accent-color); cursor: pointer;">
-                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-secondary);">
-                  <span id="roi-value-val">₹10,000</span><span>Per Deal</span>
+                <div class="pro-calc-slider-wrapper">
+                  <div style="display:flex;justify-content:space-between;margin-bottom:0.8rem;"><label style="font-weight:700;color:#fff;">Avg. Customer Value (&#8377;)</label><span id="roi-value-val" style="color:var(--accent-color);font-weight:800;font-family:monospace;">&#8377;10,000</span></div>
+                  <input type="range" min="500" max="100000" value="10000" step="500" id="roi-value" style="width:100%;height:8px;border-radius:8px;outline:none;accent-color:var(--accent-color);cursor:pointer;background:rgba(255,255,255,0.1);">
                 </div>
               </div>
             </div>
-            <div style="background: rgba(98,255,176,0.04); border: 1px solid rgba(98,255,176,0.2); border-radius: 20px; padding: 2.5rem; text-align: center;">
-              <span style="display: block; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.8rem;">Est. Monthly Revenue Growth</span>
-              <span id="roi-result" style="display: block; font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 800; color: var(--accent-color); margin-bottom: 0.8rem;">₹5,00,000</span>
-              <p style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">Estimated based on 50% improvement in conversion efficiency with our strategies.</p>
-              <a href="../contact/?package=ROI%20Growth%20Strategy" class="btn btn-primary" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;">
-                <i class="fas fa-chart-line"></i> Get This Result
-              </a>
+            <div class="pro-calc-right">
+              <div style="position:absolute;top:20px;right:20px;width:100px;height:100px;background:var(--accent-color);filter:blur(80px);opacity:0.15;"></div>
+              <span style="display:inline-block;padding:0.3rem 1rem;background:rgba(255,255,255,0.05);border-radius:20px;text-transform:uppercase;letter-spacing:2px;font-size:0.75rem;color:var(--text-secondary);margin-bottom:1.5rem;">Projected Monthly Uplift</span>
+              <span id="roi-result" style="display:block;font-size:clamp(2.5rem,5vw,4rem);font-weight:900;color:#fff;margin-bottom:1rem;text-shadow:0 0 30px rgba(98,255,176,0.3);line-height:1;">&#8377;5,00,000</span>
+              <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.6;margin-bottom:2.5rem;max-width:85%;">Estimated additional monthly revenue based on 50% improvement in conversion efficiency using our proven strategies.</p>
+              <a href="../contact/?package=ROI%20Growth%20Strategy" class="btn btn-primary" style="padding:1.2rem 3rem;font-size:1rem;border-radius:50px;width:100%;max-width:320px;box-shadow:0 15px 30px -10px rgba(98,255,176,0.4);"><i class="fas fa-rocket" style="margin-right:10px;"></i>Claim Your Strategy</a>
             </div>
           </div>
         </div>
-
-        <!-- Lead Gen Calculator -->
-        <div id="lead-calc" style="display: none;">
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; align-items: center; background: rgba(11,46,42,0.4); backdrop-filter: blur(15px); padding: 2.5rem; border-radius: 24px; border: 1px solid rgba(98,255,176,0.12);">
-            <div style="display: flex; flex-direction: column; gap: 1.8rem;">
-              <div style="display: flex; flex-direction: column; gap: 0.7rem;">
-                <label style="font-weight: 600; color: #fff; font-size: 0.9rem;">Monthly Ad Budget (₹)</label>
-                <input type="range" min="5000" max="500000" value="50000" step="5000" id="lead-budget" style="width: 100%; height: 6px; border-radius: 5px; outline: none; accent-color: var(--accent-color); cursor: pointer;">
-                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-secondary);">
-                  <span id="lead-budget-val">₹50,000</span><span>Investment</span>
+        
+        <div id="lead-calc" style="display:none;">
+          <div class="pro-calc-container">
+            <div class="pro-calc-left">
+              <h3 style="font-size:1.4rem;margin-bottom:2.5rem;display:flex;align-items:center;gap:10px;"><i class="fas fa-bullseye text-accent"></i> Campaign Budgeting</h3>
+              <div>
+                <div class="pro-calc-slider-wrapper">
+                  <div style="display:flex;justify-content:space-between;margin-bottom:0.8rem;"><label style="font-weight:700;color:#fff;">Monthly Ad Budget (&#8377;)</label><span id="lead-budget-val" style="color:var(--accent-color);font-weight:800;font-family:monospace;">&#8377;50,000</span></div>
+                  <input type="range" min="5000" max="500000" value="50000" step="5000" id="lead-budget" style="width:100%;height:8px;border-radius:8px;outline:none;accent-color:var(--accent-color);cursor:pointer;background:rgba(255,255,255,0.1);">
                 </div>
-              </div>
-              <div style="display: flex; flex-direction: column; gap: 0.7rem;">
-                <label style="font-weight: 600; color: #fff; font-size: 0.9rem;">Average CPC (₹)</label>
-                <input type="range" min="5" max="200" value="40" step="1" id="lead-cpc" style="width: 100%; height: 6px; border-radius: 5px; outline: none; accent-color: var(--accent-color); cursor: pointer;">
-                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-secondary);">
-                  <span id="lead-cpc-val">₹40</span><span>Cost Per Click</span>
+                <div class="pro-calc-slider-wrapper">
+                  <div style="display:flex;justify-content:space-between;margin-bottom:0.8rem;"><label style="font-weight:700;color:#fff;">Average CPC (&#8377;)</label><span id="lead-cpc-val" style="color:var(--accent-color);font-weight:800;font-family:monospace;">&#8377;40</span></div>
+                  <input type="range" min="5" max="200" value="40" step="1" id="lead-cpc" style="width:100%;height:8px;border-radius:8px;outline:none;accent-color:var(--accent-color);cursor:pointer;background:rgba(255,255,255,0.1);">
                 </div>
-              </div>
-              <div style="display: flex; flex-direction: column; gap: 0.7rem;">
-                <label style="font-weight: 600; color: #fff; font-size: 0.9rem;">Landing Page Conv. (%)</label>
-                <input type="range" min="1" max="25" value="5" step="0.5" id="lead-conv" style="width: 100%; height: 6px; border-radius: 5px; outline: none; accent-color: var(--accent-color); cursor: pointer;">
-                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-secondary);">
-                  <span id="lead-conv-val">5.0%</span><span>Leads Ratio</span>
+                <div class="pro-calc-slider-wrapper">
+                  <div style="display:flex;justify-content:space-between;margin-bottom:0.8rem;"><label style="font-weight:700;color:#fff;">Landing Page Conv. (%)</label><span id="lead-conv-val" style="color:var(--accent-color);font-weight:800;font-family:monospace;">5.0%</span></div>
+                  <input type="range" min="1" max="25" value="5" step="0.5" id="lead-conv" style="width:100%;height:8px;border-radius:8px;outline:none;accent-color:var(--accent-color);cursor:pointer;background:rgba(255,255,255,0.1);">
                 </div>
               </div>
             </div>
-            <div style="background: rgba(98,255,176,0.04); border: 1px solid rgba(98,255,176,0.2); border-radius: 20px; padding: 2.5rem; text-align: center;">
-              <span style="display: block; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.8rem;">Projected Monthly Leads</span>
-              <span id="lead-result" style="display: block; font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 800; color: var(--accent-color); margin-bottom: 0.8rem;">62</span>
-              <p style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">High-intent leads generated through optimized ad campaigns managed by our team.</p>
-              <a href="../contact/?package=Lead%20Generation" class="btn btn-primary" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;">
-                <i class="fas fa-bullseye"></i> Start Generating Leads
-              </a>
+            <div class="pro-calc-right">
+              <div style="position:absolute;top:20px;right:20px;width:100px;height:100px;background:var(--accent-color);filter:blur(80px);opacity:0.15;"></div>
+              <span style="display:inline-block;padding:0.3rem 1rem;background:rgba(255,255,255,0.05);border-radius:20px;text-transform:uppercase;letter-spacing:2px;font-size:0.75rem;color:var(--text-secondary);margin-bottom:1.5rem;">Projected Monthly Leads</span>
+              <span id="lead-result" style="display:block;font-size:clamp(2.5rem,5vw,4rem);font-weight:900;color:#fff;margin-bottom:1rem;text-shadow:0 0 30px rgba(98,255,176,0.3);line-height:1;">62</span>
+              <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.6;margin-bottom:2.5rem;max-width:85%;">High-intent leads generated predictably through our hyper-optimized Google and Meta ad funnels.</p>
+              <a href="../contact/?package=Lead%20Generation" class="btn btn-primary" style="padding:1.2rem 3rem;font-size:1rem;border-radius:50px;width:100%;max-width:320px;box-shadow:0 15px 30px -10px rgba(98,255,176,0.4);"><i class="fas fa-bolt" style="margin-right:10px;"></i>Start Generating Leads</a>
             </div>
           </div>
         </div>

@@ -3076,43 +3076,64 @@
           <h2 style="font-size:clamp(2rem,5vw,3rem);font-weight:800;margin-bottom:1rem;">Project Your <span class="text-accent" style="text-shadow:0 0 20px rgba(98,255,176,0.3);">Growth</span></h2>
           <p style="max-width:600px;margin:0 auto;color:var(--text-secondary);font-size:1.1rem;line-height:1.6;">Stop guessing. Use our data-driven calculators to see the exact revenue and lead volume you can generate.</p>
         </div>
-        <div style="display:flex;justify-content:center;gap:0.5rem;margin-bottom:3rem;background:rgba(255,255,255,0.03);padding:0.5rem;border-radius:20px;width:fit-content;margin-left:auto;margin-right:auto;border:1px solid rgba(255,255,255,0.05);">
-          <div id="home-tab-roi" onclick="homeCalcSwitch('roi')" style="padding:1rem 2.5rem;background:var(--accent-color);border-radius:14px;color:#000;font-weight:800;cursor:pointer;transition:all 0.3s ease;font-size:0.9rem;text-transform:uppercase;letter-spacing:1px;box-shadow:0 10px 20px -10px rgba(98,255,176,0.5);">ROI Estimator</div>
-          <div id="home-tab-lead" onclick="homeCalcSwitch('lead')" style="padding:1rem 2.5rem;background:transparent;border-radius:14px;color:var(--text-secondary);font-weight:700;cursor:pointer;transition:all 0.3s ease;font-size:0.9rem;text-transform:uppercase;letter-spacing:1px;">Lead Projection</div>
+        
+        <div style="display:flex;justify-content:center;gap:0.5rem;margin-bottom:3rem;background:rgba(255,255,255,0.03);padding:0.5rem;border-radius:20px;width:fit-content;margin-left:auto;margin-right:auto;border:1px solid rgba(255,255,255,0.05);flex-wrap:wrap;">
+          <div id="home-tab-roi" onclick="homeCalcSwitch('roi')" style="padding:1rem 2.5rem;background:var(--accent-color);border-radius:14px;color:#000;font-weight:800;cursor:pointer;transition:all 0.3s ease;font-size:0.9rem;text-transform:uppercase;letter-spacing:1px;box-shadow:0 10px 20px -10px rgba(98,255,176,0.5);flex:1;text-align:center;">ROI Estimator</div>
+          <div id="home-tab-lead" onclick="homeCalcSwitch('lead')" style="padding:1rem 2.5rem;background:transparent;border-radius:14px;color:var(--text-secondary);font-weight:700;cursor:pointer;transition:all 0.3s ease;font-size:0.9rem;text-transform:uppercase;letter-spacing:1px;flex:1;text-align:center;">Lead Projection</div>
         </div>
+        
         <div id="home-roi-calc" style="display:block;">
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));background:rgba(10,10,10,0.7);backdrop-filter:blur(20px);border-radius:30px;border:1px solid rgba(255,255,255,0.08);overflow:hidden;box-shadow:0 25px 50px -12px rgba(0,0,0,0.6);">
-            <div style="padding:3.5rem 3rem;border-right:1px solid rgba(255,255,255,0.05);">
+          <div class="pro-calc-container">
+            <div class="pro-calc-left">
               <h3 style="font-size:1.4rem;margin-bottom:2.5rem;display:flex;align-items:center;gap:10px;"><i class="fas fa-sliders-h text-accent"></i> Adjust Your Metrics</h3>
-              <div style="display:flex;flex-direction:column;gap:2.5rem;">
-                <div><div style="display:flex;justify-content:space-between;margin-bottom:0.8rem;"><label style="font-weight:700;color:#fff;">Monthly Website Traffic</label><span id="home-roi-traffic-val" style="color:var(--accent-color);font-weight:800;font-family:monospace;">5,000</span></div><input type="range" min="500" max="100000" value="5000" step="500" id="home-roi-traffic" style="width:100%;height:8px;border-radius:8px;outline:none;accent-color:var(--accent-color);cursor:pointer;"></div>
-                <div><div style="display:flex;justify-content:space-between;margin-bottom:0.8rem;"><label style="font-weight:700;color:#fff;">Current Conversion Rate</label><span id="home-roi-conv-val" style="color:var(--accent-color);font-weight:800;font-family:monospace;">2.0%</span></div><input type="range" min="0.1" max="15" value="2" step="0.1" id="home-roi-conv" style="width:100%;height:8px;border-radius:8px;outline:none;accent-color:var(--accent-color);cursor:pointer;"></div>
-                <div><div style="display:flex;justify-content:space-between;margin-bottom:0.8rem;"><label style="font-weight:700;color:#fff;">Avg. Customer Value (&#8377;)</label><span id="home-roi-value-val" style="color:var(--accent-color);font-weight:800;font-family:monospace;">&#8377;10,000</span></div><input type="range" min="500" max="100000" value="10000" step="500" id="home-roi-value" style="width:100%;height:8px;border-radius:8px;outline:none;accent-color:var(--accent-color);cursor:pointer;"></div>
+              <div>
+                <div class="pro-calc-slider-wrapper">
+                  <div style="display:flex;justify-content:space-between;margin-bottom:0.8rem;"><label style="font-weight:700;color:#fff;">Monthly Website Traffic</label><span id="home-roi-traffic-val" style="color:var(--accent-color);font-weight:800;font-family:monospace;">5,000</span></div>
+                  <input type="range" min="500" max="100000" value="5000" step="500" id="home-roi-traffic" style="width:100%;height:8px;border-radius:8px;outline:none;accent-color:var(--accent-color);cursor:pointer;background:rgba(255,255,255,0.1);">
+                </div>
+                <div class="pro-calc-slider-wrapper">
+                  <div style="display:flex;justify-content:space-between;margin-bottom:0.8rem;"><label style="font-weight:700;color:#fff;">Current Conversion Rate</label><span id="home-roi-conv-val" style="color:var(--accent-color);font-weight:800;font-family:monospace;">2.0%</span></div>
+                  <input type="range" min="0.1" max="15" value="2" step="0.1" id="home-roi-conv" style="width:100%;height:8px;border-radius:8px;outline:none;accent-color:var(--accent-color);cursor:pointer;background:rgba(255,255,255,0.1);">
+                </div>
+                <div class="pro-calc-slider-wrapper">
+                  <div style="display:flex;justify-content:space-between;margin-bottom:0.8rem;"><label style="font-weight:700;color:#fff;">Avg. Customer Value (&#8377;)</label><span id="home-roi-value-val" style="color:var(--accent-color);font-weight:800;font-family:monospace;">&#8377;10,000</span></div>
+                  <input type="range" min="500" max="100000" value="10000" step="500" id="home-roi-value" style="width:100%;height:8px;border-radius:8px;outline:none;accent-color:var(--accent-color);cursor:pointer;background:rgba(255,255,255,0.1);">
+                </div>
               </div>
             </div>
-            <div style="padding:3.5rem 3rem;background:linear-gradient(135deg,rgba(98,255,176,0.06) 0%,rgba(0,0,0,0) 100%);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;">
+            <div class="pro-calc-right">
               <div style="position:absolute;top:20px;right:20px;width:100px;height:100px;background:var(--accent-color);filter:blur(80px);opacity:0.15;"></div>
               <span style="display:inline-block;padding:0.3rem 1rem;background:rgba(255,255,255,0.05);border-radius:20px;text-transform:uppercase;letter-spacing:2px;font-size:0.75rem;color:var(--text-secondary);margin-bottom:1.5rem;">Projected Monthly Uplift</span>
-              <span id="home-roi-result" style="display:block;font-size:clamp(2.8rem,5vw,4rem);font-weight:900;color:#fff;margin-bottom:1rem;text-shadow:0 0 30px rgba(98,255,176,0.3);line-height:1;">&#8377;5,00,000</span>
+              <span id="home-roi-result" style="display:block;font-size:clamp(2.5rem,5vw,4rem);font-weight:900;color:#fff;margin-bottom:1rem;text-shadow:0 0 30px rgba(98,255,176,0.3);line-height:1;">&#8377;5,00,000</span>
               <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.6;margin-bottom:2.5rem;max-width:85%;">Estimated additional monthly revenue based on 50% improvement in conversion efficiency using our proven strategies.</p>
               <a href="contact/?package=ROI%20Growth%20Strategy" class="btn btn-primary" style="padding:1.2rem 3rem;font-size:1rem;border-radius:50px;width:100%;max-width:320px;box-shadow:0 15px 30px -10px rgba(98,255,176,0.4);"><i class="fas fa-rocket" style="margin-right:10px;"></i>Claim Your Strategy</a>
             </div>
           </div>
         </div>
+        
         <div id="home-lead-calc" style="display:none;">
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));background:rgba(10,10,10,0.7);backdrop-filter:blur(20px);border-radius:30px;border:1px solid rgba(255,255,255,0.08);overflow:hidden;box-shadow:0 25px 50px -12px rgba(0,0,0,0.6);">
-            <div style="padding:3.5rem 3rem;border-right:1px solid rgba(255,255,255,0.05);">
+          <div class="pro-calc-container">
+            <div class="pro-calc-left">
               <h3 style="font-size:1.4rem;margin-bottom:2.5rem;display:flex;align-items:center;gap:10px;"><i class="fas fa-bullseye text-accent"></i> Campaign Budgeting</h3>
-              <div style="display:flex;flex-direction:column;gap:2.5rem;">
-                <div><div style="display:flex;justify-content:space-between;margin-bottom:0.8rem;"><label style="font-weight:700;color:#fff;">Monthly Ad Budget (&#8377;)</label><span id="home-lead-budget-val" style="color:var(--accent-color);font-weight:800;font-family:monospace;">&#8377;50,000</span></div><input type="range" min="5000" max="500000" value="50000" step="5000" id="home-lead-budget" style="width:100%;height:8px;border-radius:8px;outline:none;accent-color:var(--accent-color);cursor:pointer;"></div>
-                <div><div style="display:flex;justify-content:space-between;margin-bottom:0.8rem;"><label style="font-weight:700;color:#fff;">Average CPC (&#8377;)</label><span id="home-lead-cpc-val" style="color:var(--accent-color);font-weight:800;font-family:monospace;">&#8377;40</span></div><input type="range" min="5" max="200" value="40" step="1" id="home-lead-cpc" style="width:100%;height:8px;border-radius:8px;outline:none;accent-color:var(--accent-color);cursor:pointer;"></div>
-                <div><div style="display:flex;justify-content:space-between;margin-bottom:0.8rem;"><label style="font-weight:700;color:#fff;">Landing Page Conv. (%)</label><span id="home-lead-conv-val" style="color:var(--accent-color);font-weight:800;font-family:monospace;">5.0%</span></div><input type="range" min="1" max="25" value="5" step="0.5" id="home-lead-conv" style="width:100%;height:8px;border-radius:8px;outline:none;accent-color:var(--accent-color);cursor:pointer;"></div>
+              <div>
+                <div class="pro-calc-slider-wrapper">
+                  <div style="display:flex;justify-content:space-between;margin-bottom:0.8rem;"><label style="font-weight:700;color:#fff;">Monthly Ad Budget (&#8377;)</label><span id="home-lead-budget-val" style="color:var(--accent-color);font-weight:800;font-family:monospace;">&#8377;50,000</span></div>
+                  <input type="range" min="5000" max="500000" value="50000" step="5000" id="home-lead-budget" style="width:100%;height:8px;border-radius:8px;outline:none;accent-color:var(--accent-color);cursor:pointer;background:rgba(255,255,255,0.1);">
+                </div>
+                <div class="pro-calc-slider-wrapper">
+                  <div style="display:flex;justify-content:space-between;margin-bottom:0.8rem;"><label style="font-weight:700;color:#fff;">Average CPC (&#8377;)</label><span id="home-lead-cpc-val" style="color:var(--accent-color);font-weight:800;font-family:monospace;">&#8377;40</span></div>
+                  <input type="range" min="5" max="200" value="40" step="1" id="home-lead-cpc" style="width:100%;height:8px;border-radius:8px;outline:none;accent-color:var(--accent-color);cursor:pointer;background:rgba(255,255,255,0.1);">
+                </div>
+                <div class="pro-calc-slider-wrapper">
+                  <div style="display:flex;justify-content:space-between;margin-bottom:0.8rem;"><label style="font-weight:700;color:#fff;">Landing Page Conv. (%)</label><span id="home-lead-conv-val" style="color:var(--accent-color);font-weight:800;font-family:monospace;">5.0%</span></div>
+                  <input type="range" min="1" max="25" value="5" step="0.5" id="home-lead-conv" style="width:100%;height:8px;border-radius:8px;outline:none;accent-color:var(--accent-color);cursor:pointer;background:rgba(255,255,255,0.1);">
+                </div>
               </div>
             </div>
-            <div style="padding:3.5rem 3rem;background:linear-gradient(135deg,rgba(98,255,176,0.06) 0%,rgba(0,0,0,0) 100%);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;">
+            <div class="pro-calc-right">
               <div style="position:absolute;top:20px;right:20px;width:100px;height:100px;background:var(--accent-color);filter:blur(80px);opacity:0.15;"></div>
               <span style="display:inline-block;padding:0.3rem 1rem;background:rgba(255,255,255,0.05);border-radius:20px;text-transform:uppercase;letter-spacing:2px;font-size:0.75rem;color:var(--text-secondary);margin-bottom:1.5rem;">Projected Monthly Leads</span>
-              <span id="home-lead-result" style="display:block;font-size:clamp(2.8rem,5vw,4rem);font-weight:900;color:#fff;margin-bottom:1rem;text-shadow:0 0 30px rgba(98,255,176,0.3);line-height:1;">62</span>
+              <span id="home-lead-result" style="display:block;font-size:clamp(2.5rem,5vw,4rem);font-weight:900;color:#fff;margin-bottom:1rem;text-shadow:0 0 30px rgba(98,255,176,0.3);line-height:1;">62</span>
               <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.6;margin-bottom:2.5rem;max-width:85%;">High-intent leads generated predictably through our hyper-optimized Google and Meta ad funnels.</p>
               <a href="contact/?package=Lead%20Generation" class="btn btn-primary" style="padding:1.2rem 3rem;font-size:1rem;border-radius:50px;width:100%;max-width:320px;box-shadow:0 15px 30px -10px rgba(98,255,176,0.4);"><i class="fas fa-bolt" style="margin-right:10px;"></i>Start Generating Leads</a>
             </div>
