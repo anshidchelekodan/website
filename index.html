@@ -1137,6 +1137,76 @@
 
     </section>
 
+<!-- Business Growth Calculators -->
+    <section class="section" id="growth-calc" style="padding-top: 4rem; padding-bottom: 4rem;">
+      <div class="container">
+        <div class="section-title animate reveal-up">
+          <span style="color: var(--accent-color); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 3px; font-weight: 700; display: block; margin-bottom: 0.5rem;">Strategic Planning</span>
+          <h2>Business <span class="text-accent">Growth Calculators</span></h2>
+          <p>See the potential impact of a data-driven marketing strategy on your business.</p>
+        </div>
+        <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem;">
+          <div id="home-tab-roi" onclick="homeCalcSwitch('roi')" style="padding: 0.8rem 2rem; background: var(--accent-color); border: 1px solid var(--accent-color); border-radius: 12px; color: #051512; font-weight: 700; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">ROI Estimator</div>
+          <div id="home-tab-lead" onclick="homeCalcSwitch('lead')" style="padding: 0.8rem 2rem; background: rgba(98,255,176,0.04); border: 1px solid rgba(98,255,176,0.15); border-radius: 12px; color: var(--text-secondary); font-weight: 600; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">Lead Projection</div>
+        </div>
+        <div id="home-roi-calc">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; align-items: center; background: rgba(11,46,42,0.4); backdrop-filter: blur(15px); padding: 2.5rem; border-radius: 24px; border: 1px solid rgba(98,255,176,0.12);">
+            <div style="display: flex; flex-direction: column; gap: 1.8rem;">
+              <div style="display: flex; flex-direction: column; gap: 0.7rem;">
+                <label style="font-weight: 600; color: #fff; font-size: 0.9rem;">Monthly Website Traffic</label>
+                <input type="range" min="500" max="100000" value="5000" step="500" id="home-roi-traffic" style="width: 100%; height: 6px; border-radius: 5px; outline: none; accent-color: var(--accent-color); cursor: pointer;">
+                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-secondary);"><span id="home-roi-traffic-val">5,000</span><span>Visitors</span></div>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 0.7rem;">
+                <label style="font-weight: 600; color: #fff; font-size: 0.9rem;">Current Conversion Rate (%)</label>
+                <input type="range" min="0.1" max="15" value="2" step="0.1" id="home-roi-conv" style="width: 100%; height: 6px; border-radius: 5px; outline: none; accent-color: var(--accent-color); cursor: pointer;">
+                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-secondary);"><span id="home-roi-conv-val">2.0%</span><span>Conversion</span></div>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 0.7rem;">
+                <label style="font-weight: 600; color: #fff; font-size: 0.9rem;">Avg. Customer Value (&#8377;)</label>
+                <input type="range" min="500" max="100000" value="10000" step="500" id="home-roi-value" style="width: 100%; height: 6px; border-radius: 5px; outline: none; accent-color: var(--accent-color); cursor: pointer;">
+                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-secondary);"><span id="home-roi-value-val">&#8377;10,000</span><span>Per Deal</span></div>
+              </div>
+            </div>
+            <div style="background: rgba(98,255,176,0.04); border: 1px solid rgba(98,255,176,0.2); border-radius: 20px; padding: 2.5rem; text-align: center;">
+              <span style="display: block; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.8rem;">Est. Monthly Revenue Growth</span>
+              <span id="home-roi-result" style="display: block; font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 800; color: var(--accent-color); margin-bottom: 0.8rem;">&#8377;5,00,000</span>
+              <p style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">Estimated based on 50% improvement in conversion efficiency with our strategies.</p>
+              <a href="contact/?package=ROI%20Growth%20Strategy" class="btn btn-primary" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;"><i class="fas fa-chart-line"></i> Claim Your Growth Strategy</a>
+            </div>
+          </div>
+        </div>
+        <div id="home-lead-calc" style="display: none;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; align-items: center; background: rgba(11,46,42,0.4); backdrop-filter: blur(15px); padding: 2.5rem; border-radius: 24px; border: 1px solid rgba(98,255,176,0.12);">
+            <div style="display: flex; flex-direction: column; gap: 1.8rem;">
+              <div style="display: flex; flex-direction: column; gap: 0.7rem;">
+                <label style="font-weight: 600; color: #fff; font-size: 0.9rem;">Monthly Ad Budget (&#8377;)</label>
+                <input type="range" min="5000" max="500000" value="50000" step="5000" id="home-lead-budget" style="width: 100%; height: 6px; border-radius: 5px; outline: none; accent-color: var(--accent-color); cursor: pointer;">
+                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-secondary);"><span id="home-lead-budget-val">&#8377;50,000</span><span>Investment</span></div>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 0.7rem;">
+                <label style="font-weight: 600; color: #fff; font-size: 0.9rem;">Average CPC (&#8377;)</label>
+                <input type="range" min="5" max="200" value="40" step="1" id="home-lead-cpc" style="width: 100%; height: 6px; border-radius: 5px; outline: none; accent-color: var(--accent-color); cursor: pointer;">
+                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-secondary);"><span id="home-lead-cpc-val">&#8377;40</span><span>Cost Per Click</span></div>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 0.7rem;">
+                <label style="font-weight: 600; color: #fff; font-size: 0.9rem;">Landing Page Conv. (%)</label>
+                <input type="range" min="1" max="25" value="5" step="0.5" id="home-lead-conv" style="width: 100%; height: 6px; border-radius: 5px; outline: none; accent-color: var(--accent-color); cursor: pointer;">
+                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-secondary);"><span id="home-lead-conv-val">5.0%</span><span>Leads Ratio</span></div>
+              </div>
+            </div>
+            <div style="background: rgba(98,255,176,0.04); border: 1px solid rgba(98,255,176,0.2); border-radius: 20px; padding: 2.5rem; text-align: center;">
+              <span style="display: block; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.8rem;">Projected Monthly Leads</span>
+              <span id="home-lead-result" style="display: block; font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 800; color: var(--accent-color); margin-bottom: 0.8rem;">62</span>
+              <p style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">High-intent leads generated through optimized ad campaigns managed by our team.</p>
+              <a href="contact/?package=Lead%20Generation" class="btn btn-primary" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;"><i class="fas fa-bullseye"></i> Start Generating Leads</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
     <!-- Feature 4: Client Brand Carousel -->
     <section id="client-brands" class="brands-marquee-section">
       <style>
@@ -3066,75 +3136,7 @@
     </section>
 
     
-    <!-- Business Growth Calculators -->
-    <section class="section" id="growth-calc" style="padding-top: 4rem; padding-bottom: 4rem;">
-      <div class="container">
-        <div class="section-title animate reveal-up">
-          <span style="color: var(--accent-color); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 3px; font-weight: 700; display: block; margin-bottom: 0.5rem;">Strategic Planning</span>
-          <h2>Business <span class="text-accent">Growth Calculators</span></h2>
-          <p>See the potential impact of a data-driven marketing strategy on your business.</p>
-        </div>
-        <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem;">
-          <div id="home-tab-roi" onclick="homeCalcSwitch('roi')" style="padding: 0.8rem 2rem; background: var(--accent-color); border: 1px solid var(--accent-color); border-radius: 12px; color: #051512; font-weight: 700; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">ROI Estimator</div>
-          <div id="home-tab-lead" onclick="homeCalcSwitch('lead')" style="padding: 0.8rem 2rem; background: rgba(98,255,176,0.04); border: 1px solid rgba(98,255,176,0.15); border-radius: 12px; color: var(--text-secondary); font-weight: 600; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">Lead Projection</div>
-        </div>
-        <div id="home-roi-calc">
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; align-items: center; background: rgba(11,46,42,0.4); backdrop-filter: blur(15px); padding: 2.5rem; border-radius: 24px; border: 1px solid rgba(98,255,176,0.12);">
-            <div style="display: flex; flex-direction: column; gap: 1.8rem;">
-              <div style="display: flex; flex-direction: column; gap: 0.7rem;">
-                <label style="font-weight: 600; color: #fff; font-size: 0.9rem;">Monthly Website Traffic</label>
-                <input type="range" min="500" max="100000" value="5000" step="500" id="home-roi-traffic" style="width: 100%; height: 6px; border-radius: 5px; outline: none; accent-color: var(--accent-color); cursor: pointer;">
-                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-secondary);"><span id="home-roi-traffic-val">5,000</span><span>Visitors</span></div>
-              </div>
-              <div style="display: flex; flex-direction: column; gap: 0.7rem;">
-                <label style="font-weight: 600; color: #fff; font-size: 0.9rem;">Current Conversion Rate (%)</label>
-                <input type="range" min="0.1" max="15" value="2" step="0.1" id="home-roi-conv" style="width: 100%; height: 6px; border-radius: 5px; outline: none; accent-color: var(--accent-color); cursor: pointer;">
-                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-secondary);"><span id="home-roi-conv-val">2.0%</span><span>Conversion</span></div>
-              </div>
-              <div style="display: flex; flex-direction: column; gap: 0.7rem;">
-                <label style="font-weight: 600; color: #fff; font-size: 0.9rem;">Avg. Customer Value (&#8377;)</label>
-                <input type="range" min="500" max="100000" value="10000" step="500" id="home-roi-value" style="width: 100%; height: 6px; border-radius: 5px; outline: none; accent-color: var(--accent-color); cursor: pointer;">
-                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-secondary);"><span id="home-roi-value-val">&#8377;10,000</span><span>Per Deal</span></div>
-              </div>
-            </div>
-            <div style="background: rgba(98,255,176,0.04); border: 1px solid rgba(98,255,176,0.2); border-radius: 20px; padding: 2.5rem; text-align: center;">
-              <span style="display: block; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.8rem;">Est. Monthly Revenue Growth</span>
-              <span id="home-roi-result" style="display: block; font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 800; color: var(--accent-color); margin-bottom: 0.8rem;">&#8377;5,00,000</span>
-              <p style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">Estimated based on 50% improvement in conversion efficiency with our strategies.</p>
-              <a href="contact/?package=ROI%20Growth%20Strategy" class="btn btn-primary" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;"><i class="fas fa-chart-line"></i> Claim Your Growth Strategy</a>
-            </div>
-          </div>
-        </div>
-        <div id="home-lead-calc" style="display: none;">
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; align-items: center; background: rgba(11,46,42,0.4); backdrop-filter: blur(15px); padding: 2.5rem; border-radius: 24px; border: 1px solid rgba(98,255,176,0.12);">
-            <div style="display: flex; flex-direction: column; gap: 1.8rem;">
-              <div style="display: flex; flex-direction: column; gap: 0.7rem;">
-                <label style="font-weight: 600; color: #fff; font-size: 0.9rem;">Monthly Ad Budget (&#8377;)</label>
-                <input type="range" min="5000" max="500000" value="50000" step="5000" id="home-lead-budget" style="width: 100%; height: 6px; border-radius: 5px; outline: none; accent-color: var(--accent-color); cursor: pointer;">
-                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-secondary);"><span id="home-lead-budget-val">&#8377;50,000</span><span>Investment</span></div>
-              </div>
-              <div style="display: flex; flex-direction: column; gap: 0.7rem;">
-                <label style="font-weight: 600; color: #fff; font-size: 0.9rem;">Average CPC (&#8377;)</label>
-                <input type="range" min="5" max="200" value="40" step="1" id="home-lead-cpc" style="width: 100%; height: 6px; border-radius: 5px; outline: none; accent-color: var(--accent-color); cursor: pointer;">
-                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-secondary);"><span id="home-lead-cpc-val">&#8377;40</span><span>Cost Per Click</span></div>
-              </div>
-              <div style="display: flex; flex-direction: column; gap: 0.7rem;">
-                <label style="font-weight: 600; color: #fff; font-size: 0.9rem;">Landing Page Conv. (%)</label>
-                <input type="range" min="1" max="25" value="5" step="0.5" id="home-lead-conv" style="width: 100%; height: 6px; border-radius: 5px; outline: none; accent-color: var(--accent-color); cursor: pointer;">
-                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-secondary);"><span id="home-lead-conv-val">5.0%</span><span>Leads Ratio</span></div>
-              </div>
-            </div>
-            <div style="background: rgba(98,255,176,0.04); border: 1px solid rgba(98,255,176,0.2); border-radius: 20px; padding: 2.5rem; text-align: center;">
-              <span style="display: block; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.8rem;">Projected Monthly Leads</span>
-              <span id="home-lead-result" style="display: block; font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 800; color: var(--accent-color); margin-bottom: 0.8rem;">62</span>
-              <p style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">High-intent leads generated through optimized ad campaigns managed by our team.</p>
-              <a href="contact/?package=Lead%20Generation" class="btn btn-primary" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;"><i class="fas fa-bullseye"></i> Start Generating Leads</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-<!-- Hire Me Section -->
+    <!-- Hire Me Section -->
     <section id="hire-me" class="hire-section">
 
       <div class="container">
