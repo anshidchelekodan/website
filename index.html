@@ -3570,7 +3570,7 @@
       }
       // Blog Badge Logic
       (function() {
-        const LATEST_BLOG_ID = "meta-ads-lead-generation-kerala-2026"; // Update this when you post a new blog
+        const LATEST_BLOG_ID = "moment-marketing-guide-2026"; // Update this when you post a new blog
         const badges = document.querySelectorAll('.badge-new');
         const seenBlogId = localStorage.getItem('seen_latest_blog');
         const isBlogPage = window.location.pathname.includes('/blog/') && !window.location.pathname.split('/blog/')[1];
@@ -3587,9 +3587,15 @@
   <!-- Third-party / low-priority scripts lazy loaded -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Defer heavy widgets until browser is idle
+      // Load time-widget immediately so footer availability always renders
+      const twScript = document.createElement('script');
+      twScript.src = 'time-widget.js';
+      twScript.defer = true;
+      document.body.appendChild(twScript);
+
+      // Defer other heavy widgets until browser is idle
       const loadWidgets = () => {
-        ['chatbot.js', 'time-widget.js'].forEach(src => {
+        ['chatbot.js'].forEach(src => {
           const script = document.createElement('script');
           script.src = src;
           script.defer = true;

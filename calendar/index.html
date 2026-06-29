@@ -1374,9 +1374,9 @@
                     <div class="time-slots" id="timeSlots">
                         <div class="slot">10:00 AM</div>
                         <div class="slot">11:30 AM</div>
+                        <div class="slot">01:00 PM</div>
                         <div class="slot">02:30 PM</div>
                         <div class="slot">04:00 PM</div>
-                        <div class="slot">05:30 PM</div>
                     </div>
 
                     <div class="booking-footer" id="bookingFooter">
@@ -1603,13 +1603,6 @@
                 // Select up to 13 days to be available
                 const availableDays = new Set(shuffledWorkingDays.slice(0, 13));
 
-                // 🎂 Always force June 29 (Anshid CK's birthday) to be available — never booked
-                if (month === 5) {
-                    availableDays.add(29);
-                    // Clear any stale localStorage booking for this date so testing always works
-                    localStorage.removeItem(`booked_${year}_5_29`);
-                }
-
                 // Current month days
                 for (let i = 1; i <= lastDay; i++) {
                     const dayEl = document.createElement('div');
@@ -1626,9 +1619,6 @@
                     const isLocallyBooked = localStorage.getItem(`booked_${year}_${month}_${i}`) === "true";
                     const isBooked = !isSunday && !isPast && (!availableDays.has(i) || isLocallyBooked);
 
-                    // Check if this is Anshid CK's birthday (June 29)
-                    const isBirthday = (month === 5 && i === 29);
-
                     if (isPast || isSunday) {
                         dayEl.classList.add('disabled');
                         if (isSunday) dayEl.setAttribute('title', 'Holiday');
@@ -1636,25 +1626,15 @@
                         dayEl.classList.add('booked');
                     } else {
                         dayEl.classList.add('available');
-                        if (isBirthday) {
-                            dayEl.classList.add('birthday');
-                            dayEl.setAttribute('title', '🎂 Anshid\'s Birthday!');
-                        }
                         dayEl.onclick = () => {
                             document.querySelectorAll('.day').forEach(d => d.classList.remove('selected'));
                             dayEl.classList.add('selected');
                             timeSlots.classList.add('active');
                             timeHeadline.style.display = 'block';
                             summaryDate.innerText = i + " " + monthName + " " + year;
-
-                            // 🎉 Birthday special surprise!
-                            if (isBirthday) {
-                                setTimeout(() => triggerBirthdaySurprise(), 300);
-                            } else {
-                                setTimeout(() => {
-                                    timeSlots.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                                }, 200);
-                            }
+                            setTimeout(() => {
+                                timeSlots.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                            }, 200);
                         };
                     }
                     calGrid.appendChild(dayEl);
@@ -1727,11 +1707,6 @@
                     return;
                 }
 
-                // 🎂 BIRTHDAY BLOCK — June 29 is off limits. No calls, no submissions!
-                if (currentMonth === 5 && summaryDate.innerText.startsWith('29')) {
-                    triggerBirthdayBlock();
-                    return;
-                }
 
                 // --- SAVE TO GOOGLE SHEET ---
                 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwHQNCp53r_-9lnEKM6pXrVuyqtxuqq-5C3tCm8tHJYJYEhJJYN1dryN_PTSZLbo1tA/exec";
