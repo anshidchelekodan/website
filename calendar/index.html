@@ -1586,7 +1586,7 @@
                 let futureWorkingDays = [];
                 for (let i = 1; i <= lastDay; i++) {
                     const d = new Date(year, month, i);
-                    if (d >= today && d.getDay() !== 0) {
+                    if (d.getDay() !== 0) {
                         futureWorkingDays.push(i);
                     }
                 }
