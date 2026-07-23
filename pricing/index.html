@@ -483,59 +483,204 @@
 
         <!-- META ADS TAB -->
         <div id="meta" class="tab-content">
-          <div class="pricing-grid">
-            <div class="pricing-card">
-              <div class="card-header">
-                <div class="pricing-icon"><i class="fab fa-facebook"></i></div>
-                <h3 class="pricing-title">Starter</h3>
+          <!-- Sub-tabs for Meta Ads -->
+          <div class="tabs-container sub-tabs-container animate stagger-1" style="margin-top: 0; margin-bottom: 2rem;">
+            <button class="tab-btn sub-tab-btn active" onclick="openSubTab('meta-daily', this)">Daily</button>
+            <button class="tab-btn sub-tab-btn" onclick="openSubTab('meta-weekly', this)">Weekly</button>
+            <button class="tab-btn sub-tab-btn" onclick="openSubTab('meta-monthly', this)">Monthly</button>
+          </div>
+
+          <!-- DAILY PLANS -->
+          <div id="meta-daily" class="sub-tab-content active" style="animation: fadeIn 0.4s ease forwards;">
+            <div class="pricing-grid">
+              <div class="pricing-card">
+                <div class="card-header">
+                  <div class="pricing-icon"><i class="fab fa-facebook"></i></div>
+                  <h3 class="pricing-title">Starter Daily</h3>
+                </div>
+                <div class="pricing-amount">
+                  <div class="price">₹300<span class="period">/day</span></div>
+                </div>
+                <ul class="pricing-features">
+                  <li>Campaign setup</li>
+                  <li>Audience targeting</li>
+                  <li>Ad monitoring</li>
+                  <li>Basic reporting</li>
+                </ul>
+                <a href="../calendar/" class="btn btn-outline btn-pricing">Book a Strategy Call</a>
               </div>
-              <div class="pricing-amount">
-                <span class="starting">Starting From</span>
-                <div class="price">₹12,000<span class="period">/mo</span></div>
+              <div class="pricing-card premium">
+                <div class="popular-badge">Most Popular</div>
+                <div class="card-header">
+                  <div class="pricing-icon"><i class="fas fa-bullseye"></i></div>
+                  <h3 class="pricing-title">Growth Daily</h3>
+                </div>
+                <div class="pricing-amount">
+                  <div class="price">₹500<span class="period">/day</span></div>
+                </div>
+                <ul class="pricing-features">
+                  <li>Campaign setup</li>
+                  <li>Audience targeting</li>
+                  <li>Ad monitoring</li>
+                  <li>Basic reporting</li>
+                </ul>
+                <a href="../contact/" class="btn btn-primary btn-pricing">Get Started</a>
               </div>
-              <ul class="pricing-features">
-                <li>Campaign Setup</li>
-                <li>Audience Research</li>
-                <li>Ad Copy</li>
-                <li>Monthly Optimization</li>
-              </ul>
-              <a href="../contact/" class="btn btn-outline btn-pricing">Select</a>
+              <div class="pricing-card">
+                <div class="card-header">
+                  <div class="pricing-icon"><i class="fas fa-sliders-h"></i></div>
+                  <h3 class="pricing-title">Premium Daily</h3>
+                </div>
+                <div class="pricing-amount">
+                  <div class="price">₹750<span class="period">/day</span></div>
+                </div>
+                <ul class="pricing-features">
+                  <li>Campaign setup</li>
+                  <li>Audience targeting</li>
+                  <li>Ad monitoring</li>
+                  <li>Basic reporting</li>
+                </ul>
+                <a href="../contact/" class="btn btn-outline btn-pricing">Get Started</a>
+              </div>
             </div>
-            <div class="pricing-card premium">
-              <div class="popular-badge">High ROI</div>
-              <div class="card-header">
-                <div class="pricing-icon"><i class="fas fa-bullseye"></i></div>
-                <h3 class="pricing-title">Growth</h3>
+          </div>
+
+          <!-- WEEKLY PLANS -->
+          <div id="meta-weekly" class="sub-tab-content" style="display: none;">
+            <div class="pricing-grid">
+              <div class="pricing-card">
+                <div class="card-header">
+                  <div class="pricing-icon"><i class="fab fa-facebook"></i></div>
+                  <h3 class="pricing-title">Starter Weekly</h3>
+                </div>
+                <div class="pricing-amount">
+                  <div class="price">₹1,500<span class="period">/week</span></div>
+                </div>
+                <ul class="pricing-features">
+                  <li>Meta Ads management</li>
+                  <li>Creative guidance</li>
+                  <li>Audience optimization</li>
+                  <li>Weekly performance report</li>
+                  <li>Lead generation focus</li>
+                </ul>
+                <a href="../calendar/" class="btn btn-outline btn-pricing">Book a Strategy Call</a>
               </div>
-              <div class="pricing-amount">
-                <span class="starting">Starting From</span>
-                <div class="price">₹20,000<span class="period">/mo</span></div>
+              <div class="pricing-card premium">
+                <div class="popular-badge">Most Popular</div>
+                <div class="card-header">
+                  <div class="pricing-icon"><i class="fas fa-bullseye"></i></div>
+                  <h3 class="pricing-title">Growth Weekly</h3>
+                </div>
+                <div class="pricing-amount">
+                  <div class="price">₹2,500<span class="period">/week</span></div>
+                </div>
+                <ul class="pricing-features">
+                  <li>Meta Ads management</li>
+                  <li>Creative guidance</li>
+                  <li>Audience optimization</li>
+                  <li>Weekly performance report</li>
+                  <li>Lead generation focus</li>
+                </ul>
+                <a href="../contact/" class="btn btn-primary btn-pricing">Get Started</a>
               </div>
-              <ul class="pricing-features">
-                <li>Retargeting Campaigns</li>
-                <li>Creative Strategy</li>
-                <li>Weekly Optimization</li>
-                <li>Conversion Tracking</li>
-              </ul>
-              <a href="../contact/" class="btn btn-primary btn-pricing">Select</a>
+              <div class="pricing-card">
+                <div class="card-header">
+                  <div class="pricing-icon"><i class="fas fa-sliders-h"></i></div>
+                  <h3 class="pricing-title">Premium Weekly</h3>
+                </div>
+                <div class="pricing-amount">
+                  <div class="price">₹4,000<span class="period">/week</span></div>
+                </div>
+                <ul class="pricing-features">
+                  <li>Meta Ads management</li>
+                  <li>Creative guidance</li>
+                  <li>Audience optimization</li>
+                  <li>Weekly performance report</li>
+                  <li>Lead generation focus</li>
+                </ul>
+                <a href="../contact/" class="btn btn-outline btn-pricing">Get Started</a>
+              </div>
             </div>
-            <div class="pricing-card">
-              <div class="card-header">
-                <div class="pricing-icon"><i class="fas fa-sliders-h"></i></div>
-                <h3 class="pricing-title">Custom</h3>
+          </div>
+
+          <!-- MONTHLY PLANS -->
+          <div id="meta-monthly" class="sub-tab-content" style="display: none;">
+            <div class="pricing-grid">
+              <div class="pricing-card">
+                <div class="card-header">
+                  <div class="pricing-icon"><i class="fab fa-facebook"></i></div>
+                  <h3 class="pricing-title">Starter Monthly</h3>
+                </div>
+                <div class="pricing-amount">
+                  <div class="price">₹5,000<span class="period">/mo</span></div>
+                </div>
+                <ul class="pricing-features">
+                  <li>Full Meta Ads management</li>
+                  <li>Campaign optimization</li>
+                  <li>A/B testing</li>
+                  <li>Conversion tracking</li>
+                  <li>Monthly analytics report</li>
+                  <li>Dedicated support</li>
+                </ul>
+                <a href="../calendar/" class="btn btn-outline btn-pricing">Book a Strategy Call</a>
               </div>
-              <div class="pricing-amount">
-                <span class="starting">Tailored Ads</span>
-                <div class="price">Custom</div>
+              <div class="pricing-card premium">
+                <div class="popular-badge">Most Popular</div>
+                <div class="card-header">
+                  <div class="pricing-icon"><i class="fas fa-bullseye"></i></div>
+                  <h3 class="pricing-title">Growth Monthly</h3>
+                </div>
+                <div class="pricing-amount">
+                  <div class="price">₹10,000<span class="period">/mo</span></div>
+                </div>
+                <ul class="pricing-features">
+                  <li>Full Meta Ads management</li>
+                  <li>Campaign optimization</li>
+                  <li>A/B testing</li>
+                  <li>Conversion tracking</li>
+                  <li>Monthly analytics report</li>
+                  <li>Dedicated support</li>
+                </ul>
+                <a href="../contact/" class="btn btn-primary btn-pricing">Get Started</a>
               </div>
-              <ul class="pricing-features">
-                <li>High-Budget Scaling</li>
-                <li>Advanced Pixel</li>
-                <li>A/B Testing</li>
-                <li>Custom Audiences</li>
-              </ul>
-              <a href="../contact/" class="btn btn-outline btn-pricing">Request Quote</a>
+              <div class="pricing-card">
+                <div class="card-header">
+                  <div class="pricing-icon"><i class="fas fa-sliders-h"></i></div>
+                  <h3 class="pricing-title">Premium Monthly</h3>
+                </div>
+                <div class="pricing-amount">
+                  <div class="price">₹15,000<span class="period">/mo</span></div>
+                </div>
+                <ul class="pricing-features">
+                  <li>Full Meta Ads management</li>
+                  <li>Campaign optimization</li>
+                  <li>A/B testing</li>
+                  <li>Conversion tracking</li>
+                  <li>Monthly analytics report</li>
+                  <li>Dedicated support</li>
+                </ul>
+                <a href="../contact/" class="btn btn-outline btn-pricing">Get Started</a>
+              </div>
             </div>
+          </div>
+
+          <!-- Note & Custom Plan Card -->
+          <div class="meta-note" style="text-align: center; color: var(--text-secondary); font-size: 0.9rem; margin-top: 1rem; margin-bottom: 2rem;">
+            <em>* Ad spend is billed separately and paid directly by the client. Custom plans are available based on business goals and campaign requirements.</em>
+          </div>
+
+          <div class="pricing-card premium custom-plan-card" style="max-width: 800px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; align-items: center; padding: 2.5rem 2rem; margin-bottom: 2rem;">
+            <div class="pricing-icon" style="margin-bottom: 1rem;"><i class="fas fa-cogs"></i></div>
+            <h3 class="pricing-title" style="margin-bottom: 0.5rem;">Custom Plan</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Need something specific? Let's build a strategy that works for you.</p>
+            <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-bottom: 2rem;">
+              <span style="background: rgba(46, 230, 166, 0.1); color: var(--accent-color); padding: 5px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">Flexible pricing</span>
+              <span style="background: rgba(46, 230, 166, 0.1); color: var(--accent-color); padding: 5px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">Multi-platform campaigns</span>
+              <span style="background: rgba(46, 230, 166, 0.1); color: var(--accent-color); padding: 5px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">Meta + Google Ads bundles</span>
+              <span style="background: rgba(46, 230, 166, 0.1); color: var(--accent-color); padding: 5px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">Custom reporting</span>
+              <span style="background: rgba(46, 230, 166, 0.1); color: var(--accent-color); padding: 5px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">1-on-1 consultation</span>
+            </div>
+            <a href="../contact/" class="btn btn-primary btn-pricing" style="max-width: 250px;">Request Custom Quote</a>
           </div>
         </div>
 
@@ -913,11 +1058,25 @@
     function openTab(tabId) {
       // Hide all tabs
       document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tabs-container:not(.sub-tabs-container) .tab-btn').forEach(el => el.classList.remove('active'));
       
       // Show selected tab
       document.getElementById(tabId).classList.add('active');
       event.currentTarget.classList.add('active');
+    }
+
+    function openSubTab(subTabId, btn) {
+      const container = btn.closest('.tab-content');
+      container.querySelectorAll('.sub-tab-content').forEach(el => el.style.display = 'none');
+      container.querySelectorAll('.sub-tab-btn').forEach(el => el.classList.remove('active'));
+      
+      const subTab = document.getElementById(subTabId);
+      subTab.style.display = 'block';
+      subTab.style.animation = 'none';
+      subTab.offsetHeight; /* trigger reflow */
+      subTab.style.animation = 'fadeIn 0.4s ease forwards';
+      
+      btn.classList.add('active');
     }
 
     // Auto-append package to contact URLs
