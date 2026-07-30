@@ -358,6 +358,7 @@
       }
     }
   </style>
+
 </head>
 <body>
   <!-- Header & Navbar -->
@@ -377,7 +378,7 @@
           <li><a href="../about/">About</a></li>
           <li><a href="../services/">Services</a></li>
           <li><a href="https://anshidck.com/pricing/" class="active">Pricing</a></li>
-          <li><a href="../quote/">Get Quote</a></li>
+          <li><a href="#quote" onclick="openTab('quote')">Get Quote</a></li>
           <li><a href="../portfolio/">Portfolio</a></li>
           <li><a href="../blog/">Blog</a></li>
           <li><a href="../contact/">Contact</a></li>
@@ -419,6 +420,7 @@
         <button class="tab-btn" onclick="openTab('video')"><i class="fas fa-video"></i> Video</button>
         <button class="tab-btn" onclick="openTab('web')"><i class="fas fa-laptop-code"></i> Web Design</button>
         <button class="tab-btn" onclick="openTab('growth')"><i class="fas fa-rocket"></i> Packages</button>
+        <button class="tab-btn" onclick="openTab('quote')" style="background: linear-gradient(135deg, rgba(98, 255, 176, 0.2), rgba(46, 230, 166, 0.05)); border-color: var(--accent-color); color: #fff;"><i class="fas fa-calculator" style="color: var(--accent-color);"></i> Quote Builder</button>
       </div>
     </div>
 
@@ -435,7 +437,7 @@
               </div>
               <div class="pricing-amount">
                 <span class="starting">Starting From</span>
-                <div class="price">₹15,000<span class="period">/mo</span></div>
+                <div class="price">&#8377;15,000<span class="period">/mo</span></div>
               </div>
               <ul class="pricing-features">
                 <li>Keyword Research</li>
@@ -453,7 +455,7 @@
               </div>
               <div class="pricing-amount">
                 <span class="starting">Starting From</span>
-                <div class="price">₹25,000<span class="period">/mo</span></div>
+                <div class="price">&#8377;25,000<span class="period">/mo</span></div>
               </div>
               <ul class="pricing-features">
                 <li>Blog Optimization</li>
@@ -501,7 +503,7 @@
                   <h3 class="pricing-title">Starter Daily</h3>
                 </div>
                 <div class="pricing-amount">
-                  <div class="price">₹300<span class="period">/day</span></div>
+                  <div class="price">&#8377;300<span class="period">/day</span></div>
                 </div>
                 <ul class="pricing-features">
                   <li>Campaign setup</li>
@@ -518,7 +520,7 @@
                   <h3 class="pricing-title">Growth Daily</h3>
                 </div>
                 <div class="pricing-amount">
-                  <div class="price">₹500<span class="period">/day</span></div>
+                  <div class="price">&#8377;500<span class="period">/day</span></div>
                 </div>
                 <ul class="pricing-features">
                   <li>Campaign setup</li>
@@ -534,7 +536,7 @@
                   <h3 class="pricing-title">Premium Daily</h3>
                 </div>
                 <div class="pricing-amount">
-                  <div class="price">₹750<span class="period">/day</span></div>
+                  <div class="price">&#8377;750<span class="period">/day</span></div>
                 </div>
                 <ul class="pricing-features">
                   <li>Campaign setup</li>
@@ -556,7 +558,7 @@
                   <h3 class="pricing-title">Starter Weekly</h3>
                 </div>
                 <div class="pricing-amount">
-                  <div class="price">₹1,500<span class="period">/week</span></div>
+                  <div class="price">&#8377;1,500<span class="period">/week</span></div>
                 </div>
                 <ul class="pricing-features">
                   <li>Meta Ads management</li>
@@ -574,7 +576,7 @@
                   <h3 class="pricing-title">Growth Weekly</h3>
                 </div>
                 <div class="pricing-amount">
-                  <div class="price">₹2,500<span class="period">/week</span></div>
+                  <div class="price">&#8377;2,500<span class="period">/week</span></div>
                 </div>
                 <ul class="pricing-features">
                   <li>Meta Ads management</li>
@@ -591,7 +593,7 @@
                   <h3 class="pricing-title">Premium Weekly</h3>
                 </div>
                 <div class="pricing-amount">
-                  <div class="price">₹4,000<span class="period">/week</span></div>
+                  <div class="price">&#8377;4,000<span class="period">/week</span></div>
                 </div>
                 <ul class="pricing-features">
                   <li>Meta Ads management</li>
@@ -614,7 +616,7 @@
                   <h3 class="pricing-title">Starter Monthly</h3>
                 </div>
                 <div class="pricing-amount">
-                  <div class="price">₹5,000<span class="period">/mo</span></div>
+                  <div class="price">&#8377;5,000<span class="period">/mo</span></div>
                 </div>
                 <ul class="pricing-features">
                   <li>Full Meta Ads management</li>
@@ -633,7 +635,7 @@
                   <h3 class="pricing-title">Growth Monthly</h3>
                 </div>
                 <div class="pricing-amount">
-                  <div class="price">₹10,000<span class="period">/mo</span></div>
+                  <div class="price">&#8377;10,000<span class="period">/mo</span></div>
                 </div>
                 <ul class="pricing-features">
                   <li>Full Meta Ads management</li>
@@ -651,7 +653,7 @@
                   <h3 class="pricing-title">Premium Monthly</h3>
                 </div>
                 <div class="pricing-amount">
-                  <div class="price">₹15,000<span class="period">/mo</span></div>
+                  <div class="price">&#8377;15,000<span class="period">/mo</span></div>
                 </div>
                 <ul class="pricing-features">
                   <li>Full Meta Ads management</li>
@@ -696,7 +698,7 @@
               </div>
               <div class="pricing-amount">
                 <span class="starting">Starting From</span>
-                <div class="price">₹15,000<span class="period">/mo</span></div>
+                <div class="price">&#8377;15,000<span class="period">/mo</span></div>
               </div>
               <ul class="pricing-features">
                 <li>Search Campaign Setup</li>
@@ -713,7 +715,7 @@
               </div>
               <div class="pricing-amount">
                 <span class="starting">Starting From</span>
-                <div class="price">₹25,000<span class="period">/mo</span></div>
+                <div class="price">&#8377;25,000<span class="period">/mo</span></div>
               </div>
               <ul class="pricing-features">
                 <li>Search + PMax</li>
@@ -752,7 +754,7 @@
               </div>
               <div class="pricing-amount">
                 <span class="starting">Starting From</span>
-                <div class="price">₹10,000<span class="period">/mo</span></div>
+                <div class="price">&#8377;10,000<span class="period">/mo</span></div>
               </div>
               <ul class="pricing-features">
                 <li>12 Posts</li>
@@ -769,7 +771,7 @@
               </div>
               <div class="pricing-amount">
                 <span class="starting">Starting From</span>
-                <div class="price">₹18,000<span class="period">/mo</span></div>
+                <div class="price">&#8377;18,000<span class="period">/mo</span></div>
               </div>
               <ul class="pricing-features">
                 <li>Posts + Reels</li>
@@ -809,7 +811,7 @@
               </div>
               <div class="pricing-amount">
                 <span class="starting">Starting From</span>
-                <div class="price">₹8,000<span class="period">/proj</span></div>
+                <div class="price">&#8377;8,000<span class="period">/proj</span></div>
               </div>
               <ul class="pricing-features">
                 <li>Short-form Videos</li>
@@ -826,7 +828,7 @@
               </div>
               <div class="pricing-amount">
                 <span class="starting">Starting From</span>
-                <div class="price">₹15,000<span class="period">/proj</span></div>
+                <div class="price">&#8377;15,000<span class="period">/proj</span></div>
               </div>
               <ul class="pricing-features">
                 <li>iPhone Cinematic</li>
@@ -843,7 +845,7 @@
               </div>
               <div class="pricing-amount">
                 <span class="starting">Starting From</span>
-                <div class="price">₹25,000<span class="period">/proj</span></div>
+                <div class="price">&#8377;25,000<span class="period">/proj</span></div>
               </div>
               <ul class="pricing-features">
                 <li>Event Coverage</li>
@@ -872,7 +874,7 @@
               </div>
               <div class="pricing-amount">
                 <span class="starting">Starting From</span>
-                <div class="price">₹15,000</div>
+                <div class="price">&#8377;15,000</div>
               </div>
               <p style="font-size: 0.85rem; color: var(--accent-color); margin-bottom: 1.5rem; font-weight: 600;">Best For: Freelancers & Small Businesses</p>
               <ul class="pricing-features">
@@ -897,7 +899,7 @@
               </div>
               <div class="pricing-amount">
                 <span class="starting">Starting From</span>
-                <div class="price">₹30,000</div>
+                <div class="price">&#8377;30,000</div>
               </div>
               <p style="font-size: 0.85rem; color: var(--accent-color); margin-bottom: 1.5rem; font-weight: 600;">Best For: Growing Businesses</p>
               <ul class="pricing-features">
@@ -923,7 +925,7 @@
               </div>
               <div class="pricing-amount">
                 <span class="starting">Starting From</span>
-                <div class="price">₹50,000</div>
+                <div class="price">&#8377;50,000</div>
               </div>
               <p style="font-size: 0.85rem; color: var(--accent-color); margin-bottom: 1.5rem; font-weight: 600;">Best For: Established Brands</p>
               <ul class="pricing-features">
@@ -1009,7 +1011,7 @@
               </div>
               <div class="pricing-amount">
                 <span class="starting">Starting From</span>
-                <div class="price">₹20,000<span class="period">/mo</span></div>
+                <div class="price">&#8377;20,000<span class="period">/mo</span></div>
               </div>
               <ul class="pricing-features">
                 <li>Social Media Mgmt</li>
@@ -1026,7 +1028,7 @@
               </div>
               <div class="pricing-amount">
                 <span class="starting">Starting From</span>
-                <div class="price">₹35,000<span class="period">/mo</span></div>
+                <div class="price">&#8377;35,000<span class="period">/mo</span></div>
               </div>
               <ul class="pricing-features">
                 <li>SEO Optimization</li>
@@ -1043,7 +1045,7 @@
               </div>
               <div class="pricing-amount">
                 <span class="starting">Starting From</span>
-                <div class="price">₹50,000<span class="period">/mo</span></div>
+                <div class="price">&#8377;50,000<span class="period">/mo</span></div>
               </div>
               <ul class="pricing-features">
                 <li>SEO Optimization</li>
@@ -1073,7 +1075,7 @@
             <h2 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Pricing FAQ</h2>
             <div class="faq-item">
               <h3><i class="fas fa-info-circle"></i> Cost in Kerala?</h3>
-              <p>Projects start from ₹10k–₹15k and scale based on complexity and growth targets.</p>
+              <p>Projects start from &#8377;10k–&#8377;15k and scale based on complexity and growth targets.</p>
             </div>
             <div class="faq-item">
               <h3><i class="fas fa-info-circle"></i> Custom packages?</h3>
@@ -1086,81 +1088,576 @@
           </div>
         </div>
 
-      </div>
-    </section>
+        <!-- QUOTE BUILDER TAB -->
+        <div id="quote" class="tab-content">
+          <div class="web-intro" style="text-align: center; margin-bottom: 3rem;">
+            <h2 style="font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 0.5rem; color: #fff; font-weight: 800;">Custom <span class="text-accent">Project Estimator</span></h2>
+            <p style="color: var(--text-secondary); max-width: 800px; margin: 0 auto; line-height: 1.6;">Build your ideal digital marketing package in our new step-by-step wizard. Select the services you need, customize your plans, and get an instant live estimate.</p>
+          </div>
+          <style>
+/* Sleek Wizard Theme */
+.wizard-container {
+    max-width: 900px;
+    margin: 0 auto 50px auto;
+    background: rgba(15, 15, 15, 0.4);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 24px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    font-family: var(--font-body, 'Montserrat', sans-serif);
+}
 
-    <!-- Business Growth Calculators - Standalone Section -->
-    <section class="section" id="growth-calc" style="padding-top:6rem;padding-bottom:6rem;position:relative;overflow:hidden;">
-      <div style="position:absolute;top:-20%;left:-10%;width:50%;height:50%;background:radial-gradient(circle,rgba(98,255,176,0.05) 0%,transparent 70%);z-index:0;pointer-events:none;"></div>
-      <div style="position:absolute;bottom:-20%;right:-10%;width:50%;height:50%;background:radial-gradient(circle,rgba(230,57,70,0.03) 0%,transparent 70%);z-index:0;pointer-events:none;"></div>
-      <div class="container" style="position:relative;z-index:1;">
-        <div style="text-align:center;margin-bottom:4rem;">
-          <span style="display:inline-block;padding:0.4rem 1.2rem;background:rgba(98,255,176,0.1);border:1px solid rgba(98,255,176,0.2);border-radius:50px;color:var(--accent-color);font-size:0.8rem;text-transform:uppercase;letter-spacing:2px;font-weight:700;margin-bottom:1.5rem;">Interactive ROI Dashboard</span>
-          <h2 style="font-size:clamp(2rem,5vw,3rem);font-weight:800;margin-bottom:1rem;">Project Your <span class="text-accent" style="text-shadow:0 0 20px rgba(98,255,176,0.3);">Growth</span></h2>
-          <p style="max-width:600px;margin:0 auto;color:var(--text-secondary);font-size:1.1rem;line-height:1.6;">Stop guessing. Use our data-driven calculators to see the exact revenue and lead volume you can generate.</p>
+.wizard-header {
+    background: linear-gradient(135deg, rgba(46, 230, 166, 0.1), transparent);
+    padding: 30px 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wizard-progress {
+    display: flex;
+    gap: 10px;
+    flex: 1;
+    max-width: 200px;
+    justify-content: flex-end;
+}
+
+.progress-dot {
+    height: 6px;
+    width: 30px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    transition: all 0.4s ease;
+}
+
+.progress-dot.active {
+    background: var(--accent-color);
+    box-shadow: 0 0 10px rgba(98, 255, 176, 0.5);
+}
+
+.wizard-step {
+    display: none;
+    padding: 40px;
+    animation: slideIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+.wizard-step.active {
+    display: block;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.wizard-footer {
+    padding: 25px 40px;
+    background: rgba(0,0,0,0.2);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wizard-total {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--accent-color);
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+}
+
+.service-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.service-toggle-btn:hover {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(98, 255, 176, 0.3);
+}
+
+.service-toggle-btn.selected {
+    background: rgba(46, 230, 166, 0.05);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 20px rgba(98, 255, 176, 0.1);
+}
+
+.st-icon {
+    font-size: 1.8rem;
+    color: var(--accent-color);
+    width: 50px;
+    text-align: center;
+}
+
+.st-text {
+    flex: 1;
+    padding: 0 20px;
+    text-align: left;
+}
+
+.st-text h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.2rem;
+    color: #fff;
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+}
+
+.st-text p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.st-check {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #111;
+    font-size: 12px;
+    transition: all 0.3s;
+}
+
+.service-toggle-btn.selected .st-check {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.service-toggle-btn.selected .st-check i {
+    opacity: 1;
+}
+.st-check i { opacity: 0; transition: opacity 0.3s; }
+
+/* Config Item */
+.config-item {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 16px;
+    padding: 25px;
+    margin-bottom: 25px;
+    display: none;
+}
+
+.config-item.active {
+    display: block;
+}
+
+.config-title {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Review Item */
+.review-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.review-item:last-child {
+    border-bottom: none;
+}
+
+.review-title {
+    color: #fff;
+    font-weight: 600;
+}
+
+.review-val {
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+.btn-wizard {
+    padding: 14px 30px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    font-family: inherit;
+}
+
+.btn-wizard-primary {
+    background: var(--accent-color);
+    color: #000;
+}
+
+.btn-wizard-primary:hover {
+    box-shadow: 0 0 20px rgba(98, 255, 176, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-wizard-outline {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.btn-wizard-outline:hover {
+    background: rgba(255,255,255,0.05);
+}
+
+.wiz-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .wiz-grid { grid-template-columns: 1fr; }
+    .wizard-header, .wizard-footer { padding: 20px; }
+    .wizard-step { padding: 20px; }
+    .st-icon { width: 30px; font-size: 1.4rem; }
+    .st-text { padding: 0 10px; }
+}
+</style>
+
+<div class="wizard-container">
+    <div class="wizard-header">
+        <div>
+            <h3 style="color:#fff; margin:0; font-size:1.3rem; font-weight:800; font-family: var(--font-heading, 'Montserrat', sans-serif);">Project Estimator</h3>
+            <div style="font-size:0.85rem; color:var(--text-secondary); margin-top:4px;" id="wiz-step-text">Step 1: Choose Services</div>
         </div>
-        
-        <div style="display:flex;justify-content:center;gap:0.5rem;margin-bottom:3rem;background:rgba(255,255,255,0.03);padding:0.5rem;border-radius:20px;width:fit-content;margin-left:auto;margin-right:auto;border:1px solid rgba(255,255,255,0.05);flex-wrap:wrap;">
-          <div id="tab-roi" onclick="switchCalc('roi')" style="padding:1rem 2.5rem;background:var(--accent-color);border-radius:14px;color:#000;font-weight:800;cursor:pointer;transition:all 0.3s ease;font-size:0.9rem;text-transform:uppercase;letter-spacing:1px;box-shadow:0 10px 20px -10px rgba(98,255,176,0.5);flex:1;text-align:center;">ROI Estimator</div>
-          <div id="tab-lead" onclick="switchCalc('lead')" style="padding:1rem 2.5rem;background:transparent;border-radius:14px;color:var(--text-secondary);font-weight:700;cursor:pointer;transition:all 0.3s ease;font-size:0.9rem;text-transform:uppercase;letter-spacing:1px;flex:1;text-align:center;">Lead Projection</div>
+        <div class="wizard-progress">
+            <div class="progress-dot active" id="dot-1"></div>
+            <div class="progress-dot" id="dot-2"></div>
+            <div class="progress-dot" id="dot-3"></div>
+            <div class="progress-dot" id="dot-4"></div>
         </div>
+    </div>
+
+    <!-- STEP 1: SERVICES -->
+    <div class="wizard-step active" id="wiz-step-1">
+        <h2 style="font-size:1.8rem; color:#fff; margin-bottom:25px; font-family: var(--font-heading, 'Montserrat', sans-serif);">What do you need help with?</h2>
         
-        <div id="roi-calc" style="display:block;">
-          <div class="pro-calc-container">
-            <div class="pro-calc-left">
-              <h3 style="font-size:1.4rem;margin-bottom:2.5rem;display:flex;align-items:center;gap:10px;"><i class="fas fa-sliders-h text-accent"></i> Adjust Your Metrics</h3>
-              <div>
-                <div class="pro-calc-slider-wrapper">
-                  <div style="display:flex;justify-content:space-between;margin-bottom:0.8rem;"><label style="font-weight:700;color:#fff;">Monthly Website Traffic</label><span id="roi-traffic-val" style="color:var(--accent-color);font-weight:800;font-family:monospace;">5,000</span></div>
-                  <input type="range" min="500" max="100000" value="5000" step="500" id="roi-traffic" style="width:100%;height:8px;border-radius:8px;outline:none;accent-color:var(--accent-color);cursor:pointer;background:rgba(255,255,255,0.1);">
+        <div class="wiz-grid">
+            <div class="service-toggle-btn" data-serv="seo" onclick="wToggle('seo')">
+                <div class="st-icon"><i class="fas fa-search-dollar"></i></div>
+                <div class="st-text">
+                    <h3>SEO</h3>
+                    <p>Rank higher organically.</p>
                 </div>
-                <div class="pro-calc-slider-wrapper">
-                  <div style="display:flex;justify-content:space-between;margin-bottom:0.8rem;"><label style="font-weight:700;color:#fff;">Current Conversion Rate</label><span id="roi-conv-val" style="color:var(--accent-color);font-weight:800;font-family:monospace;">2.0%</span></div>
-                  <input type="range" min="0.1" max="15" value="2" step="0.1" id="roi-conv" style="width:100%;height:8px;border-radius:8px;outline:none;accent-color:var(--accent-color);cursor:pointer;background:rgba(255,255,255,0.1);">
-                </div>
-                <div class="pro-calc-slider-wrapper">
-                  <div style="display:flex;justify-content:space-between;margin-bottom:0.8rem;"><label style="font-weight:700;color:#fff;">Avg. Customer Value (&#8377;)</label><span id="roi-value-val" style="color:var(--accent-color);font-weight:800;font-family:monospace;">&#8377;10,000</span></div>
-                  <input type="range" min="500" max="100000" value="10000" step="500" id="roi-value" style="width:100%;height:8px;border-radius:8px;outline:none;accent-color:var(--accent-color);cursor:pointer;background:rgba(255,255,255,0.1);">
-                </div>
-              </div>
+                <div class="st-check"><i class="fas fa-check"></i></div>
             </div>
-            <div class="pro-calc-right">
-              <div style="position:absolute;top:20px;right:20px;width:100px;height:100px;background:var(--accent-color);filter:blur(80px);opacity:0.15;"></div>
-              <span style="display:inline-block;padding:0.3rem 1rem;background:rgba(255,255,255,0.05);border-radius:20px;text-transform:uppercase;letter-spacing:2px;font-size:0.75rem;color:var(--text-secondary);margin-bottom:1.5rem;">Projected Monthly Uplift</span>
-              <span id="roi-result" style="display:block;font-size:clamp(2.5rem,5vw,4rem);font-weight:900;color:#fff;margin-bottom:1rem;text-shadow:0 0 30px rgba(98,255,176,0.3);line-height:1;">&#8377;5,00,000</span>
-              <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.6;margin-bottom:2.5rem;max-width:85%;">Estimated additional monthly revenue based on 50% improvement in conversion efficiency using our proven strategies.</p>
-              <a href="../contact/?package=ROI%20Growth%20Strategy" class="btn btn-primary" style="padding:1.2rem 3rem;font-size:1rem;border-radius:50px;width:100%;max-width:320px;box-shadow:0 15px 30px -10px rgba(98,255,176,0.4);"><i class="fas fa-rocket" style="margin-right:10px;"></i>Claim Your Strategy</a>
+            
+            <div class="service-toggle-btn" data-serv="meta" onclick="wToggle('meta')">
+                <div class="st-icon"><i class="fab fa-meta"></i></div>
+                <div class="st-text">
+                    <h3>Meta Ads</h3>
+                    <p>Targeted lead generation.</p>
+                </div>
+                <div class="st-check"><i class="fas fa-check"></i></div>
             </div>
-          </div>
+            
+            <div class="service-toggle-btn" data-serv="google" onclick="wToggle('google')">
+                <div class="st-icon"><i class="fab fa-google"></i></div>
+                <div class="st-text">
+                    <h3>Google Ads</h3>
+                    <p>Capture search intent.</p>
+                </div>
+                <div class="st-check"><i class="fas fa-check"></i></div>
+            </div>
+            
+            <div class="service-toggle-btn" data-serv="web" onclick="wToggle('web')">
+                <div class="st-icon"><i class="fas fa-laptop-code"></i></div>
+                <div class="st-text">
+                    <h3>Web Design</h3>
+                    <p>High-converting websites.</p>
+                </div>
+                <div class="st-check"><i class="fas fa-check"></i></div>
+            </div>
         </div>
+    </div>
+
+    <!-- STEP 2: CONFIGURE -->
+    <div class="wizard-step" id="wiz-step-2">
+        <h2 style="font-size:1.8rem; color:#fff; margin-bottom:25px; font-family: var(--font-heading, 'Montserrat', sans-serif);">Customize Your Plan</h2>
         
-        <div id="lead-calc" style="display:none;">
-          <div class="pro-calc-container">
-            <div class="pro-calc-left">
-              <h3 style="font-size:1.4rem;margin-bottom:2.5rem;display:flex;align-items:center;gap:10px;"><i class="fas fa-bullseye text-accent"></i> Campaign Budgeting</h3>
-              <div>
-                <div class="pro-calc-slider-wrapper">
-                  <div style="display:flex;justify-content:space-between;margin-bottom:0.8rem;"><label style="font-weight:700;color:#fff;">Monthly Ad Budget (&#8377;)</label><span id="lead-budget-val" style="color:var(--accent-color);font-weight:800;font-family:monospace;">&#8377;50,000</span></div>
-                  <input type="range" min="5000" max="500000" value="50000" step="5000" id="lead-budget" style="width:100%;height:8px;border-radius:8px;outline:none;accent-color:var(--accent-color);cursor:pointer;background:rgba(255,255,255,0.1);">
+        <div id="wiz-configs-container">
+            <!-- Dynamically populated, or display:none items -->
+            
+            <div class="config-item" id="conf-seo">
+                <div class="config-title"><i class="fas fa-search-dollar text-accent"></i> SEO Plan</div>
+                <div class="plan-toggle-group">
+                    <div class="plan-btn active" onclick="wPlan('seo','Starter')">Starter (₹15k)</div>
+                    <div class="plan-btn" onclick="wPlan('seo','Growth')">Growth (₹25k)</div>
+                    <div class="plan-btn" onclick="wPlan('seo','Premium')">Custom</div>
                 </div>
-                <div class="pro-calc-slider-wrapper">
-                  <div style="display:flex;justify-content:space-between;margin-bottom:0.8rem;"><label style="font-weight:700;color:#fff;">Average CPC (&#8377;)</label><span id="lead-cpc-val" style="color:var(--accent-color);font-weight:800;font-family:monospace;">&#8377;40</span></div>
-                  <input type="range" min="5" max="200" value="40" step="1" id="lead-cpc" style="width:100%;height:8px;border-radius:8px;outline:none;accent-color:var(--accent-color);cursor:pointer;background:rgba(255,255,255,0.1);">
-                </div>
-                <div class="pro-calc-slider-wrapper">
-                  <div style="display:flex;justify-content:space-between;margin-bottom:0.8rem;"><label style="font-weight:700;color:#fff;">Landing Page Conv. (%)</label><span id="lead-conv-val" style="color:var(--accent-color);font-weight:800;font-family:monospace;">5.0%</span></div>
-                  <input type="range" min="1" max="25" value="5" step="0.5" id="lead-conv" style="width:100%;height:8px;border-radius:8px;outline:none;accent-color:var(--accent-color);cursor:pointer;background:rgba(255,255,255,0.1);">
-                </div>
-              </div>
             </div>
-            <div class="pro-calc-right">
-              <div style="position:absolute;top:20px;right:20px;width:100px;height:100px;background:var(--accent-color);filter:blur(80px);opacity:0.15;"></div>
-              <span style="display:inline-block;padding:0.3rem 1rem;background:rgba(255,255,255,0.05);border-radius:20px;text-transform:uppercase;letter-spacing:2px;font-size:0.75rem;color:var(--text-secondary);margin-bottom:1.5rem;">Projected Monthly Leads</span>
-              <span id="lead-result" style="display:block;font-size:clamp(2.5rem,5vw,4rem);font-weight:900;color:#fff;margin-bottom:1rem;text-shadow:0 0 30px rgba(98,255,176,0.3);line-height:1;">62</span>
-              <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.6;margin-bottom:2.5rem;max-width:85%;">High-intent leads generated predictably through our hyper-optimized Google and Meta ad funnels.</p>
-              <a href="../contact/?package=Lead%20Generation" class="btn btn-primary" style="padding:1.2rem 3rem;font-size:1rem;border-radius:50px;width:100%;max-width:320px;box-shadow:0 15px 30px -10px rgba(98,255,176,0.4);"><i class="fas fa-bolt" style="margin-right:10px;"></i>Start Generating Leads</a>
+            
+            <div class="config-item" id="conf-meta">
+                <div class="config-title"><i class="fab fa-meta text-accent"></i> Meta Ads Plan</div>
+                <div class="plan-toggle-group">
+                    <div class="plan-btn active" onclick="wPlan('meta','Starter')">Starter (₹10k)</div>
+                    <div class="plan-btn" onclick="wPlan('meta','Growth')">Growth (₹20k)</div>
+                    <div class="plan-btn" onclick="wPlan('meta','Premium')">Custom</div>
+                </div>
             </div>
-          </div>
+            
+            <div class="config-item" id="conf-google">
+                <div class="config-title"><i class="fab fa-google text-accent"></i> Google Ads Plan</div>
+                <div class="plan-toggle-group">
+                    <div class="plan-btn active" onclick="wPlan('google','Starter')">Starter (₹15k)</div>
+                    <div class="plan-btn" onclick="wPlan('google','Growth')">Growth (₹30k)</div>
+                    <div class="plan-btn" onclick="wPlan('google','Premium')">Custom</div>
+                </div>
+            </div>
+            
+            <div class="config-item" id="conf-web">
+                <div class="config-title"><i class="fas fa-laptop-code text-accent"></i> Web Design Plan</div>
+                <div class="plan-toggle-group" style="margin-bottom:15px;">
+                    <div class="plan-btn active" onclick="wPlan('web','Starter')">Starter (₹15k)</div>
+                    <div class="plan-btn" onclick="wPlan('web','Growth')">Growth (₹30k)</div>
+                    <div class="plan-btn" onclick="wPlan('web','Premium')">Premium (₹50k)</div>
+                </div>
+            </div>
+            
+            <div id="no-selection-msg" style="display:none; color:rgba(255,255,255,0.5); text-align:center; padding:30px;">
+                You haven't selected any specific services to customize.
+            </div>
+        </div>
+    </div>
+
+    <!-- STEP 3: DETAILS -->
+    <div class="wizard-step" id="wiz-step-3">
+        <h2 style="font-size:1.8rem; color:#fff; margin-bottom:25px; font-family: var(--font-heading, 'Montserrat', sans-serif);">Project Details</h2>
+        <div class="wiz-grid">
+            <div class="form-group">
+                <label>Full Name *</label>
+                <input type="text" id="w_name" class="form-control" placeholder="John Doe">
+            </div>
+            <div class="form-group">
+                <label>Phone Number *</label>
+                <input type="tel" id="w_phone" class="form-control" placeholder="+91 9876543210">
+            </div>
+            <div class="form-group">
+                <label>Email Address *</label>
+                <input type="email" id="w_email" class="form-control" placeholder="john@example.com">
+            </div>
+            <div class="form-group">
+                <label>Company / Website</label>
+                <input type="text" id="w_company" class="form-control" placeholder="Your Business">
+            </div>
+        </div>
+    </div>
+
+    <!-- STEP 4: REVIEW -->
+    <div class="wizard-step" id="wiz-step-4">
+        <h2 style="font-size:1.8rem; color:#fff; margin-bottom:25px; font-family: var(--font-heading, 'Montserrat', sans-serif);">Review Estimate</h2>
+        <div style="background:rgba(0,0,0,0.3); border-radius:16px; padding:25px; border:1px solid rgba(255,255,255,0.05);" id="wiz-review-box">
+            <!-- Populated via JS -->
+        </div>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="wizard-step" id="wiz-step-5" style="text-align:center; padding: 60px 40px;">
+        <div style="width:80px; height:80px; background:rgba(98, 255, 176, 0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--accent-color); font-size:32px; margin: 0 auto 20px auto;">
+            <i class="fas fa-check"></i>
+        </div>
+        <h2 style="font-size:2rem; color:#fff; margin-bottom:15px; font-family: var(--font-heading, 'Montserrat', sans-serif);">Request Received!</h2>
+        <p style="color:var(--text-secondary); max-width:400px; margin:0 auto;">Thank you! Your custom proposal request has been sent successfully. We will get back to you shortly.</p>
+    </div>
+
+    <div class="wizard-footer" id="wiz-footer">
+        <div class="wizard-total">
+            Est. <span id="wiz-total-val">₹0</span>
+        </div>
+        <div style="display:flex; gap:10px;">
+            <button class="btn-wizard btn-wizard-outline" id="wiz-prev" style="display:none;" onclick="wPrev()">Back</button>
+            <button class="btn-wizard btn-wizard-primary" id="wiz-next" onclick="wNext()">Continue</button>
+        </div>
+    </div>
+</div>
+
+<script>
+// Wizard State
+let wStep = 1;
+const maxSteps = 4;
+const wPrices = {
+    seo: { Starter: 15000, Growth: 25000, Premium: 'Custom' },
+    meta: { Starter: 10000, Growth: 20000, Premium: 'Custom' },
+    google: { Starter: 15000, Growth: 30000, Premium: 'Custom' },
+    web: { Starter: 15000, Growth: 30000, Premium: 50000 }
+};
+
+let wSelections = {
+    seo: { sel: false, plan: 'Starter' },
+    meta: { sel: false, plan: 'Starter' },
+    google: { sel: false, plan: 'Starter' },
+    web: { sel: false, plan: 'Starter' }
+};
+
+function wToggle(serv) {
+    wSelections[serv].sel = !wSelections[serv].sel;
+    const btn = document.querySelector(\`[data-serv="\${serv}"]\`);
+    btn.classList.toggle('selected');
+    wCalc();
+}
+
+function wPlan(serv, planName) {
+    wSelections[serv].plan = planName;
+    const panel = document.getElementById('conf-'+serv);
+    panel.querySelectorAll('.plan-btn').forEach(b => {
+        b.classList.remove('active');
+        if(b.innerText.includes(planName)) b.classList.add('active');
+    });
+    wCalc();
+}
+
+function wCalc() {
+    let total = 0;
+    let hasCustom = false;
+    
+    Object.keys(wSelections).forEach(k => {
+        if(wSelections[k].sel) {
+            const p = wPrices[k][wSelections[k].plan];
+            if(p === 'Custom') hasCustom = true;
+            else total += p;
+        }
+    });
+    
+    const tv = document.getElementById('wiz-total-val');
+    if(total === 0 && !hasCustom) {
+        tv.innerText = '₹0';
+    } else {
+        tv.innerText = '₹' + total.toLocaleString() + (hasCustom ? ' +' : '');
+    }
+}
+
+function wUpdateUI() {
+    // Hide all
+    for(let i=1; i<=5; i++) {
+        const el = document.getElementById('wiz-step-'+i);
+        if(el) el.classList.remove('active');
+    }
+    // Show current
+    document.getElementById('wiz-step-'+wStep).classList.add('active');
+    
+    // Update header
+    const titles = ["Choose Services", "Customize Your Plan", "Project Details", "Review Estimate", "Success"];
+    document.getElementById('wiz-step-text').innerText = "Step " + wStep + " of 4: " + titles[wStep-1];
+    
+    // Update dots
+    for(let i=1; i<=4; i++) {
+        const d = document.getElementById('dot-'+i);
+        if(d) {
+            if(i <= wStep) d.classList.add('active');
+            else d.classList.remove('active');
+        }
+    }
+    
+    // Buttons
+    const prev = document.getElementById('wiz-prev');
+    const next = document.getElementById('wiz-next');
+    const footer = document.getElementById('wiz-footer');
+    
+    if(wStep === 1) {
+        prev.style.display = 'none';
+        next.innerText = 'Continue';
+    } else if(wStep === 4) {
+        prev.style.display = 'block';
+        next.innerHTML = 'Submit Request <i class="fas fa-paper-plane" style="margin-left:5px;"></i>';
+    } else if(wStep === 5) {
+        footer.style.display = 'none';
+        document.querySelector('.wizard-header').style.display = 'none';
+    } else {
+        prev.style.display = 'block';
+        next.innerText = 'Continue';
+    }
+    
+    // Step specific logic
+    if(wStep === 2) {
+        let any = false;
+        Object.keys(wSelections).forEach(k => {
+            const el = document.getElementById('conf-'+k);
+            if(wSelections[k].sel) { el.classList.add('active'); any = true; }
+            else el.classList.remove('active');
+        });
+        document.getElementById('no-selection-msg').style.display = any ? 'none' : 'block';
+    }
+    
+    if(wStep === 4) {
+        // Build review
+        let html = '';
+        const names = {seo:'SEO', meta:'Meta Ads', google:'Google Ads', web:'Web Design'};
+        Object.keys(wSelections).forEach(k => {
+            if(wSelections[k].sel) {
+                const p = wPrices[k][wSelections[k].plan];
+                const pStr = p==='Custom' ? 'Custom' : '₹'+p.toLocaleString();
+                html += \`<div class="review-item">
+                    <span class="review-title">\${names[k]} (\${wSelections[k].plan})</span>
+                    <span class="review-val">\${pStr}</span>
+                </div>\`;
+            }
+        });
+        if(html === '') html = '<div style="color:rgba(255,255,255,0.5);">No services selected.</div>';
+        document.getElementById('wiz-review-box').innerHTML = html;
+    }
+}
+
+function wNext() {
+    if(wStep === 4) {
+        // Submit
+        const name = document.getElementById('w_name').value;
+        const phone = document.getElementById('w_phone').value;
+        if(!name || !phone) {
+            alert("Please enter your name and phone number.");
+            wStep = 3;
+            wUpdateUI();
+            return;
+        }
+        
+        const btn = document.getElementById('wiz-next');
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+        
+        // Simulating submission delay for UI
+        setTimeout(() => {
+            wStep = 5;
+            wUpdateUI();
+        }, 800);
+        
+        return;
+    }
+    
+    if(wStep < maxSteps) {
+        wStep++;
+        wUpdateUI();
+    }
+}
+
+function wPrev() {
+    if(wStep > 1) {
+        wStep--;
+        wUpdateUI();
+    }
+}
+</script>
+
+        </div>
         </div>
       </div>
     </section>
@@ -1206,7 +1703,9 @@
       
       // Show selected tab
       document.getElementById(tabId).classList.add('active');
-      event.currentTarget.classList.add('active');
+      // Find the button and add active class
+      const btn = document.querySelector(`.tab-btn[onclick="openTab('${tabId}')"]`);
+      if(btn) btn.classList.add('active');
     }
 
     function openSubTab(subTabId, btn) {
@@ -1225,6 +1724,12 @@
 
     // Auto-append package to contact URLs
     document.addEventListener('DOMContentLoaded', () => {
+      // Auto-open tab based on URL param
+      const urlParams = new URLSearchParams(window.location.search);
+      const tabParam = urlParams.get('tab');
+      if (tabParam && document.getElementById(tabParam)) {
+          openTab(tabParam);
+      }
       document.querySelectorAll('.pricing-card').forEach(card => {
         const titleEl = card.querySelector('.pricing-title');
         const btnEl = card.querySelector('.btn-pricing');
@@ -1256,7 +1761,7 @@
         tabRoi.style.borderColor = 'var(--accent-color)';
         tabLead.style.background = 'rgba(255,255,255,0.04)';
         tabLead.style.color = 'var(--text-secondary)';
-        tabLead.style.borderColor = 'rgba(98,255,176,0.15)';
+        tabLead.style.borderColor = 'rgba(98,255₹76,0.15)';
         if (roiCalc) roiCalc.style.display = 'block';
         if (leadCalc) leadCalc.style.display = 'none';
       } else {
@@ -1265,7 +1770,7 @@
         tabLead.style.borderColor = 'var(--accent-color)';
         tabRoi.style.background = 'rgba(255,255,255,0.04)';
         tabRoi.style.color = 'var(--text-secondary)';
-        tabRoi.style.borderColor = 'rgba(98,255,176,0.15)';
+        tabRoi.style.borderColor = 'rgba(98,255₹76,0.15)';
         if (roiCalc) roiCalc.style.display = 'none';
         if (leadCalc) leadCalc.style.display = 'block';
       }
@@ -1285,11 +1790,11 @@
       
       document.getElementById('roi-traffic-val').innerText = traffic.toLocaleString();
       document.getElementById('roi-conv-val').innerText = (conv * 100).toFixed(1) + '%';
-      document.getElementById('roi-value-val').innerText = '₹' + value.toLocaleString();
+      document.getElementById('roi-value-val').innerText = '&#8377;' + value.toLocaleString();
 
       const improvement = 1.5;
       const uplift = (traffic * (conv * improvement) * value) - (traffic * conv * value);
-      roiResult.innerText = '₹' + Math.round(uplift).toLocaleString();
+      roiResult.innerText = '&#8377;' + Math.round(uplift).toLocaleString();
     }
 
     // Lead Gen Calculator
@@ -1304,8 +1809,8 @@
       const cpc = parseInt(leadCpc.value);
       const conv = parseFloat(leadConv.value) / 100;
 
-      document.getElementById('lead-budget-val').innerText = '₹' + budget.toLocaleString();
-      document.getElementById('lead-cpc-val').innerText = '₹' + cpc.toLocaleString();
+      document.getElementById('lead-budget-val').innerText = '&#8377;' + budget.toLocaleString();
+      document.getElementById('lead-cpc-val').innerText = '&#8377;' + cpc.toLocaleString();
       document.getElementById('lead-conv-val').innerText = (conv * 100).toFixed(1) + '%';
 
       const leads = (budget / cpc) * conv;
@@ -1322,5 +1827,6 @@
       });
     }
   </script>
+
 </body>
 </html>
