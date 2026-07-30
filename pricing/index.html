@@ -378,7 +378,6 @@
           <li><a href="../about/">About</a></li>
           <li><a href="../services/">Services</a></li>
           <li><a href="https://anshidck.com/pricing/" class="active">Pricing</a></li>
-          <li><a href="#quote" onclick="openTab('quote')">Get Quote</a></li>
           <li><a href="../portfolio/">Portfolio</a></li>
           <li><a href="../blog/">Blog</a></li>
           <li><a href="../contact/">Contact</a></li>
@@ -1390,8 +1389,27 @@
                 </div>
                 <div class="st-check"><i class="fas fa-check"></i></div>
             </div>
+
+            <div class="service-toggle-btn" data-serv="social" onclick="wToggle('social')">
+                <div class="st-icon"><i class="fas fa-hashtag"></i></div>
+                <div class="st-text">
+                    <h3>Social Media</h3>
+                    <p>Brand building & engagement.</p>
+                </div>
+                <div class="st-check"><i class="fas fa-check"></i></div>
+            </div>
+            
+            <div class="service-toggle-btn" data-serv="video" onclick="wToggle('video')">
+                <div class="st-icon"><i class="fas fa-video"></i></div>
+                <div class="st-text">
+                    <h3>Video Production</h3>
+                    <p>Cinematic reels & brand videos.</p>
+                </div>
+                <div class="st-check"><i class="fas fa-check"></i></div>
+            </div>
         </div>
     </div>
+
 
     <!-- STEP 2: CONFIGURE -->
     <div class="wizard-step" id="wiz-step-2">
@@ -1436,7 +1454,27 @@
                 </div>
             </div>
             
-            <div id="no-selection-msg" style="display:none; color:rgba(255,255,255,0.5); text-align:center; padding:30px;">
+
+            <div class="config-item" id="conf-social">
+                <div class="config-title"><i class="fas fa-hashtag text-accent"></i> Social Media Plan</div>
+                <div class="plan-toggle-group">
+                    <div class="plan-btn active" onclick="wPlan('social','Starter')">Starter (₹12k)</div>
+                    <div class="plan-btn" onclick="wPlan('social','Growth')">Growth (₹20k)</div>
+                    <div class="plan-btn" onclick="wPlan('social','Premium')">Custom</div>
+                </div>
+            </div>
+            
+            <div class="config-item" id="conf-video">
+                <div class="config-title"><i class="fas fa-video text-accent"></i> Video Production</div>
+                <div class="plan-toggle-group">
+                    <div class="plan-btn active" onclick="wPlan('video','Starter')">Starter (₹10k)</div>
+                    <div class="plan-btn" onclick="wPlan('video','Growth')">Growth (₹25k)</div>
+                    <div class="plan-btn" onclick="wPlan('video','Premium')">Custom</div>
+                </div>
+            </div>
+            
+            <div id="no-selection-msg"
+ style="display:none; color:rgba(255,255,255,0.5); text-align:center; padding:30px;">
                 You haven't selected any specific services to customize.
             </div>
         </div>
@@ -1501,19 +1539,23 @@ const wPrices = {
     seo: { Starter: 15000, Growth: 25000, Premium: 'Custom' },
     meta: { Starter: 10000, Growth: 20000, Premium: 'Custom' },
     google: { Starter: 15000, Growth: 30000, Premium: 'Custom' },
-    web: { Starter: 15000, Growth: 30000, Premium: 50000 }
+    web: { Starter: 15000, Growth: 30000, Premium: 50000 },
+    social: { Starter: 12000, Growth: 20000, Premium: 'Custom' },
+    video: { Starter: 10000, Growth: 25000, Premium: 'Custom' }
 };
 
 let wSelections = {
     seo: { sel: false, plan: 'Starter' },
     meta: { sel: false, plan: 'Starter' },
     google: { sel: false, plan: 'Starter' },
-    web: { sel: false, plan: 'Starter' }
+    web: { sel: false, plan: 'Starter' },
+    social: { sel: false, plan: 'Starter' },
+    video: { sel: false, plan: 'Starter' }
 };
 
 function wToggle(serv) {
     wSelections[serv].sel = !wSelections[serv].sel;
-    const btn = document.querySelector(\`[data-serv="\${serv}"]\`);
+    const btn = document.querySelector(`[data-serv="${serv}"]`);
     btn.classList.toggle('selected');
     wCalc();
 }
@@ -1603,15 +1645,15 @@ function wUpdateUI() {
     if(wStep === 4) {
         // Build review
         let html = '';
-        const names = {seo:'SEO', meta:'Meta Ads', google:'Google Ads', web:'Web Design'};
+        const names = {seo:'SEO', meta:'Meta Ads', google:'Google Ads', web:'Web Design', social:'Social Media', video:'Video Production'};
         Object.keys(wSelections).forEach(k => {
             if(wSelections[k].sel) {
                 const p = wPrices[k][wSelections[k].plan];
                 const pStr = p==='Custom' ? 'Custom' : '₹'+p.toLocaleString();
-                html += \`<div class="review-item">
-                    <span class="review-title">\${names[k]} (\${wSelections[k].plan})</span>
-                    <span class="review-val">\${pStr}</span>
-                </div>\`;
+                html += `<div class="review-item">
+                    <span class="review-title">${names[k]} (${wSelections[k].plan})</span>
+                    <span class="review-val">${pStr}</span>
+                </div>`;
             }
         });
         if(html === '') html = '<div style="color:rgba(255,255,255,0.5);">No services selected.</div>';
@@ -1634,11 +1676,47 @@ function wNext() {
         const btn = document.getElementById('wiz-next');
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
         
-        // Simulating submission delay for UI
-        setTimeout(() => {
+        
+        const btn = document.getElementById('wiz-next');
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+        
+        // Build the message string containing all their choices
+        const names = {seo:'SEO', meta:'Meta Ads', google:'Google Ads', web:'Web Design', social:'Social Media', video:'Video Production'};
+        let details = "Requested Services:\n";
+        let hasSelections = false;
+        Object.keys(wSelections).forEach(k => {
+            if(wSelections[k].sel) {
+                const p = wPrices[k][wSelections[k].plan];
+                details += `- ${names[k]}: ${wSelections[k].plan} (${p === 'Custom' ? 'Custom Pricing' : '₹'+p.toLocaleString()})\n`;
+                hasSelections = true;
+            }
+        });
+        if(!hasSelections) details += "None selected.\n";
+        details += "\nEstimated Total: " + document.getElementById('wiz-total-val').innerText;
+        
+        const company = document.getElementById('w_company').value;
+        if(company) details += "\nCompany/Website: " + company;
+
+        const formData = {
+            name: document.getElementById('w_name').value,
+            phone: document.getElementById('w_phone').value,
+            email: document.getElementById('w_email').value,
+            message: "[CUSTOM QUOTE BUILDER]:\n" + details
+        };
+
+        const scriptURL = "https://script.google.com/macros/s/AKfycbwHQNCp53r_-9lnEKM6pXrVuyqtxuqq-5C3tCm8tHJYJYEhJJYN1dryN_PTSZLbo1tA/exec";
+        
+        fetch(scriptURL, {
+            method: 'POST',
+            mode: 'no-cors',
+            body: JSON.stringify(formData)
+        }).then(() => {
             wStep = 5;
             wUpdateUI();
-        }, 800);
+        }).catch(err => {
+            alert("Something went wrong. Please try again.");
+            btn.innerHTML = 'Submit Request <i class="fas fa-paper-plane" style="margin-left:5px;"></i>';
+        });
         
         return;
     }
