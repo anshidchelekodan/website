@@ -658,7 +658,7 @@
     }
   </script>
   <script>
-  const scriptURL = "https://script.google.com/macros/s/AKfycbwHQNCp53r_-9lnEKM6pXrVuyqtxuqq-5C3tCm8tHJYJYEhJJYN1dryN_PTSZLbo1tA/exec";
+  const scriptURL = "https://script.google.com/macros/s/AKfycby2JChStb3stfB42XRtSn8smtQ51DHbsrzcB_mpRMIrxa8HZqgnfIV-BNWl_NvN8xsg/exec";
   
   const form = document.getElementById("contactForm");
   
@@ -666,36 +666,53 @@
     form.addEventListener("submit", function(e){
       e.preventDefault();
   
+      const name = document.querySelector("#name").value.trim();
+      const phone = document.querySelector("#phone").value.trim();
+      const email = document.querySelector("#email").value.trim();
+      let message = document.querySelector("#message").value.trim();
+      const selectedService = document.querySelector("#selectedService") ? document.querySelector("#selectedService").value : "";
+
+      if (selectedService && !message.toLowerCase().includes(selectedService.toLowerCase())) {
+        message = "[Interested in: " + selectedService + "]\n" + message;
+      }
+
       const data = {
-        name: document.querySelector("#name").value,
-        phone: document.querySelector("#phone").value,
-        email: document.querySelector("#email").value,
-        service: document.querySelector("#selectedService").value || "General Inquiry",
-        message: document.querySelector("#message").value
+        name: name,
+        phone: phone,
+        email: email,
+        message: message
       };
   
-      const submitBtn = form.querySelector("button");
-      submitBtn.disabled = true;
-      submitBtn.innerText = "Sending...";
+      const submitBtn = form.querySelector("button[type='submit']");
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+      }
   
       fetch(scriptURL, {
         method: "POST",
         mode: "no-cors",
         headers: {
-          "Content-Type": "text/plain;charset=utf-8"
+          "Content-Type": "application/json"
         },
         body: JSON.stringify(data)
       })
       .then(response => {
         showSuccessMessage();
         form.reset();
-        submitBtn.disabled = false;
-        submitBtn.innerText = "Send Message";
+        const chips = document.querySelectorAll('.chip');
+        if (chips) chips.forEach(c => c.classList.remove('selected'));
+        if (typeof updateProgression === 'function') updateProgression();
       })
       .catch(error => {
-        alert("Something went wrong. Please try again.");
-        submitBtn.disabled = false;
-        submitBtn.innerText = "Send Message";
+        console.error("Form submission error:", error);
+        alert("Something went wrong while sending your message. Please try again.");
+      })
+      .finally(() => {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+        }
       });
     });
   
