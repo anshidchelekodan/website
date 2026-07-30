@@ -1,0 +1,860 @@
+<style>
+/* Custom Quote Builder Styles */
+.quote-page-header {
+  padding: 160px 0 60px 0;
+  text-align: center;
+  position: relative;
+  background: radial-gradient(circle at 50% 0%, rgba(46, 230, 166, 0.1), transparent 700px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.quote-header-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.quote-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 40px;
+  margin: 40px 0 80px 0;
+  align-items: start;
+}
+
+@media (max-width: 992px) {
+  .quote-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Service Cards (Step 1) */
+.service-select-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.service-select-card {
+  background: rgba(15, 15, 15, 0.6);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-select-card:hover {
+  border-color: rgba(98, 255, 176, 0.3);
+  transform: translateY(-5px);
+}
+
+.service-select-card.active {
+  background: rgba(46, 230, 166, 0.05);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 20px rgba(46, 230, 166, 0.15);
+}
+
+.service-checkbox {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  border: 2px solid rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.service-select-card.active .service-checkbox {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.service-checkbox i {
+  color: #111;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.service-select-card.active .service-checkbox i {
+  opacity: 1;
+}
+
+.service-icon-lg {
+  font-size: 2rem;
+  color: var(--accent-color);
+  margin-bottom: 15px;
+}
+
+/* Configurator Panels (Step 2) */
+.config-panel {
+  background: rgba(15, 15, 15, 0.4);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 16px;
+  padding: 30px;
+  margin-bottom: 25px;
+  display: none;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.config-panel.active {
+  display: block;
+}
+
+.config-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Plan Toggle Buttons */
+.plan-toggle-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.plan-btn {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  flex: 1;
+  text-align: center;
+  min-width: 120px;
+}
+
+.plan-btn:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.plan-btn.active {
+  background: rgba(46, 230, 166, 0.1);
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+/* Add-ons Checklist */
+.addon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.addon-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,0.02);
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.05);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.addon-label:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+.addon-label input {
+  accent-color: var(--accent-color);
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+/* Sticky Summary Card (Step 3) */
+.summary-card-sticky {
+  position: sticky;
+  top: 100px;
+  background: rgba(11, 46, 42, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(46, 230, 166, 0.2);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.summary-header {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.summary-item .val {
+  color: #fff;
+  font-weight: 600;
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(46, 230, 166, 0.2);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--accent-color);
+}
+
+/* Client Details (Step 4) */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.form-control {
+  width: 100%;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 14px 18px;
+  border-radius: 12px;
+  color: #fff;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  background: rgba(46, 230, 166, 0.05);
+}
+
+/* Step Headers */
+.step-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 50px 0 30px 0;
+}
+
+.step-number {
+  width: 36px;
+  height: 36px;
+  background: var(--accent-color);
+  color: #111;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.step-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+/* Success Animation */
+.success-screen {
+  display: none;
+  text-align: center;
+  padding: 60px 20px;
+  background: rgba(11, 46, 42, 0.6);
+  border-radius: 20px;
+  border: 1px solid rgba(46, 230, 166, 0.3);
+  backdrop-filter: blur(20px);
+}
+
+.success-icon-wrap {
+  width: 100px;
+  height: 100px;
+  background: rgba(46, 230, 166, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 30px auto;
+  color: var(--accent-color);
+  font-size: 40px;
+  animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.empty-state {
+  text-align: center;
+  padding: 30px 0;
+  color: rgba(255,255,255,0.3);
+  font-size: 0.9rem;
+}
+</style>
+
+<div class="page-header quote-page-header">
+  <div class="hero-glow"></div>
+  <div class="container relative z-10">
+    <h1 class="quote-header-title">Project <span class="text-accent">Estimator</span></h1>
+    <p class="hero-desc">Build your custom digital marketing package, get a live estimate, and request a detailed proposal in under 2 minutes.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div id="builder-wrapper" class="quote-layout">
+    
+    <!-- Left Column: Form Steps -->
+    <div class="builder-content">
+      
+      <!-- STEP 1: SERVICES -->
+      <div class="step-header" style="margin-top: 0;">
+        <div class="step-number">1</div>
+        <h2 class="step-title">Select Services</h2>
+      </div>
+      
+      <div class="service-select-grid">
+        <!-- SEO -->
+        <div class="service-select-card" data-service="seo" onclick="toggleService('seo')">
+          <div class="service-checkbox"><i class="fas fa-check"></i></div>
+          <div class="service-icon-lg"><i class="fas fa-search-dollar"></i></div>
+          <h3 style="color:#fff; margin-bottom: 8px;">SEO</h3>
+          <p style="color:var(--text-secondary); font-size:0.85rem; margin-bottom:15px;">Rank higher & drive organic leads.</p>
+          <div style="font-size:0.8rem; font-weight:700; color:var(--accent-color);">Starts at ₹15,000/mo</div>
+        </div>
+        
+        <!-- Meta Ads -->
+        <div class="service-select-card" data-service="meta" onclick="toggleService('meta')">
+          <div class="service-checkbox"><i class="fas fa-check"></i></div>
+          <div class="service-icon-lg"><i class="fab fa-meta"></i></div>
+          <h3 style="color:#fff; margin-bottom: 8px;">Meta Ads</h3>
+          <p style="color:var(--text-secondary); font-size:0.85rem; margin-bottom:15px;">Targeted lead generation campaigns.</p>
+          <div style="font-size:0.8rem; font-weight:700; color:var(--accent-color);">Starts at ₹250/day</div>
+        </div>
+        
+        <!-- Google Ads -->
+        <div class="service-select-card" data-service="google" onclick="toggleService('google')">
+          <div class="service-checkbox"><i class="fas fa-check"></i></div>
+          <div class="service-icon-lg"><i class="fab fa-google"></i></div>
+          <h3 style="color:#fff; margin-bottom: 8px;">Google Ads</h3>
+          <p style="color:var(--text-secondary); font-size:0.85rem; margin-bottom:15px;">Capture high-intent search traffic.</p>
+          <div style="font-size:0.8rem; font-weight:700; color:var(--accent-color);">Starts at ₹15,000/mo</div>
+        </div>
+        
+        <!-- Social Media -->
+        <div class="service-select-card" data-service="social" onclick="toggleService('social')">
+          <div class="service-checkbox"><i class="fas fa-check"></i></div>
+          <div class="service-icon-lg"><i class="fas fa-hashtag"></i></div>
+          <h3 style="color:#fff; margin-bottom: 8px;">Social Media</h3>
+          <p style="color:var(--text-secondary); font-size:0.85rem; margin-bottom:15px;">Brand building & engagement.</p>
+          <div style="font-size:0.8rem; font-weight:700; color:var(--accent-color);">Starts at ₹12,000/mo</div>
+        </div>
+        
+        <!-- Video Production -->
+        <div class="service-select-card" data-service="video" onclick="toggleService('video')">
+          <div class="service-checkbox"><i class="fas fa-check"></i></div>
+          <div class="service-icon-lg"><i class="fas fa-video"></i></div>
+          <h3 style="color:#fff; margin-bottom: 8px;">Video Production</h3>
+          <p style="color:var(--text-secondary); font-size:0.85rem; margin-bottom:15px;">Cinematic reels & brand videos.</p>
+          <div style="font-size:0.8rem; font-weight:700; color:var(--accent-color);">Starts at ₹10,000/mo</div>
+        </div>
+        
+        <!-- Website Design -->
+        <div class="service-select-card" data-service="web" onclick="toggleService('web')">
+          <div class="service-checkbox"><i class="fas fa-check"></i></div>
+          <div class="service-icon-lg"><i class="fas fa-laptop-code"></i></div>
+          <h3 style="color:#fff; margin-bottom: 8px;">Website Design</h3>
+          <p style="color:var(--text-secondary); font-size:0.85rem; margin-bottom:15px;">Fast, conversion-focused websites.</p>
+          <div style="font-size:0.8rem; font-weight:700; color:var(--accent-color);">Starts at ₹15,000</div>
+        </div>
+      </div>
+      
+      <!-- STEP 2: CUSTOMIZE -->
+      <div class="step-header" id="step2-header" style="display:none;">
+        <div class="step-number">2</div>
+        <h2 class="step-title">Customize Plans</h2>
+      </div>
+      
+      <div id="config-panels-container">
+        <!-- Panels will be shown/hidden dynamically via JS -->
+        
+        <!-- SEO Panel -->
+        <div class="config-panel" id="panel-seo">
+          <div class="config-title"><i class="fas fa-search-dollar text-accent"></i> SEO Plan</div>
+          <div class="plan-toggle-group">
+            <div class="plan-btn active" onclick="selectPlan('seo', 'Starter')">Starter (₹15k/mo)</div>
+            <div class="plan-btn" onclick="selectPlan('seo', 'Growth')">Growth (₹25k/mo)</div>
+            <div class="plan-btn" onclick="selectPlan('seo', 'Premium')">Premium (Custom)</div>
+          </div>
+        </div>
+        
+        <!-- Meta Ads Panel -->
+        <div class="config-panel" id="panel-meta">
+          <div class="config-title"><i class="fab fa-meta text-accent"></i> Meta Ads Billing & Plan</div>
+          <label style="display:block; margin-bottom:10px; color:var(--text-secondary); font-size:0.9rem;">Billing Cycle:</label>
+          <div class="plan-toggle-group" style="margin-bottom:15px;">
+            <div class="plan-btn active" onclick="selectBilling('meta', 'Monthly')">Monthly</div>
+            <div class="plan-btn" onclick="selectBilling('meta', 'Weekly')">Weekly</div>
+            <div class="plan-btn" onclick="selectBilling('meta', 'Daily')">Daily</div>
+          </div>
+          <label style="display:block; margin-bottom:10px; color:var(--text-secondary); font-size:0.9rem;">Service Level:</label>
+          <div class="plan-toggle-group">
+            <div class="plan-btn active" onclick="selectPlan('meta', 'Starter')">Starter</div>
+            <div class="plan-btn" onclick="selectPlan('meta', 'Growth')">Growth</div>
+            <div class="plan-btn" onclick="selectPlan('meta', 'Premium')">Premium</div>
+          </div>
+        </div>
+        
+        <!-- Google Ads Panel -->
+        <div class="config-panel" id="panel-google">
+          <div class="config-title"><i class="fab fa-google text-accent"></i> Google Ads Plan</div>
+          <div class="plan-toggle-group">
+            <div class="plan-btn active" onclick="selectPlan('google', 'Starter')">Starter (₹15k/mo)</div>
+            <div class="plan-btn" onclick="selectPlan('google', 'Growth')">Growth (₹30k/mo)</div>
+            <div class="plan-btn" onclick="selectPlan('google', 'Premium')">Premium (Custom)</div>
+          </div>
+        </div>
+        
+        <!-- Social Media Panel -->
+        <div class="config-panel" id="panel-social">
+          <div class="config-title"><i class="fas fa-hashtag text-accent"></i> Social Media Plan</div>
+          <div class="plan-toggle-group">
+            <div class="plan-btn active" onclick="selectPlan('social', 'Starter')">Starter (₹12k/mo)</div>
+            <div class="plan-btn" onclick="selectPlan('social', 'Growth')">Growth (₹20k/mo)</div>
+            <div class="plan-btn" onclick="selectPlan('social', 'Premium')">Premium (Custom)</div>
+          </div>
+        </div>
+        
+        <!-- Video Production Panel -->
+        <div class="config-panel" id="panel-video">
+          <div class="config-title"><i class="fas fa-video text-accent"></i> Video Production Plan</div>
+          <div class="plan-toggle-group">
+            <div class="plan-btn active" onclick="selectPlan('video', 'Starter')">Reels (₹10k/mo)</div>
+            <div class="plan-btn" onclick="selectPlan('video', 'Growth')">Promotional (₹25k)</div>
+            <div class="plan-btn" onclick="selectPlan('video', 'Premium')">Corporate (₹50k+)</div>
+          </div>
+        </div>
+        
+        <!-- Website Design Panel -->
+        <div class="config-panel" id="panel-web">
+          <div class="config-title"><i class="fas fa-laptop-code text-accent"></i> Website Design Plan</div>
+          <div class="plan-toggle-group">
+            <div class="plan-btn active" onclick="selectPlan('web', 'Starter')">Starter (₹15k)</div>
+            <div class="plan-btn" onclick="selectPlan('web', 'Growth')">Growth (₹30k)</div>
+            <div class="plan-btn" onclick="selectPlan('web', 'Premium')">Premium (₹50k)</div>
+          </div>
+          <div style="margin-top: 25px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px;">
+            <label style="display:block; margin-bottom:15px; color:#fff; font-weight:700;">Optional Add-ons:</label>
+            <div class="addon-grid">
+              <label class="addon-label">
+                <input type="checkbox" onchange="toggleAddon('ui_ux_research', this.checked)"> UI/UX Research (+₹5k)
+              </label>
+              <label class="addon-label">
+                <input type="checkbox" onchange="toggleAddon('booking_system', this.checked)"> Booking System (+₹8k)
+              </label>
+              <label class="addon-label">
+                <input type="checkbox" onchange="toggleAddon('blog_setup', this.checked)"> Blog Setup (+₹4k)
+              </label>
+              <label class="addon-label">
+                <input type="checkbox" onchange="toggleAddon('whatsapp', this.checked)"> WhatsApp Integration (Free)
+              </label>
+              <label class="addon-label">
+                <input type="checkbox" onchange="toggleAddon('speed', this.checked)"> Speed Optimization (+₹3k)
+              </label>
+              <label class="addon-label">
+                <input type="checkbox" onchange="toggleAddon('animations', this.checked)"> Premium Animations (+₹5k)
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- STEP 4: CLIENT DETAILS -->
+      <div class="step-header">
+        <div class="step-number">3</div>
+        <h2 class="step-title">Project Details</h2>
+      </div>
+      
+      <div style="background: rgba(15, 15, 15, 0.4); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 30px;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" id="q_name" class="form-control" required placeholder="John Doe">
+          </div>
+          <div class="form-group">
+            <label>Company Name</label>
+            <input type="text" id="q_company" class="form-control" placeholder="Your Business Ltd.">
+          </div>
+          <div class="form-group">
+            <label>Email Address *</label>
+            <input type="email" id="q_email" class="form-control" required placeholder="john@example.com">
+          </div>
+          <div class="form-group">
+            <label>Phone Number *</label>
+            <input type="tel" id="q_phone" class="form-control" required placeholder="+91 9876543210">
+          </div>
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label>Website URL (Optional)</label>
+            <input type="url" id="q_website" class="form-control" placeholder="https://yourwebsite.com">
+          </div>
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label>Budget Range</label>
+            <select id="q_budget" class="form-control">
+              <option value="₹10,000 - ₹25,000">₹10,000 - ₹25,000</option>
+              <option value="₹25,000 - ₹50,000">₹25,000 - ₹50,000</option>
+              <option value="₹50,000 - ₹1,00,000">₹50,000 - ₹1,00,000</option>
+              <option value="₹1,00,000+">₹1,00,000+</option>
+            </select>
+          </div>
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label>Preferred Start Date</label>
+            <select id="q_startdate" class="form-control">
+              <option value="ASAP">As soon as possible</option>
+              <option value="Within 2 Weeks">Within 2 Weeks</option>
+              <option value="Within 1 Month">Within 1 Month</option>
+              <option value="Exploring Options">Just exploring options</option>
+            </select>
+          </div>
+          <div class="form-group" style="grid-column: 1 / -1; margin-bottom: 0;">
+            <label>Project Details / Goals</label>
+            <textarea id="q_details" class="form-control" rows="4" placeholder="Tell me about your business goals and requirements..."></textarea>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <!-- Right Column: Sticky Summary -->
+    <div class="builder-sidebar">
+      <div class="summary-card-sticky">
+        <div class="summary-header"><i class="fas fa-file-invoice" style="color:var(--accent-color); margin-right:8px;"></i> Live Estimate</div>
+        
+        <div id="summary-items-container">
+          <div class="empty-state">Select services to see your estimate.</div>
+          <!-- Dynamic Items inserted here -->
+        </div>
+        
+        <div class="summary-total" id="summary-total-container" style="display:none;">
+          <span>Est. Total</span>
+          <span id="summary-total-val">₹0</span>
+        </div>
+        
+        <div style="margin-top:20px; font-size:0.8rem; color:rgba(255,255,255,0.4); text-align:center;">
+          * This is an estimated cost. Final pricing may vary based on detailed requirements.
+        </div>
+        
+        <button id="submit-quote-btn" class="btn btn-primary" style="width:100%; margin-top:25px; font-size:1.05rem; padding: 15px;">
+          <i class="fas fa-paper-plane" style="margin-right:8px;"></i> Request My Proposal
+        </button>
+      </div>
+    </div>
+    
+  </div>
+  
+  <!-- Success Screen -->
+  <div id="success-screen" class="success-screen">
+    <div class="success-icon-wrap">
+      <i class="fas fa-check"></i>
+    </div>
+    <h2 style="color:#fff; font-size:2.5rem; margin-bottom:15px;">Thank you for your enquiry!</h2>
+    <p style="color:var(--text-secondary); font-size:1.1rem; max-width:600px; margin:0 auto 30px auto; line-height:1.6;">
+      Your custom project request has been received successfully. I'll review your requirements and get back to you shortly with a detailed proposal.
+    </p>
+    <a href="../" class="btn btn-outline">Return to Home</a>
+  </div>
+  
+</div>
+
+<script>
+// ==========================================
+// CONFIGURATION (Admin Friendly)
+// ==========================================
+const PRICING = {
+  seo: { Starter: 15000, Growth: 25000, Premium: 'Custom' },
+  google: { Starter: 15000, Growth: 30000, Premium: 'Custom' },
+  social: { Starter: 12000, Growth: 20000, Premium: 'Custom' },
+  video: { Starter: 10000, Growth: 25000, Premium: 50000 },
+  web: { Starter: 15000, Growth: 30000, Premium: 50000 },
+  meta: {
+    Daily: { Starter: 250, Growth: 500, Premium: 1000 },
+    Weekly: { Starter: 2000, Growth: 4000, Premium: 7500 },
+    Monthly: { Starter: 10000, Growth: 20000, Premium: 35000 }
+  },
+  addons: {
+    ui_ux_research: 5000,
+    booking_system: 8000,
+    blog_setup: 4000,
+    whatsapp: 0,
+    speed: 3000,
+    animations: 5000
+  }
+};
+
+const SERVICE_NAMES = {
+  seo: 'SEO',
+  meta: 'Meta Ads',
+  google: 'Google Ads',
+  social: 'Social Media',
+  video: 'Video Production',
+  web: 'Website Design'
+};
+
+const ADDON_NAMES = {
+  ui_ux_research: 'UI/UX Research',
+  booking_system: 'Booking System',
+  blog_setup: 'Blog Setup',
+  whatsapp: 'WhatsApp Integration',
+  speed: 'Speed Optimization',
+  animations: 'Premium Animations'
+};
+
+// ==========================================
+// STATE
+// ==========================================
+let state = {
+  services: {
+    seo: { selected: false, plan: 'Starter' },
+    meta: { selected: false, billing: 'Monthly', plan: 'Starter' },
+    google: { selected: false, plan: 'Starter' },
+    social: { selected: false, plan: 'Starter' },
+    video: { selected: false, plan: 'Starter' },
+    web: { selected: false, plan: 'Starter', addons: {} }
+  }
+};
+
+// ==========================================
+// LOGIC
+// ==========================================
+function toggleService(serviceId) {
+  const isSelected = !state.services[serviceId].selected;
+  state.services[serviceId].selected = isSelected;
+  
+  // UI Update Card
+  const card = document.querySelector(`[data-service="${serviceId}"]`);
+  if (isSelected) {
+    card.classList.add('active');
+    document.getElementById(`panel-${serviceId}`).classList.add('active');
+  } else {
+    card.classList.remove('active');
+    document.getElementById(`panel-${serviceId}`).classList.remove('active');
+  }
+  
+  updateUI();
+}
+
+function selectPlan(serviceId, plan) {
+  state.services[serviceId].plan = plan;
+  
+  // UI Update Buttons
+  const panel = document.getElementById(`panel-${serviceId}`);
+  // Find the plan buttons in this panel (exclude billing buttons)
+  const btnGroups = panel.querySelectorAll('.plan-toggle-group');
+  const targetGroup = btnGroups[btnGroups.length - 1]; // Plan group is always last
+  const btns = targetGroup.querySelectorAll('.plan-btn');
+  
+  btns.forEach(b => {
+    if (b.innerText.includes(plan)) b.classList.add('active');
+    else b.classList.remove('active');
+  });
+  
+  updateUI();
+}
+
+function selectBilling(serviceId, billing) {
+  state.services[serviceId].billing = billing;
+  
+  // UI Update Buttons
+  const panel = document.getElementById(`panel-${serviceId}`);
+  const billingGroup = panel.querySelectorAll('.plan-toggle-group')[0];
+  const btns = billingGroup.querySelectorAll('.plan-btn');
+  
+  btns.forEach(b => {
+    if (b.innerText === billing) b.classList.add('active');
+    else b.classList.remove('active');
+  });
+  
+  // Update Plan prices text for Meta based on billing
+  const planGroup = panel.querySelectorAll('.plan-toggle-group')[1];
+  const planBtns = planGroup.querySelectorAll('.plan-btn');
+  const plans = ['Starter', 'Growth', 'Premium'];
+  
+  planBtns.forEach((btn, index) => {
+    const planName = plans[index];
+    const price = PRICING.meta[billing][planName];
+    const priceFormatted = price === 'Custom' ? 'Custom' : `₹${price.toLocaleString()}`;
+    // keep active class if it has it
+    const isActive = btn.classList.contains('active');
+    btn.innerHTML = `${planName} (${priceFormatted})`;
+  });
+  
+  updateUI();
+}
+
+function toggleAddon(addonId, isChecked) {
+  state.services.web.addons[addonId] = isChecked;
+  updateUI();
+}
+
+function formatPrice(price) {
+  if (price === 'Custom' || price === 0) return price;
+  return `₹${price.toLocaleString()}`;
+}
+
+function updateUI() {
+  const summaryContainer = document.getElementById('summary-items-container');
+  const totalContainer = document.getElementById('summary-total-container');
+  const totalVal = document.getElementById('summary-total-val');
+  const step2Header = document.getElementById('step2-header');
+  
+  summaryContainer.innerHTML = '';
+  let total = 0;
+  let hasCustom = false;
+  let hasSelected = false;
+  
+  Object.keys(state.services).forEach(key => {
+    if (state.services[key].selected) {
+      hasSelected = true;
+      const s = state.services[key];
+      let price = 0;
+      let label = `${SERVICE_NAMES[key]} (${s.plan})`;
+      
+      if (key === 'meta') {
+        price = PRICING.meta[s.billing][s.plan];
+        label = `${SERVICE_NAMES[key]} (${s.billing} ${s.plan})`;
+      } else {
+        price = PRICING[key][s.plan];
+      }
+      
+      let displayPrice = formatPrice(price);
+      if (price === 'Custom') hasCustom = true;
+      else total += price;
+      
+      if (key === 'meta' && price !== 'Custom') displayPrice += s.billing === 'Daily' ? '/day' : (s.billing === 'Weekly' ? '/wk' : '/mo');
+      if ((key === 'seo' || key === 'google' || key === 'social') && price !== 'Custom') displayPrice += '/mo';
+      
+      summaryContainer.innerHTML += `
+        <div class="summary-item">
+          <span>${label}</span>
+          <span class="val">${displayPrice}</span>
+        </div>
+      `;
+      
+      // Addons for Web
+      if (key === 'web') {
+        Object.keys(s.addons).forEach(addonKey => {
+          if (s.addons[addonKey]) {
+            const addonPrice = PRICING.addons[addonKey];
+            total += addonPrice;
+            summaryContainer.innerHTML += `
+              <div class="summary-item" style="padding-left: 15px; font-size: 0.85rem;">
+                <span>+ ${ADDON_NAMES[addonKey]}</span>
+                <span class="val">${addonPrice === 0 ? 'Free' : '₹'+addonPrice.toLocaleString()}</span>
+              </div>
+            `;
+          }
+        });
+      }
+    }
+  });
+  
+  if (!hasSelected) {
+    summaryContainer.innerHTML = '<div class="empty-state">Select services to see your estimate.</div>';
+    totalContainer.style.display = 'none';
+    step2Header.style.display = 'none';
+  } else {
+    totalContainer.style.display = 'flex';
+    step2Header.style.display = 'flex';
+    
+    if (hasCustom) {
+      totalVal.innerHTML = `₹${total.toLocaleString()} <span style="font-size:0.8rem; color:var(--text-secondary);">+ Custom</span>`;
+    } else {
+      totalVal.innerHTML = `₹${total.toLocaleString()}`;
+    }
+  }
+}
+
+// Form Submission
+document.getElementById('submit-quote-btn').addEventListener('click', function() {
+  // Validate basic fields
+  const name = document.getElementById('q_name').value;
+  const email = document.getElementById('q_email').value;
+  const phone = document.getElementById('q_phone').value;
+  
+  if (!name || !email || !phone) {
+    alert("Please fill in your Name, Email, and Phone number.");
+    return;
+  }
+  
+  // In a real scenario, this is where you'd send data to Google Sheets via fetch
+  // Example Web App URL: https://script.google.com/macros/s/AKfycby.../exec
+  
+  const payload = {
+    date: new Date().toISOString(),
+    name: name,
+    company: document.getElementById('q_company').value,
+    email: email,
+    phone: phone,
+    website: document.getElementById('q_website').value,
+    budget: document.getElementById('q_budget').value,
+    start_date: document.getElementById('q_startdate').value,
+    details: document.getElementById('q_details').value,
+    selections: JSON.stringify(state)
+  };
+  
+  console.log("Submitting to Google Sheets: ", payload);
+  
+  // Show Success Screen
+  const btn = this;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+  btn.disabled = true;
+  
+  setTimeout(() => {
+    document.getElementById('builder-wrapper').style.display = 'none';
+    document.querySelector('.quote-page-header').style.display = 'none';
+    document.getElementById('success-screen').style.display = 'block';
+    
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, 800);
+});
+</script>
