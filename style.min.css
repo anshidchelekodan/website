@@ -2653,3 +2653,276 @@ img { height: auto; object-fit: cover; }
     color: var(--accent-color);
   }
 }
+/* Easter Egg System CSS */
+
+/* 1. Hero Football */
+.hero-football {
+  position: absolute;
+  top: 30%;
+  right: 15%;
+  width: 150px;
+  height: 150px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="none" stroke="%2362ffb0" stroke-width="2"/><path d="M50 2 L65 30 L95 40 L70 65 L75 95 L50 80 L25 95 L30 65 L5 40 L35 30 Z" fill="none" stroke="%2362ffb0" stroke-width="1.5"/></svg>') no-repeat center center;
+  background-size: contain;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 0;
+  animation: floatSpin 20s linear infinite;
+  filter: drop-shadow(0 0 10px rgba(98, 255, 176, 0.5));
+}
+
+@keyframes floatSpin {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-30px) rotate(180deg); }
+  100% { transform: translateY(0) rotate(360deg); }
+}
+
+/* 2. Loading Screen */
+.football-loader {
+  position: fixed;
+  inset: 0;
+  background: #051512;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.football-loader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-ball {
+  width: 50px;
+  height: 50px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="none" stroke="%2362ffb0" stroke-width="3"/><path d="M50 2 L65 30 L95 40 L70 65 L75 95 L50 80 L25 95 L30 65 L5 40 L35 30 Z" fill="none" stroke="%2362ffb0" stroke-width="2"/></svg>') no-repeat center center;
+  background-size: contain;
+  margin-bottom: 2rem;
+  animation: bounceBall 1s cubic-bezier(0.28, 0.84, 0.42, 1) infinite;
+  filter: drop-shadow(0 0 15px rgba(98, 255, 176, 0.8));
+}
+
+.loader-trail {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(98, 255, 176, 0.4);
+  filter: blur(8px);
+  animation: trailPulse 1s linear infinite;
+  pointer-events: none;
+}
+
+.loader-text {
+  color: #62ffb0;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(98, 255, 176, 0.4);
+}
+
+@keyframes bounceBall {
+  0%, 100% { transform: translateY(0) scale(1, 1); }
+  50% { transform: translateY(-100px) scale(0.95, 1.05) rotate(180deg); }
+}
+
+@keyframes trailPulse {
+  0% { transform: translateY(0) scale(1); opacity: 0.8; }
+  50% { transform: translateY(-10px) scale(0.5); opacity: 0; }
+  100% { transform: translateY(0) scale(1); opacity: 0.8; }
+}
+
+/* 3. Footer Animation */
+.footer-football {
+  position: absolute;
+  bottom: 10px;
+  left: -50px;
+  width: 30px;
+  height: 30px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="none" stroke="%2362ffb0" stroke-width="4"/><path d="M50 2 L65 30 L95 40 L70 65 L75 95 L50 80 L25 95 L30 65 L5 40 L35 30 Z" fill="none" stroke="%2362ffb0" stroke-width="3"/></svg>') no-repeat center center;
+  background-size: contain;
+  pointer-events: none;
+  opacity: 0.7;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5)) drop-shadow(0 0 5px rgba(98, 255, 176, 0.4));
+  z-index: 10;
+}
+
+.footer-football.roll {
+  animation: rollAcross 4s linear forwards;
+}
+
+@keyframes rollAcross {
+  0% { transform: translateX(0) rotate(0deg); }
+  100% { transform: translateX(110vw) rotate(1440deg); }
+}
+
+/* 4. Scoreboard (Results Section) */
+.football-scoreboard {
+  background: rgba(5, 15, 12, 0.8) !important;
+  border: 2px solid rgba(98, 255, 176, 0.2) !important;
+  box-shadow: inset 0 0 20px rgba(98, 255, 176, 0.05), 0 10px 30px rgba(0,0,0,0.5) !important;
+  border-radius: 15px !important;
+  position: relative;
+}
+
+.football-scoreboard::before {
+  content: '';
+  position: absolute;
+  top: 10px; left: 10px; right: 10px; bottom: 10px;
+  border: 1px dashed rgba(98, 255, 176, 0.15);
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+.football-scoreboard .counter, .football-scoreboard .text-accent {
+  font-family: 'Courier New', Courier, monospace !important;
+  color: #62ffb0 !important;
+  text-shadow: 0 0 15px rgba(98, 255, 176, 0.6) !important;
+}
+
+/* 5. Hidden Easter Egg */
+.stadium-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  z-index: 100000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.stadium-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  animation: cameraShake 0.5s ease-in-out infinite alternate;
+}
+
+.stadium-lights {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50vh;
+  background: radial-gradient(circle at 20% 0%, rgba(255,255,255,0.4) 0%, transparent 40%),
+              radial-gradient(circle at 80% 0%, rgba(255,255,255,0.4) 0%, transparent 40%);
+  animation: lightsFlicker 2s infinite;
+}
+
+.stadium-text-1 {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #fff;
+  text-transform: uppercase;
+  text-shadow: 0 0 20px #62ffb0;
+  margin-bottom: 2rem;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.stadium-text-2 {
+  font-size: 1.5rem;
+  color: #62ffb0;
+  font-weight: 700;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.stadium-overlay.active .stadium-text-1 {
+  animation: popIn 0.5s 0.5s forwards;
+}
+
+.stadium-overlay.active .stadium-text-2 {
+  animation: popIn 0.5s 2s forwards;
+}
+
+@keyframes cameraShake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+@keyframes lightsFlicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+  55% { opacity: 1; }
+  56% { opacity: 0.5; }
+  60% { opacity: 1; }
+}
+
+@keyframes popIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 6. Booking Section Owl Football */
+.owl-football-container {
+  position: absolute;
+  bottom: 10px;
+  right: -40px;
+  width: 25px;
+  height: 25px;
+  z-index: 10;
+}
+
+.owl-football {
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="none" stroke="%2362ffb0" stroke-width="4"/><path d="M50 2 L65 30 L95 40 L70 65 L75 95 L50 80 L25 95 L30 65 L5 40 L35 30 Z" fill="none" stroke="%2362ffb0" stroke-width="2"/></svg>') no-repeat center center;
+  background-size: contain;
+  animation: slowSpin 10s linear infinite;
+  filter: drop-shadow(0 0 5px rgba(98, 255, 176, 0.4));
+  transition: transform 0.3s ease;
+}
+
+.owl-football.interact {
+  transform: translateX(-15px) rotate(-180deg);
+}
+
+@keyframes slowSpin {
+  100% { transform: rotate(360deg); }
+}
+
+/* 7. Cursor Effect */
+.cursor-football {
+  position: fixed;
+  width: 15px;
+  height: 15px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="none" stroke="%2362ffb0" stroke-width="5"/><path d="M50 2 L65 30 L95 40 L70 65 L75 95 L50 80 L25 95 L30 65 L5 40 L35 30 Z" fill="none" stroke="%2362ffb0" stroke-width="4"/></svg>') no-repeat center center;
+  background-size: contain;
+  pointer-events: none;
+  z-index: 999999;
+  transform: translate(-50%, -50%);
+  animation: cursorPop 0.5s ease-out forwards;
+}
+
+@keyframes cursorPop {
+  0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+  100% { transform: translate(-50%, -150%) scale(1.5) rotate(90deg); opacity: 0; }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .hero-football { opacity: 0.05; animation: floatSpin 30s linear infinite; }
+  .footer-football { display: none; } /* Reduce layout thrashing on mobile */
+  .cursor-football { display: none !important; }
+}
+
