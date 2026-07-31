@@ -1258,14 +1258,15 @@
 }
 
 .config-title {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     color: #fff;
     margin-bottom: 20px;
     font-weight: 700;
     font-family: var(--font-heading, 'Montserrat', sans-serif);
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: space-between;
+    width: 100%;
 }
 
 
@@ -1303,33 +1304,52 @@
 .wiz-step-2-grid {
     display: grid;
     grid-template-columns: 1.2fr 0.8fr;
-    gap: 40px;
+    gap: 30px;
 }
 .wiz-live-cart {
-    background: rgba(0,0,0,0.3);
-    border: 1px solid rgba(255,255,255,0.05);
+    background: rgba(0,0,0,0.35);
+    border: 1px solid rgba(255,255,255,0.08);
     border-radius: 20px;
-    padding: 25px;
+    padding: 20px;
     position: sticky;
-    top: 100px;
+    top: 90px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    backdrop-filter: blur(10px);
 }
 .wiz-cart-animation {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     background: radial-gradient(circle at center, rgba(46, 230, 166, 0.08) 0%, transparent 70%);
-    border-radius: 16px;
-    padding: 10px;
-    height: 180px;
+    border-radius: 14px;
+    padding: 5px;
+    height: 110px;
+}
+.wiz-cart-content {
+    max-height: 190px;
+    overflow-y: auto;
+    padding-right: 6px;
+    margin-bottom: 10px;
+}
+.wiz-cart-content::-webkit-scrollbar {
+    width: 4px;
+}
+.wiz-cart-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+.wiz-cart-content::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 4px;
 }
 .wiz-cart-item {
     display: flex;
     justify-content: space-between;
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.03);
-    font-size: 0.95rem;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 0.9rem;
     color: #ccc;
 }
 .wiz-cart-item:last-child {
@@ -1341,6 +1361,46 @@
 .wiz-cart-item-val {
     color: var(--accent-color);
     font-weight: 700;
+    font-size: 0.95rem;
+}
+.wiz-cart-item-remove {
+    background: rgba(255,255,255,0.06);
+    border: none;
+    color: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.75rem;
+    transition: all 0.2s ease;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+.wiz-cart-item-remove:hover {
+    background: rgba(255, 80, 80, 0.25);
+    color: #ff6b6b;
+}
+.wiz-remove-btn {
+    background: rgba(255, 80, 80, 0.08);
+    border: 1px solid rgba(255, 80, 80, 0.2);
+    color: #ff7676;
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+.wiz-remove-btn:hover {
+    background: rgba(255, 80, 80, 0.25);
+    color: #fff;
+    border-color: #ff6b6b;
 }
 .wiz-cart-total-box {
     margin-top: 20px;
@@ -1516,7 +1576,7 @@
             <!-- Dynamically populated, or display:none items -->
             
             <div class="config-item" id="conf-seo">
-                <div class="config-title"><i class="fas fa-search-dollar text-accent"></i> SEO Plan</div>
+                <div class="config-title"><span><i class="fas fa-search-dollar text-accent"></i> SEO Plan</span> <button type="button" class="wiz-remove-btn" onclick="wRemove('seo')"><i class="fas fa-times"></i> Unselect</button></div>
                 <div class="plan-toggle-group">
                     <div class="plan-btn active" onclick="wPlan('seo','Starter')">Starter (₹14,999)</div>
                     <div class="plan-btn" onclick="wPlan('seo','Growth')">Growth (₹24,999)</div>
@@ -1525,7 +1585,7 @@
             </div>
             
             <div class="config-item" id="conf-meta">
-                <div class="config-title"><i class="fab fa-meta text-accent"></i> Meta Ads Plan</div>
+                <div class="config-title"><span><i class="fab fa-meta text-accent"></i> Meta Ads Plan</span> <button type="button" class="wiz-remove-btn" onclick="wRemove('meta')"><i class="fas fa-times"></i> Unselect</button></div>
                 <div class="plan-toggle-group">
                     <div class="plan-btn active" onclick="wPlan('meta','Starter')">Starter (₹9,999)</div>
                     <div class="plan-btn" onclick="wPlan('meta','Growth')">Growth (₹19,999)</div>
@@ -1534,7 +1594,7 @@
             </div>
             
             <div class="config-item" id="conf-google">
-                <div class="config-title"><i class="fab fa-google text-accent"></i> Google Ads Plan</div>
+                <div class="config-title"><span><i class="fab fa-google text-accent"></i> Google Ads Plan</span> <button type="button" class="wiz-remove-btn" onclick="wRemove('google')"><i class="fas fa-times"></i> Unselect</button></div>
                 <div class="plan-toggle-group">
                     <div class="plan-btn active" onclick="wPlan('google','Starter')">Starter (₹14,999)</div>
                     <div class="plan-btn" onclick="wPlan('google','Growth')">Growth (₹29,999)</div>
@@ -1543,7 +1603,7 @@
             </div>
             
             <div class="config-item" id="conf-web">
-                <div class="config-title"><i class="fas fa-laptop-code text-accent"></i> Web Design Plan</div>
+                <div class="config-title"><span><i class="fas fa-laptop-code text-accent"></i> Web Design Plan</span> <button type="button" class="wiz-remove-btn" onclick="wRemove('web')"><i class="fas fa-times"></i> Unselect</button></div>
                 <div class="plan-toggle-group" style="margin-bottom:15px;">
                     <div class="plan-btn active" onclick="wPlan('web','Starter')">Starter (₹14,999)</div>
                     <div class="plan-btn" onclick="wPlan('web','Growth')">Growth (₹29,999)</div>
@@ -1553,7 +1613,7 @@
             
 
             <div class="config-item" id="conf-social">
-                <div class="config-title"><i class="fas fa-hashtag text-accent"></i> Social Media Plan</div>
+                <div class="config-title"><span><i class="fas fa-hashtag text-accent"></i> Social Media Plan</span> <button type="button" class="wiz-remove-btn" onclick="wRemove('social')"><i class="fas fa-times"></i> Unselect</button></div>
                 <div class="plan-toggle-group">
                     <div class="plan-btn active" onclick="wPlan('social','Starter')">Starter (₹11,999)</div>
                     <div class="plan-btn" onclick="wPlan('social','Growth')">Growth (₹19,999)</div>
@@ -1562,7 +1622,7 @@
             </div>
             
             <div class="config-item" id="conf-video">
-                <div class="config-title"><i class="fas fa-video text-accent"></i> Video Production</div>
+                <div class="config-title"><span><i class="fas fa-video text-accent"></i> Video Production</span> <button type="button" class="wiz-remove-btn" onclick="wRemove('video')"><i class="fas fa-times"></i> Unselect</button></div>
                 <div class="plan-toggle-group">
                     <div class="plan-btn active" onclick="wPlan('video','Starter')">Starter (₹9,999)</div>
                     <div class="plan-btn" onclick="wPlan('video','Growth')">Growth (₹24,999)</div>
@@ -1673,8 +1733,16 @@ let wSelections = {
 function wToggle(serv) {
     wSelections[serv].sel = !wSelections[serv].sel;
     const btn = document.querySelector(`[data-serv="${serv}"]`);
-    btn.classList.toggle('selected');
+    if(btn) btn.classList.toggle('selected');
     wCalc();
+}
+
+function wRemove(serv) {
+    wSelections[serv].sel = false;
+    const btn = document.querySelector(`[data-serv="${serv}"]`);
+    if(btn) btn.classList.remove('selected');
+    wCalc();
+    wUpdateUI();
 }
 
 function wPlan(serv, planName) {
@@ -1720,7 +1788,10 @@ function wCalc() {
             const p = wPrices[k][wSelections[k].plan];
             const pStr = p==='Custom' ? 'Custom' : '₹'+p.toLocaleString();
             cartHtml += `<div class="wiz-cart-item">
-                <span class="wiz-cart-item-title">${names[k]} (${wSelections[k].plan})</span>
+                <div style="display:flex; align-items:center;">
+                    <button type="button" class="wiz-cart-item-remove" onclick="wRemove('${k}')" title="Unselect service"><i class="fas fa-times"></i></button>
+                    <span class="wiz-cart-item-title">${names[k]} (${wSelections[k].plan})</span>
+                </div>
                 <span class="wiz-cart-item-val">${pStr}</span>
             </div>`;
         }
