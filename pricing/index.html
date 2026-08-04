@@ -345,6 +345,35 @@
       }
     }
 
+    .quote-btn-big {
+      background: linear-gradient(135deg, var(--accent-color) 0%, #15B87D 100%) !important;
+      color: #051512 !important;
+      border: 1px solid rgba(255,255,255,0.4) !important;
+      padding: 0.8rem 2.2rem !important;
+      font-size: 1.05rem !important;
+      font-weight: 800 !important;
+      border-radius: 50px !important;
+      box-shadow: 0 0 25px rgba(46, 230, 166, 0.5) !important;
+      animation: pulse-glow-quote 2.5s infinite !important;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 0 10px;
+    }
+    .quote-btn-big:hover {
+      box-shadow: 0 0 35px rgba(46, 230, 166, 0.8) !important;
+      transform: translateY(-2px) scale(1.02);
+    }
+    .quote-btn-big i {
+      color: #051512 !important;
+      font-size: 1.1rem;
+      margin-right: 5px;
+    }
+    @keyframes pulse-glow-quote {
+      0% { box-shadow: 0 0 15px rgba(46, 230, 166, 0.4); }
+      50% { box-shadow: 0 0 30px rgba(46, 230, 166, 0.7); }
+      100% { box-shadow: 0 0 15px rgba(46, 230, 166, 0.4); }
+    }
+
     @media (max-width: 768px) {
       .page-header {
         padding: 130px 0 60px 0;
@@ -402,9 +431,9 @@
         
         <div class="trust-line">
           <span><i class="fas fa-check-circle"></i> No hidden fees</span>
-          <span style="color: rgba(255,255,255,0.2);">ΓÇó</span>
+          <span style="color: rgba(255,255,255,0.2);">•</span>
           <span><i class="fas fa-check-circle"></i> Custom solutions</span>
-          <span style="color: rgba(255,255,255,0.2);">ΓÇó</span>
+          <span style="color: rgba(255,255,255,0.2);">•</span>
           <span><i class="fas fa-check-circle"></i> ROI-focused execution</span>
         </div>
       </div>
@@ -420,7 +449,7 @@
         <button class="tab-btn" onclick="openTab('video')"><i class="fas fa-video"></i> Video</button>
         <button class="tab-btn" onclick="openTab('web')"><i class="fas fa-laptop-code"></i> Web Design</button>
         <button class="tab-btn" onclick="openTab('growth')"><i class="fas fa-rocket"></i> Packages</button>
-        <button class="tab-btn" onclick="openTab('quote')" style="background: linear-gradient(135deg, rgba(98, 255, 176, 0.2), rgba(46, 230, 166, 0.05)); border-color: var(--accent-color); color: #fff;"><i class="fas fa-calculator" style="color: var(--accent-color);"></i> Quote Builder</button>
+        <button class="tab-btn quote-btn-big" onclick="openTab('quote')"><i class="fas fa-calculator"></i> Quote Builder</button>
       </div>
     </div>
 
@@ -437,7 +466,7 @@
               </div>
               <div class="pricing-amount">
                 <span class="starting">Starting From</span>
-                <div class="price">Γé╣14,999<span class="period">/mo</span></div>
+                <div class="price">₹14,999<span class="period">/mo</span></div>
               </div>
               <ul class="pricing-features">
                 <li>Keyword Research</li>
@@ -455,7 +484,7 @@
               </div>
               <div class="pricing-amount">
                 <span class="starting">Starting From</span>
-                <div class="price">Γé╣24,999<span class="period">/mo</span></div>
+                <div class="price">₹24,999<span class="period">/mo</span></div>
               </div>
               <ul class="pricing-features">
                 <li>Blog Optimization</li>
@@ -503,7 +532,7 @@
                   <h3 class="pricing-title">Starter Daily</h3>
                 </div>
                 <div class="pricing-amount">
-                  <div class="price">Γé╣299<span class="period">/day</span></div>
+                  <div class="price">₹299<span class="period">/day</span></div>
                 </div>
                 <ul class="pricing-features">
                   <li>Campaign setup</li>
@@ -520,7 +549,7 @@
                   <h3 class="pricing-title">Growth Daily</h3>
                 </div>
                 <div class="pricing-amount">
-                  <div class="price">Γé╣499<span class="period">/day</span></div>
+                  <div class="price">₹499<span class="period">/day</span></div>
                 </div>
                 <ul class="pricing-features">
                   <li>Campaign setup</li>
@@ -536,7 +565,7 @@
                   <h3 class="pricing-title">Premium Daily</h3>
                 </div>
                 <div class="pricing-amount">
-                  <div class="price">Γé╣749<span class="period">/day</span></div>
+                  <div class="price">₹749<span class="period">/day</span></div>
                 </div>
                 <ul class="pricing-features">
                   <li>Campaign setup</li>
@@ -558,7 +587,7 @@
                   <h3 class="pricing-title">Starter Weekly</h3>
                 </div>
                 <div class="pricing-amount">
-                  <div class="price">Γé╣1,499<span class="period">/week</span></div>
+                  <div class="price">₹1,499<span class="period">/week</span></div>
                 </div>
                 <ul class="pricing-features">
                   <li>Meta Ads management</li>
@@ -576,7 +605,7 @@
                   <h3 class="pricing-title">Growth Weekly</h3>
                 </div>
                 <div class="pricing-amount">
-                  <div class="price">Γé╣2,499<span class="period">/week</span></div>
+                  <div class="price">₹2,499<span class="period">/week</span></div>
                 </div>
                 <ul class="pricing-features">
                   <li>Meta Ads management</li>
@@ -593,7 +622,7 @@
                   <h3 class="pricing-title">Premium Weekly</h3>
                 </div>
                 <div class="pricing-amount">
-                  <div class="price">Γé╣3,999<span class="period">/week</span></div>
+                  <div class="price">₹3,999<span class="period">/week</span></div>
                 </div>
                 <ul class="pricing-features">
                   <li>Meta Ads management</li>
@@ -616,7 +645,7 @@
                   <h3 class="pricing-title">Starter Monthly</h3>
                 </div>
                 <div class="pricing-amount">
-                  <div class="price">Γé╣4,999<span class="period">/mo</span></div>
+                  <div class="price">₹4,999<span class="period">/mo</span></div>
                 </div>
                 <ul class="pricing-features">
                   <li>Full Meta Ads management</li>
@@ -635,7 +664,7 @@
                   <h3 class="pricing-title">Growth Monthly</h3>
                 </div>
                 <div class="pricing-amount">
-                  <div class="price">Γé╣9,999<span class="period">/mo</span></div>
+                  <div class="price">₹9,999<span class="period">/mo</span></div>
                 </div>
                 <ul class="pricing-features">
                   <li>Full Meta Ads management</li>
@@ -653,7 +682,7 @@
                   <h3 class="pricing-title">Premium Monthly</h3>
                 </div>
                 <div class="pricing-amount">
-                  <div class="price">Γé╣14,999<span class="period">/mo</span></div>
+                  <div class="price">₹14,999<span class="period">/mo</span></div>
                 </div>
                 <ul class="pricing-features">
                   <li>Full Meta Ads management</li>
@@ -698,7 +727,7 @@
               </div>
               <div class="pricing-amount">
                 <span class="starting">Starting From</span>
-                <div class="price">Γé╣14,999<span class="period">/mo</span></div>
+                <div class="price">₹14,999<span class="period">/mo</span></div>
               </div>
               <ul class="pricing-features">
                 <li>Search Campaign Setup</li>
@@ -715,7 +744,7 @@
               </div>
               <div class="pricing-amount">
                 <span class="starting">Starting From</span>
-                <div class="price">Γé╣24,999<span class="period">/mo</span></div>
+                <div class="price">₹24,999<span class="period">/mo</span></div>
               </div>
               <ul class="pricing-features">
                 <li>Search + PMax</li>
@@ -754,7 +783,7 @@
               </div>
               <div class="pricing-amount">
                 <span class="starting">Starting From</span>
-                <div class="price">Γé╣9,999<span class="period">/mo</span></div>
+                <div class="price">₹9,999<span class="period">/mo</span></div>
               </div>
               <ul class="pricing-features">
                 <li>12 Posts</li>
@@ -771,7 +800,7 @@
               </div>
               <div class="pricing-amount">
                 <span class="starting">Starting From</span>
-                <div class="price">Γé╣17,999<span class="period">/mo</span></div>
+                <div class="price">₹17,999<span class="period">/mo</span></div>
               </div>
               <ul class="pricing-features">
                 <li>Posts + Reels</li>
@@ -811,7 +840,7 @@
               </div>
               <div class="pricing-amount">
                 <span class="starting">Starting From</span>
-                <div class="price">Γé╣7,999<span class="period">/proj</span></div>
+                <div class="price">₹7,999<span class="period">/proj</span></div>
               </div>
               <ul class="pricing-features">
                 <li>Short-form Videos</li>
@@ -828,7 +857,7 @@
               </div>
               <div class="pricing-amount">
                 <span class="starting">Starting From</span>
-                <div class="price">Γé╣14,999<span class="period">/proj</span></div>
+                <div class="price">₹14,999<span class="period">/proj</span></div>
               </div>
               <ul class="pricing-features">
                 <li>iPhone Cinematic</li>
@@ -845,7 +874,7 @@
               </div>
               <div class="pricing-amount">
                 <span class="starting">Starting From</span>
-                <div class="price">Γé╣24,999<span class="period">/proj</span></div>
+                <div class="price">₹24,999<span class="period">/proj</span></div>
               </div>
               <ul class="pricing-features">
                 <li>Event Coverage</li>
@@ -874,7 +903,7 @@
               </div>
               <div class="pricing-amount">
                 <span class="starting">Starting From</span>
-                <div class="price">Γé╣14,999</div>
+                <div class="price">₹14,999</div>
               </div>
               <p style="font-size: 0.85rem; color: var(--accent-color); margin-bottom: 1.5rem; font-weight: 600;">Best For: Freelancers & Small Businesses</p>
               <ul class="pricing-features">
@@ -899,7 +928,7 @@
               </div>
               <div class="pricing-amount">
                 <span class="starting">Starting From</span>
-                <div class="price">Γé╣29,999</div>
+                <div class="price">₹29,999</div>
               </div>
               <p style="font-size: 0.85rem; color: var(--accent-color); margin-bottom: 1.5rem; font-weight: 600;">Best For: Growing Businesses</p>
               <ul class="pricing-features">
@@ -925,7 +954,7 @@
               </div>
               <div class="pricing-amount">
                 <span class="starting">Starting From</span>
-                <div class="price">Γé╣49,999</div>
+                <div class="price">₹49,999</div>
               </div>
               <p style="font-size: 0.85rem; color: var(--accent-color); margin-bottom: 1.5rem; font-weight: 600;">Best For: Established Brands</p>
               <ul class="pricing-features">
@@ -1011,7 +1040,7 @@
               </div>
               <div class="pricing-amount">
                 <span class="starting">Starting From</span>
-                <div class="price">Γé╣19,999<span class="period">/mo</span></div>
+                <div class="price">₹19,999<span class="period">/mo</span></div>
               </div>
               <ul class="pricing-features">
                 <li>Social Media Mgmt</li>
@@ -1028,7 +1057,7 @@
               </div>
               <div class="pricing-amount">
                 <span class="starting">Starting From</span>
-                <div class="price">Γé╣34,999<span class="period">/mo</span></div>
+                <div class="price">₹34,999<span class="period">/mo</span></div>
               </div>
               <ul class="pricing-features">
                 <li>SEO Optimization</li>
@@ -1045,7 +1074,7 @@
               </div>
               <div class="pricing-amount">
                 <span class="starting">Starting From</span>
-                <div class="price">Γé╣49,999<span class="period">/mo</span></div>
+                <div class="price">₹49,999<span class="period">/mo</span></div>
               </div>
               <ul class="pricing-features">
                 <li>SEO Optimization</li>
@@ -1075,7 +1104,7 @@
             <h2 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Pricing FAQ</h2>
             <div class="faq-item">
               <h3><i class="fas fa-info-circle"></i> Cost in Kerala?</h3>
-              <p>Projects start from Γé╣9,999ΓÇôΓé╣14,999 and scale based on complexity and growth targets.</p>
+              <p>Projects start from ₹9,999ΓÇô₹14,999 and scale based on complexity and growth targets.</p>
             </div>
             <div class="faq-item">
               <h3><i class="fas fa-info-circle"></i> Custom packages?</h3>
@@ -1579,8 +1608,8 @@
             <div class="config-item" id="conf-seo">
                 <div class="config-title"><span><i class="fas fa-search-dollar text-accent"></i> SEO Plan</span> <button type="button" class="wiz-remove-btn" onclick="wRemove('seo')"><i class="fas fa-times"></i> Unselect</button></div>
                 <div class="plan-toggle-group">
-                    <div class="plan-btn active" onclick="wPlan('seo','Starter')">Starter (Γé╣14,999)</div>
-                    <div class="plan-btn" onclick="wPlan('seo','Growth')">Growth (Γé╣24,999)</div>
+                    <div class="plan-btn active" onclick="wPlan('seo','Starter')">Starter (₹14,999)</div>
+                    <div class="plan-btn" onclick="wPlan('seo','Growth')">Growth (₹24,999)</div>
                     <div class="plan-btn" onclick="wPlan('seo','Premium')">Custom</div>
                 </div>
             </div>
@@ -1588,8 +1617,8 @@
             <div class="config-item" id="conf-meta">
                 <div class="config-title"><span><i class="fab fa-meta text-accent"></i> Meta Ads Plan</span> <button type="button" class="wiz-remove-btn" onclick="wRemove('meta')"><i class="fas fa-times"></i> Unselect</button></div>
                 <div class="plan-toggle-group">
-                    <div class="plan-btn active" onclick="wPlan('meta','Starter')">Starter (Γé╣9,999)</div>
-                    <div class="plan-btn" onclick="wPlan('meta','Growth')">Growth (Γé╣19,999)</div>
+                    <div class="plan-btn active" onclick="wPlan('meta','Starter')">Starter (₹9,999)</div>
+                    <div class="plan-btn" onclick="wPlan('meta','Growth')">Growth (₹19,999)</div>
                     <div class="plan-btn" onclick="wPlan('meta','Premium')">Custom</div>
                 </div>
             </div>
@@ -1597,8 +1626,8 @@
             <div class="config-item" id="conf-google">
                 <div class="config-title"><span><i class="fab fa-google text-accent"></i> Google Ads Plan</span> <button type="button" class="wiz-remove-btn" onclick="wRemove('google')"><i class="fas fa-times"></i> Unselect</button></div>
                 <div class="plan-toggle-group">
-                    <div class="plan-btn active" onclick="wPlan('google','Starter')">Starter (Γé╣14,999)</div>
-                    <div class="plan-btn" onclick="wPlan('google','Growth')">Growth (Γé╣29,999)</div>
+                    <div class="plan-btn active" onclick="wPlan('google','Starter')">Starter (₹14,999)</div>
+                    <div class="plan-btn" onclick="wPlan('google','Growth')">Growth (₹29,999)</div>
                     <div class="plan-btn" onclick="wPlan('google','Premium')">Custom</div>
                 </div>
             </div>
@@ -1606,9 +1635,9 @@
             <div class="config-item" id="conf-web">
                 <div class="config-title"><span><i class="fas fa-laptop-code text-accent"></i> Web Design Plan</span> <button type="button" class="wiz-remove-btn" onclick="wRemove('web')"><i class="fas fa-times"></i> Unselect</button></div>
                 <div class="plan-toggle-group" style="margin-bottom:15px;">
-                    <div class="plan-btn active" onclick="wPlan('web','Starter')">Starter (Γé╣14,999)</div>
-                    <div class="plan-btn" onclick="wPlan('web','Growth')">Growth (Γé╣29,999)</div>
-                    <div class="plan-btn" onclick="wPlan('web','Premium')">Premium (Γé╣49,999)</div>
+                    <div class="plan-btn active" onclick="wPlan('web','Starter')">Starter (₹14,999)</div>
+                    <div class="plan-btn" onclick="wPlan('web','Growth')">Growth (₹29,999)</div>
+                    <div class="plan-btn" onclick="wPlan('web','Premium')">Premium (₹49,999)</div>
                 </div>
             </div>
             
@@ -1616,8 +1645,8 @@
             <div class="config-item" id="conf-social">
                 <div class="config-title"><span><i class="fas fa-hashtag text-accent"></i> Social Media Plan</span> <button type="button" class="wiz-remove-btn" onclick="wRemove('social')"><i class="fas fa-times"></i> Unselect</button></div>
                 <div class="plan-toggle-group">
-                    <div class="plan-btn active" onclick="wPlan('social','Starter')">Starter (Γé╣11,999)</div>
-                    <div class="plan-btn" onclick="wPlan('social','Growth')">Growth (Γé╣19,999)</div>
+                    <div class="plan-btn active" onclick="wPlan('social','Starter')">Starter (₹11,999)</div>
+                    <div class="plan-btn" onclick="wPlan('social','Growth')">Growth (₹19,999)</div>
                     <div class="plan-btn" onclick="wPlan('social','Premium')">Custom</div>
                 </div>
             </div>
@@ -1625,8 +1654,8 @@
             <div class="config-item" id="conf-video">
                 <div class="config-title"><span><i class="fas fa-video text-accent"></i> Video Production</span> <button type="button" class="wiz-remove-btn" onclick="wRemove('video')"><i class="fas fa-times"></i> Unselect</button></div>
                 <div class="plan-toggle-group">
-                    <div class="plan-btn active" onclick="wPlan('video','Starter')">Starter (Γé╣9,999)</div>
-                    <div class="plan-btn" onclick="wPlan('video','Growth')">Growth (Γé╣24,999)</div>
+                    <div class="plan-btn active" onclick="wPlan('video','Starter')">Starter (₹9,999)</div>
+                    <div class="plan-btn" onclick="wPlan('video','Growth')">Growth (₹24,999)</div>
                     <div class="plan-btn" onclick="wPlan('video','Premium')">Custom</div>
                 </div>
             </div>
@@ -1650,7 +1679,7 @@
                 </div>
                 <div class="wiz-cart-total-box">
                     <span>Total Estimate</span>
-                    <span class="wiz-cart-total-val" id="wiz-live-cart-total-val">Γé╣0</span>
+                    <span class="wiz-cart-total-val" id="wiz-live-cart-total-val">₹0</span>
                 </div>
             </div>
         </div>
@@ -1700,7 +1729,7 @@
 
     <div class="wizard-footer" id="wiz-footer">
         <div class="wizard-total">
-            Est. <span id="wiz-total-val">Γé╣0</span>
+            Est. <span id="wiz-total-val">₹0</span>
         </div>
         <div style="display:flex; gap:10px;">
             <button class="btn-wizard btn-wizard-outline" id="wiz-prev" style="display:none;" onclick="wPrev()">Back</button>
@@ -1774,9 +1803,9 @@ function wCalc() {
     
     let totalStr = '';
     if(total === 0 && !hasCustom) {
-        totalStr = 'Γé╣0';
+        totalStr = '₹0';
     } else {
-        totalStr = 'Γé╣' + total.toLocaleString() + (hasCustom ? ' +' : '');
+        totalStr = '₹' + total.toLocaleString() + (hasCustom ? ' +' : '');
     }
     if(tv) tv.innerText = totalStr;
     if(lcv) lcv.innerText = totalStr;
@@ -1787,7 +1816,7 @@ function wCalc() {
     Object.keys(wSelections).forEach(k => {
         if(wSelections[k].sel) {
             const p = wPrices[k][wSelections[k].plan];
-            const pStr = p==='Custom' ? 'Custom' : 'Γé╣'+p.toLocaleString();
+            const pStr = p==='Custom' ? 'Custom' : '₹'+p.toLocaleString();
             cartHtml += `<div class="wiz-cart-item">
                 <div style="display:flex; align-items:center;">
                     <button type="button" class="wiz-cart-item-remove" onclick="wRemove('${k}')" title="Unselect service"><i class="fas fa-times"></i></button>
@@ -1864,7 +1893,7 @@ function wUpdateUI() {
         Object.keys(wSelections).forEach(k => {
             if(wSelections[k].sel) {
                 const p = wPrices[k][wSelections[k].plan];
-                const pStr = p==='Custom' ? 'Custom' : 'Γé╣'+p.toLocaleString();
+                const pStr = p==='Custom' ? 'Custom' : '₹'+p.toLocaleString();
                 html += `<div class="review-item">
                     <span class="review-title">${names[k]} (${wSelections[k].plan})</span>
                     <span class="review-val">${pStr}</span>
@@ -1898,7 +1927,7 @@ function wNext() {
         Object.keys(wSelections).forEach(k => {
             if(wSelections[k].sel) {
                 const p = wPrices[k][wSelections[k].plan];
-                details += `- ${names[k]}: ${wSelections[k].plan} (${p === 'Custom' ? 'Custom Pricing' : 'Γé╣'+p.toLocaleString()})\n`;
+                details += `- ${names[k]}: ${wSelections[k].plan} (${p === 'Custom' ? 'Custom Pricing' : '₹'+p.toLocaleString()})\n`;
                 hasSelections = true;
             }
         });
@@ -2079,11 +2108,11 @@ function wPrev() {
       
       document.getElementById('roi-traffic-val').innerText = traffic.toLocaleString();
       document.getElementById('roi-conv-val').innerText = (conv * 100).toFixed(1) + '%';
-      document.getElementById('roi-value-val').innerText = 'Γé╣' + value.toLocaleString();
+      document.getElementById('roi-value-val').innerText = '₹' + value.toLocaleString();
 
       const improvement = 1.5;
       const uplift = (traffic * (conv * improvement) * value) - (traffic * conv * value);
-      roiResult.innerText = 'Γé╣' + Math.round(uplift).toLocaleString();
+      roiResult.innerText = '₹' + Math.round(uplift).toLocaleString();
     }
 
     // Lead Gen Calculator
@@ -2098,8 +2127,8 @@ function wPrev() {
       const cpc = parseInt(leadCpc.value);
       const conv = parseFloat(leadConv.value) / 100;
 
-      document.getElementById('lead-budget-val').innerText = 'Γé╣' + budget.toLocaleString();
-      document.getElementById('lead-cpc-val').innerText = 'Γé╣' + cpc.toLocaleString();
+      document.getElementById('lead-budget-val').innerText = '₹' + budget.toLocaleString();
+      document.getElementById('lead-cpc-val').innerText = '₹' + cpc.toLocaleString();
       document.getElementById('lead-conv-val').innerText = (conv * 100).toFixed(1) + '%';
 
       const leads = (budget / cpc) * conv;
