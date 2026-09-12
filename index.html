@@ -3612,7 +3612,119 @@
   <a href="https://wa.me/919778179727" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
     <i class="fab fa-whatsapp"></i>
   </a>
+  
+  <!-- Floating Google Rating Badge -->
+  <a href="#" target="_blank" id="floating-rating-badge" aria-label="View Google Reviews">
+    <div class="rating-badge-content">
+      <div class="g-icon">
+        <svg viewBox="0 0 48 48" width="20" height="20">
+          <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+          <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+          <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+          <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+        </svg>
+      </div>
+      <div class="rating-details">
+        <div class="stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <div class="rating-text"><strong>5.0</strong> Excellent (45+ Reviews)</div>
+      </div>
+    </div>
+  </a>
 
+  <style>
+    #floating-rating-badge {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      z-index: 998;
+      background: rgba(15, 15, 15, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 10px 16px;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(98, 255, 176, 0.1);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      animation: float-badge 4s ease-in-out infinite;
+      display: inline-block;
+    }
+
+    #floating-rating-badge:hover {
+      transform: translateY(-5px) scale(1.03);
+      border-color: rgba(98, 255, 176, 0.5);
+      box-shadow: 0 15px 35px rgba(98, 255, 176, 0.15), inset 0 0 0 1px rgba(98, 255, 176, 0.3);
+      animation-play-state: paused;
+    }
+
+    .rating-badge-content {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .g-icon {
+      background: #fff;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .rating-details {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .rating-details .stars {
+      color: #FFB900;
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      margin-bottom: 2px;
+    }
+
+    .rating-text {
+      color: #aaa;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    .rating-text strong {
+      color: #fff;
+      font-weight: 700;
+    }
+
+    @keyframes float-badge {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+      100% { transform: translateY(0px); }
+    }
+
+    @media (max-width: 768px) {
+      #floating-rating-badge {
+        bottom: 20px;
+        left: 20px;
+        padding: 8px 12px;
+      }
+      .g-icon {
+        width: 28px;
+        height: 28px;
+      }
+      .g-icon svg {
+        width: 16px;
+        height: 16px;
+      }
+      .rating-text {
+        font-size: 0.7rem;
+      }
+    }
+  </style>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const faqSearch = document.getElementById('faq-search');
