@@ -12,13 +12,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/webp" href="../favicon.webp">
   <link rel="apple-touch-icon" href="../favicon.webp">
-  <title>Digital Marketing Portfolio | Mohammad Anshid Ck</title>
-  <meta name="description" content="Explore successful case studies by Mohammad Anshid Ck, a Digital Marketing Strategist in Malappuram. proven results in SEO, Google Ads, and Performance Marketing.">
+  <title>Selected Work &amp; Case Studies | Muhammed Anshid Chelekodan</title>
+  <meta name="description" content="Selected work and case studies by Muhammed Anshid Chelekodan — SEO, paid ads, social media, and growth strategy from a digital marketing strategist in Malappuram.">
   <meta name="keywords" content="Portfolio Mohammad Anshid Ck, Digital Marketing Portfolio Kerala, SEO Case Studies Malappuram, Google Ads Success Kerala">
 
   <!-- OpenGraph / Twitter -->
-  <meta property="og:title" content="Digital Marketing Portfolio | Mohammad Anshid Ck">
-  <meta property="og:description" content="Browse my successful case studies in SEO and Performance Marketing.">
+  <meta property="og:title" content="Selected Work &amp; Case Studies | Muhammed Anshid Chelekodan">
+  <meta property="og:description" content="Browse selected case studies in SEO, paid media, social, and strategy by Muhammed Anshid Chelekodan.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://anshidck.com/portfolio/">
   <meta property="og:image" content="https://anshidck.com/anshid-optimized.jpg">
@@ -51,161 +51,64 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap"></noscript>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
-  <link rel="preload" as="style" href="../style.min.css"><link rel="stylesheet" href="../style.min.css">
-  
+  <link rel="stylesheet" href="../style.min.css?v=20260914">
+
   <style>
     .page-header {
-      padding: 160px 0 80px 0;
-      background: linear-gradient(180deg, #050B0A 0%, #0B2E2A 100%);
+      padding: 160px 0 80px;
+      background: linear-gradient(180deg, #050505 0%, #111 100%);
       text-align: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
-    
     .page-header h1 {
       font-size: clamp(2.5rem, 5vw, 4rem);
       margin-bottom: 1rem;
     }
-
-    /* Portfolio Grid System */
-    .portfolio-grid {
+    .page-header p {
+      font-size: 1.15rem;
+      max-width: 640px;
+      margin: 0 auto;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .work-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-      margin-top: 60px;
+      gap: 1.5rem;
     }
-    
-    @property --angle {
-      syntax: "<angle>";
-      initial-value: 0deg;
-      inherits: false;
-    }
-
-    .portfolio-card {
-      position: relative;
-      background: #050B0A;
-      border-radius: 16px;
-      padding: 3px; /* Border weight */
-      overflow: visible; /* Glow clarity */
-      transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      height: 100%;
-    }
-    
-    .portfolio-card::after {
-      content: "";
+    .work-media-label {
       position: absolute;
       inset: 0;
-      padding: 3px; /* Matches padding */
-      border-radius: 16px;
-      background: transparent;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .portfolio-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-    }
-
-    .portfolio-card:hover::after {
-      background: conic-gradient(
-        from var(--angle),
-        rgba(46, 230, 166, 0.02) 0deg,
-        rgba(46, 230, 166, 0.05) 40deg,
-        rgba(46, 230, 166, 0.15) 80deg,
-        rgba(46, 230, 166, 0.4) 120deg,
-        rgba(46, 230, 166, 0.8) 150deg,
-        rgba(46, 230, 166, 1) 180deg,
-        rgba(46, 230, 166, 0.8) 210deg,
-        rgba(46, 230, 166, 0.4) 240deg,
-        rgba(46, 230, 166, 0.15) 280deg,
-        rgba(46, 230, 166, 0.05) 320deg,
-        rgba(46, 230, 166, 0.02) 360deg
-      );
-      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      border-radius: 16px;
-    }
-
-    .portfolio-card-inner {
-      position: relative;
-      background: #050B0A;
-      border-radius: 14px;
-      height: 100%;
-      overflow: hidden;
       display: flex;
-      flex-direction: column;
-      z-index: 1;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.35);
+      background: #0a0a0a;
+      border-bottom: 1px solid var(--border-subtle);
     }
-    
-    .portfolio-card img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-      object-position: center;
-      transition: 0.5s ease;
+    .work-card-media .cs-venture {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      z-index: 2;
+      margin: 0;
     }
-    
-    .portfolio-content {
-      padding: 25px;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      background: #050B0A;
-    }
-    
-    .portfolio-content h3 {
-      font-size: 1.4rem;
-      margin-bottom: 0.8rem;
-    }
-    
-    .portfolio-content h3 a {
-      color: #fff;
-      text-decoration: none;
-      transition: color 0.3s ease;
-      display: inline-block;
-    }
-    
-    .portfolio-card:hover h3 a {
-      color: var(--accent-color);
-    }
-    
-    .portfolio-content p {
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      margin-bottom: 1.5rem;
-      line-height: 1.5;
-      flex-grow: 1;
-    }
-    
-    .portfolio-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-    }
-    
-    .portfolio-card:hover img {
-      transform: scale(1.05);
-    }
-
     @media (min-width: 1200px) {
-      .portfolio-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
+      .work-grid { grid-template-columns: repeat(3, 1fr); }
     }
-    
     @media (max-width: 768px) {
-      .portfolio-grid {
-        grid-template-columns: 1fr;
-        gap: 25px;
-      }
+      .work-grid { grid-template-columns: 1fr; gap: 1.25rem; }
     }
   </style>
-  
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -227,14 +130,12 @@
             <a href="https://wa.me/919778179727" target="_blank" aria-label="Chat with me on WhatsApp"><i class="fab fa-whatsapp"></i></a>
           </div>
         </div>
-        
+
         <ul class="nav-links">
-          <!-- Mobile Menu Header -->
           <li class="mobile-nav-header">
             <span class="logo">Anshid Ck<span class="text-accent">.</span></span>
             <button class="close-menu-btn" aria-label="Close menu">&times;</button>
           </li>
-
           <li><a href="../">Home</a></li>
           <li><a href="../about/">About</a></li>
           <li><a href="../services/">Services</a></li>
@@ -243,7 +144,7 @@
           <li><a href="../blog/">Blog</a></li>
           <li><a href="../contact/">Contact</a></li>
         </ul>
-        
+
         <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
           <i class="fas fa-bars"></i>
         </button>
@@ -257,357 +158,205 @@
   <!-- Page Header -->
   <section class="page-header">
     <div class="container animate stagger-1">
-      <h1>Digital Marketing Strategist in Kerala</h1>
-      <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">Case studies on SEO, Google Ads, and performance marketing success from a leading strategist.</p>
+      <h1>Selected Work</h1>
+      <p>Case studies in search, paid media, social, and brand systems — by Muhammed Anshid Chelekodan, a digital marketing strategist based in Malappuram.</p>
     </div>
   </section>
 
-  <!-- Results & Wins Performance Snapshot Section -->
-  <section class="section results-wins-section" style="position: relative; overflow: hidden; background: radial-gradient(circle at top right, rgba(46, 230, 166, 0.05), transparent 60%), radial-gradient(circle at bottom left, rgba(98, 255, 176, 0.03), transparent 60%); padding: 6rem 0;">
-    <!-- Ambient BG Grid Texture -->
-    <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(46, 230, 166, 0.15) 1px, transparent 1px); background-size: 24px 24px; opacity: 0.1; pointer-events: none; z-index: 1;"></div>
-    
-    <div class="container" style="position: relative; z-index: 2;">
-      <div class="section-title text-center animate reveal-up" style="max-width: 800px; margin: 0 auto 4rem auto; text-align: center;">
-        <span class="text-accent" style="font-weight: 700; letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; display: block; margin-bottom: 0.8rem; text-shadow: 0 0 10px rgba(46, 230, 166, 0.3);">Performance Snapshot</span>
-        <h2 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.15; margin-bottom: 1.5rem;">Results Backed by <span class="text-accent">Real Execution</span></h2>
-        <p style="font-size: clamp(0.95rem, 1.5vw, 1.15rem); color: var(--text-secondary); line-height: 1.7;">From Meta Ads and SEO campaigns to content strategy and lead generation systems — every project is focused on measurable business growth, not vanity metrics.</p>
-      </div>
-
-      <!-- Glassmorphism Stats Grid -->
-      <div class="grid grid-3 results-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 4rem;">
-        
-        <!-- Card 1 -->
-        <div class="results-card animate reveal-up" style="background: rgba(11, 46, 42, 0.3); border: 1px solid rgba(46, 230, 166, 0.15); border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; position: relative; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.3);">
-          <div class="card-glow" style="position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, rgba(46, 230, 166, 0.15), transparent 50%); pointer-events: none; opacity: 0; transition: opacity 0.4s ease;"></div>
-          <div style="font-size: 2rem; color: var(--accent-color); margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between;">
-            <i class="fa-solid fa-bullseye" style="filter: drop-shadow(0 0 8px rgba(46,230,166,0.4));"></i>
-            <span style="font-size: 0.75rem; color: rgba(255,255,255,0.3); font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Paid Ads</span>
-          </div>
-          <div style="font-size: clamp(2.8rem, 5vw, 3.5rem); font-weight: 800; color: #fff; line-height: 1; margin-bottom: 0.5rem; font-family: var(--font-heading); display: flex; align-items: center;">
-            <span class="counter" data-target="15">0</span><span class="text-accent">+</span>
-          </div>
-          <h3 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.8rem; letter-spacing: -0.2px;">Meta Ads Campaigns Managed</h3>
-          <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">High-performing local and regional lead generation funnels designed by a digital marketing strategist in Malappuram.</p>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="results-card animate reveal-up stagger-1" style="background: rgba(11, 46, 42, 0.3); border: 1px solid rgba(46, 230, 166, 0.15); border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; position: relative; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.3);">
-          <div class="card-glow" style="position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, rgba(46, 230, 166, 0.15), transparent 50%); pointer-events: none; opacity: 0; transition: opacity 0.4s ease;"></div>
-          <div style="font-size: 2rem; color: var(--accent-color); margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between;">
-            <i class="fa-solid fa-users" style="filter: drop-shadow(0 0 8px rgba(46,230,166,0.4));"></i>
-            <span style="font-size: 0.75rem; color: rgba(255,255,255,0.3); font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Collaborations</span>
-          </div>
-          <div style="font-size: clamp(2.8rem, 5vw, 3.5rem); font-weight: 800; color: #fff; line-height: 1; margin-bottom: 0.5rem; font-family: var(--font-heading); display: flex; align-items: center;">
-            <span class="counter" data-target="5">0</span><span class="text-accent">+</span>
-          </div>
-          <h3 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.8rem; letter-spacing: -0.2px;">Brands Collaborated With</h3>
-          <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">Partnering as a seasoned Meta Ads expert Kerala to scale regional startups and e-commerce platforms.</p>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="results-card animate reveal-up stagger-2" style="background: rgba(11, 46, 42, 0.3); border: 1px solid rgba(46, 230, 166, 0.15); border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; position: relative; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.3);">
-          <div class="card-glow" style="position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, rgba(46, 230, 166, 0.15), transparent 50%); pointer-events: none; opacity: 0; transition: opacity 0.4s ease;"></div>
-          <div style="font-size: 2rem; color: var(--accent-color); margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between;">
-            <i class="fa-solid fa-cubes" style="filter: drop-shadow(0 0 8px rgba(46,230,166,0.4));"></i>
-            <span style="font-size: 0.75rem; color: rgba(255,255,255,0.3); font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Creatives</span>
-          </div>
-          <div style="font-size: clamp(2.8rem, 5vw, 3.5rem); font-weight: 800; color: #fff; line-height: 1; margin-bottom: 0.5rem; font-family: var(--font-heading); display: flex; align-items: center;">
-            <span class="counter" data-target="20">0</span><span class="text-accent">+</span>
-          </div>
-          <h3 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.8rem; letter-spacing: -0.2px;">Creative Campaigns Executed</h3>
-          <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">High-impact interactive creative strategies and video assets engineered for local resonance across Kerala.</p>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="results-card animate reveal-up" style="background: rgba(11, 46, 42, 0.3); border: 1px solid rgba(46, 230, 166, 0.15); border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; position: relative; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.3);">
-          <div class="card-glow" style="position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, rgba(46, 230, 166, 0.15), transparent 50%); pointer-events: none; opacity: 0; transition: opacity 0.4s ease;"></div>
-          <div style="font-size: 2rem; color: var(--accent-color); margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between;">
-            <i class="fa-solid fa-chart-line" style="filter: drop-shadow(0 0 8px rgba(46,230,166,0.4));"></i>
-            <span style="font-size: 0.75rem; color: rgba(255,255,255,0.3); font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Scale</span>
-          </div>
-          <div style="font-size: clamp(2.8rem, 5vw, 3.5rem); font-weight: 800; color: #fff; line-height: 1; margin-bottom: 0.5rem; font-family: var(--font-heading); display: flex; align-items: center;">
-            <span class="counter" data-target="100">0</span><span class="text-accent">K+</span>
-          </div>
-          <h3 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.8rem; letter-spacing: -0.2px;">Organic & Paid Reach Generated</h3>
-          <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">Generating high-impact impressions and organic traffic as a result-oriented lead generation specialist.</p>
-        </div>
-
-        <!-- Card 5 -->
-        <div class="results-card animate reveal-up stagger-1" style="background: rgba(11, 46, 42, 0.3); border: 1px solid rgba(46, 230, 166, 0.15); border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; position: relative; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.3);">
-          <div class="card-glow" style="position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, rgba(46, 230, 166, 0.15), transparent 50%); pointer-events: none; opacity: 0; transition: opacity 0.4s ease;"></div>
-          <div style="font-size: 2rem; color: var(--accent-color); margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between;">
-            <i class="fa-solid fa-magnifying-glass-chart" style="filter: drop-shadow(0 0 8px rgba(46,230,166,0.4));"></i>
-            <span style="font-size: 0.75rem; color: rgba(255,255,255,0.3); font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Search</span>
-          </div>
-          <div style="font-size: clamp(2.8rem, 5vw, 3.5rem); font-weight: 800; color: #fff; line-height: 1; margin-bottom: 0.5rem; font-family: var(--font-heading); display: flex; align-items: center;">
-            <span class="text-accent" style="letter-spacing: 1px;">SEO</span>
-          </div>
-          <h3 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.8rem; letter-spacing: -0.2px;">Website SEO & Rankings</h3>
-          <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">Comprehensive on-page, off-page, and answer engine optimization as a premier SEO strategist Kerala.</p>
-        </div>
-
-        <!-- Card 6 -->
-        <div class="results-card animate reveal-up stagger-2" style="background: rgba(11, 46, 42, 0.3); border: 1px solid rgba(46, 230, 166, 0.15); border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; position: relative; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.3);">
-          <div class="card-glow" style="position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, rgba(46, 230, 166, 0.15), transparent 50%); pointer-events: none; opacity: 0; transition: opacity 0.4s ease;"></div>
-          <div style="font-size: 2rem; color: var(--accent-color); margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between;">
-            <i class="fa-solid fa-arrows-spin" style="filter: drop-shadow(0 0 8px rgba(46,230,166,0.4));"></i>
-            <span style="font-size: 0.75rem; color: rgba(255,255,255,0.3); font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Operations</span>
-          </div>
-          <div style="font-size: clamp(2.8rem, 5vw, 3.5rem); font-weight: 800; color: #fff; line-height: 1; margin-bottom: 0.5rem; font-family: var(--font-heading); display: flex; align-items: center;">
-            <span style="color: #fff; letter-spacing: 1px;">24/7</span>
-          </div>
-          <h3 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.8rem; letter-spacing: -0.2px;">Monitoring & Optimization</h3>
-          <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">Uncompromising tracking, strategic analysis, and hourly optimization to protect and scale your marketing budget.</p>
-        </div>
-
-        <!-- Card 7 -->
-        <div class="results-card animate reveal-up" style="background: rgba(11, 46, 42, 0.3); border: 1px solid rgba(46, 230, 166, 0.15); border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; position: relative; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.3);">
-          <div class="card-glow" style="position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, rgba(46, 230, 166, 0.15), transparent 50%); pointer-events: none; opacity: 0; transition: opacity 0.4s ease;"></div>
-          <div style="font-size: 2rem; color: var(--accent-color); margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between;">
-            <i class="fa-solid fa-filter" style="filter: drop-shadow(0 0 8px rgba(46,230,166,0.4));"></i>
-            <span style="font-size: 0.75rem; color: rgba(255,255,255,0.3); font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Funnels</span>
-          </div>
-          <div style="font-size: clamp(2.8rem, 5vw, 3.5rem); font-weight: 800; color: #fff; line-height: 1; margin-bottom: 0.5rem; font-family: var(--font-heading); display: flex; align-items: center;">
-            <span class="counter" data-target="10">0</span><span class="text-accent">+</span>
-          </div>
-          <h3 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.8rem; letter-spacing: -0.2px;">Lead Generation Funnels Built</h3>
-          <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">Multi-step qualification flows engineered by a specialized lead generation specialist to filter and secure high-intent sales prospects.</p>
-        </div>
-
-        <!-- Card 8 -->
-        <div class="results-card animate reveal-up stagger-1" style="background: rgba(11, 46, 42, 0.3); border: 1px solid rgba(46, 230, 166, 0.15); border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; position: relative; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.3);">
-          <div class="card-glow" style="position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, rgba(46, 230, 166, 0.15), transparent 50%); pointer-events: none; opacity: 0; transition: opacity 0.4s ease;"></div>
-          <div style="font-size: 2rem; color: var(--accent-color); margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between;">
-            <i class="fa-solid fa-chart-pie" style="filter: drop-shadow(0 0 8px rgba(46,230,166,0.4));"></i>
-            <span style="font-size: 0.75rem; color: rgba(255,255,255,0.3); font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">ROAS</span>
-          </div>
-          <div style="font-size: clamp(2.8rem, 5vw, 3.5rem); font-weight: 800; color: #fff; line-height: 1; margin-bottom: 0.5rem; font-family: var(--font-heading); display: flex; align-items: center;">
-            <span class="counter" data-target="4">0</span><span class="text-accent">X+</span>
-          </div>
-          <h3 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.8rem; letter-spacing: -0.2px;">Average Return on Ad Spend</h3>
-          <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">Maximizing marketing investments while reducing Cost Per Acquisition (CPA) across local e-commerce and retail industries.</p>
-        </div>
-
-        <!-- Card 9 -->
-        <div class="results-card animate reveal-up stagger-2" style="background: rgba(11, 46, 42, 0.3); border: 1px solid rgba(46, 230, 166, 0.15); border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; position: relative; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.3);">
-          <div class="card-glow" style="position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, rgba(46, 230, 166, 0.15), transparent 50%); pointer-events: none; opacity: 0; transition: opacity 0.4s ease;"></div>
-          <div style="font-size: 2rem; color: var(--accent-color); margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between;">
-            <i class="fa-solid fa-gauge-high" style="filter: drop-shadow(0 0 8px rgba(46,230,166,0.4));"></i>
-            <span style="font-size: 0.75rem; color: rgba(255,255,255,0.3); font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Speed</span>
-          </div>
-          <div style="font-size: clamp(2.8rem, 5vw, 3.5rem); font-weight: 800; color: #fff; line-height: 1; margin-bottom: 0.5rem; font-family: var(--font-heading); display: flex; align-items: center;">
-            <span class="counter" data-target="90">0</span><span class="text-accent">+</span>
-          </div>
-          <h3 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.8rem; letter-spacing: -0.2px;">Mobile PageSpeed Benchmark</h3>
-          <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">Optimizing Core Web Vitals to eliminate render-blocking, drastically reducing mobile bounce rates and increasing conversions.</p>
-        </div>
-
-        <!-- Card 10 -->
-        <div class="results-card animate reveal-up" style="background: rgba(11, 46, 42, 0.3); border: 1px solid rgba(46, 230, 166, 0.15); border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; position: relative; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.3);">
-          <div class="card-glow" style="position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, rgba(46, 230, 166, 0.15), transparent 50%); pointer-events: none; opacity: 0; transition: opacity 0.4s ease;"></div>
-          <div style="font-size: 2rem; color: var(--accent-color); margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between;">
-            <i class="fa-solid fa-comments" style="filter: drop-shadow(0 0 8px rgba(46,230,166,0.4));"></i>
-            <span style="font-size: 0.75rem; color: rgba(255,255,255,0.3); font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Automation</span>
-          </div>
-          <div style="font-size: clamp(2.8rem, 5vw, 3.5rem); font-weight: 800; color: #fff; line-height: 1; margin-bottom: 0.5rem; font-family: var(--font-heading); display: flex; align-items: center;">
-            <span class="counter" data-target="8">0</span><span class="text-accent">+</span>
-          </div>
-          <h3 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.8rem; letter-spacing: -0.2px;">WhatsApp Automations Configured</h3>
-          <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">Connecting leads within 2 minutes of ad form submits to maximize sales team response and client retention rate.</p>
-        </div>
-
-      </div>
-
-      <!-- Trust statement line -->
-      <div class="text-center animate reveal-up" style="text-align: center; max-width: 900px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05);">
-        <p style="font-size: clamp(0.95rem, 1.5vw, 1.25rem); font-weight: 600; color: rgba(255,255,255,0.9); line-height: 1.6; margin: 0; font-family: var(--font-heading);">
-          “Focused on building scalable digital growth systems through strategy, creativity, and performance marketing.”
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <style>
-    .results-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(46, 230, 166, 0.45) !important;
-      box-shadow: 0 20px 45px rgba(46, 230, 166, 0.12) !important;
-    }
-    .results-card:hover .card-glow {
-      opacity: 1 !important;
-    }
-    .results-card i {
-      transition: transform 0.4s ease;
-    }
-    .results-card:hover i {
-      transform: scale(1.1) rotate(5deg);
-    }
-    @keyframes float-ambient {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
-    .results-card:nth-child(even) {
-      animation: float-ambient 6s ease-in-out infinite;
-    }
-    .results-card:nth-child(odd) {
-      animation: float-ambient 6s ease-in-out infinite 3s;
-    }
-  </style>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const counters = document.querySelectorAll('.counter');
-      const speed = 100;
-      
-      const startCounter = (counter) => {
-        const target = +counter.getAttribute('data-target');
-        let count = 0;
-        const increment = target / speed;
-        
-        const updateCount = () => {
-          count += increment;
-          if (count < target) {
-            counter.innerText = Math.ceil(count);
-            setTimeout(updateCount, 15);
-          } else {
-            counter.innerText = target;
-          }
-        };
-        updateCount();
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const counter = entry.target;
-            startCounter(counter);
-            observer.unobserve(counter);
-          }
-        });
-      }, { threshold: 0.1 });
-
-      counters.forEach(counter => {
-        observer.observe(counter);
-      });
-    });
-  </script>
-
-  <!-- Portfolio Grid Section -->
+  <!-- Selected Work Grid -->
   <section class="section">
     <div class="container">
-      <div class="section-title animate stagger-2" style="text-align: left; margin-bottom: 3rem;">
-        <h2 style="margin-bottom: 1rem;">Digital Marketing Strategist in Malappuram & Kerala – Portfolio</h2>
-        <p style="max-width: 800px; margin: 0;">Here are some of the digital marketing projects and campaigns I have worked on as a <strong><a href="../">Digital Marketing Strategist in Malappuram</a></strong>, focusing on <a href="../services/seo-optimization/">SEO</a>, <a href="../services/performance-marketing/">Google Ads</a>, and performance marketing strategies in Kerala.</p>
+      <div class="work-filters" role="group" aria-label="Filter projects by category">
+        <button type="button" class="work-filter-btn is-active" data-filter="all">All</button>
+        <button type="button" class="work-filter-btn" data-filter="seo">SEO</button>
+        <button type="button" class="work-filter-btn" data-filter="paid-ads">Paid Ads</button>
+        <button type="button" class="work-filter-btn" data-filter="social">Social Media</button>
+        <button type="button" class="work-filter-btn" data-filter="strategy">Strategy</button>
+        <button type="button" class="work-filter-btn" data-filter="web">Web</button>
+        <button type="button" class="work-filter-btn" data-filter="branding">Branding</button>
       </div>
 
-      <div class="portfolio-grid">
-        
-        <!-- Project 1 -->
-        <article class="portfolio-card animate reveal-left glass-card">
-          <div class="portfolio-card-inner" style="background: transparent;">
-            <img src="../assets/seo-campaign.webp" alt="SEO Campaign – Local Business" class="portfolio-img" loading="lazy">
-            <div class="portfolio-content">
-              <h3><a href="seo-campaign/" title="Local SEO Strategy Case Study">SEO Campaign – Local Business</a></h3>
-              <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">Achieved #1 rankings for highly competitive local search terms in Malappuram through technical SEO and content mapping.</p>
-              <a href="seo-campaign/" class="btn btn-primary" style="margin-top: auto; align-self: flex-start;"><i class="fas fa-arrow-right"></i> Explore Results</a>
-            </div>
+      <div class="work-grid">
+
+        <!-- FH General Equipment -->
+        <article class="work-card animate reveal-up" data-tags="seo paid-ads strategy">
+          <div class="work-card-media">
+            <img src="../assets/google-ads.webp" alt="FH General Equipment case study" loading="lazy" width="640" height="400">
           </div>
-        </article>
-        
-        <!-- Project 2 -->
-        <article class="portfolio-card animate reveal-right glass-card">
-          <div class="portfolio-card-inner" style="background: transparent;">
-            <img src="../assets/google-ads.webp" alt="Google Ads Lead Generation" class="portfolio-img" loading="lazy">
-            <div class="portfolio-content">
-              <h3><a href="google-ads/" title="High ROI Google Ads Case Study">Lead Gen – Google Ads</a></h3>
-              <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">Performance-driven <a href="../services/performance-marketing/" class="text-accent">PPC campaigns</a> that reduced CPA by 40% while exceeding monthly lead targets for a high-growth startup.</p>
-              <a href="google-ads/" class="btn btn-primary" style="margin-top: auto; align-self: flex-start;"><i class="fas fa-arrow-right" style="margin-right: 8px;"></i>Explore Results</a>
-            </div>
-          </div>
-        </article>
-        
-        <!-- Project 3 -->
-        <article class="portfolio-card animate reveal-left glass-card">
-          <div class="portfolio-card-inner" style="background: transparent;">
-            <img src="../assets/social-media.webp" alt="Social Media Growth Strategy" class="portfolio-img" loading="lazy">
-            <div class="portfolio-content">
-              <h3><a href="social-media/" title="Social Media Organic Growth Strategy">Social Media Growth Strategy</a></h3>
-              <p>Targeted community building and engagement strategies that increased follower count by 10k+ and boosted active community participation via <a href="../services/social-media-marketing/" class="text-accent">SMM strategies</a>.</p>
-              <a href="social-media/" class="btn btn-primary" style="margin-top: auto; align-self: flex-start;"><i class="fas fa-arrow-right" style="margin-right: 8px;"></i>Explore Results</a>
-            </div>
-          </div>
-        </article>
-        
-        <!-- Project 4 -->
-        <article class="portfolio-card animate reveal-right glass-card">
-          <div class="portfolio-card-inner" style="background: transparent;">
-            <img src="../assets/website-optimization.webp" alt="Website SEO Optimization" class="portfolio-img" loading="lazy">
-            <div class="portfolio-content">
-              <h3><a href="website-optimization/" title="Website Technical SEO Optimization Case Study">Website SEO & Speed Optimization</a></h3>
-              <p>Technical performance and user experience optimization to transform a passive website into an active, high-ranking lead generation machine using <a href="../services/conversion-optimization/" class="text-accent">UX-focused CRO</a>.</p>
-              <a href="website-optimization/" class="btn btn-primary" style="margin-top: auto; align-self: flex-start;"><i class="fas fa-arrow-right" style="margin-right: 8px;"></i>Explore Results</a>
-            </div>
-          </div>
-        </article>
-        
-        <!-- Project 5 -->
-        <article class="portfolio-card animate reveal-left glass-card">
-          <div class="portfolio-card-inner" style="background: transparent;">
-            <img src="../assets/ecommerce-seo.webp" alt="E-Commerce SEO Scaling" class="portfolio-img" loading="lazy">
-            <div class="portfolio-content">
-              <h3><a href="ecommerce-seo/" title="E-commerce SEO Scaling Case Study">E-Commerce SEO Scaling</a></h3>
-              <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">Scaled an online store's organic revenue by 250% in 12 months using advanced ecommerce SEO and conversion strategies.</p>
-              <a href="ecommerce-seo/" class="btn btn-primary" style="margin-top: auto; align-self: flex-start;"><i class="fas fa-arrow-right" style="margin-right: 8px;"></i>Explore Results</a>
-            </div>
-          </div>
-        </article>
-        
-        <!-- Project 6 -->
-        <article class="portfolio-card animate reveal-right glass-card">
-          <div class="portfolio-card-inner" style="background: transparent;">
-            <img src="../assets/local-aeo-maps.webp" alt="Local Brand Domination via AEO" class="portfolio-img" loading="lazy">
-            <div class="portfolio-content">
-              <h3><a href="local-aeo-maps/" title="Answer Engine Optimization for Local Brands">Local Brand Domination via AEO</a></h3>
-              <p>Leveraging Answer Engine Optimization (AEO) and Google Maps targeting to capture #1 rankings in 'near me' intent queries for a Malappuram wellness clinic.</p>
-              <a href="local-aeo-maps/" class="btn btn-primary" style="margin-top: auto; align-self: flex-start;"><i class="fas fa-arrow-right" style="margin-right: 8px;"></i>Explore Results</a>
-            </div>
+          <div class="work-card-body">
+            <span class="work-card-industry">B2B Equipment Supplier</span>
+            <h3><a href="fh-general-equipment/">FH General Equipment</a></h3>
+            <p class="work-card-services">SEO • Google Ads • Lead Generation</p>
+            <p class="work-card-challenge">Building a stronger search and acquisition system for a B2B supplier.</p>
+            <a href="fh-general-equipment/" class="btn btn-primary">View Case Study</a>
           </div>
         </article>
 
-        <!-- Project 7: SJS Business Solutions -->
-        <article class="portfolio-card animate reveal-left glass-card">
-          <div class="portfolio-card-inner" style="background: transparent;">
-            <img src="../assets/SJS Business Solutions7.webp" alt="SJS Business Solutions – Lead Generation" class="portfolio-img" loading="lazy">
-            <div class="portfolio-content">
-              <h3><a href="sjs-business-solutions/" title="B2B Lead Generation for SJS Business Solutions">SJS Business Solutions – Lead Generation System</a></h3>
-              <p>Full-funnel digital strategy for an operations consulting firm. Managed Meta Ads and WhatsApp lead systems to acquire recurring SME clients across Kerala.</p>
-              <a href="sjs-business-solutions/" class="btn btn-primary" style="margin-top: auto; align-self: flex-start;"><i class="fas fa-arrow-right" style="margin-right: 8px;"></i>Explore Results</a>
-            </div>
+        <!-- Kalpaka Electronics -->
+        <article class="work-card animate reveal-up" data-tags="social paid-ads">
+          <div class="work-card-media">
+            <img src="../assets/social-media.webp" alt="Kalpaka Electronics case study" loading="lazy" width="640" height="400">
+          </div>
+          <div class="work-card-body">
+            <span class="work-card-industry">Electronics Retail</span>
+            <h3><a href="kalpaka-electronics/">Kalpaka Electronics</a></h3>
+            <p class="work-card-services">Social Media • Meta Ads • Lead Generation</p>
+            <p class="work-card-challenge">Strengthening brand visibility and customer engagement across Kerala through social and Meta campaigns.</p>
+            <a href="kalpaka-electronics/" class="btn btn-primary">View Case Study</a>
           </div>
         </article>
 
-        <!-- Project 8: Blueweb2 Agency -->
-        <article class="portfolio-card animate reveal-right glass-card">
-          <div class="portfolio-card-inner" style="background: transparent;">
-            <img src="../assets/blueweb2-optimized.webp" alt="Blueweb2 Agency – Client Campaign Execution" class="portfolio-img" loading="lazy">
-            <div class="portfolio-content">
-              <h3><a href="blueweb2/" title="Agency Experience at Blueweb2">Blueweb2 Agency – Campaign Execution</a></h3>
-              <p>Managing multi-channel digital strategies for diverse clients. Executed SEO, Meta Ads, and Google Ads campaigns focused on lead generation and performance growth.</p>
-              <a href="blueweb2/" class="btn btn-primary" style="margin-top: auto; align-self: flex-start;"><i class="fas fa-arrow-right" style="margin-right: 8px;"></i>Explore Results</a>
-            </div>
+        <!-- Sigma Home Appliances -->
+        <article class="work-card animate reveal-up" data-tags="social strategy branding">
+          <div class="work-card-media">
+            <img src="../assets/social-media.webp" alt="Sigma Home Appliances case study" loading="lazy" width="640" height="400">
+          </div>
+          <div class="work-card-body">
+            <span class="work-card-industry">Home Appliances</span>
+            <h3><a href="sigma-electronics/">Sigma Home Appliances</a></h3>
+            <p class="work-card-services">Social Media • Creative Direction</p>
+            <p class="work-card-challenge">Improving online presence through clearer social strategy, product promotion, and seasonal creative direction.</p>
+            <a href="sigma-electronics/" class="btn btn-primary">View Case Study</a>
           </div>
         </article>
-        
+
+        <!-- Adverix Media -->
+        <article class="work-card animate reveal-up" data-tags="branding strategy seo web">
+          <div class="work-card-media">
+            <span class="cs-venture">Founder</span>
+            <img src="../assets/hero.webp" alt="Adverix Media founder venture" loading="lazy" width="640" height="400">
+          </div>
+          <div class="work-card-body">
+            <span class="work-card-industry">Founder Venture</span>
+            <h3><a href="adverix-media/">Adverix Media</a></h3>
+            <p class="work-card-services">Brand • SEO • Lead Generation • Video</p>
+            <p class="work-card-challenge">Building a performance-driven marketing and video practice with clear positioning and delivery systems.</p>
+            <a href="adverix-media/" class="btn btn-primary">View Case Study</a>
+          </div>
+        </article>
+
+        <!-- Blueweb2 Agency -->
+        <article class="work-card animate reveal-up" data-tags="seo paid-ads strategy">
+          <div class="work-card-media">
+            <img src="../assets/blueweb2-optimized.webp" alt="Blueweb2 Agency experience" loading="lazy" width="640" height="400">
+          </div>
+          <div class="work-card-body">
+            <span class="work-card-industry">Agency Experience</span>
+            <h3><a href="blueweb2/">Blueweb2 Agency</a></h3>
+            <p class="work-card-services">SEO • Meta Ads • Google Ads</p>
+            <p class="work-card-challenge">Executing multi-channel client campaigns focused on search, paid social, and lead generation.</p>
+            <a href="blueweb2/" class="btn btn-primary">View Case Study</a>
+          </div>
+        </article>
+
+        <!-- SJS Business Solutions -->
+        <article class="work-card animate reveal-up" data-tags="paid-ads social strategy">
+          <div class="work-card-media">
+            <img src="../assets/SJS Business Solutions7.webp" alt="SJS Business Solutions case study" loading="lazy" width="640" height="400">
+          </div>
+          <div class="work-card-body">
+            <span class="work-card-industry">B2B Consulting</span>
+            <h3><a href="sjs-business-solutions/">SJS Business Solutions</a></h3>
+            <p class="work-card-services">Meta Ads • Lead Generation</p>
+            <p class="work-card-challenge">Building a Meta Ads and lead-capture system for an operations consulting firm serving SMEs.</p>
+            <a href="sjs-business-solutions/" class="btn btn-primary">View Case Study</a>
+          </div>
+        </article>
+
+        <!-- SEO Campaign -->
+        <article class="work-card animate reveal-up" data-tags="seo strategy">
+          <div class="work-card-media">
+            <img src="../assets/seo-campaign.webp" alt="Local SEO campaign case study" loading="lazy" width="640" height="400">
+          </div>
+          <div class="work-card-body">
+            <span class="work-card-industry">Local Business</span>
+            <h3><a href="seo-campaign/">SEO Campaign</a></h3>
+            <p class="work-card-services">Technical SEO • Content Mapping • Local Search</p>
+            <p class="work-card-challenge">Improving local search visibility through technical SEO, content structure, and keyword mapping.</p>
+            <a href="seo-campaign/" class="btn btn-primary">View Case Study</a>
+          </div>
+        </article>
+
+        <!-- Google Ads -->
+        <article class="work-card animate reveal-up" data-tags="paid-ads strategy">
+          <div class="work-card-media">
+            <img src="../assets/google-ads.webp" alt="Google Ads lead generation case study" loading="lazy" width="640" height="400">
+          </div>
+          <div class="work-card-body">
+            <span class="work-card-industry">Lead Generation</span>
+            <h3><a href="google-ads/">Google Ads</a></h3>
+            <p class="work-card-services">Search Ads • Campaign Structure • Conversion Tracking</p>
+            <p class="work-card-challenge">Structuring PPC campaigns for clearer targeting, tighter spend control, and more reliable lead flow.</p>
+            <a href="google-ads/" class="btn btn-primary">View Case Study</a>
+          </div>
+        </article>
+
+        <!-- Social Media -->
+        <article class="work-card animate reveal-up" data-tags="social strategy">
+          <div class="work-card-media">
+            <img src="../assets/social-media.webp" alt="Social media growth strategy case study" loading="lazy" width="640" height="400">
+          </div>
+          <div class="work-card-body">
+            <span class="work-card-industry">Community Growth</span>
+            <h3><a href="social-media/">Social Media Growth</a></h3>
+            <p class="work-card-services">Content Strategy • Engagement • Community Building</p>
+            <p class="work-card-challenge">Building a more consistent content and engagement system to grow an active audience.</p>
+            <a href="social-media/" class="btn btn-primary">View Case Study</a>
+          </div>
+        </article>
+
+        <!-- Website Optimization -->
+        <article class="work-card animate reveal-up" data-tags="seo web">
+          <div class="work-card-media">
+            <img src="../assets/website-optimization.webp" alt="Website SEO and speed optimization case study" loading="lazy" width="640" height="400">
+          </div>
+          <div class="work-card-body">
+            <span class="work-card-industry">Technical Performance</span>
+            <h3><a href="website-optimization/">Personal Website SEO &amp; Speed</a></h3>
+            <p class="work-card-services">Technical SEO • Core Web Vitals • UX</p>
+            <p class="work-card-challenge">Improving site performance and on-page SEO so the website supports search and conversion goals.</p>
+            <a href="website-optimization/" class="btn btn-primary">View Case Study</a>
+          </div>
+        </article>
+
+        <!-- Ecommerce SEO -->
+        <article class="work-card animate reveal-up" data-tags="seo strategy">
+          <div class="work-card-media">
+            <img src="../assets/ecommerce-seo.webp" alt="Ecommerce SEO case study" loading="lazy" width="640" height="400">
+          </div>
+          <div class="work-card-body">
+            <span class="work-card-industry">Ecommerce</span>
+            <h3><a href="ecommerce-seo/">Ecommerce SEO</a></h3>
+            <p class="work-card-services">Category SEO • Product Pages • Organic Growth</p>
+            <p class="work-card-challenge">Structuring category and product SEO so organic search can support long-term store growth.</p>
+            <a href="ecommerce-seo/" class="btn btn-primary">View Case Study</a>
+          </div>
+        </article>
+
+        <!-- Local AEO / Maps -->
+        <article class="work-card animate reveal-up" data-tags="seo strategy">
+          <div class="work-card-media">
+            <img src="../assets/local-aeo-maps.webp" alt="Local AEO and Google Maps case study" loading="lazy" width="640" height="400">
+          </div>
+          <div class="work-card-body">
+            <span class="work-card-industry">Local Services</span>
+            <h3><a href="local-aeo-maps/">Local AEO &amp; Maps</a></h3>
+            <p class="work-card-services">AEO • Google Business Profile • Local Search</p>
+            <p class="work-card-challenge">Strengthening local discoverability through answer-engine-ready content and Maps presence.</p>
+            <a href="local-aeo-maps/" class="btn btn-primary">View Case Study</a>
+          </div>
+        </article>
+
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="section" style="background-color: #0d121c; text-align: center;">
+  <section class="section" style="background-color: #0a0a0a; text-align: center; border-top: 1px solid rgba(255,255,255,0.06);">
     <div class="container animate stagger-1">
-      <h2 style="margin-bottom: 2rem;">Want to see similar results for your business?</h2>
-      <a href="../contact/" class="btn btn-primary btn-pulse"><i class="fas fa-phone" style="margin-right: 8px;"></i>Let's Talk Numbers</a>
+      <h2 style="margin-bottom: 1rem;">Have a project in mind?</h2>
+      <p style="max-width: 520px; margin: 0 auto 2rem; color: var(--text-secondary);">Discuss objectives, channels, and a measurement plan with Muhammed Anshid Chelekodan.</p>
+      <a href="../contact/" class="btn btn-primary btn-pulse"><i class="fas fa-envelope" style="margin-right: 8px;"></i>Start a Conversation</a>
     </div>
   </section>
 
@@ -617,7 +366,7 @@
       <div class="footer-grid">
         <div class="footer-col">
           <a href="../" class="logo" style="margin-bottom: 2rem; display: block; font-size: 1.8rem; font-weight: 800;">Anshid Ck<span class="text-accent">.</span></a>
-          <p style="margin-bottom: 2.5rem; max-width: 350px;">Leading Digital Marketing Strategist in Malappuram & Kerala. Helping brands dominate the digital landscape through ROI-driven SEO and Performance Marketing.</p>
+          <p style="margin-bottom: 2.5rem; max-width: 350px;">Digital Marketing Strategist in Malappuram &amp; Kerala — strategy, performance marketing, SEO, and measurable growth systems.</p>
           <div class="footer-social-wrapper">
             <a href="https://www.instagram.com/_anshee___" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             <a href="https://www.linkedin.com/in/mohammad-anshid-ck-9123462aa" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
@@ -626,19 +375,19 @@
             <a href="https://wa.me/919778179727" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
           </div>
         </div>
-        
+
         <div class="footer-col">
           <h4>Explore</h4>
           <ul class="footer-links">
             <li><a href="../"><i class="fas fa-chevron-right" style="font-size: 0.7rem; color: var(--accent-color);"></i> Home</a></li>
-            <li><a href="../about/"><i class="fas fa-chevron-right" style="font-size: 0.7rem; color: var(--accent-color);"></i> About Mohammad Anshid Ck</a></li>
+            <li><a href="../about/"><i class="fas fa-chevron-right" style="font-size: 0.7rem; color: var(--accent-color);"></i> About Muhammed Anshid Chelekodan</a></li>
             <li><a href="../services/"><i class="fas fa-chevron-right" style="font-size: 0.7rem; color: var(--accent-color);"></i> My Services</a></li>
-            <li><a href="./"><i class="fas fa-chevron-right" style="font-size: 0.7rem; color: var(--accent-color);"></i> Recent Projects</a></li>
+            <li><a href="./"><i class="fas fa-chevron-right" style="font-size: 0.7rem; color: var(--accent-color);"></i> Selected Work</a></li>
             <li><a href="../blog/"><i class="fas fa-chevron-right" style="font-size: 0.7rem; color: var(--accent-color);"></i> Marketing Blog</a></li>
             <li><a href="../contact/"><i class="fas fa-chevron-right" style="font-size: 0.7rem; color: var(--accent-color);"></i> Get in Touch</a></li>
           </ul>
         </div>
-        
+
         <div class="footer-col">
           <h4>Services</h4>
           <ul class="footer-links">
@@ -651,7 +400,7 @@
             <li><a href="/services/lead-generation/"><i class="fas fa-chevron-right" style="font-size: 0.7rem; color: var(--accent-color);"></i> Lead Generation</a></li>
           </ul>
         </div>
-        
+
         <div class="footer-col">
           <h4>Contact Info</h4>
           <ul class="footer-links">
@@ -663,19 +412,37 @@
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; <time datetime="2026">2026</time> Mohammad Anshid Ck. All rights reserved. | <a href="../sitemap.xml" style="color: inherit; text-decoration: underline;">Sitemap</a></p>
+        <p>&copy; <time datetime="2026">2026</time> Muhammed Anshid Chelekodan. All rights reserved. | <a href="../sitemap.xml" style="color: inherit; text-decoration: underline;">Sitemap</a></p>
       </div>
     </div>
   </footer>
-</main>
+  </main>
 
   <a href="https://wa.me/919778179727" class="float-wa" target="_blank" aria-label="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
   <script src="../main.js?v=20260327-4" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('.work-filter-btn');
+      var cards = document.querySelectorAll('.work-card');
+
+      buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          buttons.forEach(function (b) { b.classList.remove('is-active'); });
+          btn.classList.add('is-active');
+
+          var filter = btn.getAttribute('data-filter');
+
+          cards.forEach(function (card) {
+            if (filter === 'all') {
+              card.classList.remove('is-hidden');
+              return;
+            }
+            var tags = (card.getAttribute('data-tags') || '').split(/\s+/);
+            card.classList.toggle('is-hidden', tags.indexOf(filter) === -1);
+          });
+        });
+      });
+    });
+  </script>
 </body>
 </html>
-
-
-
-
-
-

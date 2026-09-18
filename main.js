@@ -41,6 +41,12 @@ navItems.forEach(item => item.addEventListener('click', () => toggleMenu(false))
 
 
 /* ─── Scroll Animations (IntersectionObserver) ───────────── */
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (prefersReducedMotion) {
+  document.querySelectorAll('.animate').forEach(el => el.classList.add('reveal'));
+}
+
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
