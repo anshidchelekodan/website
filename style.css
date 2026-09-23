@@ -12,8 +12,8 @@
   --text-primary: #F5F5F5;
   --text-secondary: #A8A29E;
   --border-subtle: rgba(255, 255, 255, 0.08);
-  --font-main: 'DM Sans', 'Montserrat', sans-serif;
-  --font-heading: 'Syne', 'Nevis', 'Montserrat', sans-serif;
+  --font-main: 'Montserrat', sans-serif;
+  --font-heading: 'Nevis', 'Montserrat', sans-serif;
   --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.6);
   --shadow-hover: 0 15px 40px rgba(98, 255, 176, 0.12);
   --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1424,7 +1424,7 @@ footer {
   background-color: #051512; /* Solid deep dark green background */
   padding: 5rem 0 2rem 0;
   border-top: 1px solid rgba(98, 255, 176, 0.08);
-  font-family: 'Outfit', sans-serif; /* Modern font */
+  font-family: 'Montserrat', sans-serif; /* Modern font */
   position: relative;
   overflow: hidden;
 }
