@@ -23,21 +23,25 @@ const toggleMenu = (show) => {
     navLinks.classList.add('active');
     navOverlay.classList.add('active');
     document.body.classList.add('menu-open');
-    if (mainContent) mainContent.style.filter = 'blur(10px)';
   } else {
     navLinks.classList.remove('active');
     navOverlay.classList.remove('active');
     document.body.classList.remove('menu-open');
-    if (mainContent) mainContent.style.filter = '';
   }
 };
 
 if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', () => toggleMenu(true));
 if (closeMenuBtn)  closeMenuBtn.addEventListener('click', (e) => { e.stopPropagation(); toggleMenu(false); });
-navOverlay.addEventListener('click', () => toggleMenu(false));
+if (navOverlay)    navOverlay.addEventListener('click', () => toggleMenu(false));
 
 const navItems = document.querySelectorAll('.nav-links a');
 navItems.forEach(item => item.addEventListener('click', () => toggleMenu(false)));
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && navLinks && navLinks.classList.contains('active')) {
+    toggleMenu(false);
+  }
+});
 
 
 /* ─── Scroll Animations (IntersectionObserver) ───────────── */
