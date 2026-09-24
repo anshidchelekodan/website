@@ -925,34 +925,38 @@ textarea.form-control {
 
 @media (max-width: 768px) {
   .navbar {
-    padding: clamp(0.6rem, 1vw, 1rem) 0;
+    padding: 0.8rem 0;
+    position: relative;
   }
 
   .nav-links {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.92);
-    width: 90%;
-    max-width: 360px;
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 15px;
+    left: 15px;
+    width: auto;
+    max-width: 420px;
+    margin: 0 auto;
     height: auto;
-    max-height: 85vh;
-    background: rgba(8, 14, 13, 0.96);
+    max-height: calc(100vh - 90px);
+    max-height: calc(100dvh - 90px);
+    background: rgba(8, 14, 13, 0.97);
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
-    border: 1px solid rgba(98, 255, 176, 0.25);
-    border-radius: 24px;
+    border: 1px solid rgba(98, 255, 176, 0.22);
+    border-radius: 20px;
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
     z-index: 1001;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85),
-                0 0 35px rgba(98, 255, 176, 0.1);
-    padding: 1.5rem 1.5rem 2rem 1.5rem;
-    gap: 8px;
+    transform: translateY(-10px) scale(0.98);
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85),
+                0 0 30px rgba(98, 255, 176, 0.08);
+    padding: 1.2rem 1.2rem 1.8rem 1.2rem;
+    gap: 6px;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
@@ -960,7 +964,7 @@ textarea.form-control {
   .nav-links.active {
     opacity: 1;
     visibility: visible;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translateY(0) scale(1);
   }
 
   .mobile-nav-header {
@@ -969,12 +973,12 @@ textarea.form-control {
     justify-content: space-between;
     width: 100%;
     padding-bottom: 0.8rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .mobile-nav-header .logo {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     font-weight: 800;
     color: #fff;
     text-decoration: none;
@@ -984,9 +988,9 @@ textarea.form-control {
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.12);
     color: #fff;
-    font-size: 1.5rem;
-    width: 38px;
-    height: 38px;
+    font-size: 1.3rem;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1004,30 +1008,47 @@ textarea.form-control {
   }
 
   .nav-links a {
-    font-size: 1.1rem;
-    font-weight: 700;
+    font-size: 1.05rem;
+    font-weight: 600;
     width: 100%;
     text-align: left;
-    padding: 12px 16px;
+    padding: 11px 16px;
     border-radius: 10px;
     transition: all 0.25s ease;
     display: block;
+    color: var(--text-primary);
+    border-left: 3px solid transparent;
   }
 
   .nav-links a:hover,
   .nav-links a.active {
     background: rgba(98, 255, 176, 0.09);
     color: var(--accent-color);
+    border-left-color: var(--accent-color);
   }
-  
+
   .mobile-menu-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1002;
+    z-index: 1003;
     position: relative;
     width: 44px;
     height: 44px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .mobile-menu-btn:hover,
+  .mobile-menu-btn.active {
+    background: rgba(98, 255, 176, 0.12);
+    color: var(--accent-color);
+    border-color: var(--accent-color);
   }
 
   .section {

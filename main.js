@@ -18,19 +18,30 @@ const closeMenuBtn = document.querySelector('.close-menu-btn');
 const mainContent  = document.querySelector('main');
 
 const toggleMenu = (show) => {
+  if (!navLinks) return;
   const isOpening = show !== undefined ? show : !navLinks.classList.contains('active');
   if (isOpening) {
     navLinks.classList.add('active');
-    navOverlay.classList.add('active');
+    if (navOverlay) navOverlay.classList.add('active');
     document.body.classList.add('menu-open');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.classList.add('active');
+      const icon = mobileMenuBtn.querySelector('i');
+      if (icon) icon.className = 'fas fa-xmark';
+    }
   } else {
     navLinks.classList.remove('active');
-    navOverlay.classList.remove('active');
+    if (navOverlay) navOverlay.classList.remove('active');
     document.body.classList.remove('menu-open');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.classList.remove('active');
+      const icon = mobileMenuBtn.querySelector('i');
+      if (icon) icon.className = 'fas fa-bars';
+    }
   }
 };
 
-if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', () => toggleMenu(true));
+if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', (e) => { e.stopPropagation(); toggleMenu(); });
 if (closeMenuBtn)  closeMenuBtn.addEventListener('click', (e) => { e.stopPropagation(); toggleMenu(false); });
 if (navOverlay)    navOverlay.addEventListener('click', () => toggleMenu(false));
 
