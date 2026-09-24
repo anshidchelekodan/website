@@ -3031,3 +3031,138 @@ img { height: auto; object-fit: cover; }
   text-transform: uppercase;
   margin-bottom: 1.25rem;
 }
+
+/* ─── Premium Brands Marquee Section ───────────────────────── */
+.brands-marquee-section {
+  padding: clamp(3.5rem, 6vw, 5rem) 0;
+  background: linear-gradient(180deg, rgba(5, 5, 5, 0.6) 0%, rgba(8, 14, 13, 0.95) 50%, rgba(5, 5, 5, 0.6) 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.brands-marquee-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 2.5rem;
+  mask-image: linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
+}
+
+.brands-marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  width: max-content;
+  animation: marqueeScroll 35s linear infinite;
+  will-change: transform;
+}
+
+.brands-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.brand-logo-card {
+  flex: 0 0 auto;
+  height: 82px;
+  min-width: 180px;
+  padding: 1rem 2rem;
+  background: rgba(15, 23, 20, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: pointer;
+  user-select: none;
+}
+
+.brand-logo-card img {
+  max-height: 44px;
+  max-width: 160px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: brightness(0.92) contrast(1.05);
+  transition: all 0.35s ease;
+}
+
+.brand-logo-card:hover {
+  background: rgba(18, 32, 28, 0.8);
+  border-color: rgba(98, 255, 176, 0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6),
+              0 0 25px rgba(98, 255, 176, 0.1);
+}
+
+.brand-logo-card:hover img {
+  filter: brightness(1.1) contrast(1.1);
+  transform: scale(1.04);
+}
+
+.brand-text-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.brand-text-card .brand-name {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+.brand-text-card .brand-sub {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@media (max-width: 768px) {
+  .brands-marquee-track {
+    gap: 1.2rem;
+    animation-duration: 25s;
+  }
+
+  .brand-logo-card {
+    height: 68px;
+    min-width: 150px;
+    padding: 0.8rem 1.4rem;
+    border-radius: 14px;
+  }
+
+  .brand-logo-card img {
+    max-height: 36px;
+    max-width: 130px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brands-marquee-track {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
+  .brands-marquee-wrapper {
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+}
