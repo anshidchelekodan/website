@@ -3033,6 +3033,18 @@ img { height: auto; object-fit: cover; }
 }
 
 /* ─── Premium Brands Marquee Section ───────────────────────── */
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes spinBorder {
+  to {
+    --border-angle: 360deg;
+  }
+}
+
 .brands-marquee-section {
   padding: clamp(3.5rem, 6vw, 5rem) 0;
   background: linear-gradient(180deg, rgba(5, 5, 5, 0.85) 0%, rgba(8, 15, 12, 0.96) 50%, rgba(5, 5, 5, 0.85) 100%);
@@ -3068,23 +3080,78 @@ img { height: auto; object-fit: cover; }
 }
 
 .brand-logo-card {
+  position: relative !important;
   flex: 0 0 200px !important;
   width: 200px !important;
   height: 105px !important;
   box-sizing: border-box !important;
   padding: 12px 20px !important;
-  background: rgba(15, 23, 20, 0.55);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 14px;
+  background: rgba(15, 23, 20, 0.65) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 14px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
   cursor: pointer;
   user-select: none;
   overflow: hidden !important;
+}
+
+/* Interactive Metallic Shine Sweep Effect */
+.brand-logo-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(98, 255, 176, 0.22),
+    transparent
+  );
+  transform: skewX(-25deg);
+  transition: none;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.brand-logo-card:hover::before {
+  left: 200%;
+  transition: all 0.75s ease-in-out;
+}
+
+/* Animated Rotating Conic Border Beam */
+.brand-logo-card::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--border-angle),
+    transparent 50%,
+    rgba(98, 255, 176, 0.3) 75%,
+    #62ffb0 95%,
+    transparent 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.brand-logo-card:hover::after {
+  opacity: 1;
+  animation: spinBorder 2.5s linear infinite;
 }
 
 .brand-logo-card img {
@@ -3095,20 +3162,22 @@ img { height: auto; object-fit: cover; }
   height: auto !important;
   object-fit: contain !important;
   filter: brightness(0.92) contrast(1.05);
-  transition: all 0.35s ease;
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.4s ease !important;
+  position: relative;
+  z-index: 3;
 }
 
 .brand-logo-card:hover {
-  background: rgba(20, 34, 28, 0.85);
-  border-color: rgba(98, 255, 176, 0.38);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55),
-              0 0 22px rgba(98, 255, 176, 0.12);
+  background: rgba(22, 38, 31, 0.9) !important;
+  border-color: rgba(98, 255, 176, 0.4) !important;
+  transform: translateY(-5px) scale(1.03) !important;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.7),
+              0 0 25px rgba(98, 255, 176, 0.2) !important;
 }
 
 .brand-logo-card:hover img {
-  filter: brightness(1.12) contrast(1.1);
-  transform: scale(1.05);
+  filter: brightness(1.2) contrast(1.15) drop-shadow(0 0 8px rgba(98, 255, 176, 0.3)) !important;
+  transform: scale(1.06) !important;
 }
 
 @keyframes marqueeContinuous {
@@ -3141,7 +3210,7 @@ img { height: auto; object-fit: cover; }
     width: 148px !important;
     height: 88px !important;
     padding: 10px 14px !important;
-    border-radius: 12px;
+    border-radius: 12px !important;
   }
 
   .brand-logo-card img {
@@ -3173,4 +3242,29 @@ img { height: auto; object-fit: cover; }
     -webkit-mask-image: none !important;
     overflow: visible !important;
   }
+}
+
+/* Hide header-socials to prevent broken X icon box next to logo */
+.header-socials { display: none !important; }
+
+/* ─── Hide Mobile-Only Header & Close 'X' Button on Desktop ─── */
+@media (min-width: 769px) {
+  .mobile-nav-header,
+  .close-menu-btn,
+  .mobile-menu-btn {
+    display: none !important;
+  }
+}
+.close-menu-btn {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.8rem;
+  cursor: pointer;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
 }
