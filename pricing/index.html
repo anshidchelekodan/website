@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- Google Tag Manager -->
@@ -6,7 +6,7 @@
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-NXNM6B7R');</script>
+  })(window,document,'script','dataLayer','GTM-MJ4J525H');</script>
   <!-- End Google Tag Manager -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -449,7 +449,45 @@
         <button class="tab-btn" onclick="openTab('video')"><i class="fas fa-video"></i> Video</button>
         <button class="tab-btn" onclick="openTab('web')"><i class="fas fa-laptop-code"></i> Web Design</button>
         <button class="tab-btn" onclick="openTab('growth')"><i class="fas fa-rocket"></i> Packages</button>
-        <button class="tab-btn quote-btn-big" onclick="openTab('quote')"><i class="fas fa-calculator"></i> Quote Builder</button>
+        <button class="tab-btn quote-assistant-card quote-btn-big" onclick="openTab('quote')" aria-label="Build a personalized marketing quote" style="padding: 0.6rem 1.6rem !important; border-radius: 50px !important;">
+          <div class="assistant-character-wrapper" style="margin-right: 2px;">
+            <svg class="owlbot-avatar" viewBox="0 0 72 72" width="38" height="38" aria-hidden="true">
+              <defs>
+                <linearGradient id="owlbotBodyGradTab" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0f2923" />
+                  <stop offset="100%" stop-color="#050b0a" />
+                </linearGradient>
+                <linearGradient id="owlbotVisorGradTab" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#091a16" />
+                  <stop offset="100%" stop-color="#040807" />
+                </linearGradient>
+                <filter id="glowGreenTab" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="2" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+              </defs>
+              <path d="M 22 20 L 16 8 L 26 16 Z" fill="url(#owlbotBodyGradTab)" stroke="#2ee6a6" stroke-width="1.5" stroke-linejoin="round"/>
+              <circle cx="16" cy="8" r="2.5" fill="#2ee6a6" filter="url(#glowGreenTab)"/>
+              <path d="M 50 20 L 56 8 L 46 16 Z" fill="url(#owlbotBodyGradTab)" stroke="#2ee6a6" stroke-width="1.5" stroke-linejoin="round"/>
+              <circle cx="56" cy="8" r="2.5" fill="#2ee6a6" filter="url(#glowGreenTab)"/>
+              <rect x="14" y="16" width="44" height="46" rx="22" fill="url(#owlbotBodyGradTab)" stroke="#2ee6a6" stroke-width="2"/>
+              <rect x="19" y="22" width="34" height="24" rx="12" fill="url(#owlbotVisorGradTab)" stroke="rgba(46, 230, 166, 0.4)" stroke-width="1.5"/>
+              <g class="owlbot-eyes">
+                <ellipse cx="29" cy="33" rx="4.5" ry="5.5" fill="#2ee6a6" filter="url(#glowGreenTab)"/>
+                <circle cx="30.5" cy="31.5" r="1.5" fill="#ffffff"/>
+                <ellipse cx="43" cy="33" rx="4.5" ry="5.5" fill="#2ee6a6" filter="url(#glowGreenTab)"/>
+                <circle cx="44.5" cy="31.5" r="1.5" fill="#ffffff"/>
+              </g>
+              <polygon points="36,37 32,42 40,42" fill="#2ee6a6"/>
+              <path d="M 12 30 C 8 36, 8 46, 14 52" fill="none" stroke="#2ee6a6" stroke-width="2" stroke-linecap="round"/>
+              <path d="M 60 30 C 64 36, 64 46, 58 52" fill="none" stroke="#2ee6a6" stroke-width="2" stroke-linecap="round"/>
+              <circle class="owlbot-core" cx="36" cy="53" r="3" fill="#2ee6a6" filter="url(#glowGreenTab)"/>
+            </svg>
+          </div>
+          <div class="assistant-cta-text" style="display: inline-flex; flex-direction: column; text-align: left;">
+            <span class="assistant-primary-title" style="font-size: 0.95rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">Build Your Quote <i class="fas fa-arrow-right assistant-arrow" style="font-size: 0.85rem;"></i></span>
+          </div>
+        </button>
       </div>
     </div>
 
@@ -535,10 +573,10 @@
                   <div class="price">₹299<span class="period">/day</span></div>
                 </div>
                 <ul class="pricing-features">
-                  <li>Campaign setup</li>
-                  <li>Audience targeting</li>
-                  <li>Ad monitoring</li>
-                  <li>Basic reporting</li>
+                  <li>1 Active Campaign Setup</li>
+                  <li>Core Audience Targeting</li>
+                  <li>Standard Ad Monitoring</li>
+                  <li>Basic Weekly Summary</li>
                 </ul>
                 <a href="../calendar/" class="btn btn-outline btn-pricing">Book a Strategy Call</a>
               </div>
@@ -552,10 +590,11 @@
                   <div class="price">₹499<span class="period">/day</span></div>
                 </div>
                 <ul class="pricing-features">
-                  <li>Campaign setup</li>
-                  <li>Audience targeting</li>
-                  <li>Ad monitoring</li>
-                  <li>Basic reporting</li>
+                  <li>Up to 3 Active Campaigns</li>
+                  <li>Advanced Audience & Retargeting</li>
+                  <li>Daily Optimization & Budget Tuning</li>
+                  <li>Creative A/B Testing & Copywriting</li>
+                  <li>Detailed Analytics Report</li>
                 </ul>
                 <a href="../contact/" class="btn btn-primary btn-pricing">Get Started</a>
               </div>
@@ -568,10 +607,11 @@
                   <div class="price">₹749<span class="period">/day</span></div>
                 </div>
                 <ul class="pricing-features">
-                  <li>Campaign setup</li>
-                  <li>Audience targeting</li>
-                  <li>Ad monitoring</li>
-                  <li>Basic reporting</li>
+                  <li>Unlimited Active Campaigns</li>
+                  <li>Full-Funnel Retargeting Strategy</li>
+                  <li>Custom Ad Creatives & Hooks</li>
+                  <li>Meta Pixel & CAPI Setup</li>
+                  <li>Real-Time Monitoring & Priority Support</li>
                 </ul>
                 <a href="../contact/" class="btn btn-outline btn-pricing">Get Started</a>
               </div>
@@ -590,11 +630,10 @@
                   <div class="price">₹1,499<span class="period">/week</span></div>
                 </div>
                 <ul class="pricing-features">
-                  <li>Meta Ads management</li>
-                  <li>Creative guidance</li>
-                  <li>Audience optimization</li>
-                  <li>Weekly performance report</li>
-                  <li>Lead generation focus</li>
+                  <li>1 Campaign Setup & Management</li>
+                  <li>Target Audience Definition</li>
+                  <li>Standard Weekly Ad Monitoring</li>
+                  <li>Weekly Performance Summary</li>
                 </ul>
                 <a href="../calendar/" class="btn btn-outline btn-pricing">Book a Strategy Call</a>
               </div>
@@ -608,11 +647,11 @@
                   <div class="price">₹2,499<span class="period">/week</span></div>
                 </div>
                 <ul class="pricing-features">
-                  <li>Meta Ads management</li>
-                  <li>Creative guidance</li>
-                  <li>Audience optimization</li>
-                  <li>Weekly performance report</li>
-                  <li>Lead generation focus</li>
+                  <li>Up to 3 Multi-Campaign Setups</li>
+                  <li>Lookalike & Retargeting Audiences</li>
+                  <li>Creative & Copywriting Guidance</li>
+                  <li>Daily Budget & Bid Optimization</li>
+                  <li>Comprehensive Weekly Analytics</li>
                 </ul>
                 <a href="../contact/" class="btn btn-primary btn-pricing">Get Started</a>
               </div>
@@ -625,11 +664,11 @@
                   <div class="price">₹3,999<span class="period">/week</span></div>
                 </div>
                 <ul class="pricing-features">
-                  <li>Meta Ads management</li>
-                  <li>Creative guidance</li>
-                  <li>Audience optimization</li>
-                  <li>Weekly performance report</li>
-                  <li>Lead generation focus</li>
+                  <li>Unlimited Campaigns (Lead Gen & Sales)</li>
+                  <li>Advanced Funnel Retargeting Strategy</li>
+                  <li>Custom Ad Creatives & Video Hook Support</li>
+                  <li>Meta Pixel & Conversion API Setup</li>
+                  <li>Dedicated Account Manager Support</li>
                 </ul>
                 <a href="../contact/" class="btn btn-outline btn-pricing">Get Started</a>
               </div>
@@ -648,12 +687,11 @@
                   <div class="price">₹4,999<span class="period">/mo</span></div>
                 </div>
                 <ul class="pricing-features">
-                  <li>Full Meta Ads management</li>
-                  <li>Campaign optimization</li>
-                  <li>A/B testing</li>
-                  <li>Conversion tracking</li>
-                  <li>Monthly analytics report</li>
-                  <li>Dedicated support</li>
+                  <li>2 Active Meta Ad Campaigns</li>
+                  <li>Audience Research & Setup</li>
+                  <li>Bi-Weekly Optimization</li>
+                  <li>Monthly Performance Report</li>
+                  <li>Email Support</li>
                 </ul>
                 <a href="../calendar/" class="btn btn-outline btn-pricing">Book a Strategy Call</a>
               </div>
@@ -667,12 +705,12 @@
                   <div class="price">₹9,999<span class="period">/mo</span></div>
                 </div>
                 <ul class="pricing-features">
-                  <li>Full Meta Ads management</li>
-                  <li>Campaign optimization</li>
-                  <li>A/B testing</li>
-                  <li>Conversion tracking</li>
-                  <li>Monthly analytics report</li>
-                  <li>Dedicated support</li>
+                  <li>Up to 5 Active Meta Campaigns</li>
+                  <li>Advanced Retargeting & Custom Audiences</li>
+                  <li>Creative A/B Testing & Ad Copy Tuning</li>
+                  <li>Conversion Tracking & Pixel Setup</li>
+                  <li>Bi-Weekly Strategy Calls & Reporting</li>
+                  <li>Priority Chat & Email Support</li>
                 </ul>
                 <a href="../contact/" class="btn btn-primary btn-pricing">Get Started</a>
               </div>
@@ -685,12 +723,12 @@
                   <div class="price">₹14,999<span class="period">/mo</span></div>
                 </div>
                 <ul class="pricing-features">
-                  <li>Full Meta Ads management</li>
-                  <li>Campaign optimization</li>
-                  <li>A/B testing</li>
-                  <li>Conversion tracking</li>
-                  <li>Monthly analytics report</li>
-                  <li>Dedicated support</li>
+                  <li>Unlimited Active Campaigns & Scaling</li>
+                  <li>Full-Funnel & Dynamic Retargeting</li>
+                  <li>Custom Ad Graphic Design & Video Scripts</li>
+                  <li>Meta Pixel & CAPI Advanced Integration</li>
+                  <li>Competitor Benchmarking & Strategy</li>
+                  <li>1-on-1 Strategy Calls & 24/7 Dedicated Support</li>
                 </ul>
                 <a href="../contact/" class="btn btn-outline btn-pricing">Get Started</a>
               </div>
