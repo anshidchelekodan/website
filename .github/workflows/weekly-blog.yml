@@ -1,0 +1,51 @@
+name: Weekly Editorial Blog Automation
+
+on:
+  schedule:
+    # Runs every Monday at 06:00 AM UTC (11:30 AM IST)
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  generate-blog-draft:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Generate Weekly Article Draft
+        run: node scripts/generate-weekly-blog.js
+
+      - name: Create Pull Request for Review (Safety Gate)
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "content: add weekly article draft for editorial review"
+          title: "Editorial Review: New Weekly Blog Draft"
+          body: |
+            ## Automated Weekly Blog Draft
+            This pull request contains a new scheduled article draft for **anshidck.com**.
+            
+            ### Editorial Safety Gate Checklist:
+            - [ ] Review direct answer & factual accuracy
+            - [ ] Check headings & comparison data
+            - [ ] Validate internal service links
+            - [ ] Verify Schema markup & metadata
+            
+            **Action Required:**
+            Review the changes. When you are satisfied, **merge this Pull Request** into `main` to publish and deploy live to GitHub Pages.
+          branch: editorial/weekly-blog-draft
+          delete-branch: true
+          reviewers: anshidchelekodan

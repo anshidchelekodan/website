@@ -1,3 +1,43 @@
+# ==================================================
+# robots.txt for anshidck.com (Mohammad Anshid Ck)
+# ==================================================
+
 User-agent: *
 Allow: /
+Disallow: /scratch/
+Disallow: /libwebp/
+Disallow: /.vscode/
+
+# Explicitly Allow Major Search Engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Explicitly Allow AI Search Engines & Citation Crawlers
+# Note: Enabling crawler access allows AI engines to read and synthesize content,
+# but citations depend on topical relevance, brand authority, and query intent.
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Sitemap Location
 Sitemap: https://www.anshidck.com/sitemap.xml

@@ -1,0 +1,350 @@
+/**
+ * Automated Weekly Blog Generator for anshidck.com
+ * Designed for GitHub Actions with mandatory Pull Request Review step.
+ * Author: Mohammad Anshid Ck (Digital Marketing Strategist)
+ */
+
+const fs = require('fs');
+const path = require('path');
+
+const ROOT_DIR = path.resolve(__dirname, '..');
+const BLOG_DIR = path.join(ROOT_DIR, 'blog');
+const SITEMAP_PATH = path.join(ROOT_DIR, 'sitemap.xml');
+const BLOG_INDEX_PATH = path.join(BLOG_DIR, 'index.html');
+
+// Curated Editorial Queue of evergreen, high-value AEO, GEO, and SEO topics
+const EDITORIAL_TOPICS = [
+  {
+    slug: 'perplexity-ai-search-optimization-guide-2026',
+    title: 'How to Rank on Perplexity AI in 2026: The Complete Optimization Guide',
+    category: 'AI Search & Perplexity',
+    readTime: '11 Min Read',
+    description: 'Learn how Perplexity AI cites sources, indexes pages, and synthesizes answers. A step-by-step guide for businesses looking to earn citations in Perplexity AI search.',
+    shortAnswer: 'To rank on Perplexity AI, businesses must optimize for PerplexityBot, provide direct factual answers in the first 50 words of headings, publish proprietary benchmark data, and maintain strong brand entity signals across verified platforms like LinkedIn and Crunchbase.'
+  },
+  {
+    slug: 'local-seo-and-google-maps-ranking-kerala-2026',
+    title: 'Local SEO in Kerala: How to Dominate Google Maps & Local Pack in 2026',
+    category: 'Local SEO Strategy',
+    readTime: '13 Min Read',
+    description: 'A comprehensive guide to Local SEO for businesses in Malappuram, Kozhikode, and Kochi. Master Google Business Profile optimization, local citations, and geo-targeted landing pages.',
+    shortAnswer: 'Winning local search in Kerala requires complete Google Business Profile optimization, consistent Name-Address-Phone (NAP) citations across local directories, geo-specific schema markup, and authentic customer review velocity.'
+  },
+  {
+    slug: 'meta-ads-vs-google-ads-roi-comparison-2026',
+    title: 'Meta Ads vs Google Ads: Which Delivers the Highest ROI for Indian Businesses in 2026?',
+    category: 'Performance Marketing',
+    readTime: '12 Min Read',
+    description: 'A practical, data-driven comparison of Google Ads and Meta Ads for lead generation and eCommerce. Learn which paid advertising channel fits your budget and growth targets.',
+    shortAnswer: 'Google Ads captures high-intent demand from users actively searching for immediate solutions, delivering higher conversion rates at a higher CPC. Meta Ads generates demand through behavioral targeting and visual storytelling, delivering higher volume at a lower cost per acquisition.'
+  },
+  {
+    slug: 'schema-markup-for-ai-search-complete-guide-2026',
+    title: 'Schema Markup for AI Search: How JSON-LD Drives Citations in ChatGPT & Gemini',
+    category: 'Technical SEO & AEO',
+    readTime: '10 Min Read',
+    description: 'Master JSON-LD structured data for modern search engines and AI extractors. Learn how Article, FAQPage, Organization, and LocalBusiness schema help AI bots understand your site.',
+    shortAnswer: 'Schema markup translates web content into unambiguous semantic entities that search engines and RAG AI models can instantly parse, significantly increasing the probability of winning featured snippets and AI citations.'
+  }
+];
+
+function getExistingSlugs() {
+  const dirs = fs.readdirSync(BLOG_DIR, { withFileTypes: true })
+    .filter(dirent => dirent.isDirectory())
+    .map(dirent => dirent.name);
+  return new Set(dirs);
+}
+
+function selectNextTopic() {
+  const existing = getExistingSlugs();
+  const next = EDITORIAL_TOPICS.find(topic => !existing.has(topic.slug));
+  if (!next) {
+    console.log('All scheduled editorial topics are already published! Queue complete.');
+    process.exit(0);
+  }
+  return next;
+}
+
+function generateArticleHtml(topic) {
+  const today = new Date().toISOString().split('T')[0];
+  const formattedDate = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MJ4J525H');</script>
+  <!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../../favicon.png">
+  <link rel="apple-touch-icon" href="../../favicon.png">
+  <title>${topic.title}</title>
+  <meta name="description" content="${topic.description}">
+  
+  <!-- OpenGraph / Twitter -->
+  <meta property="og:title" content="${topic.title}">
+  <meta property="og:description" content="${topic.description}">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.anshidck.com/blog/${topic.slug}/">
+  <meta property="og:image" content="https://www.anshidck.com/anshid-optimized.jpg">
+  <link rel="canonical" href="https://www.anshidck.com/blog/${topic.slug}/">
+  <meta name="robots" content="index,follow">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.anshidck.com/anshid-optimized.jpg">
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "${topic.title}",
+        "description": "${topic.description}",
+        "author": {
+          "@type": "Person",
+          "name": "Mohammad Anshid Ck",
+          "url": "https://www.anshidck.com/about/",
+          "jobTitle": "Digital Marketing Strategist",
+          "sameAs": [
+            "https://www.linkedin.com/in/mohammad-anshid-ck-9123462aa",
+            "https://www.instagram.com/_anshee___"
+          ]
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Mohammad Anshid Ck - Digital Marketing Strategist",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.anshidck.com/favicon.png"
+          }
+        },
+        "datePublished": "${today}",
+        "dateModified": "${today}",
+        "image": "https://www.anshidck.com/anshid-optimized.jpg",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://www.anshidck.com/blog/${topic.slug}/"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.anshidck.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://www.anshidck.com/blog/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "${topic.title}"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"></noscript>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+  <link rel="preload" as="style" href="../../style.min.css"><link rel="stylesheet" href="../../style.min.css">
+
+  <style>
+    #progress-container { position: fixed; top: 0; left: 0; width: 100%; height: 4px; background: transparent; z-index: 9999; }
+    #progress-bar { height: 4px; background: var(--accent-color); width: 0%; box-shadow: 0 0 10px var(--accent-color); transition: width 0.1s ease; }
+    .article-header { padding: 180px 0 80px 0; background: radial-gradient(circle at top, rgba(46, 230, 166, 0.06) 0%, rgba(5, 11, 10, 1) 70%); text-align: center; }
+    .article-header h1 { font-size: clamp(2.3rem, 5.5vw, 4.2rem); margin-bottom: 2rem; font-weight: 800; line-height: 1.15; max-width: 1050px; margin-left: auto; margin-right: auto; }
+    .article-meta { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 1.5rem; color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 2rem; }
+    .category-badge { color: var(--accent-color); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; background: rgba(46, 230, 166, 0.1); padding: 5px 15px; border-radius: 50px; font-size: 0.8rem; }
+    .article-body { max-width: 900px; margin: 0 auto; padding: 60px 20px; }
+    .article-content { font-size: 1.15rem; line-height: 1.9; color: var(--text-secondary); }
+    .article-content h2 { color: #fff; font-size: 2.2rem; margin: 4rem 0 1.5rem 0; font-weight: 700; border-left: 4px solid var(--accent-color); padding-left: 1.5rem; }
+    .article-content h3 { color: #fff; font-size: 1.5rem; margin: 2.5rem 0 1rem 0; font-weight: 600; }
+    .article-content p { margin-bottom: 2rem; }
+    .article-content strong { color: #fff; }
+    .article-content ul, .article-content ol { margin-bottom: 2rem; padding-left: 2rem; }
+    .article-content li { margin-bottom: 0.8rem; }
+    .direct-answer-box { background: linear-gradient(135deg, rgba(46, 230, 166, 0.08) 0%, rgba(11, 46, 42, 0.4) 100%); border: 1.5px solid var(--accent-color); border-radius: 16px; padding: 2rem; margin: 2.5rem 0; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+    .direct-answer-badge { display: inline-flex; align-items: center; gap: 8px; color: #051512; background: var(--accent-color); font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; padding: 4px 12px; border-radius: 20px; margin-bottom: 1rem; }
+    .author-box { display: flex; gap: 2rem; background: linear-gradient(135deg, rgba(11, 46, 42, 0.6) 0%, rgba(5, 11, 10, 0.8) 100%); border: 1px solid rgba(46, 230, 166, 0.25); border-radius: 20px; padding: 2.5rem; margin: 4rem 0; align-items: center; }
+    .author-avatar { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-color); box-shadow: 0 0 20px rgba(46, 230, 166, 0.3); flex-shrink: 0; }
+    .author-info h4 { color: #fff; font-size: 1.4rem; margin-bottom: 0.5rem; }
+    .author-info p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0; line-height: 1.6; }
+    .blog-cta { background: linear-gradient(135deg, rgba(46, 230, 166, 0.1), rgba(11, 46, 42, 0.5)); border-radius: 20px; padding: 3.5rem 2rem; text-align: center; margin: 4rem auto; border: 1.5px solid rgba(46, 230, 166, 0.3); }
+    .blog-cta h3 { font-size: 2.2rem; color: #fff; margin-bottom: 1rem; }
+    .back-to-blog { display: inline-flex; align-items: center; gap: 10px; color: var(--accent-color); font-weight: 700; margin-top: 2rem; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; text-decoration: none; }
+    @media (max-width: 768px) { .article-header { padding: 140px 0 60px 0; } .article-content h2 { font-size: 1.8rem; } .author-box { flex-direction: column; text-align: center; } }
+  </style>
+</head>
+<body>
+  <div id="progress-container"><div id="progress-bar"></div></div>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MJ4J525H" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <header>
+    <nav class="navbar">
+      <div class="container container-nav">
+        <div class="logo-group">
+          <a href="../../" class="logo">Anshid Ck<span class="text-accent">.</span></a>
+        </div>
+        <ul class="nav-links">
+          <li class="mobile-nav-header"><span class="logo">Anshid Ck<span class="text-accent">.</span></span><button class="close-menu-btn" aria-label="Close menu">&times;</button></li>
+          <li><a href="../../">Home</a></li>
+          <li><a href="../../about/">About</a></li>
+          <li><a href="../../services/">Services</a></li>
+          <li><a href="https://www.anshidck.com/pricing/">Pricing</a></li>
+          <li><a href="../../portfolio/">Portfolio</a></li>
+          <li><a href="../../blog/" class="active">Blog</a></li>
+          <li><a href="../../contact/">Contact</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="Toggle Navigation"><i class="fas fa-bars"></i></button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <header class="article-header">
+        <div class="container animate stagger-1">
+          <span class="category-badge">${topic.category}</span>
+          <h1>${topic.title}</h1>
+          <div class="article-meta">
+            <span><i class="far fa-calendar-alt"></i> <time datetime="${today}">${formattedDate}</time></span>
+            <span><i class="far fa-clock"></i> ${topic.readTime}</span>
+            <span><i class="fas fa-user-edit"></i> By Mohammad Anshid Ck</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="article-body">
+        <div class="article-content">
+          <div class="direct-answer-box">
+            <span class="direct-answer-badge"><i class="fas fa-bolt"></i> Key Takeaway</span>
+            <p style="margin-bottom: 0; color: #fff; font-weight: 500;">${topic.shortAnswer}</p>
+          </div>
+
+          <h2>Strategic Overview</h2>
+          <p>${topic.description}</p>
+          <p>As digital marketing channels rapidly evolve in 2026, businesses must balance high-intent acquisition with long-term brand authority. Integrating <a href="../../services/seo-optimization/" style="color: var(--accent-color); text-decoration: none;">SEO</a> with modern <a href="../../services/aeo-optimization/" style="color: var(--accent-color); text-decoration: none;">AEO strategies</a> and <a href="../../services/performance-marketing/" style="color: var(--accent-color); text-decoration: none;">paid media</a> ensures steady, sustainable lead flow.</p>
+
+          <h2>Key Implementation Steps</h2>
+          <ol>
+            <li><strong>Audit Current Entity Presence:</strong> Ensure your core brand name, business categories, and physical locations are verified across Google Business Profile, LinkedIn, and industry registries.</li>
+            <li><strong>Structure Content for Natural Answers:</strong> Address the exact questions prospects ask in consultations. Provide the concise answer before diving into contextual nuances.</li>
+            <li><strong>Track Qualified Business Inquiries:</strong> Move beyond vanity impressions and monitor pipeline revenue generated from organic search and paid campaigns.</li>
+          </ol>
+
+          <!-- Author Box -->
+          <div class="author-box animate reveal-up">
+            <img src="../../anshid-optimized.jpg" alt="Mohammad Anshid Ck" class="author-avatar" onerror="this.src='https://ui-avatars.com/api/?name=Anshid+Ck&background=2ee6a6&color=050b0a&size=110'">
+            <div class="author-info">
+              <h4>Mohammad Anshid Ck</h4>
+              <p>Digital Marketing Strategist and Executive at <a href="https://a-square.group/" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color); text-decoration: none;">A-SQUARE MEP Consultants</a> (Bengaluru), specializing in ROI-driven <a href="../../services/seo-optimization/" style="color: var(--accent-color); text-decoration: none;">SEO</a>, <a href="../../services/performance-marketing/" style="color: var(--accent-color); text-decoration: none;">Performance Marketing</a>, and modern <a href="../../services/aeo-optimization/" style="color: var(--accent-color); text-decoration: none;">AEO &amp; GEO</a> frameworks. Learn more on my <a href="../../about/" style="color: var(--accent-color); text-decoration: none;">About page</a>.</p>
+            </div>
+          </div>
+
+          <!-- Bottom CTA -->
+          <div class="blog-cta animate reveal-up">
+            <h3>Scale Your Growth with Proven Strategies</h3>
+            <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 2rem auto;">Looking for customized digital marketing execution that directly impacts your bottom line?</p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+              <a href="../../contact/" class="btn btn-primary" style="padding: 1rem 2.2rem;"><i class="fas fa-paper-plane" style="margin-right: 8px;"></i>Request Strategy Session</a>
+              <a href="https://wa.me/919778179727" target="_blank" class="btn btn-outline" style="padding: 1rem 2.2rem; border-color: #25D366; color: #25D366;"><i class="fab fa-whatsapp" style="margin-right: 8px;"></i>WhatsApp Chat</a>
+            </div>
+          </div>
+
+          <a href="../../blog/" class="back-to-blog"><i class="fas fa-arrow-left"></i> Back to all articles</a>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; <time datetime="2026">2026</time> Mohammad Anshid Ck. All rights reserved. | <a href="../../sitemap.xml" style="color: inherit; text-decoration: underline;">Sitemap</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../main.js?v=20260331-1" defer></script>
+  <script>
+    window.addEventListener('scroll', function() {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      const progressBar = document.getElementById('progress-bar');
+      if (progressBar) progressBar.style.width = scrolled + '%';
+    });
+  </script>
+</body>
+</html>`;
+}
+
+function run() {
+  const topic = selectNextTopic();
+  console.log(`Processing weekly topic: "${topic.title}" (${topic.slug})`);
+
+  const articleDir = path.join(BLOG_DIR, topic.slug);
+  if (!fs.existsSync(articleDir)) {
+    fs.mkdirSync(articleDir, { recursive: true });
+  }
+
+  const articlePath = path.join(articleDir, 'index.html');
+  const articleHtml = generateArticleHtml(topic);
+  fs.writeFileSync(articlePath, articleHtml, 'utf8');
+  console.log(`Successfully generated article file: ${articlePath}`);
+
+  // Update sitemap.xml
+  let sitemap = fs.readFileSync(SITEMAP_PATH, 'utf8');
+  const newSitemapEntry = `  <url><loc>https://www.anshidck.com/blog/${topic.slug}/</loc><priority>0.8</priority></url>\n`;
+  if (!sitemap.includes(topic.slug)) {
+    sitemap = sitemap.replace('  <!-- Blog Articles -->\n', `  <!-- Blog Articles -->\n${newSitemapEntry}`);
+    fs.writeFileSync(SITEMAP_PATH, sitemap, 'utf8');
+    console.log(`Updated sitemap.xml with new entry.`);
+  }
+
+  // Update blog/index.html
+  let blogIndex = fs.readFileSync(BLOG_INDEX_PATH, 'utf8');
+  const cardHtml = `      <!-- ${topic.title} Blog -->
+      <article class="blog-card animate reveal-up">
+        <div class="blog-card-content">
+          <div class="blog-meta">
+            <span class="blog-category">${topic.category}</span>
+            <time datetime="${new Date().toISOString().split('T')[0]}">${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+          </div>
+          <a href="${topic.slug}/">
+            <h3 class="clickable-title">${topic.title} <span class="badge-new">NEW</span></h3>
+          </a>
+          <p>${topic.description}</p>
+          <a href="${topic.slug}/" class="btn btn-outline" style="padding: 10px 20px;"><i
+              class="fas fa-book-open" style="margin-right: 8px;"></i>Read Article</a>
+        </div>
+      </article>\n\n`;
+
+  if (!blogIndex.includes(topic.slug)) {
+    blogIndex = blogIndex.replace('    <div class="blog-grid">\n', `    <div class="blog-grid">\n${cardHtml}`);
+    blogIndex = blogIndex.replace(/const LATEST_BLOG_ID = "[^"]+";/, `const LATEST_BLOG_ID = "${topic.slug}";`);
+    fs.writeFileSync(BLOG_INDEX_PATH, blogIndex, 'utf8');
+    console.log(`Updated blog/index.html with new article card and LATEST_BLOG_ID.`);
+  }
+
+  console.log(`Weekly blog automation completed for "${topic.slug}". Ready for review.`);
+}
+
+run();
