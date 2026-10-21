@@ -9,6 +9,7 @@
   <url><loc>https://www.anshidck.com/blog/</loc><priority>0.8</priority></url>
   <url><loc>https://www.anshidck.com/contact/</loc><priority>0.8</priority></url>
   <url><loc>https://www.anshidck.com/calendar/</loc><priority>0.7</priority></url>
+  <url><loc>https://www.anshidck.com/privacy-policy/</loc><priority>0.5</priority></url>
 
   <!-- Service Pages -->
   <url><loc>https://www.anshidck.com/services/seo-optimization/</loc><priority>0.8</priority></url>
