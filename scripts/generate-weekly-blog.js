@@ -201,6 +201,12 @@ function generateArticleHtml(topic) {
       <div class="container container-nav">
         <div class="logo-group">
           <a href="../../" class="logo">Anshid Ck<span class="text-accent">.</span></a>
+          <div class="header-socials">
+            <a href="https://www.instagram.com/_anshee___" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/mohammad-anshid-ck-9123462aa" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.facebook.com/share/16oyZso423" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://wa.me/919778179727" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
         </div>
         <ul class="nav-links">
           <li class="mobile-nav-header"><span class="logo">Anshid Ck<span class="text-accent">.</span></span><button class="close-menu-btn" aria-label="Close menu">&times;</button></li>
@@ -276,11 +282,57 @@ function generateArticleHtml(topic) {
 
   <footer>
     <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="../../" class="logo" style="margin-bottom: 2rem; display: block; font-size: 1.8rem; font-weight: 800;">Anshid Ck<span class="text-accent">.</span></a>
+          <p style="margin-bottom: 2.5rem; max-width: 350px;">Leading Digital Marketing Strategist helping brands dominate the search landscape through ROI-driven SEO, Performance Marketing, and AI Search Optimization.</p>
+          <div class="footer-social-wrapper">
+            <a href="https://www.instagram.com/_anshee___" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/mohammad-anshid-ck-9123462aa" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.facebook.com/share/16oyZso423" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://wa.me/919778179727" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="../../"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="../../about/"><i class="fas fa-chevron-right"></i> About Me</a></li>
+            <li><a href="../../services/"><i class="fas fa-chevron-right"></i> Services</a></li>
+            <li><a href="https://www.anshidck.com/pricing/"><i class="fas fa-chevron-right"></i> Pricing</a></li>
+            <li><a href="../../portfolio/"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
+            <li><a href="../../blog/"><i class="fas fa-chevron-right"></i> Blog</a></li>
+            <li><a href="../../contact/"><i class="fas fa-chevron-right"></i> Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Key Services</h4>
+          <ul class="footer-links">
+            <li><a href="../../services/seo-optimization/"><i class="fas fa-chevron-right"></i> SEO Optimization</a></li>
+            <li><a href="../../services/aeo-optimization/"><i class="fas fa-chevron-right"></i> AEO Strategy</a></li>
+            <li><a href="../../services/performance-marketing/"><i class="fas fa-chevron-right"></i> Meta &amp; Google Ads</a></li>
+            <li><a href="../../services/lead-generation/"><i class="fas fa-chevron-right"></i> Lead Generation</a></li>
+            <li><a href="../../services/web-development/"><i class="fas fa-chevron-right"></i> Web Development</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Direct Connect</h4>
+          <p style="margin-bottom: 1rem;"><i class="fas fa-envelope" style="color: var(--accent-color); margin-right: 8px;"></i> anshidchelekodan@gmail.com</p>
+          <p style="margin-bottom: 1.5rem;"><i class="fas fa-phone-alt" style="color: var(--accent-color); margin-right: 8px;"></i> +91 97781 79727</p>
+          <p style="font-size: 0.85rem; color: var(--text-secondary);"><i class="fas fa-map-marker-alt" style="color: var(--accent-color); margin-right: 8px;"></i> Bengaluru, Karnataka &amp; Malappuram, Kerala</p>
+        </div>
+      </div>
+
       <div class="footer-bottom">
         <p>&copy; <time datetime="2026">2026</time> Mohammad Anshid Ck. All rights reserved. | <a href="../../sitemap.xml" style="color: inherit; text-decoration: underline;">Sitemap</a></p>
       </div>
     </div>
   </footer>
+
+  <a href="https://wa.me/919778179727" class="float-wa" target="_blank" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
   <script src="../../main.js?v=20260331-1" defer></script>
   <script>
