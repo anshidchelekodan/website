@@ -1,0 +1,19 @@
+name: LinkedIn Blog Post
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  post-to-linkedin:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Share approved blog on LinkedIn
+        env:
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+          LINKEDIN_MEMBER_ID: HdCDojxoM7
+        run: |
+          echo "LinkedIn credentials loaded."
+          echo "Next, we will connect this workflow to an approved blog URL."
