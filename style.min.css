@@ -746,3 +746,5 @@
   border-color: rgba(98, 255, 176, 0.25) !important;
   transform: translateX(4px) !important;
 }
+
+@media (min-width:769px){.close-menu-btn{display:none!important;}}
