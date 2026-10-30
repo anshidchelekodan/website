@@ -1,0 +1,107 @@
+[1mdiff --git a/index.html b/index.html[m
+[1mindex cf896d4..e4c4875 100644[m
+[1m--- a/index.html[m
+[1m+++ b/index.html[m
+[36m@@ -1,4 +1,4 @@[m
+[31m-<!DOCTYPE html>[m
+[32m+[m[32m﻿<!DOCTYPE html>[m
+ <html lang="en">[m
+ [m
+ <head>[m
+[36m@@ -15,10 +15,10 @@[m
+ [m
+   <title>Digital Marketing Strategist in Malappuram | Muhammed Anshid Chelekodan</title>[m
+   <meta name="description"[m
+[31m-    content="Muhammed Anshid Chelekodan — Digital Marketing Strategist in Malappuram & Kerala. Strategy, SEO, Google Ads, Meta Ads, analytics, and measurable lead generation.">[m
+[32m+[m[32m    content="Muhammed Anshid Chelekodan â€” Digital Marketing Strategist in Malappuram & Kerala. Strategy, SEO, Google Ads, Meta Ads, analytics, and measurable lead generation.">[m
+   <meta property="og:title" content="Digital Marketing Strategist in Malappuram | Muhammed Anshid Chelekodan">[m
+   <meta property="og:description"[m
+[31m-    content="Strategy, SEO, Google Ads, Meta Ads, and measurable lead systems by Muhammed Anshid Chelekodan — Digital Marketing Strategist in Malappuram & Kerala.">[m
+[32m+[m[32m    content="Strategy, SEO, Google Ads, Meta Ads, and measurable lead systems by Muhammed Anshid Chelekodan â€” Digital Marketing Strategist in Malappuram & Kerala.">[m
+   <meta property="og:image" content="https://www.anshidck.com/anshid-optimized.webp">[m
+   <meta property="og:url" content="https://www.anshidck.com/">[m
+   <meta property="og:type" content="website">[m
+[36m@@ -78,15 +78,15 @@[m
+         "@type": "WebSite",[m
+         "@id": "https://www.anshidck.com/#website",[m
+         "url": "https://www.anshidck.com/",[m
+[31m-        "name": "Muhammed Anshid Chelekodan — Digital Marketing Strategist",[m
+[32m+[m[32m        "name": "Muhammed Anshid Chelekodan â€” Digital Marketing Strategist",[m
+         "publisher": { "@id": "https://www.anshidck.com/#person" }[m
+       },[m
+       {[m
+         "@type": "ProfessionalService",[m
+         "@id": "https://www.anshidck.com/#organization",[m
+[31m-        "name": "Muhammed Anshid Chelekodan — Digital Marketing Strategist",[m
+[32m+[m[32m        "name": "Muhammed Anshid Chelekodan â€” Digital Marketing Strategist",[m
+         "image": "https://www.anshidck.com/anshid-optimized.webp",[m
+[31m-        "description": "Digital marketing strategy and execution in Malappuram, Kerala — SEO, paid media, social, analytics, and lead generation.",[m
+[32m+[m[32m        "description": "Digital marketing strategy and execution in Malappuram, Kerala â€” SEO, paid media, social, analytics, and lead generation.",[m
+         "url": "https://www.anshidck.com/",[m
+         "telephone": "+919778179727",[m
+         "priceRange": "$$",[m
+[36m@@ -828,7 +828,7 @@[m
+     text-transform: uppercase;[m
+   }[m
+   .tool-item::after {[m
+[31m-    content: "•";[m
+[32m+[m[32m    content: "â€¢";[m
+     color: var(--accent-color);[m
+     font-size: 1.8rem;[m
+     position: absolute;[m
+[36m@@ -1092,14 +1092,14 @@[m
+         <div class="hero-image animate reveal-left stagger-1">[m
+           <div class="hero-shape"></div>[m
+           <img src="assets/hero.webp" width="600" height="700" fetchpriority="high" loading="eager" decoding="async"[m
+[31m-            alt="Muhammed Anshid Chelekodan — Digital Marketing Strategist in Malappuram">[m
+[32m+[m[32m            alt="Muhammed Anshid Chelekodan â€” Digital Marketing Strategist in Malappuram">[m
+         </div>[m
+ [m
+         <div class="hero-content animate reveal-right stagger-2">[m
+           <h1 class="hero-brand-name">Muhammed Anshid Chelekodan</h1>[m
+[31m-          <p class="hero-role">Digital Marketing Strategist · Malappuram &amp; Kerala</p>[m
+[31m-          <p class="hero-description hero-desc">I connect research, strategy, SEO, paid media, social, analytics, and web execution into one growth system — for businesses in Malappuram, Kerala, and beyond.</p>[m
+[31m-          <p style="font-size:0.9rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-secondary); margin-bottom:1.5rem;">Research → Strategy → Execution → Measurement → Optimization</p>[m
+[32m+[m[32m          <p class="hero-role">Digital Marketing Strategist Â· Malappuram &amp; Kerala</p>[m
+[32m+[m[32m          <p class="hero-description hero-desc">I connect research, strategy, SEO, paid media, social, analytics, and web execution into one growth system â€” for businesses in Malappuram, Kerala, and beyond.</p>[m
+[32m+[m[32m          <p style="font-size:0.9rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-secondary); margin-bottom:1.5rem;">Research â†’ Strategy â†’ Execution â†’ Measurement â†’ Optimization</p>[m
+ [m
+           <div class="hero-buttons animate stagger-2">[m
+             <a href="portfolio/" class="btn btn-primary btn-hero">[m
+[36m@@ -1214,7 +1214,7 @@[m
+       </div>[m
+     </section>[m
+ [m
+[31m-    <!-- Professional Snapshot (compact — does not duplicate About) -->[m
+[32m+[m[32m    <!-- Professional Snapshot (compact â€” does not duplicate About) -->[m
+     <section id="snapshot" class="section" style="background:#080808; border-top:1px solid rgba(255,255,255,0.06); border-bottom:1px solid rgba(255,255,255,0.06);">[m
+       <div class="container">[m
+         <div class="section-title animate reveal-up">[m
+[36m@@ -1232,10 +1232,10 @@[m
+           </div>[m
+           <div class="snapshot-item">[m
+             <h3>What Makes My Approach Different</h3>[m
+[31m-            <p>I connect creative execution with performance data — then improve what the numbers show.</p>[m
+[32m+[m[32m            <p>I connect creative execution with performance data â€” then improve what the numbers show.</p>[m
+           </div>[m
+         </div>[m
+[31m-        <p style="margin-top:2rem;"><a href="about/" class="text-accent" style="font-weight:700;">Full background &amp; experience →</a></p>[m
+[32m+[m[32m        <p style="margin-top:2rem;"><a href="about/" class="text-accent" style="font-weight:700;">Full background &amp; experience â†’</a></p>[m
+       </div>[m
+     </section>[m
+ [m
+[36m@@ -1250,7 +1250,7 @@[m
+             </div>[m
+             <p>I am Mohammad Anshid Ck, a top-rated <strong>Digital Marketing Strategist in Kerala</strong> who treats your business growth as my own. My mission is simple: to stop the "guesswork" in your marketing and replace it with <strong>proven conversion funnels</strong>. Whether you are a local entrepreneur in <strong>Malappuram</strong> or a brand scaling across Kerala, I provide the strategic edge needed to dominate your niche.</p>[m
+ [m
+[31m-            <p>The digital landscape in <strong>Malappuram</strong> is no longer just about "being online"—it's about being the choice of high-intent customers. As your <strong>dedicated growth partner</strong>, I specialize in SEO that stays on page #1 and Ads that actually convert into bankable revenue. My approach combines local market psychology with global performance standards.</p>[m
+[32m+[m[32m            <p>The digital landscape in <strong>Malappuram</strong> is no longer just about "being online"â€”it's about being the choice of high-intent customers. As your <strong>dedicated growth partner</strong>, I specialize in SEO that stays on page #1 and Ads that actually convert into bankable revenue. My approach combines local market psychology with global performance standards.</p>[m
+ [m
+             <div class="hero-btns" style="margin-top: 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap;">[m
+               <a href="calendar/" class="btn btn-primary">[m
+[36m@@ -1313,7 +1313,7 @@[m
+         <div class="section-title animate reveal-up">[m
+           <span>Selected Work</span>[m
+           <h2>Case studies that show <span class="text-accent">how I work</span></h2>[m
+[31m-          <p>Problem → thinking → execution → measurement. Full write-ups live in the portfolio.</p>[m
+[32m+[m[32m          <p>Problem â†’ thinking â†’ execution 

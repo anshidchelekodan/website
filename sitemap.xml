@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Core Pages -->
   <url><loc>https://www.anshidck.com/</loc><priority>1.0</priority></url>
@@ -34,7 +34,8 @@
   <url><loc>https://www.anshidck.com/portfolio/sjs-business-solutions/</loc><priority>0.6</priority></url>
   <url><loc>https://www.anshidck.com/portfolio/website-optimization/</loc><priority>0.6</priority></url>
 
-  <!-- Blog Articles -->
+  
+  <url><loc>https://www.anshidck.com/blog/digital-marketing-content-creation-process/</loc><priority>0.8</priority></url>
   <url><loc>https://www.anshidck.com/blog/perplexity-ai-search-optimization-guide-2026/</loc><priority>0.8</priority></url>
   <url><loc>https://www.anshidck.com/blog/seo-vs-aeo-vs-geo-guide-2026/</loc><priority>0.8</priority></url>
   <url><loc>https://www.anshidck.com/blog/geo-generative-engine-optimization-guide-2026/</loc><priority>0.8</priority></url>
@@ -61,3 +62,4 @@
   <url><loc>https://www.anshidck.com/blog/voice-search-optimization-kerala/</loc><priority>0.7</priority></url>
   <url><loc>https://www.anshidck.com/blog/google-search-console-guide/</loc><priority>0.7</priority></url>
 </urlset>
+
