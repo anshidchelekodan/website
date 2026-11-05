@@ -1,0 +1,1895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>Private Analytics Dashboard | Mohammad Anshid Ck</title>
+
+  <!-- Google Fonts: Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6.5.1 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Chart.js 4.4.1 for Accessible Visualizations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+
+  <style>
+    :root {
+      --bg-color: #050505;
+      --card-bg: rgba(13, 20, 18, 0.85);
+      --card-border: rgba(46, 230, 166, 0.16);
+      --card-hover-border: rgba(46, 230, 166, 0.4);
+      --accent-color: #2EE6A6;
+      --accent-glow: rgba(46, 230, 166, 0.25);
+      --accent-soft: rgba(46, 230, 166, 0.08);
+      --text-primary: #F5F5F5;
+      --text-secondary: #A8A29E;
+      --text-muted: #6E7681;
+      --danger-color: #FF5A5F;
+      --warning-color: #FFB800;
+      --font-main: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      font-family: var(--font-main);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 15% 10%, rgba(46, 230, 166, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 85% 60%, rgba(46, 230, 166, 0.04) 0%, transparent 45%);
+    }
+
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    /* Container */
+    .dashboard-container {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1.5rem clamp(1rem, 3vw, 2.5rem);
+      flex: 1;
+    }
+
+    /* Top Navigation Bar */
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0 2rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      flex-wrap: wrap;
+      gap: 1.2rem;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand-logo {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #FFF;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand-logo .dot {
+      color: var(--accent-color);
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      background: var(--accent-soft);
+      border: 1px solid var(--card-border);
+      color: var(--accent-color);
+      text-transform: uppercase;
+    }
+
+    .status-badge.live::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--accent-color);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent-color);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.65rem 1.15rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--accent-color);
+      color: #050505;
+      font-weight: 700;
+      box-shadow: 0 4px 16px var(--accent-glow);
+    }
+
+    .btn-primary:hover {
+      background: #25C992;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px var(--accent-glow);
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text-primary);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent-color);
+      color: var(--accent-color);
+      background: var(--accent-soft);
+      transform: translateY(-1px);
+    }
+
+    .btn-danger {
+      background: rgba(255, 90, 95, 0.1);
+      color: var(--danger-color);
+      border: 1px solid rgba(255, 90, 95, 0.25);
+    }
+
+    .btn-danger:hover {
+      background: rgba(255, 90, 95, 0.2);
+    }
+
+    /* Date Filter Bar */
+    .filter-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 0 2rem 0;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .filter-pills {
+      display: inline-flex;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 4px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      gap: 4px;
+    }
+
+    .pill-btn {
+      padding: 6px 14px;
+      border-radius: 6px;
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 0.82rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .pill-btn:hover {
+      color: #FFF;
+    }
+
+    .pill-btn.active {
+      background: var(--accent-color);
+      color: #050505;
+      font-weight: 700;
+      box-shadow: 0 2px 8px var(--accent-glow);
+    }
+
+    .custom-date-wrap {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 4px 8px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .custom-date-wrap.show {
+      display: inline-flex;
+    }
+
+    .custom-date-wrap input[type="date"] {
+      background: transparent;
+      border: none;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.8rem;
+      outline: none;
+      color-scheme: dark;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      border-color: var(--card-hover-border);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #FFF;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-title i {
+      color: var(--accent-color);
+    }
+
+    /* Overview KPI Grid */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .kpi-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .kpi-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .kpi-label i {
+      font-size: 1rem;
+      color: var(--accent-color);
+      opacity: 0.8;
+    }
+
+    .kpi-value {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #FFF;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+
+    .kpi-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* Grid Layouts */
+    .grid-2col {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      .grid-2col {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Charts */
+    .chart-wrap {
+      position: relative;
+      height: 280px;
+      width: 100%;
+    }
+
+    /* Tables */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.85rem;
+    }
+
+    th {
+      padding: 10px 12px;
+      color: var(--text-secondary);
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    td {
+      padding: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      color: var(--text-primary);
+    }
+
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .page-title-cell {
+      max-width: 280px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .badge-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-secondary);
+    }
+
+    .badge-tag.accent {
+      background: var(--accent-soft);
+      color: var(--accent-color);
+      border: 1px solid var(--card-border);
+    }
+
+    /* Conversion Cards */
+    .conversion-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .conv-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-sm);
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: var(--transition);
+    }
+
+    .conv-box:hover {
+      border-color: var(--card-border);
+      transform: translateY(-2px);
+    }
+
+    .conv-icon {
+      font-size: 1.5rem;
+      color: var(--accent-color);
+    }
+
+    .conv-count {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: #FFF;
+    }
+
+    .conv-meta {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+    }
+
+    /* Modal / Popups */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal-content {
+      background: #0E1614;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 650px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2rem;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+
+    .modal-close:hover {
+      color: #FFF;
+    }
+
+    /* LinkedIn Card Canvas Preview */
+    #linkedin-canvas {
+      width: 100%;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin: 1rem 0;
+      display: block;
+    }
+
+    /* Empty & Loading States */
+    .state-box {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .state-box i {
+      font-size: 2.8rem;
+      color: var(--accent-color);
+      opacity: 0.6;
+    }
+
+    .state-box h3 {
+      font-size: 1.2rem;
+      color: #FFF;
+    }
+
+    .state-box p {
+      color: var(--text-secondary);
+      max-width: 450px;
+      font-size: 0.9rem;
+    }
+
+    /* Skeleton Loading Effect */
+    .skeleton {
+      background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.03) 75%);
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
+      border-radius: 4px;
+    }
+
+    @keyframes loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    /* Auth Gate Screen */
+    #auth-gate {
+      display: none;
+      min-height: 80vh;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .lock-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 3rem 2.5rem;
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+
+    .lock-icon-wrap {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      border: 1px solid var(--card-border);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      color: var(--accent-color);
+      font-size: 1.8rem;
+    }
+
+    .lock-card h1 {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+      color: #FFF;
+    }
+
+    .lock-card p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .security-callout {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 2rem;
+      text-align: left;
+    }
+
+    /* Print / PDF Styling */
+    @media print {
+      body {
+        background: #FFF !important;
+        color: #000 !important;
+      }
+      .top-nav, .filter-bar, .modal-overlay, .btn {
+        display: none !important;
+      }
+      .card {
+        border: 1px solid #CCC !important;
+        background: #FFF !important;
+        color: #000 !important;
+        break-inside: avoid;
+        margin-bottom: 1.5rem;
+      }
+      .kpi-value, .card-title, th, td {
+        color: #000 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================
+       AUTH GATE (Visible if user is not authenticated)
+       ======================================================== -->
+  <div id="auth-gate">
+    <div class="lock-card">
+      <div class="lock-icon-wrap">
+        <i class="fas fa-shield-halved"></i>
+      </div>
+      <h1>Private Intelligence Dashboard</h1>
+      <p>
+        Protected analytics command center for <strong>anshidck.com</strong>.
+        Please connect your authorized Google Analytics (GA4) account to access live data.
+      </p>
+
+      <a href="/api/auth-start" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 0.9rem 1.5rem; font-size: 0.95rem;">
+        <i class="fab fa-google"></i> Connect Google Analytics (GA4)
+      </a>
+
+      <div class="security-callout">
+        <i class="fas fa-lock" style="color: var(--accent-color); margin-right: 4px;"></i>
+        <strong>Zero-Knowledge Security:</strong> Authentication is handled server-side via OAuth 2.0. Access tokens are encrypted with AES-256-GCM in an HttpOnly session cookie. No credentials or tokens exist in client JavaScript.
+      </div>
+
+      <div style="margin-top: 1.5rem;">
+        <a href="/" style="font-size: 0.82rem; color: var(--text-secondary);">
+          <i class="fas fa-arrow-left"></i> Return to main website
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       MAIN DASHBOARD APPLICATION (Visible when authenticated)
+       ======================================================== -->
+  <div id="dashboard-app" style="display: none;">
+    <div class="dashboard-container">
+
+      <!-- Navigation Header -->
+      <header class="top-nav">
+        <div class="brand-group">
+          <a href="/" class="brand-logo">
+            Mohammad Anshid Ck<span class="dot">.</span>
+          </a>
+          <span class="status-badge live">GA4 Active</span>
+          <span id="prop-id-pill" class="badge-tag">Loading property...</span>
+        </div>
+
+        <div class="nav-actions">
+          <!-- Refresh -->
+          <button id="btn-refresh" class="btn btn-outline" title="Refresh Live Data">
+            <i class="fas fa-arrows-rotate"></i> Refresh
+          </button>
+
+          <!-- Export Dropdown Trigger -->
+          <div style="position: relative; display: inline-block;">
+            <button id="btn-export-menu" class="btn btn-outline">
+              <i class="fas fa-download"></i> Export Report <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i>
+            </button>
+            <div id="export-dropdown" style="display: none; position: absolute; right: 0; top: 110%; background: #0E1614; border: 1px solid var(--card-border); border-radius: var(--radius-sm); min-width: 180px; z-index: 100; box-shadow: 0 10px 30px rgba(0,0,0,0.6); padding: 6px;">
+              <button onclick="exportCSV()" class="btn btn-outline" style="width: 100%; border: none; justify-content: flex-start; padding: 8px 12px; font-size: 0.8rem;">
+                <i class="fas fa-file-csv" style="color: var(--accent-color);"></i> Download CSV
+              </button>
+              <button onclick="exportExcel()" class="btn btn-outline" style="width: 100%; border: none; justify-content: flex-start; padding: 8px 12px; font-size: 0.8rem;">
+                <i class="fas fa-file-excel" style="color: #4CAF50;"></i> Download Excel (.xls)
+              </button>
+              <button onclick="window.print()" class="btn btn-outline" style="width: 100%; border: none; justify-content: flex-start; padding: 8px 12px; font-size: 0.8rem;">
+                <i class="fas fa-file-pdf" style="color: #FF5A5F;"></i> Print / Save PDF
+              </button>
+            </div>
+          </div>
+
+          <!-- LinkedIn Share Generator -->
+          <button id="btn-linkedin-modal" class="btn btn-primary">
+            <i class="fab fa-linkedin"></i> Share to LinkedIn
+          </button>
+
+          <!-- Sign Out -->
+          <a href="/api/auth-logout" class="btn btn-danger" title="Terminate Session">
+            <i class="fas fa-arrow-right-from-bracket"></i> Logout
+          </a>
+        </div>
+      </header>
+
+      <!-- Date Filter Bar -->
+      <div class="filter-bar">
+        <div class="filter-pills">
+          <button class="pill-btn" data-period="today">Today</button>
+          <button class="pill-btn active" data-period="7d">Last 7 Days</button>
+          <button class="pill-btn" data-period="30d">Last 30 Days</button>
+          <button class="pill-btn" data-period="custom">Custom Range</button>
+        </div>
+
+        <!-- Custom Date Selector -->
+        <div id="custom-date-controls" class="custom-date-wrap">
+          <label style="font-size: 0.75rem; color: var(--text-secondary);">From:</label>
+          <input type="date" id="custom-start-date">
+          <label style="font-size: 0.75rem; color: var(--text-secondary);">To:</label>
+          <input type="date" id="custom-end-date">
+          <button id="btn-apply-custom" class="btn btn-primary" style="padding: 4px 10px; font-size: 0.75rem;">Apply</button>
+        </div>
+
+        <div style="font-size: 0.8rem; color: var(--text-secondary);" id="date-range-display">
+          Showing: <strong>Last 7 Days</strong>
+        </div>
+      </div>
+
+      <!-- Notification / Error Banner -->
+      <div id="alert-banner" style="display: none; padding: 1rem 1.25rem; border-radius: var(--radius-sm); margin-bottom: 1.5rem; font-size: 0.85rem; align-items: center; justify-content: space-between;"></div>
+
+      <!-- ====================================================
+           1. EXECUTIVE OVERVIEW METRICS
+           ==================================================== -->
+      <section class="kpi-grid">
+        <!-- Visitors -->
+        <div class="card kpi-card">
+          <div class="kpi-label">
+            <span>Total Active Visitors</span>
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="kpi-value" id="kpi-users">—</div>
+          <div class="kpi-sub">
+            <span class="badge-tag accent"><i class="fas fa-circle-check"></i> Unique</span>
+            <span>in selected window</span>
+          </div>
+        </div>
+
+        <!-- Sessions -->
+        <div class="card kpi-card">
+          <div class="kpi-label">
+            <span>Total Sessions</span>
+            <i class="fas fa-chart-simple"></i>
+          </div>
+          <div class="kpi-value" id="kpi-sessions">—</div>
+          <div class="kpi-sub">
+            <span class="badge-tag">Visits</span>
+            <span>browsing instances</span>
+          </div>
+        </div>
+
+        <!-- Pageviews -->
+        <div class="card kpi-card">
+          <div class="kpi-label">
+            <span>Total Pageviews</span>
+            <i class="fas fa-eye"></i>
+          </div>
+          <div class="kpi-value" id="kpi-views">—</div>
+          <div class="kpi-sub">
+            <span class="badge-tag accent">Screen views</span>
+            <span>across all articles &amp; pages</span>
+          </div>
+        </div>
+
+        <!-- Engagement Rate -->
+        <div class="card kpi-card">
+          <div class="kpi-label">
+            <span>Engagement Rate</span>
+            <i class="fas fa-bullseye"></i>
+          </div>
+          <div class="kpi-value" id="kpi-engagement">—</div>
+          <div class="kpi-sub">
+            <span class="badge-tag">Quality</span>
+            <span>sessions &gt; 10s or 2+ views</span>
+          </div>
+        </div>
+
+        <!-- Avg Engagement Time per Active User -->
+        <div class="card kpi-card">
+          <div class="kpi-label">
+            <span>Avg Engagement Time</span>
+            <i class="fas fa-clock"></i>
+          </div>
+          <div class="kpi-value" id="kpi-duration">—</div>
+          <div class="kpi-sub">
+            <span class="badge-tag accent">Per Active User</span>
+            <span>attention time per visitor</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================
+           2. VISITOR TRENDS & TIMELINE
+           ==================================================== -->
+      <section class="card" style="margin-bottom: 2rem;">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-chart-line"></i> Visitor Traffic Trends
+          </div>
+          <div class="filter-pills" style="padding: 2px;">
+            <button class="pill-btn active" onclick="switchTrendMetric('views', event)">Pageviews</button>
+            <button class="pill-btn" onclick="switchTrendMetric('users', event)">Visitors</button>
+            <button class="pill-btn" onclick="switchTrendMetric('sessions', event)">Sessions</button>
+          </div>
+        </div>
+        <div class="chart-wrap">
+          <canvas id="trendChart"></canvas>
+        </div>
+      </section>
+
+      <!-- ====================================================
+           3. CHANNELS & TRAFFIC SOURCES (2-COL)
+           ==================================================== -->
+      <section class="grid-2col">
+        <!-- Channels Doughnut -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fas fa-layer-group"></i> Default Channel Group
+            </div>
+            <span class="badge-tag">Acquisition</span>
+          </div>
+          <div class="chart-wrap" style="height: 250px;">
+            <canvas id="channelChart"></canvas>
+          </div>
+          <div id="channels-list" style="margin-top: 1rem;"></div>
+        </div>
+
+        <!-- Sources Table -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fas fa-globe"></i> Top Sources &amp; Mediums
+            </div>
+            <span class="badge-tag">Referrers</span>
+          </div>
+          <div class="table-container">
+            <table id="sources-table">
+              <thead>
+                <tr>
+                  <th>Source / Medium</th>
+                  <th>Sessions</th>
+                  <th>Users</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td colspan="3" style="text-align:center; color: var(--text-muted);">Loading data...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================
+           4. TOP PERFORMING PAGES & BLOG POSTS
+           ==================================================== -->
+      <section class="card" style="margin-bottom: 2rem;">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-newspaper"></i> Top-Performing Content &amp; Pages
+          </div>
+          <div class="filter-pills" style="padding: 2px;">
+            <button class="pill-btn active" onclick="filterPages('all', event)">All Pages</button>
+            <button class="pill-btn" onclick="filterPages('blog', event)">Blog Articles Only</button>
+          </div>
+        </div>
+        <div class="table-container">
+          <table id="pages-table">
+            <thead>
+              <tr>
+                <th>Page Path</th>
+                <th>Page Title</th>
+                <th>Views</th>
+                <th>Active Users</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td colspan="5" style="text-align:center; color: var(--text-muted);">Loading pages...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ====================================================
+           5. DEVICES & GEOGRAPHIC BREAKDOWN (2-COL)
+           ==================================================== -->
+      <section class="grid-2col">
+        <!-- Device Category -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fas fa-mobile-screen"></i> Device Category
+            </div>
+            <span class="badge-tag">Platform</span>
+          </div>
+          <div id="devices-container" style="display: flex; flex-direction: column; gap: 1rem; padding: 1rem 0;">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+
+        <!-- Geography (Countries & Cities) -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fas fa-map-location-dot"></i> Geographic Distribution
+            </div>
+            <span class="badge-tag">Location</span>
+          </div>
+          <div class="table-container">
+            <table id="geo-table">
+              <thead>
+                <tr>
+                  <th>Country</th>
+                  <th>City</th>
+                  <th>Visitors</th>
+                  <th>Sessions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td colspan="4" style="text-align:center; color: var(--text-muted);">Loading location data...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================
+           6. CONVERSION & ACTION TRACKING
+           ==================================================== -->
+      <section class="card" style="margin-bottom: 2rem;">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-handshake"></i> Direct Inquiries &amp; Conversions
+          </div>
+          <span class="badge-tag accent">GTM Events</span>
+        </div>
+
+        <div class="conversion-grid">
+          <div class="conv-box">
+            <i class="fab fa-whatsapp conv-icon" style="color: #25D366;"></i>
+            <div class="conv-count" id="conv-whatsapp">0</div>
+            <div class="conv-meta">WhatsApp Inquiries</div>
+            <div id="status-whatsapp"></div>
+          </div>
+
+          <div class="conv-box">
+            <i class="fas fa-envelope conv-icon" style="color: #EA4335;"></i>
+            <div class="conv-count" id="conv-email">0</div>
+            <div class="conv-meta">Direct Email Inquiries</div>
+            <div id="status-email"></div>
+          </div>
+
+          <div class="conv-box">
+            <i class="fas fa-phone-volume conv-icon" style="color: #34B7F1;"></i>
+            <div class="conv-count" id="conv-phone">0</div>
+            <div class="conv-meta">Phone Call Clicks</div>
+            <div id="status-phone"></div>
+          </div>
+
+          <div class="conv-box">
+            <i class="fas fa-paper-plane conv-icon" style="color: var(--accent-color);"></i>
+            <div class="conv-count" id="conv-forms">0</div>
+            <div class="conv-meta">Contact Form Submissions</div>
+            <div id="status-forms"></div>
+          </div>
+        </div>
+
+        <!-- Conversion Notes -->
+        <div style="margin-top: 1.5rem; font-size: 0.78rem; color: var(--text-muted);">
+          <i class="fas fa-circle-info"></i> Note: Conversion metrics are tracked via GTM click listener and form submission events. If an event has not been triggered in the selected date range, a true zero is reported.
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- ========================================================
+       7. LINKEDIN SHARING MODAL & CANVAS GENERATOR
+       ======================================================== -->
+  <div id="linkedin-modal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeLinkedInModal()">&times;</button>
+      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
+        <i class="fab fa-linkedin" style="color: #0A66C2; font-size: 1.8rem;"></i>
+        <div>
+          <h2 style="font-size: 1.25rem; color: #FFF;">Generate LinkedIn Report</h2>
+          <p style="font-size: 0.8rem; color: var(--text-secondary);">Download an ultra-clean branded analytics card &amp; pre-drafted post summary.</p>
+        </div>
+      </div>
+
+      <!-- Canvas Card -->
+      <canvas id="linkedin-canvas" width="1200" height="630"></canvas>
+
+      <!-- Post Text Copy Box -->
+      <div style="margin-top: 1.2rem;">
+        <label style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-secondary); display: block; margin-bottom: 6px;">
+          Ready-to-Post LinkedIn Summary:
+        </label>
+        <textarea id="linkedin-post-text" rows="6" readonly style="width: 100%; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius-sm); padding: 10px; color: var(--text-primary); font-family: inherit; font-size: 0.8rem; line-height: 1.5; resize: none; outline: none;"></textarea>
+      </div>
+
+      <div style="display: flex; gap: 10px; margin-top: 1.2rem; flex-wrap: wrap;">
+        <button onclick="downloadLinkedInCard()" class="btn btn-primary" style="flex: 1;">
+          <i class="fas fa-download"></i> Download Graphic (PNG)
+        </button>
+        <button onclick="copyLinkedInText()" id="btn-copy-linkedin" class="btn btn-outline" style="flex: 1;">
+          <i class="fas fa-copy"></i> Copy Post Text
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       APPLICATION JAVASCRIPT
+       ======================================================== -->
+  <script>
+    // State
+    let currentPeriod = '7d';
+    let currentCustomStart = '';
+    let currentCustomEnd = '';
+    let analyticsData = null;
+    let trendChartInstance = null;
+    let channelChartInstance = null;
+    let currentTrendMetric = 'views';
+    let currentPageFilter = 'all';
+
+    // Elements
+    const authGate = document.getElementById('auth-gate');
+    const dashboardApp = document.getElementById('dashboard-app');
+    const alertBanner = document.getElementById('alert-banner');
+    const propIdPill = document.getElementById('prop-id-pill');
+    const dateRangeDisplay = document.getElementById('date-range-display');
+    const exportDropdown = document.getElementById('export-dropdown');
+
+    // ── 1. INITIALIZE & AUTH CHECK ───────────────────────────
+    async function init() {
+      try {
+        const res = await fetch('/api/auth-status');
+        const data = await res.json();
+
+        if (data.authenticated) {
+          authGate.style.display = 'none';
+          dashboardApp.style.display = 'block';
+
+          if (data.hasPropertyId && data.propertyId) {
+            propIdPill.textContent = `Property: ${data.propertyId}`;
+            propIdPill.className = 'badge-tag accent';
+          } else {
+            propIdPill.textContent = 'Property ID Missing';
+            propIdPill.className = 'badge-tag';
+            showAlert('GA4 Property ID is not configured on this server. Add GA4_PROPERTY_ID to your Vercel Environment Variables to query analytics.', 'warning');
+          }
+
+          loadAnalytics();
+        } else {
+          authGate.style.display = 'flex';
+          dashboardApp.style.display = 'none';
+        }
+      } catch (err) {
+        console.error('Auth status check failed:', err);
+        authGate.style.display = 'flex';
+      }
+    }
+
+    // ── 2. FETCH ANALYTICS DATA ──────────────────────────────
+    async function loadAnalytics() {
+      showAlert('Fetching live GA4 data from server...', 'info');
+
+      let url = `/api/analytics?period=${currentPeriod}`;
+      if (currentPeriod === 'custom' && currentCustomStart && currentCustomEnd) {
+        url += `&startDate=${currentCustomStart}&endDate=${currentCustomEnd}`;
+      }
+
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+
+        if (!res.ok) {
+          if (res.status === 401) {
+            // Expired or invalid session -> re-authenticate
+            authGate.style.display = 'flex';
+            dashboardApp.style.display = 'none';
+            return;
+          }
+          if (res.status === 503) {
+            showAlert(data.message || data.error, 'warning');
+            renderEmptyState(data.message);
+            return;
+          }
+          throw new Error(data.message || data.error || 'Failed to fetch analytics');
+        }
+
+        analyticsData = data;
+        hideAlert();
+
+        if (data.isEmpty) {
+          showAlert('Connected to GA4 successfully, but no traffic data was recorded for this date range.', 'info');
+        }
+
+        renderDashboard(data);
+      } catch (err) {
+        console.error('Failed to load analytics:', err);
+        showAlert(`Error: ${err.message}`, 'danger');
+        renderEmptyState(err.message);
+      }
+    }
+
+    // ── 3. RENDER DASHBOARD ──────────────────────────────────
+    function renderDashboard(data) {
+      const ov = data.overview || {};
+
+      // 1. KPI Cards
+      document.getElementById('kpi-users').textContent = formatNumber(ov.activeUsers);
+      document.getElementById('kpi-sessions').textContent = formatNumber(ov.sessions);
+      document.getElementById('kpi-views').textContent = formatNumber(ov.pageviews);
+      document.getElementById('kpi-engagement').textContent = `${(ov.engagementRate * 100).toFixed(1)}%`;
+      document.getElementById('kpi-duration').textContent = formatDuration(ov.averageEngagementTime);
+
+      // 2. Trend Chart
+      renderTrendChart(data.trends || []);
+
+      // 3. Channels Doughnut
+      renderChannels(data.channels || []);
+
+      // 4. Sources Table
+      renderSources(data.sources || []);
+
+      // 5. Pages Table
+      renderPages(data.pages || []);
+
+      // 6. Devices
+      renderDevices(data.devices || []);
+
+      // 7. Geography
+      renderGeo(data.geo || []);
+
+      // 8. Conversions
+      const conv = data.conversions || {};
+      const setConvUI = (countId, statusId, convObj) => {
+        const countEl = document.getElementById(countId);
+        const statusEl = document.getElementById(statusId);
+        if (!countEl) return;
+        const count = (convObj && typeof convObj === 'object') ? (convObj.count || 0) : (convObj || 0);
+        const isConfigured = Boolean(convObj && typeof convObj === 'object' && convObj.configured);
+
+        countEl.textContent = formatNumber(count);
+        if (statusEl) {
+          if (isConfigured) {
+            statusEl.innerHTML = '<span class="badge-tag accent" style="font-size:0.65rem;">● GA4 Verified</span>';
+          } else {
+            statusEl.innerHTML = '<span class="badge-tag" style="font-size:0.65rem;" title="No custom event with this name found in GA4">GTM Event Pending</span>';
+          }
+        }
+      };
+
+      setConvUI('conv-whatsapp', 'status-whatsapp', conv.whatsapp);
+      setConvUI('conv-email', 'status-email', conv.email);
+      setConvUI('conv-phone', 'status-phone', conv.phone);
+      setConvUI('conv-forms', 'status-forms', conv.formSubmissions);
+
+      // Update date range display
+      if (data.period && data.period.label) {
+        dateRangeDisplay.innerHTML = `Date Range: <strong>${data.period.label}</strong>`;
+      }
+    }
+
+    function renderEmptyState(reason) {
+      document.getElementById('kpi-users').textContent = '0';
+      document.getElementById('kpi-sessions').textContent = '0';
+      document.getElementById('kpi-views').textContent = '0';
+      document.getElementById('kpi-engagement').textContent = '0.0%';
+      document.getElementById('kpi-duration').textContent = '0s';
+
+      renderTrendChart([]);
+      renderChannels([]);
+      renderSources([]);
+      renderPages([]);
+      renderDevices([]);
+      renderGeo([]);
+
+      document.getElementById('conv-whatsapp').textContent = '0';
+      document.getElementById('conv-email').textContent = '0';
+      document.getElementById('conv-phone').textContent = '0';
+      document.getElementById('conv-forms').textContent = '0';
+    }
+
+    // ── 4. CHART RENDERING (Chart.js) ────────────────────────
+    function renderTrendChart(trends) {
+      const ctx = document.getElementById('trendChart');
+      if (!ctx) return;
+
+      if (trendChartInstance) {
+        trendChartInstance.destroy();
+      }
+
+      if (!trends || trends.length === 0) {
+        ctx.getContext('2d').clearRect(0, 0, ctx.width, ctx.height);
+        return;
+      }
+
+      // Format date labels (YYYYMMDD to Month Day)
+      const labels = trends.map(t => {
+        if (t.date && t.date.length === 8) {
+          const m = parseInt(t.date.substring(4, 6), 10);
+          const d = parseInt(t.date.substring(6, 8), 10);
+          const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+          return `${months[m - 1]} ${d}`;
+        }
+        return t.date;
+      });
+
+      let datasetValues = [];
+      let datasetLabel = 'Pageviews';
+
+      if (currentTrendMetric === 'users') {
+        datasetValues = trends.map(t => t.users);
+        datasetLabel = 'Active Visitors';
+      } else if (currentTrendMetric === 'sessions') {
+        datasetValues = trends.map(t => t.sessions);
+        datasetLabel = 'Sessions';
+      } else {
+        datasetValues = trends.map(t => t.views);
+        datasetLabel = 'Pageviews';
+      }
+
+      const gradient = ctx.getContext('2d').createLinearGradient(0, 0, 0, 250);
+      gradient.addColorStop(0, 'rgba(46, 230, 166, 0.45)');
+      gradient.addColorStop(1, 'rgba(46, 230, 166, 0.0)');
+
+      trendChartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: datasetLabel,
+            data: datasetValues,
+            borderColor: '#2EE6A6',
+            backgroundColor: gradient,
+            fill: true,
+            tension: 0.35,
+            borderWidth: 2.5,
+            pointBackgroundColor: '#2EE6A6',
+            pointBorderColor: '#050505',
+            pointRadius: trends.length > 20 ? 2 : 4,
+            pointHoverRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: '#0E1614',
+              titleColor: '#FFF',
+              bodyColor: '#2EE6A6',
+              borderColor: 'rgba(46, 230, 166, 0.25)',
+              borderWidth: 1,
+              padding: 10,
+              displayColors: false,
+              callbacks: {
+                label: function(context) {
+                  return `${datasetLabel}: ${context.parsed.y}`;
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { color: 'rgba(255, 255, 255, 0.04)' },
+              ticks: { color: '#A8A29E', font: { family: 'Montserrat', size: 11 } }
+            },
+            y: {
+              beginAtZero: true,
+              grid: { color: 'rgba(255, 255, 255, 0.04)' },
+              ticks: { color: '#A8A29E', font: { family: 'Montserrat', size: 11 }, precision: 0 }
+            }
+          }
+        }
+      });
+    }
+
+    function switchTrendMetric(metric, ev) {
+      currentTrendMetric = metric;
+      const targetEl = ev ? ev.target : (window.event ? window.event.target : null);
+      const card = document.getElementById('trendChart') ? document.getElementById('trendChart').closest('.card') : null;
+      if (card) {
+        card.querySelectorAll('.pill-btn').forEach(b => b.classList.remove('active'));
+      }
+      if (targetEl) targetEl.classList.add('active');
+
+      if (analyticsData && analyticsData.trends) {
+        renderTrendChart(analyticsData.trends);
+      }
+    }
+
+    function renderChannels(channels) {
+      const ctx = document.getElementById('channelChart');
+      const listContainer = document.getElementById('channels-list');
+      if (!ctx) return;
+
+      if (channelChartInstance) {
+        channelChartInstance.destroy();
+      }
+
+      if (!channels || channels.length === 0) {
+        listContainer.innerHTML = '<p style="color:var(--text-muted);font-size:0.8rem;text-align:center;">No channel data available.</p>';
+        return;
+      }
+
+      const labels = channels.map(c => c.channel);
+      const data = channels.map(c => c.sessions);
+      const colors = [
+        '#2EE6A6', '#34B7F1', '#FFB800', '#FF5A5F', '#9D4EDD',
+        '#00B4D8', '#52B788', '#F77F00', '#D62246', '#48CAE4'
+      ];
+
+      channelChartInstance = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: labels,
+          datasets: [{
+            data: data,
+            backgroundColor: colors.slice(0, labels.length),
+            borderColor: '#050505',
+            borderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false }
+          },
+          cutout: '72%'
+        }
+      });
+
+      // Render channel badges list
+      listContainer.innerHTML = channels.map((c, i) => `
+        <div style="display:flex; justify-content:space-between; align-items:center; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 0.8rem;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span style="width:10px; height:10px; border-radius:50%; background:${colors[i % colors.length]}; display:inline-block;"></span>
+            <span>${c.channel}</span>
+          </div>
+          <div>
+            <strong>${formatNumber(c.sessions)}</strong> sessions
+            <span style="color:var(--text-muted); font-size:0.75rem; margin-left:6px;">(${(c.engagementRate * 100).toFixed(0)}% eng)</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // ── 5. TABLES RENDERING ──────────────────────────────────
+    function renderSources(sources) {
+      const tbody = document.querySelector('#sources-table tbody');
+      if (!sources || sources.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; color: var(--text-muted);">No source records found for this period.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = sources.map(s => `
+        <tr>
+          <td><strong>${escapeHtml(s.sourceMedium)}</strong></td>
+          <td>${formatNumber(s.sessions)}</td>
+          <td>${formatNumber(s.users)}</td>
+        </tr>
+      `).join('');
+    }
+
+    function renderPages(pages) {
+      const tbody = document.querySelector('#pages-table tbody');
+      if (!pages || pages.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; color: var(--text-muted);">No pages viewed in this date range.</td></tr>';
+        return;
+      }
+
+      let filtered = pages;
+      if (currentPageFilter === 'blog') {
+        filtered = pages.filter(p => p.path.includes('/blog/'));
+      }
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; color: var(--text-muted);">No blog post views recorded in this period.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(p => `
+        <tr>
+          <td><code style="color:var(--accent-color); font-size:0.8rem;">${escapeHtml(p.path)}</code></td>
+          <td class="page-title-cell" title="${escapeHtml(p.title)}">${escapeHtml(p.title)}</td>
+          <td><strong>${formatNumber(p.views)}</strong></td>
+          <td>${formatNumber(p.users)}</td>
+          <td>
+            <a href="${escapeHtml(p.path)}" target="_blank" class="btn btn-outline" style="padding: 3px 8px; font-size: 0.72rem;">
+              <i class="fas fa-arrow-up-right-from-square"></i> View
+            </a>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function filterPages(filter, ev) {
+      currentPageFilter = filter;
+      const targetEl = ev ? ev.target : (window.event ? window.event.target : null);
+      const card = document.getElementById('pages-table') ? document.getElementById('pages-table').closest('.card') : null;
+      if (card) {
+        card.querySelectorAll('.pill-btn').forEach(b => b.classList.remove('active'));
+      }
+      if (targetEl) targetEl.classList.add('active');
+
+      if (analyticsData && analyticsData.pages) {
+        renderPages(analyticsData.pages);
+      }
+    }
+
+    function renderDevices(devices) {
+      const container = document.getElementById('devices-container');
+      if (!devices || devices.length === 0) {
+        container.innerHTML = '<p style="color:var(--text-muted);font-size:0.8rem;text-align:center;">No device data available.</p>';
+        return;
+      }
+
+      const totalUsers = devices.reduce((sum, d) => sum + d.users, 0) || 1;
+
+      const icons = {
+        mobile: 'fa-mobile-screen',
+        desktop: 'fa-desktop',
+        tablet: 'fa-tablet-screen-button'
+      };
+
+      container.innerHTML = devices.map(d => {
+        const pct = ((d.users / totalUsers) * 100).toFixed(1);
+        const icon = icons[d.device.toLowerCase()] || 'fa-laptop';
+        return `
+          <div>
+            <div style="display:flex; justify-content:space-between; font-size:0.82rem; margin-bottom:5px;">
+              <span><i class="fas ${icon}" style="color:var(--accent-color); margin-right:6px;"></i> ${capitalize(d.device)}</span>
+              <strong>${d.users} visitors (${pct}%)</strong>
+            </div>
+            <div style="width:100%; height:8px; background:rgba(255,255,255,0.06); border-radius:4px; overflow:hidden;">
+              <div style="width:${pct}%; height:100%; background:var(--accent-color); border-radius:4px;"></div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderGeo(geo) {
+      const tbody = document.querySelector('#geo-table tbody');
+      if (!geo || geo.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; color: var(--text-muted);">No geographic data recorded.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = geo.map(g => `
+        <tr>
+          <td><i class="fas fa-flag" style="opacity:0.6; margin-right:4px;"></i> ${escapeHtml(g.country)}</td>
+          <td>${escapeHtml(g.city)}</td>
+          <td><strong>${formatNumber(g.users)}</strong></td>
+          <td>${formatNumber(g.sessions)}</td>
+        </tr>
+      `).join('');
+    }
+
+    // ── 6. LINKEDIN SHARING & CANVAS REPORT ───────────────────
+    function openLinkedInModal() {
+      const modal = document.getElementById('linkedin-modal');
+      modal.classList.add('open');
+      drawLinkedInCard();
+      draftLinkedInPostText();
+    }
+
+    function closeLinkedInModal() {
+      document.getElementById('linkedin-modal').classList.remove('open');
+    }
+
+    function drawLinkedInCard() {
+      const canvas = document.getElementById('linkedin-canvas');
+      const ctx = canvas.getContext('2d');
+      const width = canvas.width;
+      const height = canvas.height;
+
+      // 1. Background dark gradient
+      const bgGrad = ctx.createLinearGradient(0, 0, width, height);
+      bgGrad.addColorStop(0, '#060B09');
+      bgGrad.addColorStop(0.5, '#0B1512');
+      bgGrad.addColorStop(1, '#040706');
+      ctx.fillStyle = bgGrad;
+      ctx.fillRect(0, 0, width, height);
+
+      // Subtle accent glow
+      const glowGrad = ctx.createRadialGradient(width * 0.85, height * 0.2, 50, width * 0.85, height * 0.2, 350);
+      glowGrad.addColorStop(0, 'rgba(46, 230, 166, 0.15)');
+      glowGrad.addColorStop(1, 'transparent');
+      ctx.fillStyle = glowGrad;
+      ctx.fillRect(0, 0, width, height);
+
+      // Border
+      ctx.strokeStyle = 'rgba(46, 230, 166, 0.25)';
+      ctx.lineWidth = 4;
+      ctx.strokeRect(20, 20, width - 40, height - 40);
+
+      // Header branding
+      ctx.font = '800 36px Montserrat, sans-serif';
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillText('Mohammad Anshid Ck', 70, 95);
+
+      ctx.fillStyle = '#2EE6A6';
+      ctx.fillText('.', 525, 95);
+
+      ctx.font = '600 18px Montserrat, sans-serif';
+      ctx.fillStyle = '#A8A29E';
+      ctx.fillText('Digital Marketing Strategist | Performance & Growth Analytics', 70, 130);
+
+      // Live verification pill
+      ctx.fillStyle = 'rgba(46, 230, 166, 0.1)';
+      roundRect(ctx, width - 360, 65, 290, 42, 8, true, false);
+      ctx.strokeStyle = 'rgba(46, 230, 166, 0.35)';
+      ctx.lineWidth = 1;
+      roundRect(ctx, width - 360, 65, 290, 42, 8, false, true);
+
+      ctx.font = '700 14px Montserrat, sans-serif';
+      ctx.fillStyle = '#2EE6A6';
+      ctx.fillText('● GA4 VERIFIED METRICS', width - 335, 92);
+
+      // Horizontal separator
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+      ctx.beginPath();
+      ctx.moveTo(70, 165);
+      ctx.lineTo(width - 70, 165);
+      ctx.stroke();
+
+      // Metrics Grid (4 cards)
+      const ov = (analyticsData && analyticsData.overview) || {};
+      const metrics = [
+        { label: 'UNIQUE VISITORS', val: formatNumber(ov.activeUsers || 0), sub: 'High-intent audience' },
+        { label: 'PAGEVIEWS', val: formatNumber(ov.pageviews || 0), sub: 'Content impressions' },
+        { label: 'ENGAGEMENT RATE', val: `${((ov.engagementRate || 0) * 100).toFixed(1)}%`, sub: 'Quality session ratio' },
+        { label: 'AVG DURATION / USER', val: formatDuration(ov.averageEngagementTime || 0), sub: 'Attention per active visitor' }
+      ];
+
+      const cardW = 245;
+      const cardH = 175;
+      const startX = 70;
+      const startY = 210;
+      const gap = 26;
+
+      metrics.forEach((m, idx) => {
+        const x = startX + idx * (cardW + gap);
+        // Card bg
+        ctx.fillStyle = 'rgba(13, 20, 18, 0.9)';
+        roundRect(ctx, x, startY, cardW, cardH, 16, true, false);
+        ctx.strokeStyle = 'rgba(46, 230, 166, 0.2)';
+        ctx.lineWidth = 1.5;
+        roundRect(ctx, x, startY, cardW, cardH, 16, false, true);
+
+        // Label
+        ctx.font = '700 13px Montserrat, sans-serif';
+        ctx.fillStyle = '#A8A29E';
+        ctx.fillText(m.label, x + 24, startY + 42);
+
+        // Value
+        ctx.font = '800 38px Montserrat, sans-serif';
+        ctx.fillStyle = '#2EE6A6';
+        ctx.fillText(m.val, x + 24, startY + 105);
+
+        // Sub
+        ctx.font = '500 13px Montserrat, sans-serif';
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.45)';
+        ctx.fillText(m.sub, x + 24, startY + 145);
+      });
+
+      // Bottom Insight / Growth Highlight
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.02)';
+      roundRect(ctx, 70, 425, width - 140, 130, 16, true, false);
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+      roundRect(ctx, 70, 425, width - 140, 130, 16, false, true);
+
+      ctx.font = '700 16px Montserrat, sans-serif';
+      ctx.fillStyle = '#FFF';
+      ctx.fillText('Growth Takeaway & Acquisition Channel', 105, 465);
+
+      const topChannel = (analyticsData && analyticsData.channels && analyticsData.channels[0]) ? analyticsData.channels[0].channel : 'Organic Search';
+      const periodLabel = (analyticsData && analyticsData.period) ? analyticsData.period.label : 'Recent Period';
+
+      ctx.font = '500 15px Montserrat, sans-serif';
+      ctx.fillStyle = '#A8A29E';
+      ctx.fillText(`Window: ${periodLabel} | Primary Growth Driver: ${topChannel} | Site: https://www.anshidck.com`, 105, 502);
+
+      ctx.font = '600 14px Montserrat, sans-serif';
+      ctx.fillStyle = '#2EE6A6';
+      ctx.fillText('→ Data-driven SEO & Conversion Optimization across Kerala and beyond.', 105, 532);
+    }
+
+    function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
+      ctx.beginPath();
+      ctx.moveTo(x + radius, y);
+      ctx.lineTo(x + width - radius, y);
+      ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+      ctx.lineTo(x + width, y + height - radius);
+      ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+      ctx.lineTo(x + radius, y + height);
+      ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+      ctx.lineTo(x, y + radius);
+      ctx.quadraticCurveTo(x, y, x + radius, y);
+      ctx.closePath();
+      if (fill) ctx.fill();
+      if (stroke) ctx.stroke();
+    }
+
+    function downloadLinkedInCard() {
+      const canvas = document.getElementById('linkedin-canvas');
+      const link = document.createElement('a');
+      link.download = `anshidck-analytics-${currentPeriod}.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+
+    function draftLinkedInPostText() {
+      const ov = (analyticsData && analyticsData.overview) || {};
+      const topChannel = (analyticsData && analyticsData.channels && analyticsData.channels[0]) ? analyticsData.channels[0].channel : 'Organic Search';
+      const periodLabel = (analyticsData && analyticsData.period) ? analyticsData.period.label : 'Recent Period';
+
+      const postText = 
+`Transparency in performance marketing builds real authority. 📊
+
+Here is a verified snapshot of our digital performance (${periodLabel}) on https://www.anshidck.com:
+
+📈 Key Highlights:
+• Active Visitors: ${formatNumber(ov.activeUsers || 0)}
+• Total Pageviews: ${formatNumber(ov.pageviews || 0)}
+• Engagement Rate: ${((ov.engagementRate || 0) * 100).toFixed(1)}%
+• Avg Engagement Time: ${formatDuration(ov.averageEngagementTime || 0)} per active visitor
+• Primary Acquisition Channel: ${topChannel}
+
+What drives these numbers?
+1. Strategic SEO optimized for search intent in Malappuram and Kerala.
+2. Conversion funnels engineered to convert passive visitors into direct inquiries.
+3. Fast, clean web architecture with zero bloat.
+
+Strategy + Measurement = Sustainable ROI.
+
+#DigitalMarketing #KeralaBusiness #Malappuram #SEO #GoogleAnalytics #GA4 #GrowthMarketing #MarketingStrategy`;
+
+      document.getElementById('linkedin-post-text').value = postText;
+    }
+
+    function copyLinkedInText() {
+      const textarea = document.getElementById('linkedin-post-text');
+      textarea.select();
+      navigator.clipboard.writeText(textarea.value).then(() => {
+        const btn = document.getElementById('btn-copy-linkedin');
+        btn.innerHTML = '<i class="fas fa-check" style="color:var(--accent-color);"></i> Copied!';
+        setTimeout(() => {
+          btn.innerHTML = '<i class="fas fa-copy"></i> Copy Post Text';
+        }, 2000);
+      });
+    }
+
+    // ── 7. EXPORT DATA (CSV, EXCEL) ──────────────────────────
+    function exportCSV() {
+      if (!analyticsData) {
+        alert('Analytics data is still loading.');
+        return;
+      }
+
+      const ov = analyticsData.overview || {};
+      let csv = 'ANALYTICS EXECUTIVE SUMMARY - WWW.ANSHIDCK.COM\r\n';
+      csv += `Date Range,${analyticsData.period ? analyticsData.period.label : currentPeriod}\r\n`;
+      csv += `Active Users,${ov.activeUsers || 0}\r\n`;
+      csv += `Sessions,${ov.sessions || 0}\r\n`;
+      csv += `Pageviews,${ov.pageviews || 0}\r\n`;
+      csv += `Engagement Rate,${((ov.engagementRate || 0) * 100).toFixed(1)}%\r\n`;
+      csv += `Avg Engagement Time per Active User (seconds),${ov.averageEngagementTime || 0}\r\n\r\n`;
+
+      csv += 'TRAFFIC CHANNELS\r\nChannel,Sessions,Users,Engagement Rate\r\n';
+      (analyticsData.channels || []).forEach(c => {
+        csv += `"${c.channel}",${c.sessions},${c.users},${(c.engagementRate * 100).toFixed(1)}%\r\n`;
+      });
+
+      csv += '\r\nTOP PAGES\r\nPath,Title,Pageviews,Users\r\n';
+      (analyticsData.pages || []).forEach(p => {
+        csv += `"${p.path}","${p.title.replace(/"/g, '""')}",${p.views},${p.users}\r\n`;
+      });
+
+      csv += '\r\nGEOGRAPHIC DISTRIBUTION\r\nCountry,City,Users,Sessions\r\n';
+      (analyticsData.geo || []).forEach(g => {
+        csv += `"${g.country}","${g.city}",${g.users},${g.sessions}\r\n`;
+      });
+
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `anshidck-analytics-${currentPeriod}.csv`;
+      link.click();
+      URL.revokeObjectURL(url);
+      exportDropdown.style.display = 'none';
+    }
+
+    function exportExcel() {
+      if (!analyticsData) {
+        alert('Analytics data is still loading.');
+        return;
+      }
+
+      const ov = analyticsData.overview || {};
+      let html = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+      <head><meta charset="utf-8"></head>
+      <body>
+        <h2>Mohammad Anshid Ck - Analytics Report</h2>
+        <p>Period: ${analyticsData.period ? analyticsData.period.label : currentPeriod}</p>
+        <table border="1">
+          <tr style="background:#2EE6A6; color:#000; font-weight:bold;">
+            <th>Metric</th><th>Value</th>
+          </tr>
+          <tr><td>Active Users</td><td>${ov.activeUsers || 0}</td></tr>
+          <tr><td>Sessions</td><td>${ov.sessions || 0}</td></tr>
+          <tr><td>Pageviews</td><td>${ov.pageviews || 0}</td></tr>
+          <tr><td>Engagement Rate</td><td>${((ov.engagementRate || 0) * 100).toFixed(1)}%</td></tr>
+          <tr><td>Avg Engagement Time per Active User (s)</td><td>${ov.averageEngagementTime || 0}</td></tr>
+        </table>
+        <br>
+        <h3>Traffic Channels</h3>
+        <table border="1">
+          <tr style="background:#0D1412; color:#FFF;"><th>Channel</th><th>Sessions</th><th>Users</th><th>Engagement Rate</th></tr>`;
+
+      (analyticsData.channels || []).forEach(c => {
+        html += `<tr><td>${c.channel}</td><td>${c.sessions}</td><td>${c.users}</td><td>${(c.engagementRate * 100).toFixed(1)}%</td></tr>`;
+      });
+
+      html += `</table><br><h3>Top Content</h3><table border="1"><tr style="background:#0D1412; color:#FFF;"><th>Path</th><th>Title</th><th>Views</th><th>Users</th></tr>`;
+
+      (analyticsData.pages || []).forEach(p => {
+        html += `<tr><td>${p.path}</td><td>${escapeHtml(p.title)}</td><td>${p.views}</td><td>${p.users}</td></tr>`;
+      });
+
+      html += '</table></body></html>';
+
+      const blob = new Blob([html], { type: 'application/vnd.ms-excel' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `anshidck-analytics-${currentPeriod}.xls`;
+      link.click();
+      URL.revokeObjectURL(url);
+      exportDropdown.style.display = 'none';
+    }
+
+    // ── 8. EVENT LISTENERS & HELPERS ─────────────────────────
+    document.addEventListener('DOMContentLoaded', () => {
+      init();
+
+      // Period filter pills
+      document.querySelectorAll('.filter-bar .filter-pills .pill-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const period = e.target.getAttribute('data-period');
+          if (!period) return;
+
+          document.querySelectorAll('.filter-bar .filter-pills .pill-btn').forEach(b => b.classList.remove('active'));
+          e.target.classList.add('active');
+
+          const customBox = document.getElementById('custom-date-controls');
+          if (period === 'custom') {
+            customBox.classList.add('show');
+          } else {
+            customBox.classList.remove('show');
+            currentPeriod = period;
+            loadAnalytics();
+          }
+        });
+      });
+
+      // Apply custom date button
+      document.getElementById('btn-apply-custom').addEventListener('click', () => {
+        const start = document.getElementById('custom-start-date').value;
+        const end = document.getElementById('custom-end-date').value;
+
+        if (!start || !end) {
+          alert('Please choose both start and end dates.');
+          return;
+        }
+
+        currentPeriod = 'custom';
+        currentCustomStart = start;
+        currentCustomEnd = end;
+        loadAnalytics();
+      });
+
+      // Refresh button
+      document.getElementById('btn-refresh').addEventListener('click', () => {
+        const icon = document.querySelector('#btn-refresh i');
+        icon.classList.add('fa-spin');
+        loadAnalytics().finally(() => {
+          setTimeout(() => icon.classList.remove('fa-spin'), 600);
+        });
+      });
+
+      // Export menu toggle
+      document.getElementById('btn-export-menu').addEventListener('click', (e) => {
+        e.stopPropagation();
+        exportDropdown.style.display = exportDropdown.style.display === 'block' ? 'none' : 'block';
+      });
+
+      document.addEventListener('click', () => {
+        exportDropdown.style.display = 'none';
+      });
+
+      // LinkedIn modal
+      document.getElementById('btn-linkedin-modal').addEventListener('click', openLinkedInModal);
+    });
+
+    function showAlert(msg, type) {
+      alertBanner.style.display = 'flex';
+      alertBanner.textContent = msg;
+
+      if (type === 'warning') {
+        alertBanner.style.background = 'rgba(255, 184, 0, 0.12)';
+        alertBanner.style.color = '#FFB800';
+        alertBanner.style.border = '1px solid rgba(255, 184, 0, 0.3)';
+      } else if (type === 'danger') {
+        alertBanner.style.background = 'rgba(255, 90, 95, 0.12)';
+        alertBanner.style.color = '#FF5A5F';
+        alertBanner.style.border = '1px solid rgba(255, 90, 95, 0.3)';
+      } else {
+        alertBanner.style.background = 'rgba(46, 230, 166, 0.08)';
+        alertBanner.style.color = '#2EE6A6';
+        alertBanner.style.border = '1px solid var(--card-border)';
+      }
+    }
+
+    function hideAlert() {
+      alertBanner.style.display = 'none';
+    }
+
+    function formatNumber(num) {
+      if (num === null || num === undefined) return '0';
+      return new Intl.NumberFormat('en-US').format(num);
+    }
+
+    function formatDuration(sec) {
+      if (!sec || isNaN(sec) || sec <= 0) return '0s';
+      const m = Math.floor(sec / 60);
+      const s = Math.round(sec % 60);
+      if (m > 0) return `${m}m ${s}s`;
+      return `${s}s`;
+    }
+
+    function capitalize(str) {
+      if (!str) return '';
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    function escapeHtml(text) {
+      if (!text) return '';
+      return String(text)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+  </script>
+</body>
+</html>

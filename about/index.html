@@ -403,6 +403,332 @@
       .stream-content { padding: 2rem; }
       .stream-title { font-size: 1.4rem; flex-direction: column; align-items: flex-start; gap: 5px; }
     }
+
+
+/* ==========================================================
+       PREMIUM CERTIFICATIONS ACCORDION SYSTEM
+       ========================================================== */
+    .certifications-section {
+      position: relative;
+      padding: 6rem 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(46, 230, 166, 0.08) 0%, transparent 60%),
+                  linear-gradient(180deg, rgba(6, 9, 8, 0.6) 0%, rgba(13, 20, 18, 0.95) 50%, rgba(6, 9, 8, 0.8) 100%);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      overflow: hidden;
+    }
+
+    .cert-accordion-container {
+      max-width: 960px;
+      margin: 3.5rem auto 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cert-accordion-item {
+      background: rgba(13, 20, 18, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(46, 230, 166, 0.15);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .cert-accordion-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    .cert-accordion-item:hover {
+      border-color: rgba(46, 230, 166, 0.35);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45), 0 0 20px rgba(46, 230, 166, 0.08);
+    }
+
+    .cert-accordion-item:hover::before,
+    .cert-accordion-item.active::before {
+      opacity: 0.8;
+    }
+
+    .cert-accordion-item.active {
+      background: rgba(13, 24, 21, 0.9);
+      border-color: rgba(46, 230, 166, 0.45);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 28px rgba(46, 230, 166, 0.14);
+    }
+
+    .cert-accordion-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding: 1.35rem 1.75rem;
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      text-align: left;
+      font-family: inherit;
+      transition: background 0.3s ease;
+    }
+
+    .cert-accordion-trigger:focus-visible {
+      outline: 2px solid var(--accent-color);
+      outline-offset: -2px;
+    }
+
+    .cert-trigger-left {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .cert-logo-box {
+      width: 52px;
+      height: 52px;
+      min-width: 52px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    }
+
+    .cert-logo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .cert-accordion-item:hover .cert-logo-box,
+    .cert-accordion-item.active .cert-logo-box {
+      background: rgba(46, 230, 166, 0.08);
+      border-color: rgba(46, 230, 166, 0.3);
+      box-shadow: 0 0 20px rgba(46, 230, 166, 0.2);
+    }
+
+    .cert-accordion-item:hover .cert-logo-box img,
+    .cert-accordion-item.active .cert-logo-box img {
+      transform: scale(1.08);
+    }
+
+    .cert-header-text {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
+    }
+
+    .cert-provider-tag {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent-color);
+    }
+
+    .cert-tag-separator {
+      color: rgba(255, 255, 255, 0.25);
+      font-size: 0.65rem;
+    }
+
+    .cert-category-name {
+      color: var(--text-secondary);
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .cert-item-title {
+      font-size: 1.18rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 0;
+      line-height: 1.35;
+      letter-spacing: -0.2px;
+    }
+
+    .cert-trigger-right {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .cert-action-pill {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 5px 14px;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
+
+    .cert-accordion-item:hover .cert-action-pill {
+      color: var(--accent-color);
+      border-color: rgba(46, 230, 166, 0.25);
+      background: rgba(46, 230, 166, 0.06);
+    }
+
+    .cert-accordion-item.active .cert-action-pill {
+      color: #060908;
+      background: var(--accent-color);
+      border-color: var(--accent-color);
+      box-shadow: 0 0 14px rgba(46, 230, 166, 0.35);
+    }
+
+    .cert-toggle-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-color);
+      font-size: 0.85rem;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .cert-accordion-item:hover .cert-toggle-btn {
+      background: rgba(46, 230, 166, 0.12);
+      border-color: rgba(46, 230, 166, 0.3);
+      color: var(--accent-color);
+    }
+
+    .cert-accordion-item.active .cert-toggle-btn {
+      background: var(--accent-color);
+      color: #060908;
+      transform: rotate(180deg);
+      box-shadow: 0 0 16px rgba(46, 230, 166, 0.4);
+    }
+
+    /* Collapse Body */
+    .cert-accordion-collapse {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+      opacity: 0;
+    }
+
+    .cert-accordion-item.active .cert-accordion-collapse {
+      opacity: 1;
+    }
+
+    .cert-collapse-inner {
+      padding: 0 1.75rem 1.75rem 5.75rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      margin-top: 0.25rem;
+      padding-top: 1.35rem;
+    }
+
+    .cert-course-desc {
+      font-size: 0.94rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+    }
+
+    .cert-skills-wrap {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .cert-skills-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+      margin-right: 4px;
+    }
+
+    .cert-skill-chip {
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(46, 230, 166, 0.15);
+      padding: 4px 12px;
+      border-radius: 8px;
+      letter-spacing: 0.2px;
+      transition: all 0.25s ease;
+    }
+
+    .cert-skill-chip:hover {
+      background: rgba(46, 230, 166, 0.1);
+      border-color: rgba(46, 230, 166, 0.35);
+      color: #fff;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .certifications-section {
+        padding: 4rem 0;
+      }
+      .cert-accordion-trigger {
+        padding: 1.15rem 1.15rem;
+        gap: 0.9rem;
+      }
+      .cert-trigger-left {
+        gap: 0.9rem;
+      }
+      .cert-logo-box {
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        border-radius: 12px;
+        padding: 8px;
+      }
+      .cert-item-title {
+        font-size: 1.02rem;
+      }
+      .cert-provider-tag {
+        font-size: 0.68rem;
+        letter-spacing: 1.5px;
+      }
+      .cert-category-name,
+      .cert-tag-separator,
+      .cert-action-pill {
+        display: none;
+      }
+      .cert-collapse-inner {
+        padding: 1.15rem 1.15rem 1.35rem 1.15rem;
+      }
+      .cert-course-desc {
+        font-size: 0.88rem;
+        line-height: 1.65;
+      }
+    }
   </style>
 </head>
 
@@ -440,6 +766,7 @@
           <li><a href="../portfolio/">Portfolio</a></li>
           <li><a href="../blog/">Blog</a></li>
           <li><a href="../contact/">Contact</a></li>
+          <li><a href="/dashboard/" class="nav-analytics-link" aria-label="Analytics Dashboard"><i class="fas fa-chart-line" style="margin-right:5px;font-size:0.85em;"></i>Analytics</a></li>
         </ul>
         
         <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
@@ -751,6 +1078,231 @@
     </div>
   </section>
 
+  <!-- Certifications & Professional Learning Section -->
+  <section class="certifications-section" id="certifications">
+    <div class="container">
+      <div class="section-title animate reveal-up" style="text-align: center;">
+        <span style="display:inline-block; padding: 5px 18px; background: rgba(46, 230, 166, 0.08); border: 1px solid rgba(46, 230, 166, 0.2); border-radius: 50px; font-size: 0.75rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-color); margin-bottom: 1.2rem;">Professional Knowledge</span>
+        <h2>Certifications &amp; <span class="text-accent">Professional Learning</span></h2>
+        <p style="max-width: 680px; margin: 0 auto; color: var(--text-secondary);">Industry credentials and specialized course training validating hands-on expertise across analytics, search advertising, video campaigns, organic SEO, and social media strategy.</p>
+      </div>
+
+      <div class="cert-accordion-container animate reveal-up">
+
+        <!-- 1. Google Analytics – GA4 -->
+        <div class="cert-accordion-item" id="cert-item-1">
+          <button class="cert-accordion-trigger" type="button" aria-expanded="false" aria-controls="cert-desc-1">
+            <div class="cert-trigger-left">
+              <div class="cert-logo-box">
+                <img src="../assets/brands/google-analytics.svg" alt="Google Analytics Logo" width="28" height="28" class="cert-logo">
+              </div>
+              <div class="cert-header-text">
+                <div class="cert-provider-tag">
+                  <span>Google</span>
+                  <span class="cert-tag-separator">•</span>
+                  <span class="cert-category-name">Analytics &amp; Measurement</span>
+                </div>
+                <h3 class="cert-item-title">Google Analytics – GA4</h3>
+              </div>
+            </div>
+            <div class="cert-trigger-right">
+              <span class="cert-action-pill">View Details</span>
+              <span class="cert-toggle-btn"><i class="fas fa-chevron-down"></i></span>
+            </div>
+          </button>
+          <div class="cert-accordion-collapse" id="cert-desc-1" role="region" aria-labelledby="cert-item-1">
+            <div class="cert-collapse-inner">
+              <p class="cert-course-desc">Comprehensive training in Google Analytics 4 property architecture, event-based data measurement, custom parameter modeling, conversion funnel exploration, audience segmentation, and multi-channel attribution modeling to derive actionable growth insights.</p>
+              <div class="cert-skills-wrap">
+                <span class="cert-skills-label">Core Focus:</span>
+                <span class="cert-skill-chip">GA4 Architecture</span>
+                <span class="cert-skill-chip">Event Modeling</span>
+                <span class="cert-skill-chip">Funnel Analysis</span>
+                <span class="cert-skill-chip">Attribution</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Google Ads – Search -->
+        <div class="cert-accordion-item" id="cert-item-2">
+          <button class="cert-accordion-trigger" type="button" aria-expanded="false" aria-controls="cert-desc-2">
+            <div class="cert-trigger-left">
+              <div class="cert-logo-box">
+                <img src="../assets/brands/google-ads.svg" alt="Google Ads Logo" width="28" height="28" class="cert-logo">
+              </div>
+              <div class="cert-header-text">
+                <div class="cert-provider-tag">
+                  <span>Google</span>
+                  <span class="cert-tag-separator">•</span>
+                  <span class="cert-category-name">Search Advertising</span>
+                </div>
+                <h3 class="cert-item-title">Google Ads – Search</h3>
+              </div>
+            </div>
+            <div class="cert-trigger-right">
+              <span class="cert-action-pill">View Details</span>
+              <span class="cert-toggle-btn"><i class="fas fa-chevron-down"></i></span>
+            </div>
+          </button>
+          <div class="cert-accordion-collapse" id="cert-desc-2" role="region" aria-labelledby="cert-item-2">
+            <div class="cert-collapse-inner">
+              <p class="cert-course-desc">In-depth specialization in high-intent search campaign architecture, automated Smart Bidding strategies, keyword match type frameworks, Quality Score optimization, responsive search ad copywriting, and conversion tracking to maximize ROAS.</p>
+              <div class="cert-skills-wrap">
+                <span class="cert-skills-label">Core Focus:</span>
+                <span class="cert-skill-chip">Search Architecture</span>
+                <span class="cert-skill-chip">Smart Bidding</span>
+                <span class="cert-skill-chip">Quality Score</span>
+                <span class="cert-skill-chip">ROAS Focus</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Google Ads – Video -->
+        <div class="cert-accordion-item" id="cert-item-3">
+          <button class="cert-accordion-trigger" type="button" aria-expanded="false" aria-controls="cert-desc-3">
+            <div class="cert-trigger-left">
+              <div class="cert-logo-box">
+                <img src="../assets/brands/google-ads.svg" alt="Google Ads Logo" width="28" height="28" class="cert-logo">
+              </div>
+              <div class="cert-header-text">
+                <div class="cert-provider-tag">
+                  <span>Google</span>
+                  <span class="cert-tag-separator">•</span>
+                  <span class="cert-category-name">Video &amp; YouTube Ads</span>
+                </div>
+                <h3 class="cert-item-title">Google Ads – Video</h3>
+              </div>
+            </div>
+            <div class="cert-trigger-right">
+              <span class="cert-action-pill">View Details</span>
+              <span class="cert-toggle-btn"><i class="fas fa-chevron-down"></i></span>
+            </div>
+          </button>
+          <div class="cert-accordion-collapse" id="cert-desc-3" role="region" aria-labelledby="cert-item-3">
+            <div class="cert-collapse-inner">
+              <p class="cert-course-desc">Strategy and execution for YouTube advertising and Video Action campaigns, focusing on audience intent targeting, Demand Gen funnels, creative pacing, viewer retention, and full-funnel brand recall measurement.</p>
+              <div class="cert-skills-wrap">
+                <span class="cert-skills-label">Core Focus:</span>
+                <span class="cert-skill-chip">YouTube Advertising</span>
+                <span class="cert-skill-chip">Video Action</span>
+                <span class="cert-skill-chip">Demand Gen</span>
+                <span class="cert-skill-chip">Audience Targeting</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Semrush – SEO -->
+        <div class="cert-accordion-item" id="cert-item-4">
+          <button class="cert-accordion-trigger" type="button" aria-expanded="false" aria-controls="cert-desc-4">
+            <div class="cert-trigger-left">
+              <div class="cert-logo-box">
+                <img src="../assets/brands/semrush.svg" alt="Semrush Logo" width="28" height="28" class="cert-logo">
+              </div>
+              <div class="cert-header-text">
+                <div class="cert-provider-tag">
+                  <span>Semrush</span>
+                  <span class="cert-tag-separator">•</span>
+                  <span class="cert-category-name">Search Engine Optimization</span>
+                </div>
+                <h3 class="cert-item-title">Semrush – SEO</h3>
+              </div>
+            </div>
+            <div class="cert-trigger-right">
+              <span class="cert-action-pill">View Details</span>
+              <span class="cert-toggle-btn"><i class="fas fa-chevron-down"></i></span>
+            </div>
+          </button>
+          <div class="cert-accordion-collapse" id="cert-desc-4" role="region" aria-labelledby="cert-item-4">
+            <div class="cert-collapse-inner">
+              <p class="cert-course-desc">Advanced curriculum covering technical SEO site audits, competitive keyword gap analysis, backlink profile evaluation, on-page content optimization, and search engine SERP visibility tracking using the Semrush intelligence suite.</p>
+              <div class="cert-skills-wrap">
+                <span class="cert-skills-label">Core Focus:</span>
+                <span class="cert-skill-chip">Technical SEO</span>
+                <span class="cert-skill-chip">Keyword Gap</span>
+                <span class="cert-skill-chip">Backlink Audits</span>
+                <span class="cert-skill-chip">SERP Growth</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Semrush – Social Media Marketing -->
+        <div class="cert-accordion-item" id="cert-item-5">
+          <button class="cert-accordion-trigger" type="button" aria-expanded="false" aria-controls="cert-desc-5">
+            <div class="cert-trigger-left">
+              <div class="cert-logo-box">
+                <img src="../assets/brands/semrush.svg" alt="Semrush Logo" width="28" height="28" class="cert-logo">
+              </div>
+              <div class="cert-header-text">
+                <div class="cert-provider-tag">
+                  <span>Semrush</span>
+                  <span class="cert-tag-separator">•</span>
+                  <span class="cert-category-name">Social Media Strategy</span>
+                </div>
+                <h3 class="cert-item-title">Semrush – Social Media Marketing</h3>
+              </div>
+            </div>
+            <div class="cert-trigger-right">
+              <span class="cert-action-pill">View Details</span>
+              <span class="cert-toggle-btn"><i class="fas fa-chevron-down"></i></span>
+            </div>
+          </button>
+          <div class="cert-accordion-collapse" id="cert-desc-5" role="region" aria-labelledby="cert-item-5">
+            <div class="cert-collapse-inner">
+              <p class="cert-course-desc">Multi-platform social media strategy, competitor social benchmarking, content calendar architecture, cross-channel engagement analysis, and performance tracking across LinkedIn, Meta, and modern social networks.</p>
+              <div class="cert-skills-wrap">
+                <span class="cert-skills-label">Core Focus:</span>
+                <span class="cert-skill-chip">Competitive Benchmarking</span>
+                <span class="cert-skill-chip">Content Strategy</span>
+                <span class="cert-skill-chip">Audience Research</span>
+                <span class="cert-skill-chip">Social Analytics</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Semrush – Social Media Marketing Crash Course -->
+        <div class="cert-accordion-item" id="cert-item-6">
+          <button class="cert-accordion-trigger" type="button" aria-expanded="false" aria-controls="cert-desc-6">
+            <div class="cert-trigger-left">
+              <div class="cert-logo-box">
+                <img src="../assets/brands/semrush.svg" alt="Semrush Logo" width="28" height="28" class="cert-logo">
+              </div>
+              <div class="cert-header-text">
+                <div class="cert-provider-tag">
+                  <span>Semrush</span>
+                  <span class="cert-tag-separator">•</span>
+                  <span class="cert-category-name">Fast-Track Social Tactics</span>
+                </div>
+                <h3 class="cert-item-title">Semrush – Social Media Marketing Crash Course</h3>
+              </div>
+            </div>
+            <div class="cert-trigger-right">
+              <span class="cert-action-pill">View Details</span>
+              <span class="cert-toggle-btn"><i class="fas fa-chevron-down"></i></span>
+            </div>
+          </button>
+          <div class="cert-accordion-collapse" id="cert-desc-6" role="region" aria-labelledby="cert-item-6">
+            <div class="cert-collapse-inner">
+              <p class="cert-course-desc">Fast-paced, tactical training covering rapid social campaign deployment, viral content hooks, creative asset planning, paid social synergy, and agile measurement workflows for fast-moving digital marketing environments.</p>
+              <div class="cert-skills-wrap">
+                <span class="cert-skills-label">Core Focus:</span>
+                <span class="cert-skill-chip">Rapid Deployment</span>
+                <span class="cert-skill-chip">Creative Hooks</span>
+                <span class="cert-skill-chip">Paid Social Synergy</span>
+                <span class="cert-skill-chip">Agile Analytics</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- Brands & Businesses I've Worked With Section -->
   <section class="brands-marquee-section" id="brands">
     <div class="container">
@@ -873,6 +1425,77 @@
   <script src="../main.js?v=20260327-4"></script>
 
 
+<script>
+    // Certifications Accordion Interaction
+    document.addEventListener('DOMContentLoaded', function() {
+      const certItems = document.querySelectorAll('.cert-accordion-item');
+      if (!certItems.length) return;
+
+      certItems.forEach((item, index) => {
+        const trigger = item.querySelector('.cert-accordion-trigger');
+        const collapse = item.querySelector('.cert-accordion-collapse');
+        const actionPill = item.querySelector('.cert-action-pill');
+
+        if (!trigger || !collapse) return;
+
+        trigger.addEventListener('click', function(e) {
+          e.preventDefault();
+          const isOpen = item.classList.contains('active');
+
+          // Close all other items for clean single-expanded view
+          certItems.forEach(otherItem => {
+            if (otherItem !== item && otherItem.classList.contains('active')) {
+              otherItem.classList.remove('active');
+              const otherTrigger = otherItem.querySelector('.cert-accordion-trigger');
+              const otherCollapse = otherItem.querySelector('.cert-accordion-collapse');
+              const otherPill = otherItem.querySelector('.cert-action-pill');
+              if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
+              if (otherCollapse) otherCollapse.style.maxHeight = null;
+              if (otherPill) otherPill.textContent = 'View Details';
+            }
+          });
+
+          // Toggle current
+          if (isOpen) {
+            item.classList.remove('active');
+            trigger.setAttribute('aria-expanded', 'false');
+            collapse.style.maxHeight = null;
+            if (actionPill) actionPill.textContent = 'View Details';
+          } else {
+            item.classList.add('active');
+            trigger.setAttribute('aria-expanded', 'true');
+            collapse.style.maxHeight = collapse.scrollHeight + 'px';
+            if (actionPill) actionPill.textContent = 'Hide Details';
+          }
+        });
+      });
+
+      // Expand the first item by default for immediate discoverability
+      const firstItem = certItems[0];
+      if (firstItem) {
+        const firstTrigger = firstItem.querySelector('.cert-accordion-trigger');
+        const firstCollapse = firstItem.querySelector('.cert-accordion-collapse');
+        const firstPill = firstItem.querySelector('.cert-action-pill');
+        if (firstTrigger && firstCollapse) {
+          firstItem.classList.add('active');
+          firstTrigger.setAttribute('aria-expanded', 'true');
+          firstCollapse.style.maxHeight = firstCollapse.scrollHeight + 'px';
+          if (firstPill) firstPill.textContent = 'Hide Details';
+        }
+      }
+
+      // Re-calculate height on window resize
+      window.addEventListener('resize', function() {
+        const activeItem = document.querySelector('.cert-accordion-item.active');
+        if (activeItem) {
+          const collapse = activeItem.querySelector('.cert-accordion-collapse');
+          if (collapse) {
+            collapse.style.maxHeight = collapse.scrollHeight + 'px';
+          }
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
