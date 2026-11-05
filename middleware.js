@@ -1,14 +1,7 @@
+
 /**
- * middleware.js
- *
- * Vercel Edge Middleware for Server-Level Route Protection.
- * Protects /dashboard/ and its assets at the hosting/edge level before static files are served.
- *
- * Security properties:
- *  1. Cryptographically validates the ga_session cookie using AES-256-GCM via Web Crypto API.
- *  2. Does NOT rely on cookie presence alone: verifies authentication tag and expiration timestamp.
- *  3. Unauthenticated, expired, or tampered sessions are rejected at the edge with HTTP 302 to /api/auth-start.
- *  4. Preserves the full Google OAuth callback and redirect flow.
+ * Vercel Edge Middleware
+ * Protects the private Analytics Dashboard.
  */
 
 export const config = {
@@ -17,13 +10,34 @@ export const config = {
 
 function hexToBytes(hex) {
   if (typeof hex !== 'string' || hex.length % 2 !== 0) return null;
+
   const bytes = new Uint8Array(hex.length / 2);
+
   for (let i = 0; i < hex.length; i += 2) {
     const val = parseInt(hex.substring(i, i + 2), 16);
     if (isNaN(val)) return null;
     bytes[i / 2] = val;
   }
+
   return bytes;
+}
+
+// Read cookie safely from the standard HTTP header
+function getCookie(request, name) {
+  const cookieHeader = request.headers.get('cookie');
+  if (!cookieHeader) return null;
+
+  const prefix = `${name}=`;
+
+  for (const item of cookieHeader.split(';')) {
+    const cookie = item.trim();
+
+    if (cookie.startsWith(prefix)) {
+      return cookie.substring(prefix.length);
+    }
+  }
+
+  return null;
 }
 
 async function validateSession(cookieValue, encKeyHex) {
@@ -34,6 +48,7 @@ async function validateSession(cookieValue, encKeyHex) {
   try {
     const decoded = decodeURIComponent(cookieValue);
     const parts = decoded.split(':');
+
     if (parts.length !== 3) return false;
 
     const iv = hexToBytes(parts[0]);
@@ -42,9 +57,10 @@ async function validateSession(cookieValue, encKeyHex) {
     const keyBytes = hexToBytes(encKeyHex);
 
     if (!iv || !ct || !tag || !keyBytes) return false;
-    if (iv.length !== 12 || tag.length !== 16 || keyBytes.length !== 32) return false;
+    if (iv.length !== 12 || tag.length !== 16 || keyBytes.length !== 32) {
+      return false;
+    }
 
-    // Web Crypto requires ciphertext and authentication tag to be concatenated
     const combined = new Uint8Array(ct.length + tag.length);
     combined.set(ct);
     combined.set(tag, ct.length);
@@ -63,37 +79,38 @@ async function validateSession(cookieValue, encKeyHex) {
       combined
     );
 
-    const decryptedText = new TextDecoder().decode(decryptedBuf);
-    const payload = JSON.parse(decryptedText);
+    const payload = JSON.parse(
+      new TextDecoder().decode(decryptedBuf)
+    );
 
-    if (!payload || !payload.token || typeof payload.token !== 'string') {
+    if (!payload || typeof payload.token !== 'string' || !payload.token) {
       return false;
     }
 
-    if (typeof payload.exp === 'number' && Date.now() > payload.exp) {
+    if (
+      typeof payload.exp !== 'number' ||
+      Date.now() >= payload.exp
+    ) {
       return false;
     }
 
     return true;
+
   } catch {
-    // Cryptographic validation failed (tampered or wrong key)
     return false;
   }
 }
 
 export default async function middleware(request) {
   const encKey = process.env.TOKEN_ENCRYPTION_KEY;
-  const sessionCookie = request.cookies.get('ga_session');
-  const cookieVal = sessionCookie ? sessionCookie.value : null;
+  const cookieVal = getCookie(request, 'ga_session');
 
   const isValid = await validateSession(cookieVal, encKey);
 
   if (!isValid) {
-    // Unauthenticated, expired, or tampered: redirect immediately to OAuth start
     const authStartUrl = new URL('/api/auth-start', request.url);
     return Response.redirect(authStartUrl, 302);
   }
 
-  // Session valid: allow access to /dashboard/
   return;
 }
