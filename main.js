@@ -102,9 +102,10 @@ const initFAQ = () => {
   faqItems.forEach(item => {
     const question = item.querySelector('.faq-question');
     const answer   = item.querySelector('.faq-answer');
+    if (!question || !answer) return;
+    question.setAttribute('aria-expanded', item.classList.contains('active') ? 'true' : 'false');
     question.addEventListener('click', () => {
       const isActive = item.classList.contains('active');
-      // READ phase — gather all heights before touching DOM
       const heights = new Map();
       faqItems.forEach(other => {
         if (other !== item && other.classList.contains('active')) {
@@ -113,19 +114,23 @@ const initFAQ = () => {
       });
       const targetHeight = !isActive ? answer.scrollHeight : 0;
 
-      // WRITE phase — single RAF
       requestAnimationFrame(() => {
         faqItems.forEach(other => {
           if (other !== item) {
             other.classList.remove('active');
-            other.querySelector('.faq-answer').style.maxHeight = null;
+            const q = other.querySelector('.faq-question');
+            if (q) q.setAttribute('aria-expanded', 'false');
+            const a = other.querySelector('.faq-answer');
+            if (a) a.style.maxHeight = null;
           }
         });
         if (!isActive) {
           item.classList.add('active');
+          question.setAttribute('aria-expanded', 'true');
           answer.style.maxHeight = targetHeight + 'px';
         } else {
           item.classList.remove('active');
+          question.setAttribute('aria-expanded', 'false');
           answer.style.maxHeight = null;
         }
       });
@@ -145,7 +150,8 @@ const initGlobalUI = () => {
   }
 
   if (!document.querySelector('.back-to-top')) {
-    const btn = document.createElement('div');
+    const btn = document.createElement('button');
+    btn.type = 'button';
     btn.className = 'back-to-top';
     btn.innerHTML = '<i class="fas fa-arrow-up"></i>';
     btn.setAttribute('aria-label', 'Back to top');
@@ -250,26 +256,23 @@ if (blogCommentForm) {
   });
 }
 
-// Global Owl Eye Tracking
-document.addEventListener('mousemove', (e) => {
-    const eyes = document.querySelectorAll('.eye');
-    if(eyes.length === 0) return;
+// Global Owl Eye Tracking - only attach when .eye elements exist
+const eyes = document.querySelectorAll('.eye');
+if (eyes.length > 0) {
+  document.addEventListener('mousemove', (e) => {
     eyes.forEach(eye => {
-        const rect = eye.getBoundingClientRect();
-        const eyeX = rect.left + rect.width / 2;
-        const eyeY = rect.top + rect.height / 2;
-        const rad = Math.atan2(e.clientY - eyeY, e.clientX - eyeX);
-        
-        // Max distance the pupil can move from center
-        const distance = Math.min(13, Math.hypot(e.clientX - eyeX, e.clientY - eyeY) / 10);
-        
-        const pupilX = distance * Math.cos(rad);
-        const pupilY = distance * Math.sin(rad);
-        
-        const pupil = eye.querySelector('.pupil');
-        if(pupil) {
-            pupil.style.transform = `translate(${pupilX}px, ${pupilY}px)`;
-        }
+      const rect = eye.getBoundingClientRect();
+      const eyeX = rect.left + rect.width / 2;
+      const eyeY = rect.top + rect.height / 2;
+      const rad = Math.atan2(e.clientY - eyeY, e.clientX - eyeX);
+      const distance = Math.min(13, Math.hypot(e.clientX - eyeX, e.clientY - eyeY) / 10);
+      const pupilX = distance * Math.cos(rad);
+      const pupilY = distance * Math.sin(rad);
+      const pupil = eye.querySelector('.pupil');
+      if (pupil) {
+        pupil.style.transform = `translate(${pupilX}px, ${pupilY}px)`;
+      }
     });
-});
+  }, { passive: true });
+}
 

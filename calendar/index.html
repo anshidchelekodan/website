@@ -1398,8 +1398,10 @@
                             </div>
                             
                             <div class="booking-form" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1.5rem;">
-                                <input type="text" id="userName" placeholder="Your Name" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 10px; color: #fff; outline:none;">
-                                <input type="tel" id="userPhone" placeholder="Phone Number" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 10px; color: #fff; outline:none;">
+                                <label for="userName" class="visually-hidden">Your Name</label>
+                                <input type="text" id="userName" placeholder="Your Name" aria-label="Your Name" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 10px; color: #fff; outline:none;">
+                                <label for="userPhone" class="visually-hidden">Phone Number</label>
+                                <input type="tel" id="userPhone" placeholder="Phone Number" aria-label="Phone Number" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 10px; color: #fff; outline:none;">
                             </div>
 
                             <button class="btn btn-primary btn-pulse" id="finalBookBtn" style="width: 100%; justify-content: center;">Confirm My Slot Now</button>
