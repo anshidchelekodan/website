@@ -2773,79 +2773,200 @@ img { height: auto; object-fit: cover; }
 /* ==========================================================================
    Interactive ROI Dashboard & Growth Calculators (Premium Glassmorphism)
    ========================================================================== */
+#growth-calc {
+  position: relative;
+  overflow: hidden;
+  background-color: #050807;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.calc-ambient-glow-1 {
+  position: absolute;
+  top: -15%;
+  left: -10%;
+  width: 55%;
+  height: 55%;
+  background: radial-gradient(circle, rgba(46, 230, 166, 0.08) 0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.calc-ambient-glow-2 {
+  position: absolute;
+  bottom: -15%;
+  right: -10%;
+  width: 55%;
+  height: 55%;
+  background: radial-gradient(circle, rgba(46, 230, 166, 0.06) 0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.calc-ambient-glow-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 60%;
+  background: radial-gradient(ellipse, rgba(46, 230, 166, 0.035) 0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Rounded Segmented Glass Tabs */
 .roi-glass-tabs {
   display: flex;
   justify-content: center;
-  gap: 0.5rem;
-  margin-bottom: 3rem;
-  background: rgba(255, 255, 255, 0.03);
+  align-items: center;
+  gap: 8px;
+  margin: 0 auto 3.5rem auto;
+  background: rgba(10, 20, 16, 0.7);
   padding: 6px;
-  border-radius: 16px;
+  border-radius: 50px;
   width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  flex-wrap: wrap;
+  max-width: 100%;
+  border: 1px solid rgba(46, 230, 166, 0.18);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.08);
 }
 
 .roi-glass-tab-btn {
-  padding: 0.85rem 2.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0.9rem 2.2rem;
   background: transparent;
-  border-radius: 12px;
-  color: var(--text-secondary);
+  border-radius: 50px;
+  color: rgba(241, 245, 249, 0.75);
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   font-size: 0.88rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   border: 1px solid transparent;
-  font-family: var(--font-main);
+  font-family: var(--font-main, 'Montserrat', sans-serif);
   user-select: none;
+  outline: none;
 }
 
-.roi-glass-tab-btn.active {
-  background: #2EE6A6;
-  color: #050b09;
-  border-color: #2EE6A6;
-  font-weight: 800;
-  box-shadow: 0 4px 20px rgba(46, 230, 166, 0.35);
+.roi-glass-tab-btn i {
+  font-size: 0.95rem;
+  transition: transform 0.3s ease;
 }
 
 .roi-glass-tab-btn:hover:not(.active) {
   color: #ffffff;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
-/* Glassmorphism Calculator Container */
+.roi-glass-tab-btn.active {
+  background: linear-gradient(135deg, #2EE6A6 0%, #20b884 100%);
+  color: #050807;
+  border-color: rgba(255, 255, 255, 0.35);
+  font-weight: 800;
+  box-shadow: 0 4px 20px rgba(46, 230, 166, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+.roi-glass-tab-btn.active i {
+  transform: scale(1.1);
+}
+
+/* Glassmorphism Two-Column Container */
 .pro-calc-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(10, 20, 16, 0.55) 100%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  grid-template-columns: 1.15fr 0.85fr;
+  background: linear-gradient(145deg, rgba(16, 28, 24, 0.7) 0%, rgba(7, 14, 11, 0.88) 100%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-top: 1px solid rgba(46, 230, 166, 0.3);
+  border: 1px solid rgba(46, 230, 166, 0.18);
+  border-top: 1px solid rgba(46, 230, 166, 0.4);
   border-left: 1px solid rgba(255, 255, 255, 0.12);
   overflow: hidden;
-  box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.75), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 40px -10px rgba(46, 230, 166, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
+.pro-calc-container:hover {
+  border-color: rgba(46, 230, 166, 0.28);
+  box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.85), 0 0 50px -10px rgba(46, 230, 166, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+}
+
+/* Left Column: Metric Controls */
 .pro-calc-left {
-  padding: 3.5rem 3rem;
-  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 3.2rem 2.8rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.pro-calc-header {
+  margin-bottom: 2rem;
+}
+
+.pro-calc-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #ffffff;
+  margin-bottom: 0.4rem;
+  font-family: var(--font-main, 'Montserrat', sans-serif);
+}
+
+.pro-calc-title i {
+  color: #2EE6A6;
+  font-size: 1.25rem;
+}
+
+.pro-calc-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-secondary, #A8A29E);
+  margin-bottom: 0;
+  font-family: var(--font-main, 'Montserrat', sans-serif);
 }
 
 .pro-calc-slider-wrapper {
-  margin-bottom: 2.2rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 1.25rem 1.4rem;
+  margin-bottom: 1.3rem;
+  transition: all 0.25s ease;
 }
 
 .pro-calc-slider-wrapper:last-child {
   margin-bottom: 0;
+}
+
+.pro-calc-slider-wrapper:hover,
+.pro-calc-slider-wrapper:focus-within {
+  background: rgba(46, 230, 166, 0.025);
+  border-color: rgba(46, 230, 166, 0.25);
+  transform: translateY(-1px);
+}
+
+.pro-calc-slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.9rem;
+}
+
+.pro-calc-slider-header label {
+  font-weight: 600;
+  color: #F1F5F9;
+  font-size: 0.95rem;
+  cursor: pointer;
+  font-family: var(--font-main, 'Montserrat', sans-serif);
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .roi-glass-val {
@@ -2854,30 +2975,98 @@ img { height: auto; object-fit: cover; }
   font-family: 'JetBrains Mono', 'Courier New', monospace;
   font-size: 0.92rem;
   background: rgba(46, 230, 166, 0.08);
-  border: 1px solid rgba(46, 230, 166, 0.2);
-  padding: 2px 10px;
-  border-radius: 6px;
+  border: 1px solid rgba(46, 230, 166, 0.25);
+  padding: 3px 12px;
+  border-radius: 8px;
   letter-spacing: 0.5px;
+  box-shadow: 0 0 12px rgba(46, 230, 166, 0.12);
 }
 
+/* Custom Range Slider with Dynamic Green Progress Track */
 .roi-glass-slider {
+  -webkit-appearance: none;
+  appearance: none;
   width: 100%;
-  height: 7px;
-  border-radius: 7px;
+  height: 8px;
+  border-radius: 999px;
   outline: none;
-  accent-color: #2EE6A6;
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.09);
-  transition: all 0.2s ease;
+  background: linear-gradient(to right, #2EE6A6 0%, #2EE6A6 var(--progress, 0%), rgba(255, 255, 255, 0.08) var(--progress, 0%), rgba(255, 255, 255, 0.08) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: background 0.1s ease, border-color 0.2s ease;
+  margin: 4px 0 6px 0;
 }
 
-.roi-glass-slider:hover {
-  background: rgba(46, 230, 166, 0.2);
+.roi-glass-slider:focus-visible {
+  outline: 2px solid #2EE6A6;
+  outline-offset: 3px;
 }
 
-/* Glassmorphism Result Card & Right Panel */
+/* WebKit Thumb */
+.roi-glass-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 3.5px solid #2EE6A6;
+  box-shadow: 0 0 12px rgba(46, 230, 166, 0.6), 0 2px 6px rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s ease;
+}
+
+.roi-glass-slider:hover::-webkit-slider-thumb,
+.roi-glass-slider:active::-webkit-slider-thumb {
+  transform: scale(1.18);
+  box-shadow: 0 0 20px rgba(46, 230, 166, 0.9), 0 3px 8px rgba(0, 0, 0, 0.55);
+}
+
+/* Mozilla Thumb */
+.roi-glass-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 3.5px solid #2EE6A6;
+  box-shadow: 0 0 12px rgba(46, 230, 166, 0.6), 0 2px 6px rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.roi-glass-slider:hover::-moz-range-thumb,
+.roi-glass-slider:active::-moz-range-thumb {
+  transform: scale(1.18);
+  box-shadow: 0 0 20px rgba(46, 230, 166, 0.9);
+}
+
+.roi-glass-slider::-moz-range-track {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.roi-glass-slider::-moz-range-progress {
+  height: 8px;
+  border-radius: 999px;
+  background: #2EE6A6;
+}
+
+/* Scale boundaries row */
+.pro-calc-scale {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.35);
+  font-family: var(--font-main, 'Montserrat', sans-serif);
+  font-weight: 500;
+  padding: 0 2px;
+}
+
+/* Right Column: Hero Result Display */
 .pro-calc-right {
-  padding: 2.5rem 2.2rem;
+  padding: 2.8rem 2.4rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -2887,58 +3076,121 @@ img { height: auto; object-fit: cover; }
 
 .roi-result-glass-card {
   width: 100%;
-  background: linear-gradient(145deg, rgba(46, 230, 166, 0.05) 0%, rgba(5, 12, 10, 0.55) 100%);
-  border: 1px solid rgba(46, 230, 166, 0.22);
-  border-top: 1px solid rgba(46, 230, 166, 0.4);
+  background: linear-gradient(150deg, rgba(46, 230, 166, 0.07) 0%, rgba(13, 25, 20, 0.7) 40%, rgba(5, 11, 9, 0.88) 100%);
+  border: 1px solid rgba(46, 230, 166, 0.25);
+  border-top: 1px solid rgba(46, 230, 166, 0.5);
   border-radius: 20px;
   padding: 2.8rem 2.2rem;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow:
-    0 20px 40px -10px rgba(0, 0, 0, 0.6),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1),
-    0 0 25px rgba(46, 230, 166, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.75), inset 0 1px 1px rgba(255, 255, 255, 0.15), 0 0 35px rgba(46, 230, 166, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   position: relative;
+  overflow: hidden;
+}
+
+.roi-result-glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #2EE6A6, transparent);
+  opacity: 0.85;
 }
 
 .roi-result-kicker {
-  display: inline-block;
-  padding: 0.35rem 1.1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.4rem 1.15rem;
+  background: rgba(46, 230, 166, 0.08);
+  border: 1px solid rgba(46, 230, 166, 0.22);
+  border-radius: 50px;
   text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 0.75rem;
-  color: var(--text-secondary);
-  margin-bottom: 1.2rem;
-  font-weight: 600;
-  font-family: var(--font-main);
+  color: #2EE6A6;
+  margin-bottom: 1.4rem;
+  font-weight: 700;
+  font-family: var(--font-main, 'Montserrat', sans-serif);
+}
+
+.roi-kicker-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #2EE6A6;
+  box-shadow: 0 0 10px #2EE6A6;
+  animation: roiPulseDot 2s infinite ease-in-out;
+}
+
+@keyframes roiPulseDot {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.75);
+  }
 }
 
 .roi-glass-result {
   display: block;
-  font-size: clamp(2.5rem, 4.5vw, 3.8rem);
+  font-size: clamp(2.6rem, 4.5vw, 3.8rem);
   font-weight: 900;
   color: #ffffff;
   margin-bottom: 0.8rem;
-  text-shadow: 0 0 25px rgba(46, 230, 166, 0.35);
-  line-height: 1;
-  font-family: var(--font-main);
+  text-shadow: 0 0 25px rgba(46, 230, 166, 0.4), 0 0 50px rgba(46, 230, 166, 0.15);
+  line-height: 1.1;
+  font-family: var(--font-main, 'Montserrat', sans-serif);
   letter-spacing: -0.5px;
+  transition: transform 0.2s ease;
 }
 
 .roi-glass-desc {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 2.2rem;
+  font-size: 0.92rem;
+  color: var(--text-secondary, #A8A29E);
+  line-height: 1.65;
+  margin-bottom: 1.6rem;
   max-width: 320px;
-  font-family: var(--font-main);
+  font-family: var(--font-main, 'Montserrat', sans-serif);
+}
+
+/* Micro metrics inside Result Card */
+.roi-micro-stats {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 320px;
+  margin-bottom: 1.8rem;
+}
+
+.roi-stat-pill {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+  padding: 7px 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(241, 245, 249, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: var(--font-main, 'Montserrat', sans-serif);
+}
+
+.roi-stat-pill i {
+  color: #2EE6A6;
+  font-size: 0.8rem;
 }
 
 /* Glassmorphism CTA Button */
@@ -2948,21 +3200,19 @@ img { height: auto; object-fit: cover; }
   justify-content: center;
   gap: 10px;
   width: 100%;
-  max-width: 310px;
+  max-width: 320px;
   padding: 1.15rem 2.2rem;
   background: linear-gradient(135deg, #2EE6A6 0%, #20b884 100%);
-  color: #050b09 !important;
+  color: #050807 !important;
   font-weight: 800;
   font-size: 0.95rem;
   letter-spacing: 0.5px;
   border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow:
-    0 10px 25px -5px rgba(46, 230, 166, 0.45),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 10px 25px -5px rgba(46, 230, 166, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.4);
   text-decoration: none;
-  font-family: var(--font-main);
-  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  font-family: var(--font-main, 'Montserrat', sans-serif);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
   cursor: pointer;
@@ -2970,15 +3220,29 @@ img { height: auto; object-fit: cover; }
 
 .roi-glass-cta:hover {
   transform: translateY(-2px);
-  box-shadow:
-    0 15px 35px -5px rgba(46, 230, 166, 0.6),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  box-shadow: 0 15px 35px -5px rgba(46, 230, 166, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.6);
   background: linear-gradient(135deg, #38f4b3 0%, #25c991 100%);
 }
 
 .roi-glass-cta:active {
   transform: translateY(0);
-  box-shadow: 0 5px 15px rgba(46, 230, 166, 0.4);
+  box-shadow: 0 6px 18px rgba(46, 230, 166, 0.4);
+}
+
+/* Tab Panel Fade Animation */
+.calc-panel-active {
+  animation: calcFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes calcFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Responsive adjustments */
@@ -2988,15 +3252,28 @@ img { height: auto; object-fit: cover; }
   }
   .pro-calc-left {
     border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    padding: 2.5rem 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    padding: 2.6rem 2.2rem;
   }
   .pro-calc-right {
-    padding: 2.5rem 1.8rem;
+    padding: 2.6rem 2rem;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 640px) {
+  .roi-glass-tabs {
+    width: 100%;
+    margin-bottom: 2.5rem;
+    padding: 4px;
+    gap: 4px;
+  }
+  .roi-glass-tab-btn {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    gap: 6px;
+  }
   .pro-calc-left {
     padding: 2rem 1.4rem;
   }
@@ -3005,13 +3282,18 @@ img { height: auto; object-fit: cover; }
   }
   .roi-result-glass-card {
     padding: 2.2rem 1.4rem;
+    border-radius: 16px;
   }
   .roi-glass-result {
-    font-size: 2.5rem !important;
+    font-size: 2.4rem !important;
   }
-  .roi-glass-tab-btn {
-    padding: 0.75rem 1.5rem;
-    font-size: 0.82rem;
+  .pro-calc-slider-wrapper {
+    padding: 1.1rem 1rem;
+    margin-bottom: 1.1rem;
+  }
+  .roi-micro-stats {
+    flex-direction: column;
+    gap: 6px;
   }
 }
 
